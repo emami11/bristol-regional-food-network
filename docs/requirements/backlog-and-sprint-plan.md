@@ -71,3 +71,16 @@ The following criteria will be used to review completion of the initial Sprint 1
 | Sprint planning | Tasks have agreed priorities, owners, statuses and expected outcomes. |
 
 These criteria are provisional and should be reviewed by the group against the assessment brief.
+
+## Sprint 1 Task Tracker
+
+| Task | Owner | Status |
+|---|---|---|
+| Business analysis | To be agreed | To be confirmed |
+| Stakeholder analysis | To be agreed | To be confirmed |
+| Identify major business processes | To be agreed | To be confirmed |
+| Strategic BPMN model | To be agreed | To be confirmed |
+| Confirm two functionalities with tutor | To be agreed | To be confirmed |
+| Initial requirements | To be agreed | To be confirmed |
+
+The group will agree task owners and update statuses during stand-up meetings. Tasks will only be marked complete when the relevant work has been produced and reviewed.
