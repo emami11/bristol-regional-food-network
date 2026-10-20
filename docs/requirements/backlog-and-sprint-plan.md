@@ -56,3 +56,18 @@ Each task should have an assigned team member, a status and clear completion cri
 ## 5. Current Status
 
 This is an initial planning document. Tasks should only be marked complete when the team has produced and reviewed the corresponding deliverable. The two major functionalities remain provisional until confirmed with the tutor.
+
+## 6. Acceptance Criteria
+
+The following criteria will be used to review completion of the initial Sprint 1 tasks.
+
+| Task | Acceptance Criteria |
+|---|---|
+| Business analysis | Business purpose, objectives and major processes are documented. |
+| Stakeholder analysis | Key internal and external stakeholders, their roles and needs are identified. |
+| Strategic BPMN | A high-level model represents the major processes across the whole enterprise. |
+| Functionality agreement | Two major functionalities are documented and confirmed with the tutor. |
+| Initial requirements | Requirements for product listing, validation, inventory and seasonal availability are documented. |
+| Sprint planning | Tasks have agreed priorities, owners, statuses and expected outcomes. |
+
+These criteria are provisional and should be reviewed by the group against the assessment brief.
