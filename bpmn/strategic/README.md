@@ -1,5 +1,7 @@
 # Strategic BPMN Model
 
+**Responsible Group Member:** Noyo Acogo Emami
+
 ## Overview
 
 This folder contains our strategic BPMN model for the Bristol Regional Food Network (BRFN).

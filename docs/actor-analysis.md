@@ -1,5 +1,7 @@
 # Use Case 1 – Actor Identification and Analysis
 
+**Responsible Group Member:** Xavier Ajike
+
 ## 1. Overview
 
 This document identifies the main actors involved in **Use Case 1: Producer Product Listing and Inventory Management** within the food marketplace system.

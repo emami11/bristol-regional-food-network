@@ -1,5 +1,7 @@
 # Proposed Functionalities — Detailed Scope
 
+**Responsible Group Member:** Moses Bororio
+
 ### Proposed Major Functionalities
 
 Both functionalities come from Use Case 1 and sit in the Catalogue and Inventory lane of our strategic BPMN. Each is a complete end-to-end process with user interaction, automated processing, business decisions, service interaction, data handling, and alternative and exception paths.

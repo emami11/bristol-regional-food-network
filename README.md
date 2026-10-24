@@ -75,6 +75,20 @@ Camunda 8, BPMN 2.0, GitHub and GitHub Projects. Additional technologies will be
 - Ayobamidele Esho
 - Elvis Uchendi
 
+## Assigned Tasks
+
+The following responsibilities have been allocated to group members for the BRFN project. All members contribute to group discussions, reviews and project decisions.
+
+| Group Member | Assigned Responsibilities |
+|---|---|
+| **Noyo Acogo Emami** | Group leadership, meeting coordination, team communication, overall project oversight, practice BPMN diagrams, strategic BPMN modelling and revisions. |
+| **Elvis Uchendi** | Sprint backlog, sprint planning, task tracking and progress reporting. |
+| **Moses Bororio** | Proposed functionalities, functional and non-functional requirements, and use-case scope. |
+| **Ayobamidele Esho (Ayo)** | Stakeholder analysis, stakeholder needs, interests and responsibilities. |
+| **Xavier Ajike** | Actor analysis, business analysis, organisational responsibilities and major business processes. |
+
+These assignments identify the main responsibility for each area. Tasks and contributions will be reviewed as the project progresses.
+
 ## Assessment
 
 | Item | Details |

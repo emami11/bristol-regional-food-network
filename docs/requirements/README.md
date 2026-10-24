@@ -1,5 +1,7 @@
 # Requirements Analysis
 
+**Responsible Group Member:** Moses Bororio
+
 ## Overview
 
 Our group has provisionally selected Use Case 1: Producer Product Listing and Inventory Management.

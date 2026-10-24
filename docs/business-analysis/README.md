@@ -1,5 +1,7 @@
 # Business Analysis
 
+**Responsible Group Member:** Xavier Ajike
+
 ## Overview
 
 The Bristol Regional Food Network (BRFN) is a proposed digital marketplace connecting local food producers with customers.

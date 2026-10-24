@@ -1,5 +1,7 @@
 # Product Backlog and Sprint Plan
 
+**Responsible Group Member:** Elvis Uchendi
+
 ## 1. Purpose
 
 This document records the initial product backlog and Sprint 1 plan for the Bristol Regional Food Network digital marketplace. It identifies the main tasks, priorities and intended outcomes across the three assessment sprints.

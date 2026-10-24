@@ -1,5 +1,8 @@
 # Stakeholder Analysis
 
+**Responsible Group Member:** Ayobamidele Esho (Ayo)
+
+
 ## Overview
 
 This section identifies the main stakeholders involved in the Bristol Regional Food Network (BRFN), their responsibilities, and what they need from the marketplace.
