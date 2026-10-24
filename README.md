@@ -81,7 +81,7 @@ The following responsibilities have been allocated to group members for the BRFN
 
 | Group Member | Assigned Responsibilities |
 |---|---|
-| **Noyo Acogo Emami** | Group leadership, meeting coordination, team communication, overall project oversight, practice BPMN diagrams, strategic BPMN modelling and revisions. |
+| **OritseNoyo Acogo Emami** | Group leadership, meeting coordination, team communication, overall project oversight, practice BPMN diagrams, strategic BPMN modelling and revisions. |
 | **Elvis Uchendi** | Sprint backlog, sprint planning, task tracking and progress reporting. |
 | **Moses Bororio** | Proposed functionalities, functional and non-functional requirements, and use-case scope. |
 | **Ayobamidele Esho (Ayo)** | Stakeholder analysis, stakeholder needs, interests and responsibilities. |
