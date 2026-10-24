@@ -1,118 +1,85 @@
 # Bristol Regional Food Network
-## Distributed and Enterprise Software Development (UFCFTR-30-3)
-## Group 14
-### Project Overview
 
-This repository contains the development work for Assessment Task 1
-of the Distributed and Enterprise Software Development module
-at the University of the West of England (UWE Bristol).
+**Distributed and Enterprise Software Development | Group 14**
 
-The project is based on the Bristol Regional Food Network,
-a fictional community initiative connecting local food producers
-with customers through a digital marketplace.
+## Project Overview
 
-The platform aims to support local producers by improving
-product accessibility, inventory management, order processing,
-and communication between producers and customers.
+This repository contains our group project for the Distributed and Enterprise Software Development module at UWE Bristol.
+
+The Bristol Regional Food Network (BRFN) is a fictional digital marketplace designed to connect local food producers with customers.
+
+Our aim is to analyse the organisation's business processes and develop a system that supports product management and communication between producers and the marketplace.
 
 ## Selected Use Case
 
-### Use Case 1: Producer Product Listing and Inventory Management
+Our provisional selection is **Use Case 1: Producer Product Listing and Inventory Management**.
 
-Our group's provisional choice is Use Case 1.
+We're focusing on two main functionalities:
 
-This focuses on allowing registered food producers to list
-products, manage inventory, update seasonal availability,
-and ensure customers receive accurate product information.
+**1. Product Listing and Validation**
 
-### Proposed Major Functionalities
+Producers submit product information, which is checked before the product is published. This includes checking required details and verifying organic certification where applicable.
 
-Both functionalities come from Use Case 1 and sit in the Catalogue and Inventory lane of our strategic BPMN. Each is a complete end-to-end process with user interaction, automated processing, business decisions, service interaction, data handling, and alternative and exception paths.
+**2. Inventory and Seasonal Availability Management**
 
-**Functionality 1: Product Listing and Validation**
+Producers update their stock levels and seasonal availability. The system uses this information to determine whether products should be available to customers.
 
-- Producer product information submission (name, description, category, price, quantity, availability period, farm origin, harvest date, allergens, best-before date)
-- Mandatory information validation, with a correction loop back to the producer
-- Organic certification verification where applicable, via a simulated external service
-- Manual admin review if the verification service is unavailable
-- Product publication with producer notification
-- Validation and external-service exception handling, including a timer to archive abandoned listings
-
-*In scope:* submission, validation, certification check, publishing.
-*Out of scope:* producer registration and real certification APIs (simulated instead).
-
-**Functionality 2: Inventory and Seasonal Availability Management**
-
-- Product quantity updates by the producer, or by stock-change messages from orders
-- Seasonal availability management, including a daily season check
-- Automatic stock unavailability when quantity reaches zero
-- Product restocking and availability restoration, only while within the seasonal availability period
-- Inventory-related business decisions through a shared availability decision table (DMN)
-
-*In scope:* stock and season updates, availability rules, opening and closing products to orders, producer notifications.
-*Out of scope:* ordering, checkout and payment (Use Case 2). F2 only receives a stock-change message, which is our integration point for Task 2.
-
-
+The detailed scope, including proposed validation rules and exception handling, is recorded in [Proposed Functionalities](docs/requirements/PROPOSED-FUNCTIONALITIES.md).
 
 ## Development Approach
 
-The project follows an Agile sprint-based development approach.
+We are following an Agile approach, with work organised into three sprints.
 
-### Sprint 1: Strategic Process Analysis and Project Setup
+### Sprint 1 — Strategic Analysis and Project Setup
 
-- Analyse the enterprise case study
-- Identify stakeholders and responsibilities
-- Identify major business processes
-- Develop a strategic-level BPMN model
-- Identify and scope two major functionalities
-- Establish the product backlog and sprint plan
-- Set up version control and record group contributions
+- Analyse the BRFN case study and identify stakeholders.
+- Identify the main business processes and responsibilities.
+- Create a strategic BPMN model in Camunda.
+- Select and scope two major functionalities.
+- Set up our GitHub repository and project board.
 
-### Sprint 2: Socio-Technical and Operational Modelling
+### Sprint 2 — Detailed Modelling
 
-- Develop i* Strategic Dependency and Strategic Rationale models
-- Develop two detailed operational BPMN models
-- Begin process automation using Camunda
-- Implement initial user tasks, Forms, and service tasks
+- Develop i* stakeholder models.
+- Create detailed BPMN models for our selected functionalities.
+- Begin process automation in Camunda.
 
-### Sprint 3: Implementation and Integration
+### Sprint 3 — Implementation and Integration
 
-- Complete executable Camunda processes
-- Implement automated business logic
-- Integrate services and interfaces
-- Handle alternative and exception paths
-- Prepare the final in-class demonstration
+- Develop and test executable processes.
+- Implement the required business logic and integrations.
+- Prepare the final demonstration.
 
-## Technologies
+## Project Files
 
-- BPMN 2.0
-- Camunda 8
-- GitHub
-- Python (where appropriate)
-- GitHub Projects for sprint management
+| Folder | Contents |
+|---|---|
+| `bpmn/strategic/` | Enterprise-level strategic BPMN model |
+| `bpmn/practice/` | Initial BPMN modelling practice |
+| `docs/business-analysis/` | Main business activities and responsibilities |
+| `docs/requirements/` | Selected functionalities and requirements |
+| `docs/stakeholder-analysis/` | Stakeholders and their needs |
+| `visualisation/` | Interactive explanation of the strategic processes |
 
-## Project Documentation
+The interactive visualisation uses sample data to explain the proposed business flows. It is not a running marketplace backend.
 
-Project documentation, BPMN models, development evidence,
-and sprint planning materials will be maintained in
-this repository as development progresses.
+## Tools
+
+Camunda 8, BPMN 2.0, GitHub and GitHub Projects. Additional technologies will be used as the implementation develops.
 
 ## Group Members
 
-Noyo Acogo Emami
-Xavier Ajike
-Moses Bororio
-Ayobamidele Esho
-Elvis Uchendi
+- Noyo Acogo Emami
+- Xavier Ajike
+- Moses Bororio
+- Ayobamidele Esho
+- Elvis Uchendi
 
-## Assessment Information
+## Assessment
 
-Module: Distributed and Enterprise Software Development
-
-Module Code: UFCFTR-30-3
-
-Assessment: Task 1
-
-Academic Year: 2026/27
-
-Final Submission Deadline: 10 December 2026, before 14:00
+| Item | Details |
+|---|---|
+| Module | Distributed and Enterprise Software Development (UFCFTR-30-3) |
+| Assessment | Task 1 |
+| Academic year | 2026/27 |
+| Final deadline | 10 December 2026, before 14:00 |

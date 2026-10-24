@@ -1,40 +1,48 @@
-# Strategic BPMN Models
+# Strategic BPMN Model
 
-## Purpose
+## Overview
 
-This folder contains the strategic-level Business Process
-Model and Notation (BPMN) models developed for the
-Bristol Regional Food Network.
+This folder contains our strategic BPMN model for the Bristol Regional Food Network (BRFN).
 
-The strategic BPMN model will represent the enterprise
-at a high level, identifying its major business processes,
-organisational responsibilities, stakeholders, and
-interactions.
+We created the model in Camunda to show how the main business processes are organised and how the marketplace communicates with external participants.
 
-## Key Areas
+## Main Business Areas
 
-- Major enterprise business processes
-- Organisational functions and responsibilities
-- Key internal and external participants
-- Interactions between business processes
-- Relationships between organisational activities
-- Alignment with stakeholder goals and requirements
+The model is divided into three lanes:
 
-## Current Focus
+1. Product and Inventory Management
+2. Marketplace Operations
+3. Quality Assurance and Community Services
 
-Sprint 1: Development of the initial strategic BPMN
-model using Camunda.
+Together, these areas contain seven high-level subprocesses covering product listings, inventory, customer purchasing, multi-vendor orders, payments, food quality, and community engagement.
 
-The model will represent the overall enterprise,
-rather than focusing exclusively on Use Case 1.
+## External Participants
 
-## Planned Deliverables
+The model shows communication between BRFN and four external participants:
 
-- Initial strategic BPMN draft
-- Reviewed and refined strategic BPMN model
-- BPMN model files exported from Camunda
-- Evidence of modelling decisions and revisions
+- Food Producers
+- Customers
+- Payment Service Provider
+- Organic Certification Verification Service
 
-## Status
+Dashed message flows represent information exchanged between these participants and the marketplace.
 
-Strategic BPMN modelling pending.
+## Model Structure
+
+We used subprocesses to keep the strategic diagram simple while representing the main business activities.
+
+Each subprocess also contains a basic internal workflow showing its starting event, main activity, and ending event.
+
+The model provides an overview of the enterprise rather than a fully executable system.
+
+## BPMN File
+
+BRFN-Strategic-BPMN-Sprint1.bpmn
+
+This file can be opened in Camunda to view or continue editing the model.
+
+## Current Status
+
+The initial strategic BPMN draft has been created and exported from Camunda.
+
+Camunda reported no modelling-guideline problems during our final check. The business logic and process design are still subject to group and tutor review.

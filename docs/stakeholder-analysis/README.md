@@ -1,60 +1,31 @@
 # Stakeholder Analysis
 
-## Purpose
+## Overview
 
-This folder contains the stakeholder analysis for the
-Bristol Regional Food Network project.
+This section identifies the main stakeholders involved in the Bristol Regional Food Network (BRFN), their responsibilities, and what they need from the marketplace.
 
-The objective is to identify the key stakeholders involved
-in the enterprise and understand their roles, responsibilities,
-goals, and dependencies.
+It helps us understand who is involved in the system and how their roles relate to our business processes.
 
-## Key Areas
-
-- Identification of internal and external stakeholders
-- Stakeholder roles and responsibilities
-- Stakeholder goals and expectations
-- Relationships and dependencies between stakeholders
-- Stakeholder requirements influencing system design
-
-## Current Focus
-
-Sprint 1: Initial stakeholder identification and analysis.
-
-The findings will support the development of the strategic
-BPMN model and the i* Strategic Dependency (SD) and
-Strategic Rationale (SR) models.
-
-## Status
-
-Initial analysis pending.
-
-## Initial Stakeholder Analysis
-
-### Key Stakeholders
+## Key Stakeholders
 
 | Stakeholder | Role | Main Needs |
 |---|---|---|
-| Local food producers | Supply products and manage listings and stock. | Easy product management, accurate stock records and reliable payments. |
-| Individual customers | Browse and purchase local food. | Accurate product details, availability, allergen information and clear prices. |
-| Restaurants and cafés | Purchase local produce for business use. | Reliable availability and clear ordering arrangements. |
-| Community organisations | Purchase food for community, educational or care activities. | Suitable product information and predictable availability. |
-| Marketplace administrators | Oversee marketplace operations and listing compliance. | Reliable processes, compliant listings and effective issue resolution. |
-| Payment service | Processes customer payments. | Valid payment requests and reliable responses. |
-| Certification verification service | Checks organic certification claims. | Accurate certification information and clear verification requests. |
+| Local food producers | List products and manage stock. | Simple product management and accurate stock records. |
+| Individual customers | Browse and purchase local food. | Clear prices, accurate availability, and product information. |
+| Restaurants and cafés | Purchase local produce for their businesses. | Reliable availability and ordering. |
+| Community organisations | Purchase food for community activities. | Suitable products and dependable availability. |
+| Marketplace administrators | Oversee listings and marketplace operations. | Accurate records and effective issue handling. |
+| Payment service provider | Processes customer payments. | Correct payment information and transaction responses. |
+| Certification verification service | Checks organic certification claims. | Accurate certification details for verification. |
 
-### Stakeholder Dependencies
+## Stakeholder Dependencies
 
-- Producers depend on the marketplace to validate and publish listings and maintain stock information.
-- Customers depend on accurate product information and availability.
-- Restaurants, cafés and community organisations depend on reliable ordering and fulfilment.
-- Marketplace administrators depend on accurate records and effective exception handling.
-- The marketplace depends on the payment service for payment outcomes and the certification service for organic verification results.
+Food producers rely on BRFN to validate and publish their products and manage availability. Customers rely on the marketplace to provide accurate information before ordering.
 
-### Summary
+Marketplace administrators oversee operations and resolve issues. BRFN also communicates with external payment and certification services when required.
 
-The marketplace must balance producers' need for simple product management with customers' need for accurate information and reliable ordering. It must also support operational oversight, payment processing and product verification. This analysis will inform the strategic BPMN model and subsequent i* modelling.
+## How This Supports Our Project
 
-### Status
+This analysis helps us understand the different responsibilities within BRFN. It supports our strategic BPMN model and will also be useful when developing the more detailed stakeholder dependency models in Sprint 2.
 
-Initial stakeholder analysis drafted; review and confirmation by the group pending.
+**Status:** Initial analysis drafted; awaiting group review.

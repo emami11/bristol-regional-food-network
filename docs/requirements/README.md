@@ -1,34 +1,47 @@
 # Requirements Analysis
 
-## Purpose
+## Overview
 
-This folder contains the functional and non-functional
-requirements for the Bristol Regional Food Network
-digital marketplace.
+Our group has provisionally selected Use Case 1: Producer Product Listing and Inventory Management.
 
-The analysis is based on the provided enterprise case
-study and our provisional selection of Use Case 1:
-Producer Product Listing and Inventory Management.
+For this use case, we are focusing on two major functionalities that will be developed in more detail during later sprints.
 
-## Key Areas
+## Functionality 1: Product Listing and Validation
 
-- Identification of functional requirements
-- Identification of non-functional requirements
-- Producer product listing requirements
-- Product information validation
-- Organic certification verification
-- Inventory and seasonal availability management
-- Exception handling and external service interactions
+This allows registered producers to submit products for sale on the BRFN marketplace.
 
-## Current Focus
+The main requirements are:
 
-Sprint 1: Identifying and analysing the requirements
-associated with the selected use case.
+- Producers can enter product details, including price, quantity, origin, allergens and availability.
+- The system checks that required information has been provided.
+- Producers can correct incomplete or invalid submissions.
+- Organic certification can be verified through a simulated external service where applicable.
+- Validated products can be published on the marketplace.
+- Producers receive feedback about their submissions.
 
-These requirements will inform the selection of two
-major business functionalities and their subsequent
-BPMN modelling and Camunda implementation.
+## Functionality 2: Inventory and Seasonal Availability
 
-## Status
+This allows producers to maintain accurate stock and availability information.
 
-Requirements analysis pending.
+The main requirements are:
+
+- Producers can update product quantities.
+- The system checks whether products are in season.
+- Products become unavailable when stock reaches zero.
+- Products can become available again when restocked, provided they are still in season.
+- Stock changes can be received from an external ordering process.
+- Availability decisions can be supported by a DMN decision table.
+
+## Other Requirements
+
+The system should be easy for producers to use, maintain accurate product information and handle invalid inputs or unavailable external services appropriately.
+
+## Scope
+
+Our focus is on product listings, validation, stock management and seasonal availability.
+
+Customer checkout and payment processing are outside our selected use case, although stock updates from orders may be used as an integration point.
+
+## Current Status
+
+Initial requirements identified for Sprint 1. Detailed modelling and implementation are planned for later sprints.
