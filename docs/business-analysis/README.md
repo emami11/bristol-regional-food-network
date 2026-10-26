@@ -16,31 +16,20 @@ This paper forms the basis for the strategic BPMN model that depicts key busines
 
 The key process here refers to product listings management, product information validation, and accurate inventory and seasonal availability management.
 
-The processes include:
+**The processes include:**
+-Getting products' listing applications from the producers.
+-Validation of products' information before publishing.
+-Verification of claims of organic certification with help of an independent verification service.
+-Publication of successfully validated products.
+-Price and quantity of stocks updating.
+-Management of the seasonal product availability.
+-Inavailability of products when stock equals zero.
+-Availability of products when the stock is replenished and the product is within its season.
+-Sending listing confirmation and validation results to the producers.
 
-Getting products' listing applications from the producers.
-
-Validation of products' information before publishing.
-
-Verification of claims of organic certification with help of an independent verification service.
-
-Publication of successfully validated products.
-
-Price and quantity of stocks updating.
-
-Management of the seasonal product availability.
-
-Inavailability of products when stock equals zero.
-
-Availability of products when the stock is replenished and the product is within its season.
-
-Sending listing confirmation and validation results to the producers.
-
-These processes are represented by strategic BPMN via two subprocesses:
-
-Manage Product Listings
-
-Manage Inventory and Seasonal Availability
+**These processes are represented by strategic BPMN via two subprocesses:**
+-Manage Product Listings
+-Manage Inventory and Seasonal Availability
 
 The strategic BPMN contains also communications between the marketplace, food producers and Organic Certification Verification Service.
 
@@ -52,29 +41,18 @@ These activities describe the intended business functionality. The strategic BPM
 
 In this domain, the business is centered around processing customer purchases, order coordination with several producers, as well as financial transactions.
 
-The key processes consist of:
-
-Processing customer purchase requests.
-
-Processing customer purchasing.
-
-Order coordination with several vendors.
-
-Managing payments and settlements with producers.
-
-Sending orders to the food producers.
-
-Sending order confirmations to the customers.
-
-Communication with an external payment service provider.
-
-They are reflected in the strategic BPMN through three core subprocesses:
-
-Facilitate Customer Purchasing
-
-Coordinate Multi-Vendor Orders
-
-Manage Payments and Producer Settlements
+**The key processes consist of:**
+-Processing customer purchase requests.
+-Processing customer purchasing.
+-Order coordination with several vendors.
+-Managing payments and settlements with producers.
+-Sending orders to the food producers.
+-Sending order confirmations to the customers.
+-Communication with an external payment service provider.
+-They are reflected in the strategic BPMN through three core subprocesses:
+-Facilitate Customer Purchasing
+-Coordinate Multi-Vendor Orders
+-Manage Payments and Producer Settlements
 
 Furthermore, there is communication depicted with marketplace, customers, food producers, as well as the Payment Service Provider.
 
@@ -84,25 +62,16 @@ These processes enable commercial operations of the marketplace to take place.
 
 In this aspect, the business is aimed at ensuring food quality, promoting product traceability and fostering sustainability and community enagagement.
 
-Key activities to be performed here include:
-
-Reporting food-quality problems.
-
-Inquiring into food-quality problems.
-
-Tracking food products in cases when quality problems arise.
-
-Providing support for solving the food-quality problems.
-
-Fostering sustainable practices.
-
-Providing support for community involvement.
-
-Such key activities are depicted in the strategic BPMN via two key subprocesses:
-
-Food Quality and Traceability
-
-Support Sustainability and Community Engagement.
+**Key activities to be performed here include:**
+-Reporting food-quality problems.
+-Inquiring into food-quality problems.
+-Tracking food products in cases when quality problems arise.
+-Providing support for solving the food-quality problems.
+-Fostering sustainable practices.
+-Providing support for community involvement.
+-Such key activities are depicted in the strategic BPMN via two key subprocesses:
+-Food Quality and Traceability
+-Support Sustainability and Community Engagement.
 
 The following diagram illustrates how food-quality problems are reported and processed by means of the Food Quality and Traceability subprocess.
 
