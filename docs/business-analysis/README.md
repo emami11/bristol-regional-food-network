@@ -16,20 +16,13 @@ This business process analysis report will lay the foundations of the strategic 
 This business function involves managing the products that can be acquired from the marketplace and maintaining the accuracy of the product information.
 
 The key functions involved are:
-
-Registering and listing products.
-
-Validating product information prior to listing.
-
-Organic certifications validation.
-
-Price and stock updates of products.
-
-Seasonal products management.
-
-Product availability update upon stock depletion.
-
-Reactivation of product availability upon restocking.
+-Registering and listing products.
+-Validating product information prior to listing.
+-Organic certifications validation.
+-Price and stock updates of products.
+-Seasonal products management.
+-Product availability update upon stock depletion.
+-Reactivation of product availability upon restocking.
 
 Good management of products and inventory is vital for accurate customer information and efficient management of products by the producers.
 
@@ -38,20 +31,13 @@ Good management of products and inventory is vital for accurate customer informa
 The business functions under this domain relate to the management of customer transactions and coordination of their transactions with the producers.
 
 The key functions performed here are as follows:
-
 Enabling customers to search for and choose products.
-
-Handling customer orders.
-
-Coordinating orders comprising products from different producers.
-
-Handling customer payments.
-
-Computing commissions for the marketplace.
-
-Handling producer settlements.
-
-Order fulfillment coordination.
+-Handling customer orders.
+-Coordinating orders comprising products from different producers.
+-Handling customer payments.
+-Computing commissions for the marketplace.
+-Handling producer settlements.
+-Order fulfillment coordination.
 
 Such functions aid the commercial functioning of the marketplace.
 
@@ -60,18 +46,12 @@ Such functions aid the commercial functioning of the marketplace.
 This business domain is concerned with ensuring the maintenance of food quality, consumer trust and market integrity.
 
 Key functions involve:
-
-Handling issues related to food quality.
-
-Tracing sources of the products.
-
-Determining which products are impacted by food quality concerns.
-
-Handling product recall and notification of consumers.
-
-Fostering sustainable food production and local businesses.
-
-Engaging the community.
+-Handling issues related to food quality.
+-Tracing sources of the products.
+-Determining which products are impacted by food quality concerns.
+-Handling product recall and notification of consumers.
+-Fostering sustainable food production and local businesses.
+-Engaging the community.
 
 These functions ensure market integrity and further the aims of the Bristol Regional Food Network.
 
