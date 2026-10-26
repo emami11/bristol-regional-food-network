@@ -11,7 +11,7 @@
 |---|---|---|---|---|
 | 1 | Wednesday 14 October 2026 | 5:00–6:00 p.m. | University Library (in person) | Project planning and task allocation |
 | 2 | Monday 19 October 2026 | 5:00–6:00 p.m. | University Library (in person) | Strategic BPMN and GitHub development |
-| 3 | Monday 26 October 2026 | 7:00–9:00 p.m. (planned) | Group meeting | Final Sprint 1 stand-up and presentation preparation |
+| 3 | Monday 26 October 2026 | 7:00–9:00 p.m. | Group meeting | Final Sprint 1 stand-up and presentation preparation |
 
 ## Meeting 1 — Initial Planning and Task Allocation
 
@@ -47,15 +47,15 @@ Members also worked on setting up and organising the GitHub repository, includin
 
 Work began on the Strategic BPMN, and GitHub was established as the group's version-control and collaboration platform.
 
-## Meeting 3 — Final Sprint 1 Stand-up
+## Meeting 3 — Final Sprint 1 Group Review and Preparation
 
 **Date:** Monday 26 October 2026
-**Time:** 7:00–9:00 p.m. (planned)
+**Time:** 7:00–9:00 p.m.
 **Location:** Group meeting
 
 ### Discussion
 
-The group is reviewing the final Sprint 1 preparation, including:
+The group collectively reviewed its Sprint 1 work and discussed:
 
 - Individual speaking responsibilities for the presentation.
 - How the Business Analysis aligns with the Strategic BPMN.
@@ -65,12 +65,17 @@ The group is reviewing the final Sprint 1 preparation, including:
 - Repository documentation and outstanding presentation preparations.
 - The direction of work for Sprint 2.
 
-### Intended Outcome
+### Meeting Outcome
 
-Ensure that all group members understand their contributions, can explain how their work connects to the Strategic BPMN and are prepared for the Sprint 1 presentation.
+The group collectively reviewed the Sprint 1 documents available on GitHub and checked how each document relates to the Strategic BPMN.
 
-**Final meeting outcome:** To be recorded after the meeting concludes.
-**Actual finishing time:** To be confirmed.
+Members discussed and refined sections containing unnecessary or unclear information to improve consistency with the model. The group reviewed the two proposed functionalities, their relationship to the Product and Inventory Management lane, and how the wider business processes are represented.
+
+Members also revised their understanding of BPMN notation, the three lanes, seven subprocesses, external participants and process interactions.
+
+The group agreed that each member should understand their own assigned section, the overall Strategic BPMN and how the other members' contributions connect to it.
+
+**Final outcome:** The group agreed that its Sprint 1 presentation content was ready for Tuesday 27 October 2026. The strategic model remains a Sprint 1 draft that will be reviewed and developed further in subsequent sprints.
 
 ## Group Responsibilities
 

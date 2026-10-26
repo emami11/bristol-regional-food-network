@@ -85,14 +85,14 @@ Prompts, not a script. Say it in your own words and point at the screen as you g
 2. **Pools:** BRFN Marketplace, plus Food Producers, Customers, Payment Service Provider and Organic Certification Verification Service as black boxes.
 3. **Lanes:** the three business areas from the business analysis.
 4. **Seven sub-processes:** Manage Product Listings, Manage Inventory and Seasonal Availability, Facilitate Customer Purchasing, Coordinate Multi-Vendor Orders, Manage Payments and Producer Settlements, Food Quality and Traceability, Support Sustainability and Community Engagement.
-5. **Follow a product's life:** a producer submits a listing → it is validated and certification checked → stock and season are managed → a customer purchases → the order is split by producer → payment is taken and settlements calculated.
+5. **Explain the business areas:** the listing and inventory subprocesses represent producer product management; the purchasing, ordering and payments subprocesses represent marketplace operations. These are related business functions, but the current strategic BPMN does not connect every process path into one continuous sequence.
 6. **Two kinds of arrow:** dashed message flows cross between pools, labelled with what is exchanged; solid sequence flows stay inside the marketplace.
-7. **How the areas connect:** point out the links between processes (e.g. a paid order reduces stock; a quality incident can suspend a product). See section 7.
+7. **Relationships and future improvements:** explain that the business areas are related conceptually. Order-driven stock updates and quality-related restrictions are potential later integrations, not explicit sequence-flow connections in the current strategic model.
 
 ### Functionalities — Moses
 - Both come from the Product and Inventory Management lane: "Manage Product Listings" and "Manage Inventory and Seasonal Availability".
-- **F1, Product Listing and Validation:** submission → validation with a correction loop → organic certificate checked by a simulated service → manual admin review if the service is down → published and producer notified. Abandoned listings are archived by a timer.
-- **F2, Inventory and Seasonal Availability:** stock and season updates from producers, stock changes from orders and a daily season check feed one availability decision (DMN). Zero stock closes a product; restocking reopens it only within its season.
+- **F1, Product Listing and Validation:** the strategic BPMN identifies Manage Product Listings. The proposed operational design will explore validation, producer corrections, certification checks, exception handling and publication in more detail during later sprints.
+- **F2, Inventory and Seasonal Availability:** the strategic BPMN identifies Manage Inventory and Seasonal Availability. Detailed stock updates, seasonal checks, availability decisions and possible integration with ordering are proposed for later modelling.
 - **Why these two:** each has user interaction, automated processing, business decisions, service interaction and exception paths, which the brief requires. Producer registration doesn't.
 - **Scope:** producer registration, real certification APIs, checkout and payment are out. F2's stock-change message is our integration point for Task 2.
 - **Sign-off:** say when we asked the tutors and what they said.
@@ -127,7 +127,7 @@ Found when checking the model against the assessment brief and the three use cas
 
 | # | Finding | Why it matters | Action | Status |
 |---|---|---|---|---|
-| 1 | The four process chains never connect to each other | The brief asks for "relationships between the principal business processes" | Link Listings/Inventory → Facilitate Customer Purchasing; Payments → Manage Inventory (stock reduces after payment); Food Quality → Listings or Inventory (suspension) | Open |
+| 1 | The four strategic process paths are not explicitly connected by sequence flows | The group should explain relationships between principal business functions | Review whether additional relationships belong in this strategic model or should be deferred to operational BPMN diagrams | Open |
 | 2 | No message flow for producers updating stock and season | Use Case 1 requirement and the trigger for F2 | Food Producers → Manage Inventory and Seasonal Availability | Open |
 | 3 | "Food Quality Incident Reported" is a message start event with no sender | Use Case 3: a customer, producer or admin reports the incident | Message flow from Customers and/or Food Producers | Open |
 | 4 | No contact with producers or affected customers during an incident | Use Case 3 requirement | Food Quality ↔ Food Producers; Food Quality → Customers | Open |
@@ -138,7 +138,7 @@ Found when checking the model against the assessment brief and the three use cas
 | 9 | Customer types not shown | Stakeholder analysis lists individuals, restaurants and community organisations | Rename the pool, e.g. "Customers (individuals, restaurants, community organisations)" | Open |
 | 10 | F1 and F2 not highlighted | Markers need to see where the operational models zoom in | Colour or annotate the two sub-processes | Open |
 | 11 | Labels overlap the collapsed-marker; empty space in the lower lane | Readability on a projector | Resize the boxes and tighten the layout | Open |
-| 12 | No PNG export, and modelling decisions aren't explained | 1st-class band asks for "excellent justification" | Export PNG; add a "Modelling decisions" section to bpmn/strategic/README.md | Open |
+| 12 | PNG export completed; modelling decisions can be explained more clearly | Clear justification supports the strategic model | PNG committed alongside the BPMN; improve the written modelling rationale if needed | Partially complete |
 
 When an action is done, change its status to **Fixed** and add the commit or pull request link.
 
