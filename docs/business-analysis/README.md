@@ -46,6 +46,8 @@ The strategic BPMN contains also communications between the marketplace, food pr
 
 Proper product and inventory management contribute to providing customers with accurate information about the products and efficient management of listings for the producers.
 
+These activities describe the intended business functionality. The strategic BPMN represents them at a high level through the Manage Inventory and Seasonal Availability subprocess; detailed decisions and stock-handling rules will be modelled during later sprints.
+
 ### Marketplace Operations
 
 In this domain, the business is centered around processing customer purchases, order coordination with several producers, as well as financial transactions.
