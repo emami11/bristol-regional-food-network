@@ -98,10 +98,10 @@ Prompts, not a script. Say it in your own words and point at the screen as you g
 - **Sign-off:** say when we asked the tutors and what they said.
 
 ### Project management — Elvis
-- Backlog PB1–PB13 with priorities and sprints, plus user stories US1–US12 decomposing the two functionalities.
+- Backlog PB1–PB14 with priorities and planned sprints. Discuss user stories only if they are documented.
 - Sprint 1 plan and task tracker: every task has an owner and a status.
 - Board: show columns, assignees and an issue moving through to Done.
-- Version control: commits from every member, branches and pull requests reviewed by another member.
+- Version control: demonstrate actual commits, branches and pull requests where available. Only claim contributions supported by GitHub evidence.
 - Be honest about what slipped and how the plan catches it up.
 
 ### Sprint 2 plan 
@@ -113,10 +113,10 @@ Prompts, not a script. Say it in your own words and point at the screen as you g
 | Question | Short answer |
 |---|---|
 | Why is the certification service a pool, not a lane? | It is an outside organisation. Lanes are responsibilities inside one organisation. |
-| Where is the marketplace administrator? | [Answer depends on the fix in section 7: a lane, or annotated where admin review happens.] |
+| Where is the marketplace administrator? | The administrator is identified in the actor analysis as an internal role, but is not a separate lane in the current strategic BPMN. |
 | Why are there no gateways? | Strategic level shows what the enterprise does and who is responsible. Decisions are modelled in the operational BPMN. |
-| Where is the 5% commission? | Inside Manage Payments and Producer Settlements; detailed if Use Case 2 is built. |
-| Why isn't producer registration modelled? | [Answer depends on section 7: added as a sub-process, or out of scope because …] |
+| Where are commission calculations? | The payments subprocess includes settlements at a high level, but individual commission rules are not explicitly modelled. |
+| Why isn't producer registration modelled? | The selected functionality assumes an existing registered producer. Registration is outside our chosen implementation scope. |
 | Why these two functionalities and not others? | Section 5, "Why these two". |
 | How will Task 1 connect to Task 2? | F2 receives a stock-change message from the ordering process. |
 | Who did what? | Point to the Assigned Tasks table, the board and Insights → Contributors. |
