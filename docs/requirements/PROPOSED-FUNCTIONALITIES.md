@@ -4,7 +4,7 @@
 
 ### Proposed Major Functionalities
 
-Both functionalities come from Use Case 1 and sit in the Catalogue and Inventory lane of our strategic BPMN. Each is a complete end-to-end process with user interaction, automated processing, business decisions, service interaction, data handling, and alternative and exception paths.
+Both functionalities come from Use Case 1 and sit in the Product and Inventory Management lane of our strategic BPMN, as the "Manage Product Listings" and "Manage Inventory and Seasonal Availability" sub-processes. Each is a complete end-to-end process with user interaction, automated processing, business decisions, service interaction, data handling, and alternative and exception paths.
 
 **Functionality 1: Product Listing and Validation**
 
@@ -28,3 +28,26 @@ Both functionalities come from Use Case 1 and sit in the Catalogue and Inventory
 
 *In scope:* stock and season updates, availability rules, opening and closing products to orders, producer notifications.
 *Out of scope:* ordering, checkout and payment (Use Case 2). F2 only receives a stock-change message, which is our integration point for Task 2.
+
+---
+
+### Why these two
+
+We checked candidate processes against the brief's definition of a major functionality.
+
+| Criterion from the brief | F1 Product Listing and Validation | F2 Inventory and Seasonal Availability | Producer registration (not chosen) |
+|---|---|---|---|
+| End-to-end business process | Yes | Yes | Partly |
+| User interaction | Product, correction and admin review forms | Stock and season update form | Registration form |
+| Automated processing | Validation, publishing | Stock update, status change | Account creation |
+| Business decisions | Data valid? Organic claimed? Certificate valid? | Availability rules (DMN) | Few |
+| Service interaction | Certification verification (simulated) | Stock-change messages from orders | None |
+| Alternative and exception paths | Invalid data, failed certificate, service unavailable, abandoned listing | Invalid stock value, sold out, out of season | Few |
+
+### Agreement with the module team
+
+| Date | How we asked | Response |
+|---|---|---|
+  | — | To be asked at our practical, w/c 26 Oct 2026 | Awaiting |
+
+Status: **Provisional** until confirmed. Update to **Agreed** with the date once the tutors confirm.
