@@ -102,7 +102,7 @@ Such key activities are depicted in the strategic BPMN via two key subprocesses:
 
 Food Quality and Traceability
 
-Support Sustainability and Community Involvement
+Support Sustainability and Community Engagement.
 
 The following diagram illustrates how food-quality problems are reported and processed by means of the Food Quality and Traceability subprocess.
 
