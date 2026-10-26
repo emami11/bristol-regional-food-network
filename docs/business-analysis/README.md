@@ -80,7 +80,7 @@ These processes enable commercial operations of the marketplace to take place.
 
 ### Quality Assurance and Community Services
 
-In this aspect, the business is aimed at ensuring food quality, promoting product traceability and fostering sustainability and community involvement.
+In this aspect, the business is aimed at ensuring food quality, promoting product traceability and fostering sustainability and community enagagement.
 
 Key activities to be performed here include:
 
