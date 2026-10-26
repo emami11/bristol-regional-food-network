@@ -4,7 +4,7 @@
 
 | Item | Details |
 |---|---|
-| Review date | Thursday 29 October 2026 |
+| Review date | Tuesday 27 October 2026 |
 | Submission | One ZIP on Blackboard before 14:00 (in-class groups submit before presenting) |
 | Format | **[TBC: In-class presentation / Pre-recorded video]** |
 | Length | 10 minutes |
