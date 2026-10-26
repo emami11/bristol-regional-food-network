@@ -32,7 +32,3 @@ In the wider marketplace, the Platform relies on the Payment Service for transac
 ## How This Supports Our Project
 
 This analysis supports the strategic BPMN model, the **SD model** showing dependencies between actors, and the **SR model** explaining their goals, tasks, resources and desired qualities.
-
-## Sources
-
-Task 1 - Use Cases, page 1; Case Study - v2, pages 1-2; and the group's [requirements](../requirements/README.md).
