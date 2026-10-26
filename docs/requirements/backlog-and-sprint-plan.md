@@ -1,88 +1,126 @@
-# Product Backlog and Sprint Plan
+# Product Backlog, Sprint Planning and Progress Tracking
 
-**Responsible Group Member:** Elvis Uchendi
+**Responsible Group Member:** Elvis Uchendi  
+**Project:** Bristol Regional Food Network (BRFN) Digital Marketplace  
+**Current Sprint:** Sprint 1
 
 ## 1. Purpose
 
-This document records the initial product backlog and Sprint 1 plan for the Bristol Regional Food Network digital marketplace. It identifies the main tasks, priorities and intended outcomes across the three assessment sprints.
+My responsibility is to organise the project work into a prioritised backlog, support sprint planning, track task progress and report what the group has completed or still needs to do.
 
-## 2. Initial Product Backlog
+This helps the group work towards the assessment requirements in a structured way. It also makes responsibilities visible and gives us a record of progress that we can review during stand-ups and group meetings.
 
-| ID | Task | Priority | Sprint |
+## 2. Sprint 1 Goal
+
+The goal of Sprint 1 is to establish a shared understanding of the BRFN business, identify its stakeholders and major business processes, document the proposed functionalities and initial requirements, and develop a high-level strategic BPMN model representing the wider enterprise.
+
+The group also needs to maintain project documentation, record contributions and confirm the agreed scope with the tutor.
+
+## 3. Product Backlog
+
+The product backlog lists the main pieces of work required across the project. Priorities reflect their importance to the planned assessment deliverables and may be revised after group discussions and tutor feedback.
+
+| ID | Backlog item | Priority | Planned sprint |
 |---|---|---|---|
-| PB1 | Analyse the business case study and identify business objectives | High | Sprint 1 |
-| PB2 | Identify key stakeholders and their needs | High | Sprint 1 |
-| PB3 | Identify the major business processes across the enterprise | High | Sprint 1 |
-| PB4 | Develop the high-level strategic BPMN model | High | Sprint 1 |
-| PB5 | Agree two major functionalities with the tutor | High | Sprint 1 |
-| PB6 | Define initial requirements for product listing and validation | High | Sprint 1 |
-| PB7 | Define initial requirements for inventory and seasonal availability | High | Sprint 1 |
-| PB8 | Develop i* Strategic Dependency and Strategic Rationale models | High | Sprint 2 |
-| PB9 | Develop detailed operational BPMN models for the agreed functionalities | High | Sprint 2 |
-| PB10 | Begin Camunda process automation | Medium | Sprint 2 |
-| PB11 | Implement executable processes, forms and business logic | High | Sprint 3 |
-| PB12 | Implement exception handling and test the processes | High | Sprint 3 |
-| PB13 | Complete documentation and review the final solution | High | Sprint 3 |
+| PB1 | Review the case study and assessment brief | High | Sprint 1 |
+| PB2 | Identify the business objectives and major enterprise processes | High | Sprint 1 |
+| PB3 | Identify stakeholders, roles and responsibilities | High | Sprint 1 |
+| PB4 | Document the proposed major functionalities and scope | High | Sprint 1 |
+| PB5 | Develop the high-level strategic BPMN model | High | Sprint 1 |
+| PB6 | Document initial functional and non-functional requirements | High | Sprint 1 |
+| PB7 | Maintain task ownership, sprint planning and progress records | High | Sprint 1 |
+| PB8 | Review Sprint 1 work and confirm outstanding decisions with the tutor | High | Sprint 1 |
+| PB9 | Develop the i* Strategic Dependency and Strategic Rationale models | High | Sprint 2 |
+| PB10 | Develop detailed operational BPMN models for the agreed functionalities | High | Sprint 2 |
+| PB11 | Begin Camunda process automation | Medium | Sprint 2 |
+| PB12 | Implement executable processes, forms and business logic | High | Sprint 3 |
+| PB13 | Test normal and exceptional process paths and refine the implementation | High | Sprint 3 |
+| PB14 | Review the final solution, documentation and evidence of contributions | High | Sprint 3 |
 
-## 3. Sprint 1 Plan
+## 4. Sprint 1 Plan
 
-### Sprint Goal
+### Planned activities
 
-Establish a shared understanding of the business, identify its major processes and stakeholders, develop a high-level strategic BPMN model, and agree the initial project scope.
+1. Review the assessment brief and BRFN case study.
+2. Document the main business areas and enterprise processes.
+3. Identify the main stakeholders and their needs.
+4. Document the two proposed functionalities: Product Listing and Validation, and Inventory and Seasonal Availability Management.
+5. Record the initial requirements and relevant exceptions.
+6. Create and review the strategic BPMN model.
+7. Maintain the backlog, agree task owners and track progress.
+8. Record feedback, decisions and outstanding work.
 
-### Planned Tasks
+### Expected outputs
 
-1. Review the case study and assessment requirements.
-2. Identify business objectives and stakeholders.
-3. Identify the major enterprise business processes.
-4. Draft and review the strategic BPMN model.
-5. Confirm the two major functionalities with the tutor.
-6. Document initial functional and non-functional requirements.
-7. Prioritise the product backlog and assign responsibilities.
-8. Record progress and contributions in GitHub.
+- Initial business analysis.
+- Initial stakeholder and actor analysis.
+- Proposed functionalities and requirements.
+- A high-level strategic BPMN model and its editable file.
+- An organised backlog and sprint task tracker.
+- Evidence of group reviews, decisions and individual contributions.
 
-### Expected Deliverables
+## 5. Sprint 1 Task Tracker
 
-- Initial business and stakeholder analysis.
-- High-level strategic BPMN model.
-- Two agreed major functionalities.
-- Initial product backlog and Sprint 1 plan.
-- GitHub documentation and evidence of group contributions.
+The tracker below records the current position based on the documentation available to the group. Statuses should be confirmed during the next stand-up.
 
-## 4. Task Tracking
+| Task | Responsible member | Current position | Next action |
+|---|---|---|---|
+| Business analysis and major processes | Xavier Ajike | Drafted | Review process coverage against the case study |
+| Stakeholder analysis | Ayobamidele Esho (Ayo) | Drafted | Check stakeholder needs and dependencies |
+| Proposed functionalities and use-case scope | Moses Bororio | Documented as proposed | Confirm scope and tutor agreement |
+| Strategic BPMN model | Noyo Acogo Emami | Initial model created | Review the diagram against the whole enterprise and assessment brief |
+| Practice BPMN model | Noyo Acogo Emami | Practice model prepared | Use for learning and review; distinguish it from the final operational models |
+| Initial requirements | Moses Bororio / group review | Documented | Check requirements against the use case and agreed scope |
+| Backlog, sprint planning and task tracking | Elvis Uchendi | Initial plan documented | Confirm owners, update statuses and record blockers |
+| Group review and outstanding decisions | Whole group | To be confirmed | Agree actions and record tutor feedback |
 
-Each task should have an assigned team member, a status and clear completion criteria. The team should review progress regularly and update the backlog when requirements or priorities change.
+**Status definitions**
 
-**Status options:** To Do, In Progress, Done.
+- **To Do:** Work has not yet started.
+- **In Progress:** Work is actively being developed.
+- **Drafted:** An initial version exists but still needs review.
+- **Done:** The agreed deliverable has been completed and reviewed.
+- **Blocked:** Progress depends on a decision, feedback or another task.
 
-## 5. Current Status
+A file being present in GitHub does not by itself mean its contents have been reviewed or accepted.
 
-This is an initial planning document. Tasks should only be marked complete when the team has produced and reviewed the corresponding deliverable. The two major functionalities remain provisional until confirmed with the tutor.
+## 6. Task Ownership and Acceptance Criteria
 
-## 6. Acceptance Criteria
+Each task should have one clearly identified lead, while other members can contribute to reviews and shared decisions.
 
-The following criteria will be used to review completion of the initial Sprint 1 tasks.
-
-| Task | Acceptance Criteria |
+| Work area | Completion criteria |
 |---|---|
-| Business analysis | Business purpose, objectives and major processes are documented. |
-| Stakeholder analysis | Key internal and external stakeholders, their roles and needs are identified. |
-| Strategic BPMN | A high-level model represents the major processes across the whole enterprise. |
-| Functionality agreement | Two major functionalities are documented and confirmed with the tutor. |
-| Initial requirements | Requirements for product listing, validation, inventory and seasonal availability are documented. |
-| Sprint planning | Tasks have agreed priorities, owners, statuses and expected outcomes. |
+| Business analysis | Business purpose and major processes are documented and checked against the case study |
+| Stakeholder analysis | Main internal and external stakeholders, responsibilities and needs are identified |
+| Functionalities | Both proposed functionalities have a clear scope and their approval status is recorded |
+| Strategic BPMN | The model represents the wider enterprise and is reviewed by the group |
+| Requirements | Initial requirements reflect the selected use case, including validation, stock and seasonal rules |
+| Sprint tracking | Tasks have owners, priorities, current statuses and next actions |
+| Progress reporting | Meeting decisions, blockers and agreed actions are recorded accurately |
 
-These criteria are provisional and should be reviewed by the group against the assessment brief.
+## 7. Progress Reporting
 
-## Sprint 1 Task Tracker
+At each stand-up, I will help the group answer three questions:
 
-| Task | Owner | Status |
-|---|---|---|
-| Business analysis | To be agreed | To be confirmed |
-| Stakeholder analysis | To be agreed | To be confirmed |
-| Identify major business processes | To be agreed | To be confirmed |
-| Strategic BPMN model | To be agreed | To be confirmed |
-| Confirm two functionalities with tutor | To be agreed | To be confirmed |
-| Initial requirements | To be agreed | To be confirmed |
+1. **What has been completed since the last meeting?** Identify the document, model or task that has actually changed.
+2. **What will happen next?** Record the next action, the person responsible and the intended outcome.
+3. **What is blocking progress?** Record unresolved decisions, required reviews, tutor feedback or dependencies on another team member.
 
-The group will agree task owners and update statuses during stand-up meetings. Tasks will only be marked complete when the relevant work has been produced and reviewed.
+Actions and status changes should be reflected in the tracker after the meeting. Where appropriate, GitHub commits and the files changed can help demonstrate progress, but the contribution record should accurately reflect the work performed.
+
+## 8. Current Priorities
+
+The next priorities are to review the existing Sprint 1 documents as a group, confirm whether the two proposed functionalities have tutor approval, review the strategic BPMN against the wider enterprise, and resolve any outstanding tasks before Sprint 1 is considered complete.
+
+The group should not mark provisional decisions or unreviewed drafts as completed deliverables.
+
+## 9. Link to Later Sprints
+
+The backlog also provides a starting point for planning later work. Sprint 2 will build on the agreed scope through the i* models and detailed operational BPMN models. Sprint 3 will focus on executable Camunda processes, forms, business logic, exception handling and testing.
+
+The backlog can be updated as the group receives feedback, but changes should be recorded so that task priorities and responsibilities remain clear.
+
+## 10. Conclusion
+
+My role is to make the group's work manageable and traceable. By maintaining the backlog, tracking task ownership, recording progress and highlighting blockers, I help the team see what has been achieved, what remains outstanding and what needs attention before the next assessment milestone.
+
