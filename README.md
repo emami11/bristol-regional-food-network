@@ -61,7 +61,7 @@ We are following an Agile approach, with work organised into three sprints.
 | `docs/stakeholder-analysis/` | Stakeholders and their needs |
 | `visualisation/` | Interactive explanation of the strategic processes |
 
-The interactive visualisation uses sample data to explain the proposed business flows. It is not a running marketplace backend.
+The interactive visualisation uses sample data to explain the proposed business flows. 
 
 ## Tools
 
