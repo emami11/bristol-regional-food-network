@@ -6,7 +6,7 @@
 
 ## 1. Purpose
 
-My role would be to create the priorites of the tasks for the project backlog and help with the planning and tracking the progress of the tasks within the sprint, as well as noting what the group has finished or not yet done.
+My role would be to prioritise tasks in the product backlog for the project backlog and help with the planning and tracking the progress of the tasks within the sprint, as well as noting what the group has finished or not yet done.
 
 It will ensure that the group works towards the requirements for the assessments systematically.
 
