@@ -43,8 +43,3 @@ BRFN-Strategic-BPMN-Sprint1.bpmn
 
 This file can be opened in Camunda to view or continue editing the model.
 
-## Current Status
-
-The initial strategic BPMN draft has been created and exported from Camunda.
-
-Camunda reported no modelling-guideline problems during our final check. The business logic and process design are still subject to group and tutor review.
