@@ -1,190 +1,137 @@
 # Use Case 1 – Actor Identification and Analysis
 
-**Responsible Group Member:** Xavier Ajike
+**Project:** Bristol Regional Food Network (BRFN)  
+
 
 ## 1. Overview
 
-This document identifies the main actors involved in **Use Case 1: Producer Product Listing and Inventory Management** within the food marketplace system.
+This document identifies and analyses the main actors involved in Use Case 1: Producer Product Listing and Inventory Management within the Bristol Regional Food Network (BRFN).
 
-The purpose of this analysis is to identify the stakeholders, their responsibilities, motivations and relationships with other actors.
+The purpose of this analysis is to identify the actors involved in product listing and inventory management, understand their responsibilities and goals, and examine how they interact with the marketplace system.
 
-These actors form the foundation for the i* Strategic Dependency (SD) and Strategic Rationale (SR) models.
+The analysis focuses on the selected use case rather than the entire marketplace. It provides a foundation for understanding the different roles involved and supports the development of the project's socio-technical and business process models.
 
-## 2. Actors, Types and Motivations
+## 2. Actor Identification
 
-| Actor | i* Actor Type | Why It Matters | Core Intentions |
-|---|---|---|---|
-| **Producer** | Role | Supplies products, submits product information and maintains stock availability. | Publish products successfully, maintain accurate inventory, comply with product information requirements and minimise administrative effort. |
-| **Customer** | Role | Uses published product information to identify available products. | Access accurate product information, identify available products and trust organic certification claims. |
-| **Marketplace Admin** | Position | Oversees marketplace compliance and may handle verification exceptions requiring manual intervention. | Ensure compliant product listings, resolve exceptional cases and protect marketplace reputation. |
-| **Marketplace Platform** | Agent | Automates product validation, publication, stock updates and seasonal availability management. | Publish valid products, maintain accurate availability and handle validation or verification failures reliably. |
-| **Certification Verification Service** | Agent | External or simulated service responsible for checking organic certification claims. | Provide accurate certification verification results and respond reliably to verification requests. |
+Five main actors have been identified for Use Case 1.
 
-## 3. Detailed Actor Responsibilities
+| Actor | Actor Type | Description |
+|---|---|---|
+| **Registered Producer** | Agent | A registered farmer or food business representative responsible for submitting products and maintaining inventory information. |
+| **Customer** | Role | Represents customers who rely on accurate product information and availability when purchasing food. |
+| **Marketplace Admin** | Position | Represents marketplace staff responsible for overseeing product compliance and handling exceptional cases where required. |
+| **Marketplace Platform** | Agent | The software system responsible for validating product information, publishing products and managing inventory availability. |
+| **Certification Verification Service** | Agent | An external or simulated service responsible for verifying organic certification claims. |
 
-### 3.1 Producer
+The Registered Producer, Marketplace Platform and Certification Verification Service are directly involved in the product submission, validation and publication process.
 
-**Actor Type:** Role
+The Customer relies on accurate product information provided by the marketplace, while the Marketplace Admin supports compliance and operational oversight.
 
-**Description:**
+Together, these actors contribute to the effective management of product listings and inventory within the marketplace.
 
-The Producer represents a registered farmer or food business representative who supplies products to the marketplace.
+## 3. Actor Responsibilities and Goals
 
-**Responsibilities:**
-- Submit new product listings.
-- Provide product names, descriptions, categories and prices.
-- Supply available quantities and seasonal availability periods.
-- Provide farm origin, harvest dates, allergen details and best-before dates where relevant.
-- Provide organic certification details when making organic claims.
-- Correct missing or invalid product information.
-- Update product quantities and availability periods.
+This section outlines the main responsibilities, goals and softgoals of the five actors involved in Use Case 1.
 
-**Goals:**
-- Successfully publish valid products.
-- Maintain accurate stock and availability.
-- Minimise time spent managing product listings.
-- Meet applicable product information requirements.
+Responsibilities describe the activities performed by each actor, goals represent the outcomes they aim to achieve, and softgoals describe desirable qualities such as efficiency, reliability and ease of use.
 
-**Dependencies:**
+### 3.1 Registered Producer
 
-The Producer depends on the Marketplace Platform for product publication, validation feedback and inventory management.
+The Registered Producer is responsible for creating and maintaining product listings within the marketplace.
+
+| Responsibilities | Goals | Softgoals |
+|---|---|---|
+| Submit new product listings. | Successfully publish valid products. | Simple and efficient listing process. |
+| Provide accurate product descriptions, prices and quantities. | Maintain accurate inventory information. | Minimal administrative effort. |
+| Supply relevant product information, including allergens and organic certification details where applicable. | Meet product listing requirements. | Clear and understandable validation feedback. |
+| Correct missing or invalid product information. | Keep product availability up to date. | |
+| Update stock quantities and seasonal availability. | | |
 
 ### 3.2 Customer
 
-**Actor Type:** Role
+The Customer represents individuals who use the marketplace to find and purchase locally produced food.
 
-**Description:**
+Although customers do not directly manage product listings, they depend on accurate information provided by the marketplace.
 
-The Customer represents individuals who view product listings and rely on the marketplace to display accurate product information.
-
-**Responsibilities:**
-- View available product listings.
-- Review product descriptions and availability information.
-- Use product information to make informed purchasing decisions.
-
-**Goals:**
-- Access accurate product information.
-- Identify products that are currently available.
-- Receive reliable allergen and best-before information.
-- Trust organic certification claims.
-
-**Dependencies:**
-
-The Customer depends on the Marketplace Platform to provide accurate product information and prevent unavailable products from being offered for new orders.
+| Responsibilities | Goals | Softgoals |
+|---|---|---|
+| Browse available products. | Access accurate product information. | Trustworthy product listings. |
+| Review product descriptions and availability information. | Identify products that are currently available. | Confidence in organic certification claims. |
+| Consider allergen and best-before information when making purchasing decisions. | Obtain reliable allergen and best-before information. | Reliable marketplace experience. |
 
 ### 3.3 Marketplace Admin
 
-**Actor Type:** Position
+The Marketplace Admin represents marketplace staff responsible for overseeing product listing compliance and supporting marketplace operations.
 
-**Description:**
+| Responsibilities | Goals | Softgoals |
+|---|---|---|
+| Monitor product listing compliance. | Ensure products meet marketplace requirements. | Effective compliance management. |
+| Support producers experiencing listing difficulties. | Resolve exceptional cases. | Reduced administrative workload. |
+| Review unresolved verification issues where manual intervention is implemented. | Maintain reliable marketplace operations. | Customer and producer confidence. |
+| Help maintain marketplace listing standards. | | |
 
-The Marketplace Admin represents an authorised marketplace representative responsible for oversight and compliance.
-
-The position may cover the roles of Compliance Reviewer and Support.
-
-**Responsibilities:**
-- Oversee marketplace listing compliance.
-- Review validation or verification exceptions where manual intervention is part of the system design.
-- Review unresolved certification issues.
-- Support producers experiencing listing problems.
-- Help maintain marketplace policies.
-
-**Goals:**
-- Ensure only compliant products are published.
-- Maintain marketplace reliability and reputation.
-- Resolve exceptional cases effectively.
-
-**Dependencies:**
-
-The Marketplace Admin depends on the Marketplace Platform for information about product validation, certification outcomes and unresolved exceptions.
-
-**Note:** Manual administrator review is a proposed system feature rather than an explicit requirement of Use Case 1.
+**Note:** Manual administrator review is a proposed exception-handling feature and is not an explicit requirement of Use Case 1.
 
 ### 3.4 Marketplace Platform
 
-**Actor Type:** Agent
+The Marketplace Platform is the software system responsible for managing product listing and inventory processes.
 
-**Description:**
-
-The Marketplace Platform represents the software system responsible for automating product listing, validation and inventory management.
-
-The proposed implementation uses Camunda to coordinate business processes.
-
-**Responsibilities:**
-- Receive product listing submissions.
-- Validate mandatory product information.
-- Identify missing or invalid fields.
-- Request corrections from producers.
-- Request organic certification verification when applicable.
-- Process verification results.
-- Publish successfully validated products.
-- Update stock quantities and seasonal availability.
-- Automatically mark products unavailable when stock reaches zero.
-- Restore availability after replenishment when the product remains within its seasonal availability period.
-- Handle external verification failures or unavailability.
-
-**Goals:**
-- Ensure valid products are published.
-- Maintain accurate product availability.
-- Automate repetitive marketplace operations.
-- Handle exceptions reliably.
-- Support efficient producer interactions.
-
-**Dependencies:**
-
-The Marketplace Platform depends on the Producer for product information and inventory updates, the Certification Verification Service for verification results, and potentially the Marketplace Admin for manual exception handling.
+| Responsibilities | Goals | Softgoals |
+|---|---|---|
+| Receive product listing submissions. | Publish valid product listings. | Reliable automated processing. |
+| Validate mandatory product information. | Maintain accurate inventory and product availability. | Efficient product management. |
+| Request corrections when information is missing or invalid. | Prevent unavailable products from being offered for new orders. | Minimal processing delays. |
+| Request organic certification verification when applicable. | Handle validation and verification failures appropriately. | |
+| Publish successfully validated products. | | |
+| Process stock quantity and seasonal availability updates. | | |
+| Automatically make products unavailable when stock reaches zero. | | |
+| Restore product availability after replenishment when appropriate. | | |
+| Handle verification failures and service unavailability. | | |
 
 ### 3.5 Certification Verification Service
 
-**Actor Type:** Agent
+The Certification Verification Service is an external or simulated service responsible for checking organic certification claims submitted through the marketplace.
 
-**Description:**
-
-The Certification Verification Service represents an external or simulated software service used to check organic certification claims.
-
-**Responsibilities:**
-- Receive organic certification verification requests.
-- Check submitted certification information.
-- Return verification results.
-- Communicate unsuccessful verification outcomes.
-- Provide appropriate responses when verification cannot be completed.
-
-**Goals:**
-- Provide accurate verification results.
-- Support reliable organic certification checking.
-- Respond to verification requests efficiently.
-
-**Dependencies:**
-
-The Marketplace Platform depends on this service to obtain the results required to assess organic certification claims.
+| Responsibilities | Goals | Softgoals |
+|---|---|---|
+| Receive organic certification verification requests. | Provide accurate certification verification results. | Timely verification responses. |
+| Check submitted certification information. | Support the verification of organic product claims. | Reliable service availability. |
+| Return verification results. | | Accurate verification processing. |
+| Communicate unsuccessful verification outcomes or service errors. | | |
 
 ## 4. Actor Relationships
 
-The following relationships may be represented in the i* models where appropriate:
+The actors interact with one another to support the product listing and inventory management process.
 
-- **Registered Producer is-a User:** A registered producer is a specialised type of marketplace user.
-- **Marketplace Admin is-a User:** An administrator is a specialised type of marketplace user.
-- **Producer plays Supplier role:** The producer fulfils the supplier responsibilities within the marketplace.
-- **Marketplace Admin covers Compliance Reviewer and Support roles:** The administrator position may perform both responsibilities.
-- **Marketplace Platform is-part-of Marketplace Organisation:** The software platform operates as part of the wider marketplace enterprise.
+Understanding these relationships helps explain how information is exchanged and how different actors contribute to the operation of the marketplace.
 
-## 5. Actor Scope
+| Actor Relationship | Description |
+|---|---|
+| **Producer → Marketplace Platform** | The Producer submits product information and inventory updates to the Platform. |
+| **Marketplace Platform → Producer** | The Platform validates submitted information, provides feedback and requests corrections when necessary. |
+| **Marketplace Platform → Certification Verification Service** | The Platform requests verification of organic certification claims and receives verification results. |
+| **Customer → Marketplace Platform** | The Customer relies on the Platform to display accurate product information and availability. |
+| **Marketplace Admin → Marketplace Platform** | The Admin oversees listing compliance and may access information about exceptional cases. |
+| **Marketplace Platform → Marketplace Admin** | The Platform may request manual review when automated verification cannot resolve an issue. |
 
-The five identified actors provide coverage for the main activities in Use Case 1:
+These relationships demonstrate the interactions between human actors, the marketplace software system and external services.
 
-1. Product submission and validation.
-2. Organic certification verification.
-3. Product publication.
-4. Inventory and seasonal availability management.
-5. Customer access to accurate product information.
-6. Compliance oversight and exception handling.
+The Producer and Marketplace Platform have a central relationship because product submission, validation, publication and inventory updates depend on their interaction.
 
-Additional enterprise actors, such as Payment Service, Notification Service and Food Safety Authority, may be relevant to the wider strategic business process model, but are not required for the core Use Case 1 SD model.
+The Certification Verification Service supports the Platform by checking organic certification claims, while the Customer relies on the resulting product information.
 
-## 6. Conclusion
+The Marketplace Admin provides organisational oversight and may become involved when exceptional cases require additional attention.
 
-The five actors provide a focused basis for analysing the socio-technical relationships involved in product listing and inventory management.
+The relationships identified here will support the group's later modelling work, where dependencies between actors can be represented in greater detail.
 
-The Producer, Marketplace Platform and Certification Verification Service are central to the operational process. The Customer represents the interests of those relying on published information, while the Marketplace Admin provides organisational oversight and may support exception handling.
+## 5. Conclusion
 
-These actors will be used to identify goals, softgoals, tasks, resources and dependencies in the i* Strategic Dependency and Strategic Rationale models.
+This analysis identifies five main actors involved in Use Case 1: Registered Producer, Customer, Marketplace Admin, Marketplace Platform and Certification Verification Service.
+
+Each actor contributes to the product listing and inventory management process through different responsibilities, goals and relationships.
+
+The Registered Producer and Marketplace Platform are central to product submission, validation, publication and inventory updates, while the Certification Verification Service supports organic certification verification.
+
+The Customer depends on accurate product information and availability, while the Marketplace Admin supports compliance and exceptional cases where required.
+
+Understanding these actors, their responsibilities, goals, softgoals and interactions provides a foundation for the next stages of system analysis and business process modelling.
