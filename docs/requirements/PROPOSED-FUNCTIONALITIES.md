@@ -50,4 +50,3 @@ We checked candidate processes against the brief's definition of a major functio
 |---|---|---|
   | — | To be asked at our practical, w/c 26 Oct 2026 | Awaiting |
 
-Status: **Provisional** until confirmed. Update to **Agreed** with the date once the tutors confirm.
