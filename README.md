@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-This repository contains our group project for the Distributed and Enterprise Software Development module at UWE Bristol.
+This repository contains our group project for the Distributed and Enterprise Software Development.
 
 The Bristol Regional Food Network (BRFN) is a fictional digital marketplace designed to connect local food producers with customers.
 
@@ -65,7 +65,7 @@ The interactive visualisation uses sample data to explain the proposed business 
 
 ## Tools
 
-Camunda 8, BPMN 2.0, GitHub and GitHub Projects. Additional technologies will be used as the implementation develops.
+Camunda 8, BPMN 2.0, GitHub and GitHub Projects.
 
 ## Group Members
 
@@ -89,11 +89,3 @@ The following responsibilities have been allocated to group members for the BRFN
 
 These assignments identify the main responsibility for each area. Tasks and contributions will be reviewed as the project progresses.
 
-## Assessment
-
-| Item | Details |
-|---|---|
-| Module | Distributed and Enterprise Software Development (UFCFTR-30-3) |
-| Assessment | Task 1 |
-| Academic year | 2026/27 |
-| Final deadline | 10 December 2026, before 14:00 |
