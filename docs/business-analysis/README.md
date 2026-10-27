@@ -67,6 +67,3 @@ While the strategic BPMN model incorporates all enterprise operations, the chose
 
 This particular area will be examined in more detail by means of operational BPMN models.
 
-## Status
-
-Initial business analysis drafted for Sprint 1, subject to group and tutor review.
