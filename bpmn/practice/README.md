@@ -14,6 +14,3 @@ This diagram was created to practise BPMN modelling and explore the product list
 
 It is a practice model and should not be confused with the final operational BPMN implementation.
 
-## Status
-
-Practice model prepared for review and further development.
