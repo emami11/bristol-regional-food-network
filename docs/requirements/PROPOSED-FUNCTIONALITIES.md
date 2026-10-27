@@ -44,9 +44,4 @@ We checked candidate processes against the brief's definition of a major functio
 | Service interaction | Certification verification (simulated) | Stock-change messages from orders | None |
 | Alternative and exception paths | Invalid data, failed certificate, service unavailable, abandoned listing | Invalid stock value, sold out, out of season | Few |
 
-### Agreement with the module team
-
-| Date | How we asked | Response |
-|---|---|---|
-  | — | To be asked at our practical, w/c 26 Oct 2026 | Awaiting |
 
