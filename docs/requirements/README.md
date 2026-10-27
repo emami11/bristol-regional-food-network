@@ -44,6 +44,3 @@ Our focus is on product listings, validation, stock management and seasonal avai
 
 Customer checkout and payment processing are outside our selected use case, although stock updates from orders may be used as an integration point.
 
-## Current Status
-
-Initial requirements identified for Sprint 1. Detailed modelling and implementation are planned for later sprints.
