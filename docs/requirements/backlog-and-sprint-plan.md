@@ -6,20 +6,19 @@
 
 ## 1. Purpose
 
-My responsibility is to organise the project work into a prioritised backlog, support sprint planning, track task progress and report what the group has completed or still needs to do.
+My role would be to create the priorites of the tasks for the project backlog and help with the planning and tracking the progress of the tasks within the sprint, as well as noting what the group has finished or not yet done.
 
-This helps the group work towards the assessment requirements in a structured way. It also makes responsibilities visible and gives us a record of progress that we can review during stand-ups and group meetings.
+It will ensure that the group works towards the requirements for the assessments systematically.
 
 ## 2. Sprint 1 Goal
 
-The goal of Sprint 1 is to establish a shared understanding of the BRFN business, identify its stakeholders and major business processes, document the proposed functionalities and initial requirements, and develop a high-level strategic BPMN model representing the wider enterprise.
+The aim for Sprint 1 is to reach a common understanding regarding the business BRFN, find out its stakeholders and key business processes, outline the functional requirements and requirements, and create a high-level strategic BPMN diagram that would be an image of the entire enterprise.
 
-The group also needs to maintain project documentation, record contributions and confirm the agreed scope with the tutor.
+Also, the team should keep project documentation, make records about the participation and check the scope of work with the tutor.
 
 ## 3. Product Backlog
 
-The product backlog lists the main pieces of work required across the project. Priorities reflect their importance to the planned assessment deliverables and may be revised after group discussions and tutor feedback.
-
+Product backlog contains a list of the major components of the task involved in the entire process. The priorities may vary depending on the importance of the items for the final assessment outcomes.
 | ID | Backlog item | Priority | Planned sprint |
 |---|---|---|---|
 | PB1 | Review the case study and assessment brief | High | Sprint 1 |
@@ -110,9 +109,9 @@ Actions and status changes should be reflected in the tracker after the meeting.
 
 ## 8. Current Priorities
 
-The next priorities are to review the existing Sprint 1 documents as a group, confirm whether the two proposed functionalities have tutor approval, review the strategic BPMN against the wider enterprise, and resolve any outstanding tasks before Sprint 1 is considered complete.
+The subsequent items to focus on include the joint review of the existing Sprint 1 documents, the confirmation of tutor approval for the two suggested functions, the comparison of the strategic BPMN with the whole organization, and completion of pending tasks for the closure of Sprint 1.
 
-The group should not mark provisional decisions or unreviewed drafts as completed deliverables.
+The group is required not to mark provisional decisions and unreviewed draft documents as completed deliverables.
 
 ## 9. Link to Later Sprints
 
