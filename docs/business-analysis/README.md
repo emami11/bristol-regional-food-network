@@ -4,127 +4,68 @@
 
 ## Overview
 
-The Bristol Regional Food Network (BRFN) is a suggested online marketplace that will serve as a tool for connecting food producers in the region with consumers. The purpose of this online marketplace is to facilitate the sales of locally produced food items through the use of a platform that will help producers post their products and enable customers to buy those products.
-
-This paper presents an analysis of the processes and describes how they are organized in order to fulfill certain business goals.
-
-This paper forms the basis for the strategic BPMN model that depicts key business processes of the BRFN company.
+Bristol Regional Food Network (BRFN) is a digital marketplace concept that will serve to connect the local food producers with consumers. Marketplace will help in promoting sales of locally produced foods by offering an online platform where producers will be able to showcase their foods and consumers will be able to buy from this platform. Purpose of the business analysis report is to find out the primary business processes of the operation of the marketplace and how these business processes will be managed. This business process analysis report will lay the foundations of the strategic BPMN business process model of the BRFN enterprise.
 
 ## Main Business Areas
 
-### Product and Inventory Management
+### 1. Product and Inventory Management
 
-The key process here refers to product listings management, product information validation, and accurate inventory and seasonal availability management.
+This business function involves managing the products that can be acquired from the marketplace and maintaining the accuracy of the product information.
 
-**The processes include:**
+The key functions involved are:
 
--Getting products' listing applications from the producers.
+- Registering and listing products.
+- Validating product information prior to listing.
+- Organic certifications validation.
+- Price and stock updates of products.
+- Seasonal products management.
+- Product availability update upon stock depletion.
+- Reactivation of product availability upon restocking.
 
--Validation of products' information before publishing.
+Good management of products and inventory is vital for accurate customer information and efficient management of products by the producers.
 
--Verification of claims of organic certification with help of an independent verification service.
+### 2. Marketplace Operations
 
--Publication of successfully validated products.
+The business functions under this domain relate to the management of customer transactions and coordination of their transactions with the producers.
 
--Price and quantity of stocks updating.
+The key functions performed here are as follows:
 
--Management of the seasonal product availability.
+- Enabling customers to search for and choose products.
+- Handling customer orders.
+- Coordinating orders comprising products from different producers.
+- Handling customer payments.
+- Computing commissions for the marketplace.
+- Handling producer settlements.
+- Order fulfillment coordination.
 
--Inavailability of products when stock equals zero.
+Such functions aid the commercial functioning of the marketplace.
 
--Availability of products when the stock is replenished and the product is within its season.
+### 3. Quality Assurance and Community Services
 
--Sending listing confirmation and validation results to the producers.
+This business domain is concerned with ensuring the maintenance of food quality, consumer trust and market integrity.
 
-**These processes are represented by strategic BPMN via two subprocesses:**
+Key functions involve:
 
--Manage Product Listings
+- Handling issues related to food quality.
+- Tracing sources of the products.
+- Determining which products are impacted by food quality concerns.
+- Handling product recall and notification of consumers.
+- Fostering sustainable food production and local businesses.
+- Engaging the community.
 
--Manage Inventory and Seasonal Availability
-
-The strategic BPMN contains also communications between the marketplace, food producers and Organic Certification Verification Service.
-
-Proper product and inventory management contribute to providing customers with accurate information about the products and efficient management of listings for the producers.
-
-These activities describe the intended business functionality. The strategic BPMN represents them at a high level through the Manage Inventory and Seasonal Availability subprocess; detailed decisions and stock-handling rules will be modelled during later sprints.
-
-### Marketplace Operations
-
-In this domain, the business is centered around processing customer purchases, order coordination with several producers, as well as financial transactions.
-
-**The key processes consist of:**
-
--Processing customer purchase requests.
-
--Processing customer purchasing.
-
--Order coordination with several vendors.
-
--Managing payments and settlements with producers.
-
--Sending orders to the food producers.
-
--Sending order confirmations to the customers.
-
--Communication with an external payment service provider.
-
--They are reflected in the strategic BPMN through three core subprocesses:
-
--Facilitate Customer Purchasing
-
--Coordinate Multi-Vendor Orders
-
--Manage Payments and Producer Settlements
-
-Furthermore, there is communication depicted with marketplace, customers, food producers, as well as the Payment Service Provider.
-
-These processes enable commercial operations of the marketplace to take place.
-
-### Quality Assurance and Community Services
-
-In this aspect, the business is aimed at ensuring food quality, promoting product traceability and fostering sustainability and community enagagement.
-
-**Key activities to be performed here include:**
-
--Reporting food-quality problems.
-
--Inquiring into food-quality problems.
-
--Tracking food products in cases when quality problems arise.
-
--Providing support for solving the food-quality problems.
-
--Fostering sustainable practices.
-
--Providing support for community involvement.
-
--Such key activities are depicted in the strategic BPMN via two key subprocesses:
-
--Food Quality and Traceability
-
--Support Sustainability and Community Engagement.
-
-The following diagram illustrates how food-quality problems are reported and processed by means of the Food Quality and Traceability subprocess.
-
-It also depicts sustainability and community involvement as the distinct business practice in the marketplace.
-
-These processes ensure customer satisfaction, responsible food production, etc., in line with the goals of the Bristol Regional Food Network.
+These functions ensure market integrity and further the aims of the Bristol Regional Food Network.
 
 ## Relationship to Our BPMN
 
-The three business areas make up the organisational structure of the strategic BPMN diagram.
+The three core business areas serve as the starting point for building the strategic BPMN model.
 
-The strategic BPMN gives an overall view of the key business processes of the Bristol Regional Food Network enterprise. The seven subprocesses have been grouped in three organisational areas and the selected interaction with external participants.
+The strategic BPMN model encompasses all aspects of business operations of the Bristol Regional Food Network and illustrates how processes in different areas are interrelated.
 
-Product and Inventory Management involves product listing and availability, Marketplace Operations involves customer buying and transactions, while Quality Assurance and Community Services involves food quality, traceability, sustainability and community involvement.
+For instance, the product and inventory management is responsible for making products available for sale, the marketplace operations for handling customers' requests and purchases, and the quality assurance for dealing with any issues related to the quality of the products.
 
-The interactions of these areas with the external participants like the food producers, customers, Organic Certification Verification Service and the Payment Service Provider are also shown in the diagram.
+While the strategic BPMN model incorporates all enterprise operations, the chosen use case of the group is the Producer Product Listing and Inventory Management.
 
-As it is a strategic BPMN, it does not include every single activity, decision, and exceptions that can happen in the marketplace. This information will be detailed further in the operational BPMNs in the later phases of the project.
-
-While the strategic BPMN shows the overall process of the enterprise, the use case selected by the group from the BRFN is that of Producer Product Listing and Inventory Management.
-
-This area will be detailed more with operational BPMN diagrams in the future phases.
+This particular area will be examined in more detail by means of operational BPMN models.
 
 ## Status
 
