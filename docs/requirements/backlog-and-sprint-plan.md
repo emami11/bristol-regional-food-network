@@ -108,7 +108,7 @@ Objective of Sprint 2 is to create the stakeholder model and operational process
 | Task                      | Status      | Next Action                             |
 |---------------------------|-------------|-----------------------------------------|
 | Development of i* SR Model | To Do       | Verify progress and open modelling tasks|
-| Traceability for i*, S & O BPMN | To Do     | Identify connections and traceability   |
+| Traceability Across i*, Strategic and Operational BPMN | To Do     | Identify connections and traceability   |
 | Development of Executable Camunda Processes, User Tasks and Forms | To Do | Verify progress and develop tasks |
 | Implementation of Variables, Gateways, Service Tasks and Business Rules | To Do | Monitor implementation |
 | Update Backlog, Task Progress and Group Contribution              | To Do | Update task status, task progress and contribution |
