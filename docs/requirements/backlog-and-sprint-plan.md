@@ -64,18 +64,18 @@ Product backlog contains a list of the major components of the task involved in 
 
 ## 5. Sprint 1 Task Tracker
 
-The tracker below records the current position based on the documentation available to the group. Statuses should be confirmed during the next stand-up.
+This task tracker includes the results of Sprint 1. All primary documents and models required for Sprint 1 have been generated and added to GitHub. Sprint 1 has been completed successfully and serves as the base for Sprint 2.
 
-| Task | Responsible member | Current position | Next action |
+| Task | Responsible Member | Current Position | Next Action |
 |---|---|---|---|
-| Business analysis and major processes | Xavier Ajike | Drafted | Review process coverage against the case study |
-| Stakeholder analysis | Ayobamidele Esho (Ayo) | Drafted | Check stakeholder needs and dependencies |
-| Proposed functionalities and use-case scope | Moses Bororio | Documented as proposed | Confirm scope and tutor agreement |
-| Strategic BPMN model | Noyo Acogo Emami | Initial model created | Review the diagram against the whole enterprise and assessment brief |
-| Practice BPMN model | Noyo Acogo Emami | Practice model prepared | Use for learning and review; distinguish it from the final operational models |
-| Initial requirements | Moses Bororio / group review | Documented | Check requirements against the use case and agreed scope |
-| Backlog, sprint planning and task tracking | Elvis Uchendi | Initial plan documented | Confirm owners, update statuses and record blockers |
-| Group review and outstanding decisions | Whole group | To be confirmed | Agree actions and record tutor feedback |
+| Business analysis and major processes | Xavier Ajike | Completed and documented in GitHub | Use business analysis in Sprint 2 modelling |
+| Stakeholders analysis | Ayobamidele Esho (Ayo) | Completed and documented in GitHub | Use the analysis of stakeholders' dependencies for i* modelling |
+| Functionality proposed and use-case scope | Moses Bororio | Documented in GitHub | Use the agreement on F1 and F2 scope for operational BPMN and Camunda|
+| Strategic BPMN model | Noyo Acogo Emami | Strategic BPMN model created and stored in GitHub | Use the model as a base for traceability in Sprint 2 |
+| Practice BPMN model | Noyo Acogo Emami | Practice BPMN model prepared | Use as an educational example for operational BPMN |
+| Requirements initial | Moses Bororio / group discussion | Requirements initial have been made | Use the requirements while making operational models |
+| Backlog, sprint planning and task tracking | Elvis Uchendi | Sprint 1 backlog and planning have been done | Continue managing backlog and planning Sprint 2 progress |
+| Group discussion and decisions | The whole group | Sprint 1 has been completed; next decisions are recorded | Take forward all the feedback and decisions from Sprint 1 for Sprint 2 |
 
 **Status definitions**
 
