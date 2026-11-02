@@ -2,7 +2,7 @@
 
 **Responsible Group Member:** Elvis Uchendi  
 **Project:** Bristol Regional Food Network (BRFN) Digital Marketplace  
-**Current Sprint:** Sprint 1
+**Current Sprint:** Sprint 2
 
 ## 1. Purpose
 
@@ -83,7 +83,35 @@ The tracker below records the current position based on the documentation availa
 
 A file being present in GitHub does not by itself mean its contents have been reviewed or accepted.
 
-## 6. Task Ownership and Acceptance Criteria
+## 6. Sprint 2 Plan
+
+### Sprint 2 Goal
+
+Objective of Sprint 2 is to create the stakeholder model and operational process BPMN diagrams for the chosen BRFN features, create traceability between the models, and kick start the process automation using Camunda.
+
+### Planned Activities
+
+1. Develop i* Strategic Dependency and Strategic Rationale models.
+2. Develop Operational BPMN models for Product Listing & Validation and Inventory and Seasonal Availability Management.
+3. Trace the models i*, strategic BPMN and operational BPMN.
+4. Start development of executable Camunda processes, user tasks and forms.
+5. Develop process variables, gateways, service tasks and business rules.
+6. Keep the backlog, progress reports and contributions of the team members.
+7. Assess Sprint 2 deliverables and report the remaining work to be done.
+
+### Sprint 2 Task Tracker
+
+| GitHub Task | Task | Status | Next Actions |
+| --- | --- | --- | --- |
+| #17 | Create the i* Strategic Rationale (SR) Model | To Do | Determine the requirements and ownership |
+| #18 | Trace Relationships Between i*, Strategic and Operational BPMN | To Do | Make connections between models |
+| #19 | Create Camunda Executable Process, User Tasks and Forms | To Do | Create first draft of processes |
+| #20 | Create Variables, Gateways, Service Tasks and Business Rules | To Do | Implement process logic and business rules |
+| #21 | Track Group Task Statuses, Progress Evidence and Contribution Logs | To Do | Update task statuses and logs |
+
+The task statuses and next actions should be updated after group meetings.
+
+## 7. Task Ownership and Acceptance Criteria
 
 Each task should have one clearly identified lead, while other members can contribute to reviews and shared decisions.
 
@@ -97,7 +125,7 @@ Each task should have one clearly identified lead, while other members can contr
 | Sprint tracking | Tasks have owners, priorities, current statuses and next actions |
 | Progress reporting | Meeting decisions, blockers and agreed actions are recorded accurately |
 
-## 7. Progress Reporting
+## 8. Progress Reporting
 
 At each stand-up, I will help the group answer three questions:
 
@@ -107,19 +135,19 @@ At each stand-up, I will help the group answer three questions:
 
 Actions and status changes should be reflected in the tracker after the meeting. Where appropriate, GitHub commits and the files changed can help demonstrate progress, but the contribution record should accurately reflect the work performed.
 
-## 8. Current Priorities
+## 9. Current Priorities
 
 The subsequent items to focus on include the joint review of the existing Sprint 1 documents, the confirmation of tutor approval for the two suggested functions, the comparison of the strategic BPMN with the whole organization, and completion of pending tasks for the closure of Sprint 1.
 
 The group is required not to mark provisional decisions and unreviewed draft documents as completed deliverables.
 
-## 9. Link to Later Sprints
+## 10. Link to Later Sprints
 
 The backlog also provides a starting point for planning later work. Sprint 2 will build on the agreed scope through the i* models and detailed operational BPMN models. Sprint 3 will focus on executable Camunda processes, forms, business logic, exception handling and testing.
 
 The backlog can be updated as the group receives feedback, but changes should be recorded so that task priorities and responsibilities remain clear.
 
-## 10. Conclusion
+## 11. Conclusion
 
 My role is to make the group's work manageable and traceable. By maintaining the backlog, tracking task ownership, recording progress and highlighting blockers, I help the team see what has been achieved, what remains outstanding and what needs attention before the next assessment milestone.
 
