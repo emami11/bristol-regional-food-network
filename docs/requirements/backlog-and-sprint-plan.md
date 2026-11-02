@@ -115,19 +115,13 @@ Objective of Sprint 2 is to create the stakeholder model and operational process
 
 The task statuses and next actions should be updated after group meetings.
 
-## 7. Task Ownership and Acceptance Criteria
+## 7. Sprint 2 Task Ownership and Acceptance Criteria
 
-Each task should have one clearly identified lead, while other members can contribute to reviews and shared decisions.
+Sprint 2 task ownership and acceptance criteria will be tracked using the GitHub Project Board and the GitHub Issues.
 
-| Work area | Completion criteria |
-|---|---|
-| Business analysis | Business purpose and major processes are documented and checked against the case study |
-| Stakeholder analysis | Main internal and external stakeholders, responsibilities and needs are identified |
-| Functionalities | Both proposed functionalities have a clear scope and their approval status is recorded |
-| Strategic BPMN | The model represents the wider enterprise and is reviewed by the group |
-| Requirements | Initial requirements reflect the selected use case, including validation, stock and seasonal rules |
-| Sprint tracking | Tasks have owners, priorities, current statuses and next actions |
-| Progress reporting | Meeting decisions, blockers and agreed actions are recorded accurately |
+My role is to track task ownership and progress, manage the backlog, keep record of contributions made by members and also evaluate the work completed according to the acceptance criteria.
+
+Task completion will be verified from the GitHub issue, related files and group evaluation. Tasks can only be considered Done once they meet the set acceptance criteria.
 
 ## 8. Progress Reporting
 
@@ -138,6 +132,21 @@ At each stand-up, I will help the group answer three questions:
 3. **What is blocking progress?** Record unresolved decisions, required reviews, tutor feedback or dependencies on another team member.
 
 Actions and status changes should be reflected in the tracker after the meeting. Where appropriate, GitHub commits and the files changed can help demonstrate progress, but the contribution record should accurately reflect the work performed.
+
+### Sprint 2 Progress Evidence
+
+Evidences of progress need to be collected throughout Sprint 2, proving the efforts of the team and its members.
+
+Such evidences can be:
+
+- Commits on GitHub for document/model modifications.
+- BPMN/i* models, updated.
+- Implementation of process in Camunda and screenshots.
+- Minutes of meetings (decisions/activities made).
+- Feedback and modifications decided on.
+- Task status/efforts updates.
+
+If possible, it is desirable that the evidence includes the task performed, name of the person who did it, date and file/activity involved.
 
 ## 9. Current Priorities
 
@@ -153,11 +162,24 @@ Current priorities consist of coordinating and monitoring the Sprint 2 efforts.
 
 The backlog and task tracker will need to be updated periodically to reflect the actual progress and activities.
 
-## 10. Link to Later Sprints
+## 10. Connection to Future Sprints
 
-The backlog also provides a starting point for planning later work. Sprint 2 will build on the agreed scope through the i* models and detailed operational BPMN models. Sprint 3 will focus on executable Camunda processes, forms, business logic, exception handling and testing.
+Sprint 2 creates the necessary stakeholder relations, operational procedures and Camunda implementation that are needed for the subsequent stage of the development process. The models and implementation created in Sprint 2 will be the basis for Sprint 3.
 
-The backlog can be updated as the group receives feedback, but changes should be recorded so that task priorities and responsibilities remain clear.
+### Sprint 3 – Completion, Testing and Evaluation
+This sprint will concentrate on the completion and improvement of the BRFN Digital Marketplace implementation.
+
+### Planned Activities
+
+1. Complete the Camunda processes execution for the implemented functionality.
+2. Improve process variables, gateways, user tasks, forms and business rules.
+3. Complete interactions of service tasks and integrate an external service in the simulation environment.
+4. Implement and improve exception handling and alternative process flows.
+5. Test the process in both regular and exceptional cases and document the findings.
+6. Evaluate the implementation against the agreed requirements.
+7. Finish project documentation, contributions logs and assessment material.
+
+Sprint 3 will utilise the results from Sprint 2 to complete, test and evaluate the solution.
 
 ## 11. Conclusion
 
