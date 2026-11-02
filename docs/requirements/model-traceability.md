@@ -17,8 +17,10 @@ The scope of this traceability includes:
 
 | Functionality | Actor Goal / Dependency | Strategic BPMN Subprocess | Operational BPMN Element | Requirement Reference |
 |---|---|---|---|---|
-| F1 | To be completed from i* models | To be confirmed | To be confirmed | F1 requirement |
-| F2 | To be completed from i* models | To be confirmed | To be confirmed | F2 requirement |
+| F1 – Product Listing and Validation | Registered Producer aims to publish valid products and depends on the Marketplace Platform for validation, publication and feedback | Manage Product Listings | Product submission, mandatory-field validation, certification verification where applicable, and product publication | Proposed Functionalities – F1 |
+| F2 – Inventory and Seasonal Availability | Registered Producer aims to maintain accurate stock levels and depends on the Marketplace Platform to update inventory and manage seasonal availability | Manage Product Listings | Stock update, seasonal availability check, zero-stock handling, and restocking validation against active seasons | Proposed Functionalities – F2 |
+
+## needs confirming with group team!!
 
 ## 4. Model References
 
