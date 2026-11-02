@@ -19,22 +19,26 @@ Also, the team should keep project documentation, make records about the partici
 ## 3. Product Backlog
 
 Product backlog contains a list of the major components of the task involved in the entire process. The priorities may vary depending on the importance of the items for the final assessment outcomes.
-| ID | Backlog item | Priority | Planned sprint |
+
+| ID | Backlog item | Priority | Planned Sprint |
 |---|---|---|---|
 | PB1 | Review the case study and assessment brief | High | Sprint 1 |
-| PB2 | Identify the business objectives and major enterprise processes | High | Sprint 1 |
+| PB2 | Identify business objectives and major enterprise processes | High | Sprint 1 |
 | PB3 | Identify stakeholders, roles and responsibilities | High | Sprint 1 |
-| PB4 | Document the proposed major functionalities and scope | High | Sprint 1 |
+| PB4 | Document proposed major functionalities and scope | High | Sprint 1 |
 | PB5 | Develop the high-level strategic BPMN model | High | Sprint 1 |
 | PB6 | Document initial functional and non-functional requirements | High | Sprint 1 |
-| PB7 | Maintain task ownership, sprint planning and progress records | High | Sprint 1 |
-| PB8 | Review Sprint 1 work and confirm outstanding decisions with the tutor | High | Sprint 1 |
-| PB9 | Develop the i* Strategic Dependency and Strategic Rationale models | High | Sprint 2 |
+| PB7 | Prepare backlog, sprint planning and task tracking | High | Sprint 1 |
+| PB8 | Review Sprint 1 deliverables and record decisions | High | Sprint 1 |
+| PB9 | Develop i* Strategic Dependency and Strategic Rationale models | High | Sprint 2 |
 | PB10 | Develop detailed operational BPMN models for the agreed functionalities | High | Sprint 2 |
-| PB11 | Begin Camunda process automation | Medium | Sprint 2 |
-| PB12 | Implement executable processes, forms and business logic | High | Sprint 3 |
-| PB13 | Test normal and exceptional process paths and refine the implementation | High | Sprint 3 |
-| PB14 | Review the final solution, documentation and evidence of contributions | High | Sprint 3 |
+| PB11 | Establish traceability across i*, strategic BPMN and operational BPMN | High | Sprint 2 |
+| PB12 | Begin Camunda process automation, including initial executable processes, user tasks and forms | High | Sprint 2 |
+| PB13 | Implement process variables, gateways, service tasks and business rules | High | Sprint 2 |
+| PB14 | Complete executable process implementation and integration | High | Sprint 3 |
+| PB15 | Test normal and exceptional process paths and refine the implementation | High | Sprint 3 |
+| PB16 | Review the final solution, documentation and evidence of contributions | High | Sprint 3 |
+
 
 ## 4. Sprint 1 Plan
 
@@ -101,13 +105,13 @@ Objective of Sprint 2 is to create the stakeholder model and operational process
 
 ### Sprint 2 Task Tracker
 
-| GitHub Task | Task | Status | Next Actions |
-| --- | --- | --- | --- |
-| #17 | Create the i* Strategic Rationale (SR) Model | To Do | Determine the requirements and ownership |
-| #18 | Trace Relationships Between i*, Strategic and Operational BPMN | To Do | Make connections between models |
-| #19 | Create Camunda Executable Process, User Tasks and Forms | To Do | Create first draft of processes |
-| #20 | Create Variables, Gateways, Service Tasks and Business Rules | To Do | Implement process logic and business rules |
-| #21 | Track Group Task Statuses, Progress Evidence and Contribution Logs | To Do | Update task statuses and logs |
+| Task                      | Status      | Next Action                             |
+|---------------------------|-------------|-----------------------------------------|
+| Development of i* SR Model | To Do       | Verify progress and open modelling tasks|
+| Traceability for i*, S & O BPMN | To Do     | Identify connections and traceability   |
+| Development of Executable Camunda Processes, User Tasks and Forms | To Do | Verify progress and develop tasks |
+| Implementation of Variables, Gateways, Service Tasks and Business Rules | To Do | Monitor implementation |
+| Update Backlog, Task Progress and Group Contribution              | To Do | Update task status, task progress and contribution |
 
 The task statuses and next actions should be updated after group meetings.
 
@@ -137,9 +141,17 @@ Actions and status changes should be reflected in the tracker after the meeting.
 
 ## 9. Current Priorities
 
-The subsequent items to focus on include the joint review of the existing Sprint 1 documents, the confirmation of tutor approval for the two suggested functions, the comparison of the strategic BPMN with the whole organization, and completion of pending tasks for the closure of Sprint 1.
+Current priorities consist of coordinating and monitoring the Sprint 2 efforts.
 
-The group is required not to mark provisional decisions and unreviewed draft documents as completed deliverables.
+- Tracking progress of the i* Strategic Dependency and Strategic Rationale models.
+- Monitoring the creation of operational BPMN models in detail for both functionalities.
+- Ensuring traceability from the i* models to strategic BPMN and operational BPMN.
+- Tracking the initial process implementation in Camunda, such as user tasks, forms, variables, gateways, service tasks, and business rules.
+- Maintaining correct ownership and status of tasks.
+- Documenting group discussions, decisions, blockers, and individual contribution evidence.
+- Reviewing the done work with the group before marking them as Done.
+
+The backlog and task tracker will need to be updated periodically to reflect the actual progress and activities.
 
 ## 10. Link to Later Sprints
 
