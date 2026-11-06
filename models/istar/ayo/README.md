@@ -17,7 +17,7 @@ Open the `.drawio` files in diagrams.net. Each has actor rationale pages followe
 
 This is the producer page of the five-actor core model. The [core exports](core/exports/) contain a PNG picture and SVG for every actor and dependency page; the [expanded exports](expanded/exports/) include the buyer groups and payment context.
 
-The [SR generator](../../../tools/build_ayo_sr.py) defines the actors, intentions and relationships. It uses [the drawing support code](../../../tools/istar_support.py). The JSON model files in each variant also record the model data. See [generation instructions](../../../tools/README.md).
+The `.drawio` files are the editable diagram sources. The JSON model files in each variant also record the actors, intentions and relationships.
 
 ## What changed from the October draft
 
@@ -55,4 +55,4 @@ The new [traceability document](../../../docs/requirements/model-traceability.md
 
 Your [personal strategic BPMN](../../../bpmn/personal/ayo/BRFN-Ayo-Strategic-BPMN.bpmn) covers the whole enterprise. It intentionally has wider scope than the five-actor core SR. Actor counts and BPMN pool counts need not be identical: customers are grouped in one pool and administrators work inside BRFN.
 
-To reproduce the generated files, run `python tools/build_ayo_sr.py` from the repository root. This replaces diagram sources, registers and SVG exports; preserve any manual edits before rebuilding.
+Edit the `.drawio` files in diagrams.net and refresh the PNG/SVG exports after making changes.

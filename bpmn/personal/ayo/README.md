@@ -6,7 +6,7 @@ Open [BRFN-Ayo-Strategic-BPMN.bpmn](BRFN-Ayo-Strategic-BPMN.bpmn) in Camunda Mod
 
 ![Ayo's whole-enterprise strategic BPMN](BRFN-Ayo-Strategic-BPMN.png)
 
-Open the [full-size PNG](BRFN-Ayo-Strategic-BPMN.png) or [vector SVG](BRFN-Ayo-Strategic-BPMN.svg) to inspect the overview. The `.bpmn` file contains the editable BPMN XML and diagram layout. The [Python generator](../../../tools/build_ayo_bpmn.py) creates that source and its geometry map; see [generation instructions](../../../tools/README.md).
+Open the [full-size PNG](BRFN-Ayo-Strategic-BPMN.png) or [vector SVG](BRFN-Ayo-Strategic-BPMN.svg) to inspect the overview. The `.bpmn` file contains the editable BPMN XML and diagram layout.
 
 ## What it shows
 
@@ -54,4 +54,4 @@ The extra interaction and data associations are proposed clarifications based on
 - [Camunda BPMN symbol reference](https://camunda.com/bpmn/reference/).
 - [Revised SR models](../../../models/istar/ayo/README.md).
 
-Run `python tools/build_ayo_bpmn.py` to reproduce the editable XML and geometry map. Rebuilding replaces generated files, so preserve direct Modeler edits first.
+Edit the `.bpmn` file in Camunda Modeler and refresh the PNG/SVG exports after making changes.
