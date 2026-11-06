@@ -1,0 +1,997 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Ayo_Definitions" targetNamespace="https://brfn.example/ayo/strategic" exporter="BRFN personal strategic model" exporterVersion="2026-11-03" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+  <bpmn:collaboration id="Ayo_Collaboration" name="BRFN whole-enterprise strategic collaboration">
+    <bpmn:participant id="Ayo_Pool_BRfn" name="Bristol Regional Food Network (BRFN)" processRef="Ayo_BRfnProcess" />
+    <bpmn:participant id="Ayo_Pool_Producer" name="Registered Producers" />
+    <bpmn:participant id="Ayo_Pool_Customers" name="Customers (individuals, restaurants/cafes and community organisations)" />
+    <bpmn:participant id="Ayo_Pool_Certification" name="Certification Verification Service" />
+    <bpmn:participant id="Ayo_Pool_Payment" name="Payment Service Provider (sandbox)" />
+    <bpmn:messageFlow id="Ayo_MF_ListingIn" name="Product listing submission" sourceRef="Ayo_Pool_Producer" targetRef="Ayo_Start_Listing" />
+    <bpmn:messageFlow id="Ayo_MF_ListingOut" name="Listing decision / correction feedback" sourceRef="Ayo_SP_Listings" targetRef="Ayo_Pool_Producer" />
+    <bpmn:messageFlow id="Ayo_MF_CertRequest" name="Organic certification request" sourceRef="Ayo_SP_Listings" targetRef="Ayo_Pool_Certification" />
+    <bpmn:messageFlow id="Ayo_MF_CertResult" name="Certification result / error" sourceRef="Ayo_Pool_Certification" targetRef="Ayo_SP_Listings" />
+    <bpmn:messageFlow id="Ayo_MF_StockUpdate" name="Quantity and seasonal updates" sourceRef="Ayo_Pool_Producer" targetRef="Ayo_Start_Inventory" />
+    <bpmn:messageFlow id="Ayo_MF_PurchaseIn" name="Customer purchase request" sourceRef="Ayo_Pool_Customers" targetRef="Ayo_Start_Purchase" />
+    <bpmn:messageFlow id="Ayo_MF_PurchaseOut" name="Order/payment outcome and arrangements" sourceRef="Ayo_SP_Payments" targetRef="Ayo_Pool_Customers" />
+    <bpmn:messageFlow id="Ayo_MF_PaymentRequest" name="Sandbox payment / transfer request" sourceRef="Ayo_SP_Payments" targetRef="Ayo_Pool_Payment" />
+    <bpmn:messageFlow id="Ayo_MF_PaymentResult" name="Payment / transfer outcome" sourceRef="Ayo_Pool_Payment" targetRef="Ayo_SP_Payments" />
+    <bpmn:messageFlow id="Ayo_MF_ProducerOrders" name="Confirmed orders / weekly settlement statement" sourceRef="Ayo_SP_Payments" targetRef="Ayo_Pool_Producer" />
+    <bpmn:messageFlow id="Ayo_MF_ProducerConcern" name="Producer quality concern" sourceRef="Ayo_Pool_Producer" targetRef="Ayo_Start_Quality" />
+    <bpmn:messageFlow id="Ayo_MF_CustomerConcern" name="Customer quality concern" sourceRef="Ayo_Pool_Customers" targetRef="Ayo_Start_Quality" />
+    <bpmn:messageFlow id="Ayo_MF_EvidenceRequest" name="Investigation evidence request" sourceRef="Ayo_SP_Quality" targetRef="Ayo_Pool_Producer" />
+    <bpmn:messageFlow id="Ayo_MF_EvidenceReply" name="Producer evidence / response" sourceRef="Ayo_Pool_Producer" targetRef="Ayo_SP_Quality" />
+    <bpmn:messageFlow id="Ayo_MF_SafetyNotice" name="Confirmed risk notification / guidance" sourceRef="Ayo_SP_Quality" targetRef="Ayo_Pool_Customers" />
+    <bpmn:messageFlow id="Ayo_MF_CommunityIn" name="Surplus offer / recipe / farm content" sourceRef="Ayo_Pool_Producer" targetRef="Ayo_Start_Community" />
+    <bpmn:messageFlow id="Ayo_MF_CommunityOut" name="Surplus offers / seasonal and community updates" sourceRef="Ayo_SP_Community" targetRef="Ayo_Pool_Customers" />
+  </bpmn:collaboration>
+  <bpmn:process id="Ayo_BRfnProcess" name="BRFN strategic BPMN - Ayo" isExecutable="false">
+    <bpmn:documentation>Personal strategic modelling draft based on repository 9aeeddc, 3 November 2026. Represents three organisational areas and seven major business processes. Collapsed internals are high-level responsibilities, not final operational automation. Daily stock checks and weekly settlements are business policies described in annotations; the detailed operational processes must implement their independent triggers. All financial interactions are sandbox or simulated.</bpmn:documentation>
+    <bpmn:laneSet id="Ayo_LaneSet">
+      <bpmn:lane id="Ayo_Lane_Product" name="Product and Inventory Management">
+        <bpmn:flowNodeRef>Ayo_Start_Listing</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_Start_Inventory</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_SP_Listings</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_SP_Inventory</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_End_Listing</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_End_Inventory</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Ayo_Lane_Operations" name="Marketplace Operations">
+        <bpmn:flowNodeRef>Ayo_Start_Purchase</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_SP_Purchasing</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_SP_Orders</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_SP_Payments</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_End_Order</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_End_NotPaid</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_Gateway_Payment</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Ayo_Lane_Quality" name="Quality Assurance and Community Services">
+        <bpmn:flowNodeRef>Ayo_Start_Quality</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_Start_Community</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_SP_Quality</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_SP_Community</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_End_Quality</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Ayo_End_Community</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Ayo_Start_Listing" name="Producer listing request received">
+      <bpmn:messageEventDefinition id="Ayo_Start_Listing_message" messageRef="Ayo_Msg_Listing" />
+    </bpmn:startEvent>
+    <bpmn:startEvent id="Ayo_Start_Inventory" name="Producer stock / season update received">
+      <bpmn:messageEventDefinition id="Ayo_Start_Inventory_message" messageRef="Ayo_Msg_Stock" />
+    </bpmn:startEvent>
+    <bpmn:startEvent id="Ayo_Start_Purchase" name="Customer purchase request received">
+      <bpmn:messageEventDefinition id="Ayo_Start_Purchase_message" messageRef="Ayo_Msg_Purchase" />
+    </bpmn:startEvent>
+    <bpmn:startEvent id="Ayo_Start_Quality" name="Food quality concern received">
+      <bpmn:messageEventDefinition id="Ayo_Start_Quality_message" messageRef="Ayo_Msg_Quality" />
+    </bpmn:startEvent>
+    <bpmn:startEvent id="Ayo_Start_Community" name="Community content submitted">
+      <bpmn:messageEventDefinition id="Ayo_Start_Community_message" messageRef="Ayo_Msg_Community" />
+    </bpmn:startEvent>
+    <bpmn:subProcess id="Ayo_SP_Listings" name="Manage Product Listings">
+      <bpmn:documentation>Producer submission, mandatory validation, applicable simulated certification checking, correction feedback and publication. Unresolved verification can be held for authorised admin review; never treat an outage as proof of certification.</bpmn:documentation>
+      <bpmn:ioSpecification id="Ayo_SP_Listings_io">
+        <bpmn:dataOutput id="Ayo_SP_Listings_out_1" name="Catalogue and availability" />
+        <bpmn:inputSet id="Ayo_SP_Listings_inputs" />
+        <bpmn:outputSet id="Ayo_SP_Listings_outputs">
+          <bpmn:dataOutputRefs>Ayo_SP_Listings_out_1</bpmn:dataOutputRefs>
+        </bpmn:outputSet>
+      </bpmn:ioSpecification>
+      <bpmn:dataOutputAssociation id="Ayo_DataOut_Listing">
+        <bpmn:sourceRef>Ayo_SP_Listings_out_1</bpmn:sourceRef>
+        <bpmn:targetRef>Ayo_Data_Catalogue</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:startEvent id="Ayo_SP_Listings_start" name="Responsibility begins" />
+      <bpmn:task id="Ayo_SP_Listings_step_1" name="Receive and validate product information" />
+      <bpmn:sequenceFlow id="Ayo_SP_Listings_inner_1" sourceRef="Ayo_SP_Listings_start" targetRef="Ayo_SP_Listings_step_1" />
+      <bpmn:task id="Ayo_SP_Listings_step_2" name="Resolve corrections and certification checks as applicable" />
+      <bpmn:sequenceFlow id="Ayo_SP_Listings_inner_2" sourceRef="Ayo_SP_Listings_step_1" targetRef="Ayo_SP_Listings_step_2" />
+      <bpmn:task id="Ayo_SP_Listings_step_3" name="Publish approved listing or provide feedback" />
+      <bpmn:sequenceFlow id="Ayo_SP_Listings_inner_3" sourceRef="Ayo_SP_Listings_step_2" targetRef="Ayo_SP_Listings_step_3" />
+      <bpmn:endEvent id="Ayo_SP_Listings_end" name="Responsibility outcome recorded" />
+      <bpmn:sequenceFlow id="Ayo_SP_Listings_inner_end" sourceRef="Ayo_SP_Listings_step_3" targetRef="Ayo_SP_Listings_end" />
+    </bpmn:subProcess>
+    <bpmn:subProcess id="Ayo_SP_Inventory" name="Manage Inventory and Seasonal Availability">
+      <bpmn:documentation>Accept producer quantity/season updates and internal listing/order stock changes. The operational process also has a daily season-check trigger. Zero stock and out-of-season products are unavailable; replenishment restores availability only within the season and when listing eligibility remains valid.</bpmn:documentation>
+      <bpmn:ioSpecification id="Ayo_SP_Inventory_io">
+        <bpmn:dataInput id="Ayo_SP_Inventory_in_2" name="Paid-order stock changes" />
+        <bpmn:dataInput id="Ayo_SP_Inventory_in_3" name="Confirmed product suspension decision" />
+        <bpmn:dataOutput id="Ayo_SP_Inventory_out_1" name="Catalogue and availability" />
+        <bpmn:inputSet id="Ayo_SP_Inventory_inputs">
+          <bpmn:dataInputRefs>Ayo_SP_Inventory_in_2</bpmn:dataInputRefs>
+          <bpmn:dataInputRefs>Ayo_SP_Inventory_in_3</bpmn:dataInputRefs>
+        </bpmn:inputSet>
+        <bpmn:outputSet id="Ayo_SP_Inventory_outputs">
+          <bpmn:dataOutputRefs>Ayo_SP_Inventory_out_1</bpmn:dataOutputRefs>
+        </bpmn:outputSet>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Ayo_DataIn_PaidStock">
+        <bpmn:sourceRef>Ayo_Data_PaidStock</bpmn:sourceRef>
+        <bpmn:targetRef>Ayo_SP_Inventory_in_2</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="Ayo_DataIn_Suspension">
+        <bpmn:sourceRef>Ayo_Data_Suspension</bpmn:sourceRef>
+        <bpmn:targetRef>Ayo_SP_Inventory_in_3</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataOutputAssociation id="Ayo_DataOut_Inventory">
+        <bpmn:sourceRef>Ayo_SP_Inventory_out_1</bpmn:sourceRef>
+        <bpmn:targetRef>Ayo_Data_Catalogue</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:startEvent id="Ayo_SP_Inventory_start" name="Responsibility begins" />
+      <bpmn:task id="Ayo_SP_Inventory_step_1" name="Apply quantity and seasonal changes" />
+      <bpmn:sequenceFlow id="Ayo_SP_Inventory_inner_1" sourceRef="Ayo_SP_Inventory_start" targetRef="Ayo_SP_Inventory_step_1" />
+      <bpmn:task id="Ayo_SP_Inventory_step_2" name="Evaluate stock, season and listing eligibility" />
+      <bpmn:sequenceFlow id="Ayo_SP_Inventory_inner_2" sourceRef="Ayo_SP_Inventory_step_1" targetRef="Ayo_SP_Inventory_step_2" />
+      <bpmn:task id="Ayo_SP_Inventory_step_3" name="Set and communicate current availability" />
+      <bpmn:sequenceFlow id="Ayo_SP_Inventory_inner_3" sourceRef="Ayo_SP_Inventory_step_2" targetRef="Ayo_SP_Inventory_step_3" />
+      <bpmn:endEvent id="Ayo_SP_Inventory_end" name="Responsibility outcome recorded" />
+      <bpmn:sequenceFlow id="Ayo_SP_Inventory_inner_end" sourceRef="Ayo_SP_Inventory_step_3" targetRef="Ayo_SP_Inventory_end" />
+    </bpmn:subProcess>
+    <bpmn:subProcess id="Ayo_SP_Purchasing" name="Facilitate Customer Purchasing">
+      <bpmn:documentation>Support the three buyer segments browsing and selecting products. Check availability and explain producer responsibilities and delivery/collection arrangements before confirming the purchase request.</bpmn:documentation>
+      <bpmn:ioSpecification id="Ayo_SP_Purchasing_io">
+        <bpmn:dataInput id="Ayo_SP_Purchasing_in_1" name="Catalogue and availability" />
+        <bpmn:inputSet id="Ayo_SP_Purchasing_inputs">
+          <bpmn:dataInputRefs>Ayo_SP_Purchasing_in_1</bpmn:dataInputRefs>
+        </bpmn:inputSet>
+        <bpmn:outputSet id="Ayo_SP_Purchasing_outputs" />
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Ayo_DataIn_Catalogue">
+        <bpmn:sourceRef>Ayo_Data_Catalogue</bpmn:sourceRef>
+        <bpmn:targetRef>Ayo_SP_Purchasing_in_1</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:startEvent id="Ayo_SP_Purchasing_start" name="Responsibility begins" />
+      <bpmn:task id="Ayo_SP_Purchasing_step_1" name="Browse products and select basket" />
+      <bpmn:sequenceFlow id="Ayo_SP_Purchasing_inner_1" sourceRef="Ayo_SP_Purchasing_start" targetRef="Ayo_SP_Purchasing_step_1" />
+      <bpmn:task id="Ayo_SP_Purchasing_step_2" name="Check availability and delivery or collection arrangements" />
+      <bpmn:sequenceFlow id="Ayo_SP_Purchasing_inner_2" sourceRef="Ayo_SP_Purchasing_step_1" targetRef="Ayo_SP_Purchasing_step_2" />
+      <bpmn:task id="Ayo_SP_Purchasing_step_3" name="Record purchase request for coordination" />
+      <bpmn:sequenceFlow id="Ayo_SP_Purchasing_inner_3" sourceRef="Ayo_SP_Purchasing_step_2" targetRef="Ayo_SP_Purchasing_step_3" />
+      <bpmn:endEvent id="Ayo_SP_Purchasing_end" name="Responsibility outcome recorded" />
+      <bpmn:sequenceFlow id="Ayo_SP_Purchasing_inner_end" sourceRef="Ayo_SP_Purchasing_step_3" targetRef="Ayo_SP_Purchasing_end" />
+    </bpmn:subProcess>
+    <bpmn:subProcess id="Ayo_SP_Orders" name="Coordinate Multi-Vendor Orders">
+      <bpmn:documentation>Create marketplace order records and producer-specific elements. Allocate responsibilities by producer. Actual producer confirmation follows successful payment; proposed fulfilment respects the case study 48-hour preparation lead time.</bpmn:documentation>
+      <bpmn:startEvent id="Ayo_SP_Orders_start" name="Responsibility begins" />
+      <bpmn:task id="Ayo_SP_Orders_step_1" name="Identify producers for each line item" />
+      <bpmn:sequenceFlow id="Ayo_SP_Orders_inner_1" sourceRef="Ayo_SP_Orders_start" targetRef="Ayo_SP_Orders_step_1" />
+      <bpmn:task id="Ayo_SP_Orders_step_2" name="Create marketplace and producer order records" />
+      <bpmn:sequenceFlow id="Ayo_SP_Orders_inner_2" sourceRef="Ayo_SP_Orders_step_1" targetRef="Ayo_SP_Orders_step_2" />
+      <bpmn:task id="Ayo_SP_Orders_step_3" name="Provide allocations and fulfilment responsibilities" />
+      <bpmn:sequenceFlow id="Ayo_SP_Orders_inner_3" sourceRef="Ayo_SP_Orders_step_2" targetRef="Ayo_SP_Orders_step_3" />
+      <bpmn:endEvent id="Ayo_SP_Orders_end" name="Responsibility outcome recorded" />
+      <bpmn:sequenceFlow id="Ayo_SP_Orders_inner_end" sourceRef="Ayo_SP_Orders_step_3" targetRef="Ayo_SP_Orders_end" />
+    </bpmn:subProcess>
+    <bpmn:subProcess id="Ayo_SP_Payments" name="Manage Payments and Producer Settlements">
+      <bpmn:documentation>Request sandbox payment and handle success, decline or unavailable outcomes. Only successful paid orders generate confirmed producer orders and stock-change records. Calculate the 5% marketplace commission and producer allocations. Weekly settlement is a separate business cadence, not a new transfer for every purchase.</bpmn:documentation>
+      <bpmn:ioSpecification id="Ayo_SP_Payments_io">
+        <bpmn:dataOutput id="Ayo_SP_Payments_out_1" name="Paid-order stock changes" />
+        <bpmn:inputSet id="Ayo_SP_Payments_inputs" />
+        <bpmn:outputSet id="Ayo_SP_Payments_outputs">
+          <bpmn:dataOutputRefs>Ayo_SP_Payments_out_1</bpmn:dataOutputRefs>
+        </bpmn:outputSet>
+      </bpmn:ioSpecification>
+      <bpmn:dataOutputAssociation id="Ayo_DataOut_PaidStock">
+        <bpmn:sourceRef>Ayo_SP_Payments_out_1</bpmn:sourceRef>
+        <bpmn:targetRef>Ayo_Data_PaidStock</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:startEvent id="Ayo_SP_Payments_start" name="Responsibility begins" />
+      <bpmn:task id="Ayo_SP_Payments_step_1" name="Request sandbox payment and handle outcome" />
+      <bpmn:sequenceFlow id="Ayo_SP_Payments_inner_1" sourceRef="Ayo_SP_Payments_start" targetRef="Ayo_SP_Payments_step_1" />
+      <bpmn:task id="Ayo_SP_Payments_step_2" name="Record paid allocations and confirmed producer orders" />
+      <bpmn:sequenceFlow id="Ayo_SP_Payments_inner_2" sourceRef="Ayo_SP_Payments_step_1" targetRef="Ayo_SP_Payments_step_2" />
+      <bpmn:task id="Ayo_SP_Payments_step_3" name="Prepare weekly settlements and statements when due" />
+      <bpmn:sequenceFlow id="Ayo_SP_Payments_inner_3" sourceRef="Ayo_SP_Payments_step_2" targetRef="Ayo_SP_Payments_step_3" />
+      <bpmn:endEvent id="Ayo_SP_Payments_end" name="Responsibility outcome recorded" />
+      <bpmn:sequenceFlow id="Ayo_SP_Payments_inner_end" sourceRef="Ayo_SP_Payments_step_3" targetRef="Ayo_SP_Payments_end" />
+    </bpmn:subProcess>
+    <bpmn:subProcess id="Ayo_SP_Quality" name="Food Quality and Traceability">
+      <bpmn:documentation>A producer, customer or internal administrator may report a concern. Trace affected products, producers and customer orders; request producer evidence. Confirmed risks may cause suspension and customer notification. Record notification results and failed-contact follow-up; authorised admin reviews closure or requests further action.</bpmn:documentation>
+      <bpmn:ioSpecification id="Ayo_SP_Quality_io">
+        <bpmn:dataOutput id="Ayo_SP_Quality_out_1" name="Confirmed product suspension decision" />
+        <bpmn:inputSet id="Ayo_SP_Quality_inputs" />
+        <bpmn:outputSet id="Ayo_SP_Quality_outputs">
+          <bpmn:dataOutputRefs>Ayo_SP_Quality_out_1</bpmn:dataOutputRefs>
+        </bpmn:outputSet>
+      </bpmn:ioSpecification>
+      <bpmn:dataOutputAssociation id="Ayo_DataOut_Suspension">
+        <bpmn:sourceRef>Ayo_SP_Quality_out_1</bpmn:sourceRef>
+        <bpmn:targetRef>Ayo_Data_Suspension</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:startEvent id="Ayo_SP_Quality_start" name="Responsibility begins" />
+      <bpmn:task id="Ayo_SP_Quality_step_1" name="Record concern and trace affected orders" />
+      <bpmn:sequenceFlow id="Ayo_SP_Quality_inner_1" sourceRef="Ayo_SP_Quality_start" targetRef="Ayo_SP_Quality_step_1" />
+      <bpmn:task id="Ayo_SP_Quality_step_2" name="Investigate and decide risk and necessary actions" />
+      <bpmn:sequenceFlow id="Ayo_SP_Quality_inner_2" sourceRef="Ayo_SP_Quality_step_1" targetRef="Ayo_SP_Quality_step_2" />
+      <bpmn:task id="Ayo_SP_Quality_step_3" name="Record suspension, notifications, follow-up and authorised closure" />
+      <bpmn:sequenceFlow id="Ayo_SP_Quality_inner_3" sourceRef="Ayo_SP_Quality_step_2" targetRef="Ayo_SP_Quality_step_3" />
+      <bpmn:endEvent id="Ayo_SP_Quality_end" name="Responsibility outcome recorded" />
+      <bpmn:sequenceFlow id="Ayo_SP_Quality_inner_end" sourceRef="Ayo_SP_Quality_step_3" targetRef="Ayo_SP_Quality_end" />
+    </bpmn:subProcess>
+    <bpmn:subProcess id="Ayo_SP_Community" name="Support Sustainability and Community Engagement">
+      <bpmn:documentation>Coordinate producer surplus discounts, recipes, storage guidance, farm stories and local food education. Postcode-based food-mile information supports sustainability. Community initiatives can also be initiated internally; this strategic example shows producer content as one entry point.</bpmn:documentation>
+      <bpmn:startEvent id="Ayo_SP_Community_start" name="Responsibility begins" />
+      <bpmn:task id="Ayo_SP_Community_step_1" name="Receive surplus or educational content" />
+      <bpmn:sequenceFlow id="Ayo_SP_Community_inner_1" sourceRef="Ayo_SP_Community_start" targetRef="Ayo_SP_Community_step_1" />
+      <bpmn:task id="Ayo_SP_Community_step_2" name="Coordinate sustainability and community activity" />
+      <bpmn:sequenceFlow id="Ayo_SP_Community_inner_2" sourceRef="Ayo_SP_Community_step_1" targetRef="Ayo_SP_Community_step_2" />
+      <bpmn:task id="Ayo_SP_Community_step_3" name="Publish updates and record activity outcomes" />
+      <bpmn:sequenceFlow id="Ayo_SP_Community_inner_3" sourceRef="Ayo_SP_Community_step_2" targetRef="Ayo_SP_Community_step_3" />
+      <bpmn:endEvent id="Ayo_SP_Community_end" name="Responsibility outcome recorded" />
+      <bpmn:sequenceFlow id="Ayo_SP_Community_inner_end" sourceRef="Ayo_SP_Community_step_3" targetRef="Ayo_SP_Community_end" />
+    </bpmn:subProcess>
+    <bpmn:endEvent id="Ayo_End_Listing" name="Listing decision recorded" />
+    <bpmn:endEvent id="Ayo_End_Inventory" name="Availability updated" />
+    <bpmn:endEvent id="Ayo_End_Quality" name="Incident action or closure recorded" />
+    <bpmn:endEvent id="Ayo_End_Community" name="Community activity recorded" />
+    <bpmn:endEvent id="Ayo_End_Order" name="Order confirmed" />
+    <bpmn:endEvent id="Ayo_End_NotPaid" name="Payment not confirmed" />
+    <bpmn:exclusiveGateway id="Ayo_Gateway_Payment" name="Payment accepted?" default="Ayo_Seq_PaymentNo" />
+    <bpmn:sequenceFlow id="Ayo_Seq_L1" sourceRef="Ayo_Start_Listing" targetRef="Ayo_SP_Listings" />
+    <bpmn:sequenceFlow id="Ayo_Seq_L2" sourceRef="Ayo_SP_Listings" targetRef="Ayo_End_Listing" />
+    <bpmn:sequenceFlow id="Ayo_Seq_I1" sourceRef="Ayo_Start_Inventory" targetRef="Ayo_SP_Inventory" />
+    <bpmn:sequenceFlow id="Ayo_Seq_I2" sourceRef="Ayo_SP_Inventory" targetRef="Ayo_End_Inventory" />
+    <bpmn:sequenceFlow id="Ayo_Seq_O1" sourceRef="Ayo_Start_Purchase" targetRef="Ayo_SP_Purchasing" />
+    <bpmn:sequenceFlow id="Ayo_Seq_O2" sourceRef="Ayo_SP_Purchasing" targetRef="Ayo_SP_Orders" />
+    <bpmn:sequenceFlow id="Ayo_Seq_O3" sourceRef="Ayo_SP_Orders" targetRef="Ayo_SP_Payments" />
+    <bpmn:sequenceFlow id="Ayo_Seq_O4" sourceRef="Ayo_SP_Payments" targetRef="Ayo_Gateway_Payment" />
+    <bpmn:sequenceFlow id="Ayo_Seq_Q1" sourceRef="Ayo_Start_Quality" targetRef="Ayo_SP_Quality" />
+    <bpmn:sequenceFlow id="Ayo_Seq_Q2" sourceRef="Ayo_SP_Quality" targetRef="Ayo_End_Quality" />
+    <bpmn:sequenceFlow id="Ayo_Seq_C1" sourceRef="Ayo_Start_Community" targetRef="Ayo_SP_Community" />
+    <bpmn:sequenceFlow id="Ayo_Seq_C2" sourceRef="Ayo_SP_Community" targetRef="Ayo_End_Community" />
+    <bpmn:sequenceFlow id="Ayo_Seq_PaymentYes" sourceRef="Ayo_Gateway_Payment" targetRef="Ayo_End_Order" name="Yes">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= paymentConfirmed</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Ayo_Seq_PaymentNo" sourceRef="Ayo_Gateway_Payment" targetRef="Ayo_End_NotPaid" name="No / unresolved" />
+    <bpmn:dataStoreReference id="Ayo_Data_Catalogue" name="Catalogue and availability" dataStoreRef="Ayo_Store_Catalogue" />
+    <bpmn:dataObject id="Ayo_Data_PaidStock_object" />
+    <bpmn:dataObjectReference id="Ayo_Data_PaidStock" name="Paid-order stock changes" dataObjectRef="Ayo_Data_PaidStock_object" />
+    <bpmn:dataObject id="Ayo_Data_Suspension_object" />
+    <bpmn:dataObjectReference id="Ayo_Data_Suspension" name="Confirmed product suspension decision" dataObjectRef="Ayo_Data_Suspension_object" />
+    <bpmn:textAnnotation id="Ayo_Note_AdminListings">
+      <bpmn:text>Internal role: Marketplace Admin. Review unresolved verification only under an agreed policy.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Ayo_Note_AdminListings_association" sourceRef="Ayo_SP_Listings" targetRef="Ayo_Note_AdminListings" associationDirection="None" />
+    <bpmn:textAnnotation id="Ayo_Note_InventoryTriggers">
+      <bpmn:text>Also triggered internally by listing/order stock changes and daily season checks. Zero stock or out of season means unavailable.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Ayo_Note_InventoryTriggers_association" sourceRef="Ayo_SP_Inventory" targetRef="Ayo_Note_InventoryTriggers" associationDirection="None" />
+    <bpmn:textAnnotation id="Ayo_Note_Settlements">
+      <bpmn:text>5% commission and producer shares; weekly settlement cadence. Confirm producer orders only after successful payment.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Ayo_Note_Settlements_association" sourceRef="Ayo_SP_Payments" targetRef="Ayo_Note_Settlements" associationDirection="None" />
+    <bpmn:textAnnotation id="Ayo_Note_AdminQuality">
+      <bpmn:text>Internal role: Marketplace Admin. May report concerns and authorises action/closure; failed customer contacts require follow-up.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Ayo_Note_AdminQuality_association" sourceRef="Ayo_SP_Quality" targetRef="Ayo_Note_AdminQuality" associationDirection="None" />
+    <bpmn:textAnnotation id="Ayo_Note_Community">
+      <bpmn:text>Surplus discounts, recipes, storage guidance, farm stories, food education and postcode-based food-mile information.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Ayo_Note_Community_association" sourceRef="Ayo_SP_Community" targetRef="Ayo_Note_Community" associationDirection="None" />
+  </bpmn:process>
+  <bpmn:message id="Ayo_Msg_Listing" name="product-listing-submitted" />
+  <bpmn:message id="Ayo_Msg_Stock" name="stock-season-update-submitted" />
+  <bpmn:message id="Ayo_Msg_Purchase" name="customer-purchase-requested" />
+  <bpmn:message id="Ayo_Msg_Quality" name="food-quality-concern-reported" />
+  <bpmn:message id="Ayo_Msg_Community" name="community-content-submitted" />
+  <bpmn:dataStore id="Ayo_Store_Catalogue" name="Catalogue and current availability" isUnlimited="true" />
+  <bpmndi:BPMNDiagram id="Ayo_OverviewDiagram" name="BRFN enterprise overview">
+    <bpmndi:BPMNPlane id="Ayo_OverviewPlane" bpmnElement="Ayo_Collaboration">
+      <bpmndi:BPMNShape id="Ayo_Pool_BRfn_di" bpmnElement="Ayo_Pool_BRfn" isHorizontal="true" isExpanded="true">
+        <dc:Bounds x="430" y="230" width="1550" height="1210" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Pool_Producer_di" bpmnElement="Ayo_Pool_Producer" isHorizontal="false" isExpanded="false">
+        <dc:Bounds x="70" y="230" width="170" height="1210" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Pool_Customers_di" bpmnElement="Ayo_Pool_Customers" isHorizontal="false" isExpanded="false">
+        <dc:Bounds x="2110" y="640" width="240" height="800" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Pool_Certification_di" bpmnElement="Ayo_Pool_Certification" isHorizontal="true" isExpanded="false">
+        <dc:Bounds x="1100" y="70" width="500" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Pool_Payment_di" bpmnElement="Ayo_Pool_Payment" isHorizontal="true" isExpanded="false">
+        <dc:Bounds x="2030" y="330" width="400" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Lane_Product_di" bpmnElement="Ayo_Lane_Product" isHorizontal="true">
+        <dc:Bounds x="460" y="230" width="1520" height="380" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Lane_Operations_di" bpmnElement="Ayo_Lane_Operations" isHorizontal="true">
+        <dc:Bounds x="460" y="610" width="1520" height="350" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Lane_Quality_di" bpmnElement="Ayo_Lane_Quality" isHorizontal="true">
+        <dc:Bounds x="460" y="960" width="1520" height="480" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Start_Listing_di" bpmnElement="Ayo_Start_Listing">
+        <dc:Bounds x="560" y="342" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="483" y="386" width="190" height="43" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Start_Inventory_di" bpmnElement="Ayo_Start_Inventory">
+        <dc:Bounds x="1300" y="492" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1223" y="536" width="190" height="43" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Start_Purchase_di" bpmnElement="Ayo_Start_Purchase">
+        <dc:Bounds x="560" y="772" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="483" y="816" width="190" height="43" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Start_Quality_di" bpmnElement="Ayo_Start_Quality">
+        <dc:Bounds x="560" y="1072" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="483" y="1116" width="190" height="43" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Start_Community_di" bpmnElement="Ayo_Start_Community">
+        <dc:Bounds x="560" y="1292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="483" y="1336" width="190" height="43" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Listings_di" bpmnElement="Ayo_SP_Listings" isExpanded="false" bioc:fill="#eaf4ff" bioc:stroke="#255f8b">
+        <dc:Bounds x="740" y="300" width="280" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Inventory_di" bpmnElement="Ayo_SP_Inventory" isExpanded="false" bioc:fill="#eaf4ff" bioc:stroke="#255f8b">
+        <dc:Bounds x="1450" y="450" width="280" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Purchasing_di" bpmnElement="Ayo_SP_Purchasing" isExpanded="false">
+        <dc:Bounds x="740" y="730" width="270" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Orders_di" bpmnElement="Ayo_SP_Orders" isExpanded="false">
+        <dc:Bounds x="1110" y="730" width="270" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Payments_di" bpmnElement="Ayo_SP_Payments" isExpanded="false">
+        <dc:Bounds x="1480" y="730" width="270" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Quality_di" bpmnElement="Ayo_SP_Quality" isExpanded="false">
+        <dc:Bounds x="740" y="1030" width="280" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Community_di" bpmnElement="Ayo_SP_Community" isExpanded="false">
+        <dc:Bounds x="740" y="1250" width="280" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_End_Listing_di" bpmnElement="Ayo_End_Listing">
+        <dc:Bounds x="1120" y="342" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1043" y="386" width="190" height="43" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_End_Inventory_di" bpmnElement="Ayo_End_Inventory">
+        <dc:Bounds x="1840" y="492" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1763" y="536" width="190" height="43" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_End_Quality_di" bpmnElement="Ayo_End_Quality">
+        <dc:Bounds x="1120" y="1072" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1043" y="1116" width="190" height="43" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_End_Community_di" bpmnElement="Ayo_End_Community">
+        <dc:Bounds x="1120" y="1292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1043" y="1336" width="190" height="43" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_End_Order_di" bpmnElement="Ayo_End_Order">
+        <dc:Bounds x="1915" y="772" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1905" y="730" width="70" height="35" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_End_NotPaid_di" bpmnElement="Ayo_End_NotPaid">
+        <dc:Bounds x="1840" y="880" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1890" y="885" width="80" height="45" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Gateway_Payment_di" bpmnElement="Ayo_Gateway_Payment">
+        <dc:Bounds x="1810" y="765" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1750" y="725" width="145" height="35" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_Seq_L1_di" bpmnElement="Ayo_Seq_L1">
+        <di:waypoint x="596" y="360" />
+        <di:waypoint x="740" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_L2_di" bpmnElement="Ayo_Seq_L2">
+        <di:waypoint x="1020" y="360" />
+        <di:waypoint x="1120" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_I1_di" bpmnElement="Ayo_Seq_I1">
+        <di:waypoint x="1336" y="510" />
+        <di:waypoint x="1450" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_I2_di" bpmnElement="Ayo_Seq_I2">
+        <di:waypoint x="1730" y="510" />
+        <di:waypoint x="1840" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_O1_di" bpmnElement="Ayo_Seq_O1">
+        <di:waypoint x="596" y="790" />
+        <di:waypoint x="740" y="790" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_O2_di" bpmnElement="Ayo_Seq_O2">
+        <di:waypoint x="1010" y="790" />
+        <di:waypoint x="1110" y="790" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_O3_di" bpmnElement="Ayo_Seq_O3">
+        <di:waypoint x="1380" y="790" />
+        <di:waypoint x="1480" y="790" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_O4_di" bpmnElement="Ayo_Seq_O4">
+        <di:waypoint x="1750" y="790" />
+        <di:waypoint x="1810" y="790" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_Q1_di" bpmnElement="Ayo_Seq_Q1">
+        <di:waypoint x="596" y="1090" />
+        <di:waypoint x="740" y="1090" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_Q2_di" bpmnElement="Ayo_Seq_Q2">
+        <di:waypoint x="1020" y="1090" />
+        <di:waypoint x="1120" y="1090" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_C1_di" bpmnElement="Ayo_Seq_C1">
+        <di:waypoint x="596" y="1310" />
+        <di:waypoint x="740" y="1310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_C2_di" bpmnElement="Ayo_Seq_C2">
+        <di:waypoint x="1020" y="1310" />
+        <di:waypoint x="1120" y="1310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_PaymentYes_di" bpmnElement="Ayo_Seq_PaymentYes">
+        <di:waypoint x="1860" y="790" />
+        <di:waypoint x="1915" y="790" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1870" y="765" width="35" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_Seq_PaymentNo_di" bpmnElement="Ayo_Seq_PaymentNo">
+        <di:waypoint x="1835" y="815" />
+        <di:waypoint x="1835" y="860" />
+        <di:waypoint x="1858" y="860" />
+        <di:waypoint x="1858" y="880" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1800" y="840" width="95" height="25" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_ListingIn_di" bpmnElement="Ayo_MF_ListingIn">
+        <di:waypoint x="240" y="360" />
+        <di:waypoint x="560" y="360" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="255" y="308" width="160" height="42" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_ListingOut_di" bpmnElement="Ayo_MF_ListingOut">
+        <di:waypoint x="740" y="325" />
+        <di:waypoint x="670" y="325" />
+        <di:waypoint x="670" y="275" />
+        <di:waypoint x="240" y="275" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="255" y="238" width="160" height="42" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_CertRequest_di" bpmnElement="Ayo_MF_CertRequest">
+        <di:waypoint x="900" y="300" />
+        <di:waypoint x="900" y="180" />
+        <di:waypoint x="1250" y="180" />
+        <di:waypoint x="1250" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="935" y="148" width="260" height="30" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_CertResult_di" bpmnElement="Ayo_MF_CertResult">
+        <di:waypoint x="1350" y="140" />
+        <di:waypoint x="1350" y="220" />
+        <di:waypoint x="970" y="220" />
+        <di:waypoint x="970" y="300" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1040" y="185" width="250" height="30" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_StockUpdate_di" bpmnElement="Ayo_MF_StockUpdate">
+        <di:waypoint x="240" y="510" />
+        <di:waypoint x="1300" y="510" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="255" y="450" width="160" height="50" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_PurchaseIn_di" bpmnElement="Ayo_MF_PurchaseIn">
+        <di:waypoint x="2110" y="680" />
+        <di:waypoint x="2010" y="680" />
+        <di:waypoint x="2010" y="620" />
+        <di:waypoint x="578" y="620" />
+        <di:waypoint x="578" y="772" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2020" y="680" width="85" height="60" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_PurchaseOut_di" bpmnElement="Ayo_MF_PurchaseOut">
+        <di:waypoint x="1750" y="835" />
+        <di:waypoint x="2070" y="835" />
+        <di:waypoint x="2070" y="815" />
+        <di:waypoint x="2110" y="815" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2005" y="860" width="100" height="55" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_PaymentRequest_di" bpmnElement="Ayo_MF_PaymentRequest">
+        <di:waypoint x="1750" y="760" />
+        <di:waypoint x="1990" y="760" />
+        <di:waypoint x="1990" y="380" />
+        <di:waypoint x="2030" y="380" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2035" y="430" width="180" height="42" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_PaymentResult_di" bpmnElement="Ayo_MF_PaymentResult">
+        <di:waypoint x="2030" y="350" />
+        <di:waypoint x="2000" y="350" />
+        <di:waypoint x="2000" y="950" />
+        <di:waypoint x="1400" y="950" />
+        <di:waypoint x="1400" y="810" />
+        <di:waypoint x="1480" y="810" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2035" y="525" width="170" height="42" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_ProducerOrders_di" bpmnElement="Ayo_MF_ProducerOrders">
+        <di:waypoint x="1480" y="825" />
+        <di:waypoint x="1420" y="825" />
+        <di:waypoint x="1420" y="930" />
+        <di:waypoint x="240" y="930" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="890" y="896" width="340" height="30" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_ProducerConcern_di" bpmnElement="Ayo_MF_ProducerConcern">
+        <di:waypoint x="240" y="1090" />
+        <di:waypoint x="560" y="1090" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="255" y="1035" width="160" height="50" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_CustomerConcern_di" bpmnElement="Ayo_MF_CustomerConcern">
+        <di:waypoint x="2110" y="1000" />
+        <di:waypoint x="2040" y="1000" />
+        <di:waypoint x="2040" y="975" />
+        <di:waypoint x="578" y="975" />
+        <di:waypoint x="578" y="1072" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2020" y="1005" width="85" height="60" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_EvidenceRequest_di" bpmnElement="Ayo_MF_EvidenceRequest">
+        <di:waypoint x="740" y="1120" />
+        <di:waypoint x="240" y="1120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="255" y="1125" width="160" height="45" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_EvidenceReply_di" bpmnElement="Ayo_MF_EvidenceReply">
+        <di:waypoint x="240" y="1200" />
+        <di:waypoint x="700" y="1200" />
+        <di:waypoint x="700" y="1135" />
+        <di:waypoint x="740" y="1135" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="255" y="1205" width="160" height="45" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_SafetyNotice_di" bpmnElement="Ayo_MF_SafetyNotice">
+        <di:waypoint x="880" y="1150" />
+        <di:waypoint x="880" y="1170" />
+        <di:waypoint x="2020" y="1170" />
+        <di:waypoint x="2020" y="1120" />
+        <di:waypoint x="2110" y="1120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1735" y="1180" width="245" height="35" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_CommunityIn_di" bpmnElement="Ayo_MF_CommunityIn">
+        <di:waypoint x="240" y="1310" />
+        <di:waypoint x="560" y="1310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="255" y="1255" width="160" height="45" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_MF_CommunityOut_di" bpmnElement="Ayo_MF_CommunityOut">
+        <di:waypoint x="880" y="1370" />
+        <di:waypoint x="880" y="1398" />
+        <di:waypoint x="2060" y="1398" />
+        <di:waypoint x="2060" y="1310" />
+        <di:waypoint x="2110" y="1310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1710" y="1352" width="240" height="35" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_Data_Catalogue_di" bpmnElement="Ayo_Data_Catalogue">
+        <dc:Bounds x="1100" y="630" width="70" height="55" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="940" y="637" width="150" height="45" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Data_PaidStock_di" bpmnElement="Ayo_Data_PaidStock">
+        <dc:Bounds x="1830" y="650" width="50" height="65" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1895" y="650" width="75" height="65" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_Data_Suspension_di" bpmnElement="Ayo_Data_Suspension">
+        <dc:Bounds x="1580" y="1040" width="50" height="65" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1480" y="1110" width="230" height="35" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_DataOut_Listing_di" bpmnElement="Ayo_DataOut_Listing">
+        <di:waypoint x="880" y="420" />
+        <di:waypoint x="880" y="600" />
+        <di:waypoint x="1135" y="600" />
+        <di:waypoint x="1135" y="630" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_DataOut_Inventory_di" bpmnElement="Ayo_DataOut_Inventory">
+        <di:waypoint x="1590" y="570" />
+        <di:waypoint x="1590" y="600" />
+        <di:waypoint x="1135" y="600" />
+        <di:waypoint x="1135" y="630" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_DataIn_Catalogue_di" bpmnElement="Ayo_DataIn_Catalogue">
+        <di:waypoint x="1135" y="685" />
+        <di:waypoint x="1135" y="710" />
+        <di:waypoint x="875" y="710" />
+        <di:waypoint x="875" y="730" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_DataOut_PaidStock_di" bpmnElement="Ayo_DataOut_PaidStock">
+        <di:waypoint x="1710" y="730" />
+        <di:waypoint x="1710" y="720" />
+        <di:waypoint x="1855" y="720" />
+        <di:waypoint x="1855" y="715" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_DataIn_PaidStock_di" bpmnElement="Ayo_DataIn_PaidStock">
+        <di:waypoint x="1830" y="675" />
+        <di:waypoint x="1780" y="675" />
+        <di:waypoint x="1780" y="550" />
+        <di:waypoint x="1730" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_DataOut_Suspension_di" bpmnElement="Ayo_DataOut_Suspension">
+        <di:waypoint x="880" y="1030" />
+        <di:waypoint x="880" y="1010" />
+        <di:waypoint x="1605" y="1010" />
+        <di:waypoint x="1605" y="1040" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Ayo_DataIn_Suspension_di" bpmnElement="Ayo_DataIn_Suspension">
+        <di:waypoint x="1630" y="1072" />
+        <di:waypoint x="1760" y="1072" />
+        <di:waypoint x="1760" y="550" />
+        <di:waypoint x="1730" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_Note_AdminListings_di" bpmnElement="Ayo_Note_AdminListings">
+        <dc:Bounds x="520" y="435" width="370" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_Note_AdminListings_association_di" bpmnElement="Ayo_Note_AdminListings_association">
+        <di:waypoint x="880" y="420" />
+        <di:waypoint x="880" y="435" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_Note_InventoryTriggers_di" bpmnElement="Ayo_Note_InventoryTriggers">
+        <dc:Bounds x="1430" y="260" width="420" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_Note_InventoryTriggers_association_di" bpmnElement="Ayo_Note_InventoryTriggers_association">
+        <di:waypoint x="1590" y="450" />
+        <di:waypoint x="1590" y="350" />
+        <di:waypoint x="1640" y="350" />
+        <di:waypoint x="1640" y="335" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_Note_Settlements_di" bpmnElement="Ayo_Note_Settlements">
+        <dc:Bounds x="1470" y="865" width="310" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_Note_Settlements_association_di" bpmnElement="Ayo_Note_Settlements_association">
+        <di:waypoint x="1615" y="850" />
+        <di:waypoint x="1615" y="865" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_Note_AdminQuality_di" bpmnElement="Ayo_Note_AdminQuality">
+        <dc:Bounds x="1180" y="1188" width="400" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_Note_AdminQuality_association_di" bpmnElement="Ayo_Note_AdminQuality_association">
+        <di:waypoint x="950" y="1150" />
+        <di:waypoint x="950" y="1215" />
+        <di:waypoint x="1180" y="1215" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_Note_Community_di" bpmnElement="Ayo_Note_Community">
+        <dc:Bounds x="1300" y="1260" width="600" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_Note_Community_association_di" bpmnElement="Ayo_Note_Community_association">
+        <di:waypoint x="1020" y="1270" />
+        <di:waypoint x="1300" y="1270" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Ayo_SP_Listings_diagram" name="Manage Product Listings">
+    <bpmndi:BPMNPlane id="Ayo_SP_Listings_plane" bpmnElement="Ayo_SP_Listings">
+      <bpmndi:BPMNShape id="Ayo_SP_Listings_start_di" bpmnElement="Ayo_SP_Listings_start">
+        <dc:Bounds x="80" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="35" y="215" width="130" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Listings_step_1_di" bpmnElement="Ayo_SP_Listings_step_1">
+        <dc:Bounds x="190" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Listings_inner_1_di" bpmnElement="Ayo_SP_Listings_inner_1">
+        <di:waypoint x="116" y="190" />
+        <di:waypoint x="190" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Listings_step_2_di" bpmnElement="Ayo_SP_Listings_step_2">
+        <dc:Bounds x="490" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Listings_inner_2_di" bpmnElement="Ayo_SP_Listings_inner_2">
+        <di:waypoint x="420" y="190" />
+        <di:waypoint x="490" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Listings_step_3_di" bpmnElement="Ayo_SP_Listings_step_3">
+        <dc:Bounds x="790" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Listings_inner_3_di" bpmnElement="Ayo_SP_Listings_inner_3">
+        <di:waypoint x="720" y="190" />
+        <di:waypoint x="790" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Listings_end_di" bpmnElement="Ayo_SP_Listings_end">
+        <dc:Bounds x="1090" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1040" y="215" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Listings_inner_end_di" bpmnElement="Ayo_SP_Listings_inner_end">
+        <di:waypoint x="1020" y="190" />
+        <di:waypoint x="1090" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Ayo_SP_Inventory_diagram" name="Manage Inventory and Seasonal Availability">
+    <bpmndi:BPMNPlane id="Ayo_SP_Inventory_plane" bpmnElement="Ayo_SP_Inventory">
+      <bpmndi:BPMNShape id="Ayo_SP_Inventory_start_di" bpmnElement="Ayo_SP_Inventory_start">
+        <dc:Bounds x="80" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="35" y="215" width="130" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Inventory_step_1_di" bpmnElement="Ayo_SP_Inventory_step_1">
+        <dc:Bounds x="190" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Inventory_inner_1_di" bpmnElement="Ayo_SP_Inventory_inner_1">
+        <di:waypoint x="116" y="190" />
+        <di:waypoint x="190" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Inventory_step_2_di" bpmnElement="Ayo_SP_Inventory_step_2">
+        <dc:Bounds x="490" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Inventory_inner_2_di" bpmnElement="Ayo_SP_Inventory_inner_2">
+        <di:waypoint x="420" y="190" />
+        <di:waypoint x="490" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Inventory_step_3_di" bpmnElement="Ayo_SP_Inventory_step_3">
+        <dc:Bounds x="790" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Inventory_inner_3_di" bpmnElement="Ayo_SP_Inventory_inner_3">
+        <di:waypoint x="720" y="190" />
+        <di:waypoint x="790" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Inventory_end_di" bpmnElement="Ayo_SP_Inventory_end">
+        <dc:Bounds x="1090" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1040" y="215" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Inventory_inner_end_di" bpmnElement="Ayo_SP_Inventory_inner_end">
+        <di:waypoint x="1020" y="190" />
+        <di:waypoint x="1090" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Ayo_SP_Purchasing_diagram" name="Facilitate Customer Purchasing">
+    <bpmndi:BPMNPlane id="Ayo_SP_Purchasing_plane" bpmnElement="Ayo_SP_Purchasing">
+      <bpmndi:BPMNShape id="Ayo_SP_Purchasing_start_di" bpmnElement="Ayo_SP_Purchasing_start">
+        <dc:Bounds x="80" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="35" y="215" width="130" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Purchasing_step_1_di" bpmnElement="Ayo_SP_Purchasing_step_1">
+        <dc:Bounds x="190" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Purchasing_inner_1_di" bpmnElement="Ayo_SP_Purchasing_inner_1">
+        <di:waypoint x="116" y="190" />
+        <di:waypoint x="190" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Purchasing_step_2_di" bpmnElement="Ayo_SP_Purchasing_step_2">
+        <dc:Bounds x="490" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Purchasing_inner_2_di" bpmnElement="Ayo_SP_Purchasing_inner_2">
+        <di:waypoint x="420" y="190" />
+        <di:waypoint x="490" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Purchasing_step_3_di" bpmnElement="Ayo_SP_Purchasing_step_3">
+        <dc:Bounds x="790" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Purchasing_inner_3_di" bpmnElement="Ayo_SP_Purchasing_inner_3">
+        <di:waypoint x="720" y="190" />
+        <di:waypoint x="790" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Purchasing_end_di" bpmnElement="Ayo_SP_Purchasing_end">
+        <dc:Bounds x="1090" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1040" y="215" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Purchasing_inner_end_di" bpmnElement="Ayo_SP_Purchasing_inner_end">
+        <di:waypoint x="1020" y="190" />
+        <di:waypoint x="1090" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Ayo_SP_Orders_diagram" name="Coordinate Multi-Vendor Orders">
+    <bpmndi:BPMNPlane id="Ayo_SP_Orders_plane" bpmnElement="Ayo_SP_Orders">
+      <bpmndi:BPMNShape id="Ayo_SP_Orders_start_di" bpmnElement="Ayo_SP_Orders_start">
+        <dc:Bounds x="80" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="35" y="215" width="130" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Orders_step_1_di" bpmnElement="Ayo_SP_Orders_step_1">
+        <dc:Bounds x="190" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Orders_inner_1_di" bpmnElement="Ayo_SP_Orders_inner_1">
+        <di:waypoint x="116" y="190" />
+        <di:waypoint x="190" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Orders_step_2_di" bpmnElement="Ayo_SP_Orders_step_2">
+        <dc:Bounds x="490" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Orders_inner_2_di" bpmnElement="Ayo_SP_Orders_inner_2">
+        <di:waypoint x="420" y="190" />
+        <di:waypoint x="490" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Orders_step_3_di" bpmnElement="Ayo_SP_Orders_step_3">
+        <dc:Bounds x="790" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Orders_inner_3_di" bpmnElement="Ayo_SP_Orders_inner_3">
+        <di:waypoint x="720" y="190" />
+        <di:waypoint x="790" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Orders_end_di" bpmnElement="Ayo_SP_Orders_end">
+        <dc:Bounds x="1090" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1040" y="215" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Orders_inner_end_di" bpmnElement="Ayo_SP_Orders_inner_end">
+        <di:waypoint x="1020" y="190" />
+        <di:waypoint x="1090" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Ayo_SP_Payments_diagram" name="Manage Payments and Producer Settlements">
+    <bpmndi:BPMNPlane id="Ayo_SP_Payments_plane" bpmnElement="Ayo_SP_Payments">
+      <bpmndi:BPMNShape id="Ayo_SP_Payments_start_di" bpmnElement="Ayo_SP_Payments_start">
+        <dc:Bounds x="80" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="35" y="215" width="130" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Payments_step_1_di" bpmnElement="Ayo_SP_Payments_step_1">
+        <dc:Bounds x="190" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Payments_inner_1_di" bpmnElement="Ayo_SP_Payments_inner_1">
+        <di:waypoint x="116" y="190" />
+        <di:waypoint x="190" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Payments_step_2_di" bpmnElement="Ayo_SP_Payments_step_2">
+        <dc:Bounds x="490" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Payments_inner_2_di" bpmnElement="Ayo_SP_Payments_inner_2">
+        <di:waypoint x="420" y="190" />
+        <di:waypoint x="490" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Payments_step_3_di" bpmnElement="Ayo_SP_Payments_step_3">
+        <dc:Bounds x="790" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Payments_inner_3_di" bpmnElement="Ayo_SP_Payments_inner_3">
+        <di:waypoint x="720" y="190" />
+        <di:waypoint x="790" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Payments_end_di" bpmnElement="Ayo_SP_Payments_end">
+        <dc:Bounds x="1090" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1040" y="215" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Payments_inner_end_di" bpmnElement="Ayo_SP_Payments_inner_end">
+        <di:waypoint x="1020" y="190" />
+        <di:waypoint x="1090" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Ayo_SP_Quality_diagram" name="Food Quality and Traceability">
+    <bpmndi:BPMNPlane id="Ayo_SP_Quality_plane" bpmnElement="Ayo_SP_Quality">
+      <bpmndi:BPMNShape id="Ayo_SP_Quality_start_di" bpmnElement="Ayo_SP_Quality_start">
+        <dc:Bounds x="80" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="35" y="215" width="130" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Quality_step_1_di" bpmnElement="Ayo_SP_Quality_step_1">
+        <dc:Bounds x="190" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Quality_inner_1_di" bpmnElement="Ayo_SP_Quality_inner_1">
+        <di:waypoint x="116" y="190" />
+        <di:waypoint x="190" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Quality_step_2_di" bpmnElement="Ayo_SP_Quality_step_2">
+        <dc:Bounds x="490" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Quality_inner_2_di" bpmnElement="Ayo_SP_Quality_inner_2">
+        <di:waypoint x="420" y="190" />
+        <di:waypoint x="490" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Quality_step_3_di" bpmnElement="Ayo_SP_Quality_step_3">
+        <dc:Bounds x="790" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Quality_inner_3_di" bpmnElement="Ayo_SP_Quality_inner_3">
+        <di:waypoint x="720" y="190" />
+        <di:waypoint x="790" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Quality_end_di" bpmnElement="Ayo_SP_Quality_end">
+        <dc:Bounds x="1090" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1040" y="215" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Quality_inner_end_di" bpmnElement="Ayo_SP_Quality_inner_end">
+        <di:waypoint x="1020" y="190" />
+        <di:waypoint x="1090" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Ayo_SP_Community_diagram" name="Support Sustainability and Community Engagement">
+    <bpmndi:BPMNPlane id="Ayo_SP_Community_plane" bpmnElement="Ayo_SP_Community">
+      <bpmndi:BPMNShape id="Ayo_SP_Community_start_di" bpmnElement="Ayo_SP_Community_start">
+        <dc:Bounds x="80" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="35" y="215" width="130" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Ayo_SP_Community_step_1_di" bpmnElement="Ayo_SP_Community_step_1">
+        <dc:Bounds x="190" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Community_inner_1_di" bpmnElement="Ayo_SP_Community_inner_1">
+        <di:waypoint x="116" y="190" />
+        <di:waypoint x="190" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Community_step_2_di" bpmnElement="Ayo_SP_Community_step_2">
+        <dc:Bounds x="490" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Community_inner_2_di" bpmnElement="Ayo_SP_Community_inner_2">
+        <di:waypoint x="420" y="190" />
+        <di:waypoint x="490" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Community_step_3_di" bpmnElement="Ayo_SP_Community_step_3">
+        <dc:Bounds x="790" y="140" width="230" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Community_inner_3_di" bpmnElement="Ayo_SP_Community_inner_3">
+        <di:waypoint x="720" y="190" />
+        <di:waypoint x="790" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Ayo_SP_Community_end_di" bpmnElement="Ayo_SP_Community_end">
+        <dc:Bounds x="1090" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1040" y="215" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Ayo_SP_Community_inner_end_di" bpmnElement="Ayo_SP_Community_inner_end">
+        <di:waypoint x="1020" y="190" />
+        <di:waypoint x="1090" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -56,6 +56,9 @@ We are following an Agile approach, with work organised into three sprints.
 |---|---|
 | `bpmn/strategic/` | Enterprise-level strategic BPMN model |
 | `bpmn/practice/` | Initial BPMN modelling practice |
+| [`bpmn/personal/ayo/`](bpmn/personal/ayo/README.md) | Ayo's whole-enterprise strategic BPMN, editable source and diagram pictures |
+| [`models/istar/ayo/`](models/istar/ayo/README.md) | Ayo's core and expanded SR diagrams, editable sources and diagram pictures |
+| [`tools/`](tools/README.md) | Python code to generate Ayo's SR and BPMN models |
 | `docs/business-analysis/` | Main business activities and responsibilities |
 | `docs/requirements/` | Selected functionalities and requirements |
 | `docs/stakeholder-analysis/` | Stakeholders and their needs |

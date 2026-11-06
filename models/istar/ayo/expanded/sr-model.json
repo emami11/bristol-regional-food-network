@@ -1,0 +1,2062 @@
+{
+  "notation": "iStar 2.0",
+  "variant": "expanded",
+  "sourceCommit": "9aeeddc355d42e18477f753973677f85c8dadbbe",
+  "actors": {
+    "P": {
+      "id": "P",
+      "name": "Registered Producer",
+      "scope": "Use Case 1: listing and inventory",
+      "type": "generic actor"
+    },
+    "A": {
+      "id": "A",
+      "name": "Marketplace Admin",
+      "scope": "Compliance, support and proposed review",
+      "type": "generic actor"
+    },
+    "M": {
+      "id": "M",
+      "name": "Marketplace Platform",
+      "scope": "Use Case 1 automated responsibilities",
+      "type": "generic actor"
+    },
+    "V": {
+      "id": "V",
+      "name": "Certification Verification Service",
+      "scope": "Simulated certification checking",
+      "type": "generic actor"
+    },
+    "I": {
+      "id": "I",
+      "name": "Individual Customer",
+      "scope": "Buyer segment; UC1 information and payment context",
+      "type": "generic actor"
+    },
+    "B": {
+      "id": "B",
+      "name": "Restaurant / Cafe Buyer",
+      "scope": "Buyer segment; UC1 information and payment context",
+      "type": "generic actor"
+    },
+    "C": {
+      "id": "C",
+      "name": "Community Organisation Buyer",
+      "scope": "Buyer segment; UC1 information and payment context",
+      "type": "generic actor"
+    },
+    "S": {
+      "id": "S",
+      "name": "Payment Service",
+      "scope": "Wider enterprise: simulated payments and settlements",
+      "type": "generic actor"
+    }
+  },
+  "elements": {
+    "P-G1": {
+      "id": "P-G1",
+      "actor": "P",
+      "type": "goal",
+      "label": "Valid product information maintained",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-G2": {
+      "id": "P-G2",
+      "actor": "P",
+      "type": "goal",
+      "label": "Inventory and seasonal records current",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-G3": {
+      "id": "P-G3",
+      "actor": "P",
+      "type": "goal",
+      "label": "Valid products published",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-T1": {
+      "id": "P-T1",
+      "actor": "P",
+      "type": "task",
+      "label": "Submit complete product information",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-T2": {
+      "id": "P-T2",
+      "actor": "P",
+      "type": "task",
+      "label": "Review feedback and correct issues",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-T3": {
+      "id": "P-T3",
+      "actor": "P",
+      "type": "task",
+      "label": "Update product quantities",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-T4": {
+      "id": "P-T4",
+      "actor": "P",
+      "type": "task",
+      "label": "Update seasonal availability",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-R1": {
+      "id": "P-R1",
+      "actor": "P",
+      "type": "resource",
+      "label": "Product details and applicable evidence",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-R2": {
+      "id": "P-R2",
+      "actor": "P",
+      "type": "resource",
+      "label": "Validation and correction feedback",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-R3": {
+      "id": "P-R3",
+      "actor": "P",
+      "type": "resource",
+      "label": "Current quantity and season records",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-R4": {
+      "id": "P-R4",
+      "actor": "P",
+      "type": "resource",
+      "label": "Listing standards and guidance",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-Q1": {
+      "id": "P-Q1",
+      "actor": "P",
+      "type": "quality",
+      "label": "Simple and efficient listing",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-Q2": {
+      "id": "P-Q2",
+      "actor": "P",
+      "type": "quality",
+      "label": "Minimal administrative effort",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "P-Q3": {
+      "id": "P-Q3",
+      "actor": "P",
+      "type": "quality",
+      "label": "Understandable validation feedback",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-G1": {
+      "id": "A-G1",
+      "actor": "A",
+      "type": "goal",
+      "label": "Marketplace listing standards maintained",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-G2": {
+      "id": "A-G2",
+      "actor": "A",
+      "type": "goal",
+      "label": "Unresolved verification cases reviewed",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-T1": {
+      "id": "A-T1",
+      "actor": "A",
+      "type": "task",
+      "label": "Monitor listing compliance",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-T2": {
+      "id": "A-T2",
+      "actor": "A",
+      "type": "task",
+      "label": "Maintain standards and guide producers",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-T3": {
+      "id": "A-T3",
+      "actor": "A",
+      "type": "task",
+      "label": "Inspect unresolved verification evidence",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-T4": {
+      "id": "A-T4",
+      "actor": "A",
+      "type": "task",
+      "label": "Record justified review decision",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-R1": {
+      "id": "A-R1",
+      "actor": "A",
+      "type": "resource",
+      "label": "Published listing records",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-R2": {
+      "id": "A-R2",
+      "actor": "A",
+      "type": "resource",
+      "label": "Listing standards and guidance",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-R3": {
+      "id": "A-R3",
+      "actor": "A",
+      "type": "resource",
+      "label": "Exception case and supporting evidence",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-R4": {
+      "id": "A-R4",
+      "actor": "A",
+      "type": "resource",
+      "label": "Recorded review decision",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-Q1": {
+      "id": "A-Q1",
+      "actor": "A",
+      "type": "quality",
+      "label": "Effective compliance management",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-Q2": {
+      "id": "A-Q2",
+      "actor": "A",
+      "type": "quality",
+      "label": "Reduced administrative workload",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "A-Q3": {
+      "id": "A-Q3",
+      "actor": "A",
+      "type": "quality",
+      "label": "Customer and producer confidence",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-G1": {
+      "id": "M-G1",
+      "actor": "M",
+      "type": "goal",
+      "label": "Valid product listings published",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-G2": {
+      "id": "M-G2",
+      "actor": "M",
+      "type": "goal",
+      "label": "Unavailable products excluded from new orders",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-G3": {
+      "id": "M-G3",
+      "actor": "M",
+      "type": "goal",
+      "label": "Unavailable verification handled",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-G4": {
+      "id": "M-G4",
+      "actor": "M",
+      "type": "goal",
+      "label": "Unresolved verification case reviewed",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-G5": {
+      "id": "M-G5",
+      "actor": "M",
+      "type": "goal",
+      "label": "Corrected product information obtained",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-T1": {
+      "id": "M-T1",
+      "actor": "M",
+      "type": "task",
+      "label": "Validate mandatory product information",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-T2": {
+      "id": "M-T2",
+      "actor": "M",
+      "type": "task",
+      "label": "Check applicable organic certification",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-T3": {
+      "id": "M-T3",
+      "actor": "M",
+      "type": "task",
+      "label": "Publish valid products and provide feedback",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-T4": {
+      "id": "M-T4",
+      "actor": "M",
+      "type": "task",
+      "label": "Obtain result through verification retry",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-T5": {
+      "id": "M-T5",
+      "actor": "M",
+      "type": "task",
+      "label": "Resolve case through authorised review",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-T6": {
+      "id": "M-T6",
+      "actor": "M",
+      "type": "task",
+      "label": "Apply quantity and season updates",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-T7": {
+      "id": "M-T7",
+      "actor": "M",
+      "type": "task",
+      "label": "Evaluate stock and seasonal rules",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-T8": {
+      "id": "M-T8",
+      "actor": "M",
+      "type": "task",
+      "label": "Set and expose current availability",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-R1": {
+      "id": "M-R1",
+      "actor": "M",
+      "type": "resource",
+      "label": "Submitted product information",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-R2": {
+      "id": "M-R2",
+      "actor": "M",
+      "type": "resource",
+      "label": "Quantity and seasonal update records",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-R3": {
+      "id": "M-R3",
+      "actor": "M",
+      "type": "resource",
+      "label": "Certification check outcome",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-R4": {
+      "id": "M-R4",
+      "actor": "M",
+      "type": "resource",
+      "label": "Certification request and evidence",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-R5": {
+      "id": "M-R5",
+      "actor": "M",
+      "type": "resource",
+      "label": "Validation and correction feedback",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-R6": {
+      "id": "M-R6",
+      "actor": "M",
+      "type": "resource",
+      "label": "Unresolved verification case record",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-R7": {
+      "id": "M-R7",
+      "actor": "M",
+      "type": "resource",
+      "label": "Published product and availability data",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-R8": {
+      "id": "M-R8",
+      "actor": "M",
+      "type": "resource",
+      "label": "Stock and seasonal decision rules",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-R9": {
+      "id": "M-R9",
+      "actor": "M",
+      "type": "resource",
+      "label": "Authorised review decision",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-Q1": {
+      "id": "M-Q1",
+      "actor": "M",
+      "type": "quality",
+      "label": "Reliable automated processing",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-Q2": {
+      "id": "M-Q2",
+      "actor": "M",
+      "type": "quality",
+      "label": "Efficient product management",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "M-Q3": {
+      "id": "M-Q3",
+      "actor": "M",
+      "type": "quality",
+      "label": "Minimal processing delays",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "V-G1": {
+      "id": "V-G1",
+      "actor": "V",
+      "type": "goal",
+      "label": "Accurate verification outcomes supplied",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "V-T1": {
+      "id": "V-T1",
+      "actor": "V",
+      "type": "task",
+      "label": "Receive and check request completeness",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "V-T2": {
+      "id": "V-T2",
+      "actor": "V",
+      "type": "task",
+      "label": "Check organic certification evidence",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "V-T3": {
+      "id": "V-T3",
+      "actor": "V",
+      "type": "task",
+      "label": "Return verified, rejected or error result",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "V-R1": {
+      "id": "V-R1",
+      "actor": "V",
+      "type": "resource",
+      "label": "Certification request and evidence",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "V-R2": {
+      "id": "V-R2",
+      "actor": "V",
+      "type": "resource",
+      "label": "Certification verification outcome",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "V-R3": {
+      "id": "V-R3",
+      "actor": "V",
+      "type": "resource",
+      "label": "Simulated certification reference data",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "V-Q1": {
+      "id": "V-Q1",
+      "actor": "V",
+      "type": "quality",
+      "label": "Timely verification responses",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "V-Q2": {
+      "id": "V-Q2",
+      "actor": "V",
+      "type": "quality",
+      "label": "Reliable service availability",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "V-Q3": {
+      "id": "V-Q3",
+      "actor": "V",
+      "type": "quality",
+      "label": "Accurate verification processing",
+      "basis": "ACTOR-ANALYSIS"
+    },
+    "I-G1": {
+      "id": "I-G1",
+      "actor": "I",
+      "type": "goal",
+      "label": "Suitable household products identified",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "I-T1": {
+      "id": "I-T1",
+      "actor": "I",
+      "type": "task",
+      "label": "Browse product and availability information",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "I-T2": {
+      "id": "I-T2",
+      "actor": "I",
+      "type": "task",
+      "label": "Compare products with household needs",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "I-T3": {
+      "id": "I-T3",
+      "actor": "I",
+      "type": "task",
+      "label": "Review allergens and certification details",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "I-R1": {
+      "id": "I-R1",
+      "actor": "I",
+      "type": "resource",
+      "label": "Published product and availability data",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "I-R2": {
+      "id": "I-R2",
+      "actor": "I",
+      "type": "resource",
+      "label": "Household needs and spending plan",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "I-R3": {
+      "id": "I-R3",
+      "actor": "I",
+      "type": "resource",
+      "label": "Published safety and certification details",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "I-Q1": {
+      "id": "I-Q1",
+      "actor": "I",
+      "type": "quality",
+      "label": "Trustworthy product listings",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "I-Q2": {
+      "id": "I-Q2",
+      "actor": "I",
+      "type": "quality",
+      "label": "Confidence in organic claims",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "I-Q3": {
+      "id": "I-Q3",
+      "actor": "I",
+      "type": "quality",
+      "label": "Reliable marketplace experience",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "I-G2": {
+      "id": "I-G2",
+      "actor": "I",
+      "type": "goal",
+      "label": "Purchase payment outcome obtained",
+      "basis": "CONTEXT"
+    },
+    "B-G1": {
+      "id": "B-G1",
+      "actor": "B",
+      "type": "goal",
+      "label": "Suitable business ingredients identified",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "B-T1": {
+      "id": "B-T1",
+      "actor": "B",
+      "type": "task",
+      "label": "Browse product and availability information",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "B-T2": {
+      "id": "B-T2",
+      "actor": "B",
+      "type": "task",
+      "label": "Compare ingredients with menu requirements",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "B-T3": {
+      "id": "B-T3",
+      "actor": "B",
+      "type": "task",
+      "label": "Review allergens and certification details",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "B-R1": {
+      "id": "B-R1",
+      "actor": "B",
+      "type": "resource",
+      "label": "Published product and availability data",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "B-R2": {
+      "id": "B-R2",
+      "actor": "B",
+      "type": "resource",
+      "label": "Menu and purchasing requirements",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "B-R3": {
+      "id": "B-R3",
+      "actor": "B",
+      "type": "resource",
+      "label": "Published safety and certification details",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "B-Q1": {
+      "id": "B-Q1",
+      "actor": "B",
+      "type": "quality",
+      "label": "Trustworthy product listings",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "B-Q2": {
+      "id": "B-Q2",
+      "actor": "B",
+      "type": "quality",
+      "label": "Confidence in organic claims",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "B-Q3": {
+      "id": "B-Q3",
+      "actor": "B",
+      "type": "quality",
+      "label": "Reliable marketplace experience",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "B-G2": {
+      "id": "B-G2",
+      "actor": "B",
+      "type": "goal",
+      "label": "Purchase payment outcome obtained",
+      "basis": "CONTEXT"
+    },
+    "C-G1": {
+      "id": "C-G1",
+      "actor": "C",
+      "type": "goal",
+      "label": "Suitable food for the group identified",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "C-T1": {
+      "id": "C-T1",
+      "actor": "C",
+      "type": "task",
+      "label": "Browse product and availability information",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "C-T2": {
+      "id": "C-T2",
+      "actor": "C",
+      "type": "task",
+      "label": "Compare products with group dietary needs",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "C-T3": {
+      "id": "C-T3",
+      "actor": "C",
+      "type": "task",
+      "label": "Review allergens and certification details",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "C-R1": {
+      "id": "C-R1",
+      "actor": "C",
+      "type": "resource",
+      "label": "Published product and availability data",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "C-R2": {
+      "id": "C-R2",
+      "actor": "C",
+      "type": "resource",
+      "label": "Group dietary and purchasing requirements",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "C-R3": {
+      "id": "C-R3",
+      "actor": "C",
+      "type": "resource",
+      "label": "Published safety and certification details",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "C-Q1": {
+      "id": "C-Q1",
+      "actor": "C",
+      "type": "quality",
+      "label": "Trustworthy product listings",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "C-Q2": {
+      "id": "C-Q2",
+      "actor": "C",
+      "type": "quality",
+      "label": "Confidence in organic claims",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "C-Q3": {
+      "id": "C-Q3",
+      "actor": "C",
+      "type": "quality",
+      "label": "Reliable marketplace experience",
+      "basis": "STAKEHOLDER-ANALYSIS / CASE"
+    },
+    "C-G2": {
+      "id": "C-G2",
+      "actor": "C",
+      "type": "goal",
+      "label": "Purchase payment outcome obtained",
+      "basis": "CONTEXT"
+    },
+    "M-G6": {
+      "id": "M-G6",
+      "actor": "M",
+      "type": "goal",
+      "label": "Customer payment outcome communicated",
+      "basis": "CONTEXT"
+    },
+    "M-G7": {
+      "id": "M-G7",
+      "actor": "M",
+      "type": "goal",
+      "label": "Producer settlement allocations recorded",
+      "basis": "CONTEXT"
+    },
+    "M-T9": {
+      "id": "M-T9",
+      "actor": "M",
+      "type": "task",
+      "label": "Submit sandbox payment request",
+      "basis": "CONTEXT"
+    },
+    "M-T10": {
+      "id": "M-T10",
+      "actor": "M",
+      "type": "task",
+      "label": "Record and communicate payment result",
+      "basis": "CONTEXT"
+    },
+    "M-T11": {
+      "id": "M-T11",
+      "actor": "M",
+      "type": "task",
+      "label": "Calculate 5% commission and producer shares",
+      "basis": "CONTEXT"
+    },
+    "M-T12": {
+      "id": "M-T12",
+      "actor": "M",
+      "type": "task",
+      "label": "Prepare weekly settlement instructions",
+      "basis": "CONTEXT"
+    },
+    "M-R10": {
+      "id": "M-R10",
+      "actor": "M",
+      "type": "resource",
+      "label": "Valid sandbox payment request",
+      "basis": "CONTEXT"
+    },
+    "M-R11": {
+      "id": "M-R11",
+      "actor": "M",
+      "type": "resource",
+      "label": "Gateway payment outcome",
+      "basis": "CONTEXT"
+    },
+    "M-R12": {
+      "id": "M-R12",
+      "actor": "M",
+      "type": "resource",
+      "label": "Paid order lines and producer totals",
+      "basis": "CONTEXT"
+    },
+    "M-R13": {
+      "id": "M-R13",
+      "actor": "M",
+      "type": "resource",
+      "label": "Calculated producer allocation records",
+      "basis": "CONTEXT"
+    },
+    "M-R14": {
+      "id": "M-R14",
+      "actor": "M",
+      "type": "resource",
+      "label": "Producer transfer instructions",
+      "basis": "CONTEXT"
+    },
+    "M-R15": {
+      "id": "M-R15",
+      "actor": "M",
+      "type": "resource",
+      "label": "Settlement transfer outcome",
+      "basis": "CONTEXT"
+    },
+    "M-R16": {
+      "id": "M-R16",
+      "actor": "M",
+      "type": "resource",
+      "label": "Producer settlement statement",
+      "basis": "CONTEXT"
+    },
+    "M-Q4": {
+      "id": "M-Q4",
+      "actor": "M",
+      "type": "quality",
+      "label": "Reliable payment feedback",
+      "basis": "CONTEXT"
+    },
+    "M-Q5": {
+      "id": "M-Q5",
+      "actor": "M",
+      "type": "quality",
+      "label": "Transparent producer accounting",
+      "basis": "CONTEXT"
+    },
+    "S-G1": {
+      "id": "S-G1",
+      "actor": "S",
+      "type": "goal",
+      "label": "Payment result returned",
+      "basis": "CONTEXT"
+    },
+    "S-G2": {
+      "id": "S-G2",
+      "actor": "S",
+      "type": "goal",
+      "label": "Instructed transfers accounted for",
+      "basis": "CONTEXT"
+    },
+    "S-T1": {
+      "id": "S-T1",
+      "actor": "S",
+      "type": "task",
+      "label": "Process sandbox payment request",
+      "basis": "CONTEXT"
+    },
+    "S-T2": {
+      "id": "S-T2",
+      "actor": "S",
+      "type": "task",
+      "label": "Return success, decline or error outcome",
+      "basis": "CONTEXT"
+    },
+    "S-T3": {
+      "id": "S-T3",
+      "actor": "S",
+      "type": "task",
+      "label": "Execute instructed test transfers",
+      "basis": "CONTEXT"
+    },
+    "S-T4": {
+      "id": "S-T4",
+      "actor": "S",
+      "type": "task",
+      "label": "Return transfer status and reference",
+      "basis": "CONTEXT"
+    },
+    "S-R1": {
+      "id": "S-R1",
+      "actor": "S",
+      "type": "resource",
+      "label": "Valid sandbox payment request",
+      "basis": "CONTEXT"
+    },
+    "S-R2": {
+      "id": "S-R2",
+      "actor": "S",
+      "type": "resource",
+      "label": "Gateway payment outcome",
+      "basis": "CONTEXT"
+    },
+    "S-R3": {
+      "id": "S-R3",
+      "actor": "S",
+      "type": "resource",
+      "label": "Producer transfer instructions",
+      "basis": "CONTEXT"
+    },
+    "S-R4": {
+      "id": "S-R4",
+      "actor": "S",
+      "type": "resource",
+      "label": "Settlement transfer outcome",
+      "basis": "CONTEXT"
+    },
+    "S-Q1": {
+      "id": "S-Q1",
+      "actor": "S",
+      "type": "quality",
+      "label": "Reliable transaction outcomes",
+      "basis": "CONTEXT"
+    },
+    "S-Q2": {
+      "id": "S-Q2",
+      "actor": "S",
+      "type": "quality",
+      "label": "Auditable transfers",
+      "basis": "CONTEXT"
+    },
+    "P-R5": {
+      "id": "P-R5",
+      "actor": "P",
+      "type": "resource",
+      "label": "Producer settlement statement",
+      "basis": "CONTEXT"
+    }
+  },
+  "links": [
+    {
+      "source": "P-T1",
+      "target": "P-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "P-T2",
+      "target": "P-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "P-T3",
+      "target": "P-G2",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "P-T4",
+      "target": "P-G2",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "P-R1",
+      "target": "P-T1",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "P-R2",
+      "target": "P-T2",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "P-R3",
+      "target": "P-T3",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "P-R3",
+      "target": "P-T4",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "P-R4",
+      "target": "P-T1",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "P-T2",
+      "target": "P-Q1",
+      "type": "contribution",
+      "value": "Hurt"
+    },
+    {
+      "source": "P-T1",
+      "target": "P-Q2",
+      "type": "contribution",
+      "value": "Hurt"
+    },
+    {
+      "source": "P-T2",
+      "target": "P-Q2",
+      "type": "contribution",
+      "value": "Hurt"
+    },
+    {
+      "source": "P-Q3",
+      "target": "P-R2",
+      "type": "qualification",
+      "value": null
+    },
+    {
+      "source": "A-T1",
+      "target": "A-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "A-T2",
+      "target": "A-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "A-T3",
+      "target": "A-G2",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "A-T4",
+      "target": "A-G2",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "A-R1",
+      "target": "A-T1",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "A-R2",
+      "target": "A-T2",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "A-R3",
+      "target": "A-T3",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "A-R4",
+      "target": "A-T4",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "A-T1",
+      "target": "A-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "A-T3",
+      "target": "A-Q2",
+      "type": "contribution",
+      "value": "Hurt"
+    },
+    {
+      "source": "A-T4",
+      "target": "A-Q3",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T1",
+      "target": "M-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "M-T2",
+      "target": "M-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "M-T3",
+      "target": "M-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "M-T6",
+      "target": "M-G2",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "M-T7",
+      "target": "M-G2",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "M-T8",
+      "target": "M-G2",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "M-T4",
+      "target": "M-G3",
+      "type": "refinement",
+      "value": "OR"
+    },
+    {
+      "source": "M-T5",
+      "target": "M-G3",
+      "type": "refinement",
+      "value": "OR"
+    },
+    {
+      "source": "M-R1",
+      "target": "M-T1",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-R3",
+      "target": "M-T2",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-R4",
+      "target": "M-T2",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-R6",
+      "target": "M-T4",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-R9",
+      "target": "M-T5",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-R2",
+      "target": "M-T6",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-R8",
+      "target": "M-T7",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-R7",
+      "target": "M-T8",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-T1",
+      "target": "M-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T2",
+      "target": "M-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T3",
+      "target": "M-Q2",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T4",
+      "target": "M-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T4",
+      "target": "M-Q3",
+      "type": "contribution",
+      "value": "Hurt"
+    },
+    {
+      "source": "M-T5",
+      "target": "M-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T5",
+      "target": "M-Q3",
+      "type": "contribution",
+      "value": "Hurt"
+    },
+    {
+      "source": "M-T6",
+      "target": "M-Q2",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T7",
+      "target": "M-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T8",
+      "target": "M-Q3",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "V-T1",
+      "target": "V-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "V-T2",
+      "target": "V-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "V-T3",
+      "target": "V-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "V-R1",
+      "target": "V-T1",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "V-R3",
+      "target": "V-T2",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "V-R2",
+      "target": "V-T3",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "V-T3",
+      "target": "V-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "V-T1",
+      "target": "V-Q2",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "V-T2",
+      "target": "V-Q3",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "I-T1",
+      "target": "I-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "I-T2",
+      "target": "I-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "I-T3",
+      "target": "I-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "I-R1",
+      "target": "I-T1",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "I-R2",
+      "target": "I-T2",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "I-R3",
+      "target": "I-T3",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "I-T1",
+      "target": "I-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "I-T2",
+      "target": "I-Q3",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "I-T3",
+      "target": "I-Q2",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "B-T1",
+      "target": "B-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "B-T2",
+      "target": "B-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "B-T3",
+      "target": "B-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "B-R1",
+      "target": "B-T1",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "B-R2",
+      "target": "B-T2",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "B-R3",
+      "target": "B-T3",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "B-T1",
+      "target": "B-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "B-T2",
+      "target": "B-Q3",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "B-T3",
+      "target": "B-Q2",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "C-T1",
+      "target": "C-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "C-T2",
+      "target": "C-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "C-T3",
+      "target": "C-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "C-R1",
+      "target": "C-T1",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "C-R2",
+      "target": "C-T2",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "C-R3",
+      "target": "C-T3",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "C-T1",
+      "target": "C-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "C-T2",
+      "target": "C-Q3",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "C-T3",
+      "target": "C-Q2",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T9",
+      "target": "M-G6",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "M-T10",
+      "target": "M-G6",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "M-T11",
+      "target": "M-G7",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "M-T12",
+      "target": "M-G7",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "M-R10",
+      "target": "M-T9",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-R11",
+      "target": "M-T10",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-R12",
+      "target": "M-T11",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-R13",
+      "target": "M-T12",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "M-T10",
+      "target": "M-Q4",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T11",
+      "target": "M-Q5",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "M-T12",
+      "target": "M-Q5",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "S-T1",
+      "target": "S-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "S-T2",
+      "target": "S-G1",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "S-T3",
+      "target": "S-G2",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "S-T4",
+      "target": "S-G2",
+      "type": "refinement",
+      "value": "AND"
+    },
+    {
+      "source": "S-R1",
+      "target": "S-T1",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "S-R2",
+      "target": "S-T2",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "S-R3",
+      "target": "S-T3",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "S-R4",
+      "target": "S-T4",
+      "type": "neededBy",
+      "value": null
+    },
+    {
+      "source": "S-T2",
+      "target": "S-Q1",
+      "type": "contribution",
+      "value": "Help"
+    },
+    {
+      "source": "S-T4",
+      "target": "S-Q2",
+      "type": "contribution",
+      "value": "Help"
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "D01",
+      "source": "P-G3",
+      "target": "M-G1",
+      "type": "goal",
+      "label": "Valid products published",
+      "scope": "UC1"
+    },
+    {
+      "id": "D02",
+      "source": "P-R2",
+      "target": "M-R5",
+      "type": "resource",
+      "label": "Validation and correction feedback",
+      "scope": "UC1"
+    },
+    {
+      "id": "D03",
+      "source": "M-R1",
+      "target": "P-R1",
+      "type": "resource",
+      "label": "Accurate submitted product information",
+      "scope": "UC1"
+    },
+    {
+      "id": "D04",
+      "source": "M-R2",
+      "target": "P-R3",
+      "type": "resource",
+      "label": "Stock and seasonal update records",
+      "scope": "UC1"
+    },
+    {
+      "id": "D05",
+      "source": "M-R3",
+      "target": "V-R2",
+      "type": "resource",
+      "label": "Certification verification outcome",
+      "scope": "UC1"
+    },
+    {
+      "id": "D06",
+      "source": "V-R1",
+      "target": "M-R4",
+      "type": "resource",
+      "label": "Certification request and evidence",
+      "scope": "UC1"
+    },
+    {
+      "id": "D07",
+      "source": "M-G4",
+      "target": "A-G2",
+      "type": "goal",
+      "label": "Unresolved verification case reviewed",
+      "scope": "PROPOSED"
+    },
+    {
+      "id": "D08",
+      "source": "A-R3",
+      "target": "M-R6",
+      "type": "resource",
+      "label": "Exception case and supporting evidence",
+      "scope": "PROPOSED"
+    },
+    {
+      "id": "D10",
+      "source": "A-R1",
+      "target": "M-R7",
+      "type": "resource",
+      "label": "Listing records for compliance review",
+      "scope": "UC1"
+    },
+    {
+      "id": "D11",
+      "source": "M-G5",
+      "target": "P-G1",
+      "type": "goal",
+      "label": "Corrected product information supplied",
+      "scope": "UC1"
+    },
+    {
+      "id": "D12",
+      "source": "M-R9",
+      "target": "A-R4",
+      "type": "resource",
+      "label": "Authorised review decision",
+      "scope": "PROPOSED"
+    },
+    {
+      "id": "D13",
+      "source": "P-R4",
+      "target": "A-R2",
+      "type": "resource",
+      "label": "Listing standards and guidance",
+      "scope": "UC1"
+    },
+    {
+      "id": "D-BUY-I",
+      "source": "I-R1",
+      "target": "M-R7",
+      "type": "resource",
+      "label": "Individual Customer product information",
+      "scope": "UC1"
+    },
+    {
+      "id": "D-SAFE-I",
+      "source": "I-R3",
+      "target": "M-R7",
+      "type": "resource",
+      "label": "Individual Customer safety and certification data",
+      "scope": "UC1"
+    },
+    {
+      "id": "D-BUY-B",
+      "source": "B-R1",
+      "target": "M-R7",
+      "type": "resource",
+      "label": "Restaurant / Cafe Buyer product information",
+      "scope": "UC1"
+    },
+    {
+      "id": "D-SAFE-B",
+      "source": "B-R3",
+      "target": "M-R7",
+      "type": "resource",
+      "label": "Restaurant / Cafe Buyer safety and certification data",
+      "scope": "UC1"
+    },
+    {
+      "id": "D-BUY-C",
+      "source": "C-R1",
+      "target": "M-R7",
+      "type": "resource",
+      "label": "Community Organisation Buyer product information",
+      "scope": "UC1"
+    },
+    {
+      "id": "D-SAFE-C",
+      "source": "C-R3",
+      "target": "M-R7",
+      "type": "resource",
+      "label": "Community Organisation Buyer safety and certification data",
+      "scope": "UC1"
+    },
+    {
+      "id": "D-PAY-I",
+      "source": "I-G2",
+      "target": "M-G6",
+      "type": "goal",
+      "label": "Individual Customer payment outcome",
+      "scope": "CONTEXT"
+    },
+    {
+      "id": "D-PAY-B",
+      "source": "B-G2",
+      "target": "M-G6",
+      "type": "goal",
+      "label": "Restaurant / Cafe Buyer payment outcome",
+      "scope": "CONTEXT"
+    },
+    {
+      "id": "D-PAY-C",
+      "source": "C-G2",
+      "target": "M-G6",
+      "type": "goal",
+      "label": "Community Organisation Buyer payment outcome",
+      "scope": "CONTEXT"
+    },
+    {
+      "id": "D-PAY-REQUEST",
+      "source": "S-R1",
+      "target": "M-R10",
+      "type": "resource",
+      "label": "Sandbox payment request",
+      "scope": "CONTEXT"
+    },
+    {
+      "id": "D-PAY-RESULT",
+      "source": "M-R11",
+      "target": "S-R2",
+      "type": "resource",
+      "label": "Gateway payment outcome",
+      "scope": "CONTEXT"
+    },
+    {
+      "id": "D-TRANSFER-IN",
+      "source": "S-R3",
+      "target": "M-R14",
+      "type": "resource",
+      "label": "Producer transfer instructions",
+      "scope": "CONTEXT"
+    },
+    {
+      "id": "D-TRANSFER-OUT",
+      "source": "M-R15",
+      "target": "S-R4",
+      "type": "resource",
+      "label": "Settlement transfer outcome",
+      "scope": "CONTEXT"
+    },
+    {
+      "id": "D-STATEMENT",
+      "source": "P-R5",
+      "target": "M-R16",
+      "type": "resource",
+      "label": "Producer settlement statement",
+      "scope": "CONTEXT"
+    }
+  ],
+  "views": [
+    {
+      "id": "01-registered-producer",
+      "actor": "P",
+      "title": "Registered Producer: listing and stock",
+      "goals": [
+        "P-G1",
+        "P-G2"
+      ],
+      "tasks": [
+        "P-T1",
+        "P-T2",
+        "P-T3",
+        "P-T4"
+      ],
+      "resources": [
+        "P-R1",
+        "P-R2",
+        "P-R3",
+        "P-R4"
+      ],
+      "qualities": [
+        "P-Q1",
+        "P-Q2",
+        "P-Q3"
+      ],
+      "delegated": [
+        "P-G3",
+        "P-R5"
+      ]
+    },
+    {
+      "id": "03-admin",
+      "actor": "A",
+      "title": "Marketplace Admin: compliance and support",
+      "goals": [
+        "A-G1",
+        "A-G2"
+      ],
+      "tasks": [
+        "A-T1",
+        "A-T2",
+        "A-T3",
+        "A-T4"
+      ],
+      "resources": [
+        "A-R1",
+        "A-R2",
+        "A-R3",
+        "A-R4"
+      ],
+      "qualities": [
+        "A-Q1",
+        "A-Q2",
+        "A-Q3"
+      ],
+      "delegated": []
+    },
+    {
+      "id": "04-platform-listing",
+      "actor": "M",
+      "title": "Platform: product listing and validation",
+      "goals": [
+        "M-G1"
+      ],
+      "tasks": [
+        "M-T1",
+        "M-T2",
+        "M-T3"
+      ],
+      "resources": [
+        "M-R1",
+        "M-R3",
+        "M-R4"
+      ],
+      "qualities": [
+        "M-Q1",
+        "M-Q2"
+      ],
+      "delegated": [
+        "M-G5",
+        "M-R5"
+      ]
+    },
+    {
+      "id": "05-platform-exceptions",
+      "actor": "M",
+      "title": "Platform: certification outage alternatives",
+      "goals": [
+        "M-G3"
+      ],
+      "tasks": [
+        "M-T4",
+        "M-T5"
+      ],
+      "resources": [
+        "M-R6",
+        "M-R9"
+      ],
+      "qualities": [
+        "M-Q1",
+        "M-Q3"
+      ],
+      "delegated": [
+        "M-G4"
+      ]
+    },
+    {
+      "id": "06-platform-inventory",
+      "actor": "M",
+      "title": "Platform: inventory and seasonal availability",
+      "goals": [
+        "M-G2"
+      ],
+      "tasks": [
+        "M-T6",
+        "M-T7",
+        "M-T8"
+      ],
+      "resources": [
+        "M-R2",
+        "M-R8",
+        "M-R7"
+      ],
+      "qualities": [
+        "M-Q1",
+        "M-Q2",
+        "M-Q3"
+      ],
+      "delegated": []
+    },
+    {
+      "id": "07-certification-service",
+      "actor": "V",
+      "title": "Certification service: evidence and outcomes",
+      "goals": [
+        "V-G1"
+      ],
+      "tasks": [
+        "V-T1",
+        "V-T2",
+        "V-T3"
+      ],
+      "resources": [
+        "V-R1",
+        "V-R3",
+        "V-R2"
+      ],
+      "qualities": [
+        "V-Q1",
+        "V-Q2",
+        "V-Q3"
+      ],
+      "delegated": []
+    },
+    {
+      "id": "08-i-buyer",
+      "actor": "I",
+      "title": "Individual Customer: information and purchasing needs",
+      "goals": [
+        "I-G1"
+      ],
+      "tasks": [
+        "I-T1",
+        "I-T2",
+        "I-T3"
+      ],
+      "resources": [
+        "I-R1",
+        "I-R2",
+        "I-R3"
+      ],
+      "qualities": [
+        "I-Q1",
+        "I-Q2",
+        "I-Q3"
+      ],
+      "delegated": [
+        "I-G2"
+      ]
+    },
+    {
+      "id": "08-b-buyer",
+      "actor": "B",
+      "title": "Restaurant / Cafe Buyer: information and purchasing needs",
+      "goals": [
+        "B-G1"
+      ],
+      "tasks": [
+        "B-T1",
+        "B-T2",
+        "B-T3"
+      ],
+      "resources": [
+        "B-R1",
+        "B-R2",
+        "B-R3"
+      ],
+      "qualities": [
+        "B-Q1",
+        "B-Q2",
+        "B-Q3"
+      ],
+      "delegated": [
+        "B-G2"
+      ]
+    },
+    {
+      "id": "08-c-buyer",
+      "actor": "C",
+      "title": "Community Organisation Buyer: information and purchasing needs",
+      "goals": [
+        "C-G1"
+      ],
+      "tasks": [
+        "C-T1",
+        "C-T2",
+        "C-T3"
+      ],
+      "resources": [
+        "C-R1",
+        "C-R2",
+        "C-R3"
+      ],
+      "qualities": [
+        "C-Q1",
+        "C-Q2",
+        "C-Q3"
+      ],
+      "delegated": [
+        "C-G2"
+      ]
+    },
+    {
+      "id": "09-platform-payments",
+      "actor": "M",
+      "title": "Platform: wider payment and settlement context",
+      "goals": [
+        "M-G6",
+        "M-G7"
+      ],
+      "tasks": [
+        "M-T9",
+        "M-T10",
+        "M-T11",
+        "M-T12"
+      ],
+      "resources": [
+        "M-R10",
+        "M-R11",
+        "M-R12",
+        "M-R13"
+      ],
+      "qualities": [
+        "M-Q4",
+        "M-Q5"
+      ],
+      "delegated": [
+        "M-R14",
+        "M-R15",
+        "M-R16"
+      ]
+    },
+    {
+      "id": "10-payment-service",
+      "actor": "S",
+      "title": "Payment Service: sandbox requests and outcomes",
+      "goals": [
+        "S-G1",
+        "S-G2"
+      ],
+      "tasks": [
+        "S-T1",
+        "S-T2",
+        "S-T3",
+        "S-T4"
+      ],
+      "resources": [
+        "S-R1",
+        "S-R2",
+        "S-R3",
+        "S-R4"
+      ],
+      "qualities": [
+        "S-Q1",
+        "S-Q2"
+      ],
+      "delegated": []
+    }
+  ]
+}

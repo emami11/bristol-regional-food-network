@@ -1,0 +1,1968 @@
+{
+  "nodes": {
+    "Ayo_Pool_BRfn": {
+      "id": "Ayo_Pool_BRfn",
+      "name": "Bristol Regional Food Network (BRFN)",
+      "type": "participant",
+      "bounds": [
+        430,
+        230,
+        1550,
+        1210
+      ]
+    },
+    "Ayo_Pool_Producer": {
+      "id": "Ayo_Pool_Producer",
+      "name": "Registered Producers",
+      "type": "participant",
+      "bounds": [
+        70,
+        230,
+        170,
+        1210
+      ]
+    },
+    "Ayo_Pool_Customers": {
+      "id": "Ayo_Pool_Customers",
+      "name": "Customers (individuals, restaurants/cafes and community organisations)",
+      "type": "participant",
+      "bounds": [
+        2110,
+        640,
+        240,
+        800
+      ]
+    },
+    "Ayo_Pool_Certification": {
+      "id": "Ayo_Pool_Certification",
+      "name": "Certification Verification Service",
+      "type": "participant",
+      "bounds": [
+        1100,
+        70,
+        500,
+        70
+      ]
+    },
+    "Ayo_Pool_Payment": {
+      "id": "Ayo_Pool_Payment",
+      "name": "Payment Service Provider (sandbox)",
+      "type": "participant",
+      "bounds": [
+        2030,
+        330,
+        400,
+        70
+      ]
+    },
+    "Ayo_Lane_Product": {
+      "id": "Ayo_Lane_Product",
+      "name": "Product and Inventory Management",
+      "type": "lane",
+      "bounds": [
+        460,
+        230,
+        1520,
+        380
+      ]
+    },
+    "Ayo_Lane_Operations": {
+      "id": "Ayo_Lane_Operations",
+      "name": "Marketplace Operations",
+      "type": "lane",
+      "bounds": [
+        460,
+        610,
+        1520,
+        350
+      ]
+    },
+    "Ayo_Lane_Quality": {
+      "id": "Ayo_Lane_Quality",
+      "name": "Quality Assurance and Community Services",
+      "type": "lane",
+      "bounds": [
+        460,
+        960,
+        1520,
+        480
+      ]
+    },
+    "Ayo_Start_Listing": {
+      "id": "Ayo_Start_Listing",
+      "name": "Producer listing request received",
+      "type": "startEvent",
+      "bounds": [
+        560,
+        342,
+        36,
+        36
+      ]
+    },
+    "Ayo_Start_Inventory": {
+      "id": "Ayo_Start_Inventory",
+      "name": "Producer stock / season update received",
+      "type": "startEvent",
+      "bounds": [
+        1300,
+        492,
+        36,
+        36
+      ]
+    },
+    "Ayo_Start_Purchase": {
+      "id": "Ayo_Start_Purchase",
+      "name": "Customer purchase request received",
+      "type": "startEvent",
+      "bounds": [
+        560,
+        772,
+        36,
+        36
+      ]
+    },
+    "Ayo_Start_Quality": {
+      "id": "Ayo_Start_Quality",
+      "name": "Food quality concern received",
+      "type": "startEvent",
+      "bounds": [
+        560,
+        1072,
+        36,
+        36
+      ]
+    },
+    "Ayo_Start_Community": {
+      "id": "Ayo_Start_Community",
+      "name": "Community content submitted",
+      "type": "startEvent",
+      "bounds": [
+        560,
+        1292,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Listings": {
+      "id": "Ayo_SP_Listings",
+      "name": "Manage Product Listings",
+      "type": "subProcess",
+      "bounds": [
+        740,
+        300,
+        280,
+        120
+      ]
+    },
+    "Ayo_SP_Inventory": {
+      "id": "Ayo_SP_Inventory",
+      "name": "Manage Inventory and Seasonal Availability",
+      "type": "subProcess",
+      "bounds": [
+        1450,
+        450,
+        280,
+        120
+      ]
+    },
+    "Ayo_SP_Purchasing": {
+      "id": "Ayo_SP_Purchasing",
+      "name": "Facilitate Customer Purchasing",
+      "type": "subProcess",
+      "bounds": [
+        740,
+        730,
+        270,
+        120
+      ]
+    },
+    "Ayo_SP_Orders": {
+      "id": "Ayo_SP_Orders",
+      "name": "Coordinate Multi-Vendor Orders",
+      "type": "subProcess",
+      "bounds": [
+        1110,
+        730,
+        270,
+        120
+      ]
+    },
+    "Ayo_SP_Payments": {
+      "id": "Ayo_SP_Payments",
+      "name": "Manage Payments and Producer Settlements",
+      "type": "subProcess",
+      "bounds": [
+        1480,
+        730,
+        270,
+        120
+      ]
+    },
+    "Ayo_SP_Quality": {
+      "id": "Ayo_SP_Quality",
+      "name": "Food Quality and Traceability",
+      "type": "subProcess",
+      "bounds": [
+        740,
+        1030,
+        280,
+        120
+      ]
+    },
+    "Ayo_SP_Community": {
+      "id": "Ayo_SP_Community",
+      "name": "Support Sustainability and Community Engagement",
+      "type": "subProcess",
+      "bounds": [
+        740,
+        1250,
+        280,
+        120
+      ]
+    },
+    "Ayo_End_Listing": {
+      "id": "Ayo_End_Listing",
+      "name": "Listing decision recorded",
+      "type": "endEvent",
+      "bounds": [
+        1120,
+        342,
+        36,
+        36
+      ]
+    },
+    "Ayo_End_Inventory": {
+      "id": "Ayo_End_Inventory",
+      "name": "Availability updated",
+      "type": "endEvent",
+      "bounds": [
+        1840,
+        492,
+        36,
+        36
+      ]
+    },
+    "Ayo_End_Quality": {
+      "id": "Ayo_End_Quality",
+      "name": "Incident action or closure recorded",
+      "type": "endEvent",
+      "bounds": [
+        1120,
+        1072,
+        36,
+        36
+      ]
+    },
+    "Ayo_End_Community": {
+      "id": "Ayo_End_Community",
+      "name": "Community activity recorded",
+      "type": "endEvent",
+      "bounds": [
+        1120,
+        1292,
+        36,
+        36
+      ]
+    },
+    "Ayo_End_Order": {
+      "id": "Ayo_End_Order",
+      "name": "Order confirmed",
+      "type": "endEvent",
+      "bounds": [
+        1915,
+        772,
+        36,
+        36
+      ]
+    },
+    "Ayo_End_NotPaid": {
+      "id": "Ayo_End_NotPaid",
+      "name": "Payment not confirmed",
+      "type": "endEvent",
+      "bounds": [
+        1840,
+        880,
+        36,
+        36
+      ]
+    },
+    "Ayo_Gateway_Payment": {
+      "id": "Ayo_Gateway_Payment",
+      "name": "Payment accepted?",
+      "type": "exclusiveGateway",
+      "bounds": [
+        1810,
+        765,
+        50,
+        50
+      ]
+    },
+    "Ayo_Data_Catalogue": {
+      "id": "Ayo_Data_Catalogue",
+      "name": "Catalogue and availability",
+      "type": "dataStoreReference",
+      "bounds": [
+        1100,
+        630,
+        70,
+        55
+      ]
+    },
+    "Ayo_Data_PaidStock": {
+      "id": "Ayo_Data_PaidStock",
+      "name": "Paid-order stock changes",
+      "type": "dataObjectReference",
+      "bounds": [
+        1830,
+        650,
+        50,
+        65
+      ]
+    },
+    "Ayo_Data_Suspension": {
+      "id": "Ayo_Data_Suspension",
+      "name": "Confirmed product suspension decision",
+      "type": "dataObjectReference",
+      "bounds": [
+        1580,
+        1040,
+        50,
+        65
+      ]
+    },
+    "Ayo_Note_AdminListings": {
+      "id": "Ayo_Note_AdminListings",
+      "name": "Internal role: Marketplace Admin. Review unresolved verification only under an agreed policy.",
+      "type": "textAnnotation",
+      "bounds": [
+        520,
+        435,
+        370,
+        60
+      ]
+    },
+    "Ayo_Note_InventoryTriggers": {
+      "id": "Ayo_Note_InventoryTriggers",
+      "name": "Also triggered internally by listing/order stock changes and daily season checks. Zero stock or out of season means unavailable.",
+      "type": "textAnnotation",
+      "bounds": [
+        1430,
+        260,
+        420,
+        75
+      ]
+    },
+    "Ayo_Note_Settlements": {
+      "id": "Ayo_Note_Settlements",
+      "name": "5% commission and producer shares; weekly settlement cadence. Confirm producer orders only after successful payment.",
+      "type": "textAnnotation",
+      "bounds": [
+        1470,
+        865,
+        310,
+        60
+      ]
+    },
+    "Ayo_Note_AdminQuality": {
+      "id": "Ayo_Note_AdminQuality",
+      "name": "Internal role: Marketplace Admin. May report concerns and authorises action/closure; failed customer contacts require follow-up.",
+      "type": "textAnnotation",
+      "bounds": [
+        1180,
+        1188,
+        400,
+        60
+      ]
+    },
+    "Ayo_Note_Community": {
+      "id": "Ayo_Note_Community",
+      "name": "Surplus discounts, recipes, storage guidance, farm stories, food education and postcode-based food-mile information.",
+      "type": "textAnnotation",
+      "bounds": [
+        1300,
+        1260,
+        600,
+        70
+      ]
+    },
+    "Ayo_SP_Listings_start": {
+      "id": "Ayo_SP_Listings_start",
+      "name": "Responsibility begins",
+      "type": "startEvent",
+      "bounds": [
+        80,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Listings_step_1": {
+      "id": "Ayo_SP_Listings_step_1",
+      "name": "Receive and validate product information",
+      "type": "task",
+      "bounds": [
+        190,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Listings_step_2": {
+      "id": "Ayo_SP_Listings_step_2",
+      "name": "Resolve corrections and certification checks as applicable",
+      "type": "task",
+      "bounds": [
+        490,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Listings_step_3": {
+      "id": "Ayo_SP_Listings_step_3",
+      "name": "Publish approved listing or provide feedback",
+      "type": "task",
+      "bounds": [
+        790,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Listings_end": {
+      "id": "Ayo_SP_Listings_end",
+      "name": "Responsibility outcome recorded",
+      "type": "endEvent",
+      "bounds": [
+        1090,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Inventory_start": {
+      "id": "Ayo_SP_Inventory_start",
+      "name": "Responsibility begins",
+      "type": "startEvent",
+      "bounds": [
+        80,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Inventory_step_1": {
+      "id": "Ayo_SP_Inventory_step_1",
+      "name": "Apply quantity and seasonal changes",
+      "type": "task",
+      "bounds": [
+        190,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Inventory_step_2": {
+      "id": "Ayo_SP_Inventory_step_2",
+      "name": "Evaluate stock, season and listing eligibility",
+      "type": "task",
+      "bounds": [
+        490,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Inventory_step_3": {
+      "id": "Ayo_SP_Inventory_step_3",
+      "name": "Set and communicate current availability",
+      "type": "task",
+      "bounds": [
+        790,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Inventory_end": {
+      "id": "Ayo_SP_Inventory_end",
+      "name": "Responsibility outcome recorded",
+      "type": "endEvent",
+      "bounds": [
+        1090,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Purchasing_start": {
+      "id": "Ayo_SP_Purchasing_start",
+      "name": "Responsibility begins",
+      "type": "startEvent",
+      "bounds": [
+        80,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Purchasing_step_1": {
+      "id": "Ayo_SP_Purchasing_step_1",
+      "name": "Browse products and select basket",
+      "type": "task",
+      "bounds": [
+        190,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Purchasing_step_2": {
+      "id": "Ayo_SP_Purchasing_step_2",
+      "name": "Check availability and delivery or collection arrangements",
+      "type": "task",
+      "bounds": [
+        490,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Purchasing_step_3": {
+      "id": "Ayo_SP_Purchasing_step_3",
+      "name": "Record purchase request for coordination",
+      "type": "task",
+      "bounds": [
+        790,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Purchasing_end": {
+      "id": "Ayo_SP_Purchasing_end",
+      "name": "Responsibility outcome recorded",
+      "type": "endEvent",
+      "bounds": [
+        1090,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Orders_start": {
+      "id": "Ayo_SP_Orders_start",
+      "name": "Responsibility begins",
+      "type": "startEvent",
+      "bounds": [
+        80,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Orders_step_1": {
+      "id": "Ayo_SP_Orders_step_1",
+      "name": "Identify producers for each line item",
+      "type": "task",
+      "bounds": [
+        190,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Orders_step_2": {
+      "id": "Ayo_SP_Orders_step_2",
+      "name": "Create marketplace and producer order records",
+      "type": "task",
+      "bounds": [
+        490,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Orders_step_3": {
+      "id": "Ayo_SP_Orders_step_3",
+      "name": "Provide allocations and fulfilment responsibilities",
+      "type": "task",
+      "bounds": [
+        790,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Orders_end": {
+      "id": "Ayo_SP_Orders_end",
+      "name": "Responsibility outcome recorded",
+      "type": "endEvent",
+      "bounds": [
+        1090,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Payments_start": {
+      "id": "Ayo_SP_Payments_start",
+      "name": "Responsibility begins",
+      "type": "startEvent",
+      "bounds": [
+        80,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Payments_step_1": {
+      "id": "Ayo_SP_Payments_step_1",
+      "name": "Request sandbox payment and handle outcome",
+      "type": "task",
+      "bounds": [
+        190,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Payments_step_2": {
+      "id": "Ayo_SP_Payments_step_2",
+      "name": "Record paid allocations and confirmed producer orders",
+      "type": "task",
+      "bounds": [
+        490,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Payments_step_3": {
+      "id": "Ayo_SP_Payments_step_3",
+      "name": "Prepare weekly settlements and statements when due",
+      "type": "task",
+      "bounds": [
+        790,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Payments_end": {
+      "id": "Ayo_SP_Payments_end",
+      "name": "Responsibility outcome recorded",
+      "type": "endEvent",
+      "bounds": [
+        1090,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Quality_start": {
+      "id": "Ayo_SP_Quality_start",
+      "name": "Responsibility begins",
+      "type": "startEvent",
+      "bounds": [
+        80,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Quality_step_1": {
+      "id": "Ayo_SP_Quality_step_1",
+      "name": "Record concern and trace affected orders",
+      "type": "task",
+      "bounds": [
+        190,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Quality_step_2": {
+      "id": "Ayo_SP_Quality_step_2",
+      "name": "Investigate and decide risk and necessary actions",
+      "type": "task",
+      "bounds": [
+        490,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Quality_step_3": {
+      "id": "Ayo_SP_Quality_step_3",
+      "name": "Record suspension, notifications, follow-up and authorised closure",
+      "type": "task",
+      "bounds": [
+        790,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Quality_end": {
+      "id": "Ayo_SP_Quality_end",
+      "name": "Responsibility outcome recorded",
+      "type": "endEvent",
+      "bounds": [
+        1090,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Community_start": {
+      "id": "Ayo_SP_Community_start",
+      "name": "Responsibility begins",
+      "type": "startEvent",
+      "bounds": [
+        80,
+        172,
+        36,
+        36
+      ]
+    },
+    "Ayo_SP_Community_step_1": {
+      "id": "Ayo_SP_Community_step_1",
+      "name": "Receive surplus or educational content",
+      "type": "task",
+      "bounds": [
+        190,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Community_step_2": {
+      "id": "Ayo_SP_Community_step_2",
+      "name": "Coordinate sustainability and community activity",
+      "type": "task",
+      "bounds": [
+        490,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Community_step_3": {
+      "id": "Ayo_SP_Community_step_3",
+      "name": "Publish updates and record activity outcomes",
+      "type": "task",
+      "bounds": [
+        790,
+        140,
+        230,
+        100
+      ]
+    },
+    "Ayo_SP_Community_end": {
+      "id": "Ayo_SP_Community_end",
+      "name": "Responsibility outcome recorded",
+      "type": "endEvent",
+      "bounds": [
+        1090,
+        172,
+        36,
+        36
+      ]
+    }
+  },
+  "edges": {
+    "Ayo_Seq_L1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          596,
+          360
+        ],
+        [
+          740,
+          360
+        ]
+      ]
+    },
+    "Ayo_Seq_L2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1020,
+          360
+        ],
+        [
+          1120,
+          360
+        ]
+      ]
+    },
+    "Ayo_Seq_I1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1336,
+          510
+        ],
+        [
+          1450,
+          510
+        ]
+      ]
+    },
+    "Ayo_Seq_I2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1730,
+          510
+        ],
+        [
+          1840,
+          510
+        ]
+      ]
+    },
+    "Ayo_Seq_O1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          596,
+          790
+        ],
+        [
+          740,
+          790
+        ]
+      ]
+    },
+    "Ayo_Seq_O2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1010,
+          790
+        ],
+        [
+          1110,
+          790
+        ]
+      ]
+    },
+    "Ayo_Seq_O3": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1380,
+          790
+        ],
+        [
+          1480,
+          790
+        ]
+      ]
+    },
+    "Ayo_Seq_O4": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1750,
+          790
+        ],
+        [
+          1810,
+          790
+        ]
+      ]
+    },
+    "Ayo_Seq_Q1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          596,
+          1090
+        ],
+        [
+          740,
+          1090
+        ]
+      ]
+    },
+    "Ayo_Seq_Q2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1020,
+          1090
+        ],
+        [
+          1120,
+          1090
+        ]
+      ]
+    },
+    "Ayo_Seq_C1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          596,
+          1310
+        ],
+        [
+          740,
+          1310
+        ]
+      ]
+    },
+    "Ayo_Seq_C2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1020,
+          1310
+        ],
+        [
+          1120,
+          1310
+        ]
+      ]
+    },
+    "Ayo_Seq_PaymentYes": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1860,
+          790
+        ],
+        [
+          1915,
+          790
+        ]
+      ]
+    },
+    "Ayo_Seq_PaymentNo": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1835,
+          815
+        ],
+        [
+          1835,
+          860
+        ],
+        [
+          1858,
+          860
+        ],
+        [
+          1858,
+          880
+        ]
+      ]
+    },
+    "Ayo_MF_ListingIn": {
+      "type": "messageFlow",
+      "name": "Product listing submission",
+      "points": [
+        [
+          240,
+          360
+        ],
+        [
+          560,
+          360
+        ]
+      ]
+    },
+    "Ayo_MF_ListingOut": {
+      "type": "messageFlow",
+      "name": "Listing decision / correction feedback",
+      "points": [
+        [
+          740,
+          325
+        ],
+        [
+          670,
+          325
+        ],
+        [
+          670,
+          275
+        ],
+        [
+          240,
+          275
+        ]
+      ]
+    },
+    "Ayo_MF_CertRequest": {
+      "type": "messageFlow",
+      "name": "Organic certification request",
+      "points": [
+        [
+          900,
+          300
+        ],
+        [
+          900,
+          180
+        ],
+        [
+          1250,
+          180
+        ],
+        [
+          1250,
+          140
+        ]
+      ]
+    },
+    "Ayo_MF_CertResult": {
+      "type": "messageFlow",
+      "name": "Certification result / error",
+      "points": [
+        [
+          1350,
+          140
+        ],
+        [
+          1350,
+          220
+        ],
+        [
+          970,
+          220
+        ],
+        [
+          970,
+          300
+        ]
+      ]
+    },
+    "Ayo_MF_StockUpdate": {
+      "type": "messageFlow",
+      "name": "Quantity and seasonal updates",
+      "points": [
+        [
+          240,
+          510
+        ],
+        [
+          1300,
+          510
+        ]
+      ]
+    },
+    "Ayo_MF_PurchaseIn": {
+      "type": "messageFlow",
+      "name": "Customer purchase request",
+      "points": [
+        [
+          2110,
+          680
+        ],
+        [
+          2010,
+          680
+        ],
+        [
+          2010,
+          620
+        ],
+        [
+          578,
+          620
+        ],
+        [
+          578,
+          772
+        ]
+      ]
+    },
+    "Ayo_MF_PurchaseOut": {
+      "type": "messageFlow",
+      "name": "Order/payment outcome and arrangements",
+      "points": [
+        [
+          1750,
+          835
+        ],
+        [
+          2070,
+          835
+        ],
+        [
+          2070,
+          815
+        ],
+        [
+          2110,
+          815
+        ]
+      ]
+    },
+    "Ayo_MF_PaymentRequest": {
+      "type": "messageFlow",
+      "name": "Sandbox payment / transfer request",
+      "points": [
+        [
+          1750,
+          760
+        ],
+        [
+          1990,
+          760
+        ],
+        [
+          1990,
+          380
+        ],
+        [
+          2030,
+          380
+        ]
+      ]
+    },
+    "Ayo_MF_PaymentResult": {
+      "type": "messageFlow",
+      "name": "Payment / transfer outcome",
+      "points": [
+        [
+          2030,
+          350
+        ],
+        [
+          2000,
+          350
+        ],
+        [
+          2000,
+          950
+        ],
+        [
+          1400,
+          950
+        ],
+        [
+          1400,
+          810
+        ],
+        [
+          1480,
+          810
+        ]
+      ]
+    },
+    "Ayo_MF_ProducerOrders": {
+      "type": "messageFlow",
+      "name": "Confirmed orders / weekly settlement statement",
+      "points": [
+        [
+          1480,
+          825
+        ],
+        [
+          1420,
+          825
+        ],
+        [
+          1420,
+          930
+        ],
+        [
+          240,
+          930
+        ]
+      ]
+    },
+    "Ayo_MF_ProducerConcern": {
+      "type": "messageFlow",
+      "name": "Producer quality concern",
+      "points": [
+        [
+          240,
+          1090
+        ],
+        [
+          560,
+          1090
+        ]
+      ]
+    },
+    "Ayo_MF_CustomerConcern": {
+      "type": "messageFlow",
+      "name": "Customer quality concern",
+      "points": [
+        [
+          2110,
+          1000
+        ],
+        [
+          2040,
+          1000
+        ],
+        [
+          2040,
+          975
+        ],
+        [
+          578,
+          975
+        ],
+        [
+          578,
+          1072
+        ]
+      ]
+    },
+    "Ayo_MF_EvidenceRequest": {
+      "type": "messageFlow",
+      "name": "Investigation evidence request",
+      "points": [
+        [
+          740,
+          1120
+        ],
+        [
+          240,
+          1120
+        ]
+      ]
+    },
+    "Ayo_MF_EvidenceReply": {
+      "type": "messageFlow",
+      "name": "Producer evidence / response",
+      "points": [
+        [
+          240,
+          1200
+        ],
+        [
+          700,
+          1200
+        ],
+        [
+          700,
+          1135
+        ],
+        [
+          740,
+          1135
+        ]
+      ]
+    },
+    "Ayo_MF_SafetyNotice": {
+      "type": "messageFlow",
+      "name": "Confirmed risk notification / guidance",
+      "points": [
+        [
+          880,
+          1150
+        ],
+        [
+          880,
+          1170
+        ],
+        [
+          2020,
+          1170
+        ],
+        [
+          2020,
+          1120
+        ],
+        [
+          2110,
+          1120
+        ]
+      ]
+    },
+    "Ayo_MF_CommunityIn": {
+      "type": "messageFlow",
+      "name": "Surplus offer / recipe / farm content",
+      "points": [
+        [
+          240,
+          1310
+        ],
+        [
+          560,
+          1310
+        ]
+      ]
+    },
+    "Ayo_MF_CommunityOut": {
+      "type": "messageFlow",
+      "name": "Surplus offers / seasonal and community updates",
+      "points": [
+        [
+          880,
+          1370
+        ],
+        [
+          880,
+          1398
+        ],
+        [
+          2060,
+          1398
+        ],
+        [
+          2060,
+          1310
+        ],
+        [
+          2110,
+          1310
+        ]
+      ]
+    },
+    "Ayo_DataOut_Listing": {
+      "type": "dataOutputAssociation",
+      "name": "",
+      "points": [
+        [
+          880,
+          420
+        ],
+        [
+          880,
+          600
+        ],
+        [
+          1135,
+          600
+        ],
+        [
+          1135,
+          630
+        ]
+      ]
+    },
+    "Ayo_DataOut_Inventory": {
+      "type": "dataOutputAssociation",
+      "name": "",
+      "points": [
+        [
+          1590,
+          570
+        ],
+        [
+          1590,
+          600
+        ],
+        [
+          1135,
+          600
+        ],
+        [
+          1135,
+          630
+        ]
+      ]
+    },
+    "Ayo_DataIn_Catalogue": {
+      "type": "dataInputAssociation",
+      "name": "",
+      "points": [
+        [
+          1135,
+          685
+        ],
+        [
+          1135,
+          710
+        ],
+        [
+          875,
+          710
+        ],
+        [
+          875,
+          730
+        ]
+      ]
+    },
+    "Ayo_DataOut_PaidStock": {
+      "type": "dataOutputAssociation",
+      "name": "",
+      "points": [
+        [
+          1710,
+          730
+        ],
+        [
+          1710,
+          720
+        ],
+        [
+          1855,
+          720
+        ],
+        [
+          1855,
+          715
+        ]
+      ]
+    },
+    "Ayo_DataIn_PaidStock": {
+      "type": "dataInputAssociation",
+      "name": "",
+      "points": [
+        [
+          1830,
+          675
+        ],
+        [
+          1780,
+          675
+        ],
+        [
+          1780,
+          550
+        ],
+        [
+          1730,
+          550
+        ]
+      ]
+    },
+    "Ayo_DataOut_Suspension": {
+      "type": "dataOutputAssociation",
+      "name": "",
+      "points": [
+        [
+          880,
+          1030
+        ],
+        [
+          880,
+          1010
+        ],
+        [
+          1605,
+          1010
+        ],
+        [
+          1605,
+          1040
+        ]
+      ]
+    },
+    "Ayo_DataIn_Suspension": {
+      "type": "dataInputAssociation",
+      "name": "",
+      "points": [
+        [
+          1630,
+          1072
+        ],
+        [
+          1760,
+          1072
+        ],
+        [
+          1760,
+          550
+        ],
+        [
+          1730,
+          550
+        ]
+      ]
+    },
+    "Ayo_Note_AdminListings_association": {
+      "type": "association",
+      "name": "",
+      "points": [
+        [
+          880,
+          420
+        ],
+        [
+          880,
+          435
+        ]
+      ]
+    },
+    "Ayo_Note_InventoryTriggers_association": {
+      "type": "association",
+      "name": "",
+      "points": [
+        [
+          1590,
+          450
+        ],
+        [
+          1590,
+          350
+        ],
+        [
+          1640,
+          350
+        ],
+        [
+          1640,
+          335
+        ]
+      ]
+    },
+    "Ayo_Note_Settlements_association": {
+      "type": "association",
+      "name": "",
+      "points": [
+        [
+          1615,
+          850
+        ],
+        [
+          1615,
+          865
+        ]
+      ]
+    },
+    "Ayo_Note_AdminQuality_association": {
+      "type": "association",
+      "name": "",
+      "points": [
+        [
+          950,
+          1150
+        ],
+        [
+          950,
+          1215
+        ],
+        [
+          1180,
+          1215
+        ]
+      ]
+    },
+    "Ayo_Note_Community_association": {
+      "type": "association",
+      "name": "",
+      "points": [
+        [
+          1020,
+          1270
+        ],
+        [
+          1300,
+          1270
+        ]
+      ]
+    },
+    "Ayo_SP_Listings_inner_1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          116,
+          190
+        ],
+        [
+          190,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Listings_inner_2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          420,
+          190
+        ],
+        [
+          490,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Listings_inner_3": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          720,
+          190
+        ],
+        [
+          790,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Listings_inner_end": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1020,
+          190
+        ],
+        [
+          1090,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Inventory_inner_1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          116,
+          190
+        ],
+        [
+          190,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Inventory_inner_2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          420,
+          190
+        ],
+        [
+          490,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Inventory_inner_3": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          720,
+          190
+        ],
+        [
+          790,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Inventory_inner_end": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1020,
+          190
+        ],
+        [
+          1090,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Purchasing_inner_1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          116,
+          190
+        ],
+        [
+          190,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Purchasing_inner_2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          420,
+          190
+        ],
+        [
+          490,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Purchasing_inner_3": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          720,
+          190
+        ],
+        [
+          790,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Purchasing_inner_end": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1020,
+          190
+        ],
+        [
+          1090,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Orders_inner_1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          116,
+          190
+        ],
+        [
+          190,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Orders_inner_2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          420,
+          190
+        ],
+        [
+          490,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Orders_inner_3": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          720,
+          190
+        ],
+        [
+          790,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Orders_inner_end": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1020,
+          190
+        ],
+        [
+          1090,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Payments_inner_1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          116,
+          190
+        ],
+        [
+          190,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Payments_inner_2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          420,
+          190
+        ],
+        [
+          490,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Payments_inner_3": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          720,
+          190
+        ],
+        [
+          790,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Payments_inner_end": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1020,
+          190
+        ],
+        [
+          1090,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Quality_inner_1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          116,
+          190
+        ],
+        [
+          190,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Quality_inner_2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          420,
+          190
+        ],
+        [
+          490,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Quality_inner_3": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          720,
+          190
+        ],
+        [
+          790,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Quality_inner_end": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1020,
+          190
+        ],
+        [
+          1090,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Community_inner_1": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          116,
+          190
+        ],
+        [
+          190,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Community_inner_2": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          420,
+          190
+        ],
+        [
+          490,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Community_inner_3": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          720,
+          190
+        ],
+        [
+          790,
+          190
+        ]
+      ]
+    },
+    "Ayo_SP_Community_inner_end": {
+      "type": "sequenceFlow",
+      "name": "",
+      "points": [
+        [
+          1020,
+          190
+        ],
+        [
+          1090,
+          190
+        ]
+      ]
+    }
+  },
+  "sourceCommit": "9aeeddc355d42e18477f753973677f85c8dadbbe",
+  "isExecutable": false
+}
