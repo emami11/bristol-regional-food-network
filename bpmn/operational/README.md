@@ -1,12 +1,12 @@
 # Operational BPMN Models
 
-This folder contains the detailed BPMN models developed for Sprint 2 of the Bristol Regional Food Network (BRFN) project.
+This folder contains the operational BPMN models developed for Sprint 2 of the project.
 
-The operational models expand on the processes identified in the Sprint 1 strategic BPMN, showing how the individual activities, decisions and interactions work in more detail.
+The operational models expand on the processes/functionalities identified in the Sprint 1 strategic BPMN, showing how each activities, decisions and interactions work in more detail.
 
 ## F1 – Product Listing and Validation
 
-**Current status:** BPMN model developed; Camunda implementation in progress.
+**Current status:** The F1 BPMN model has been developed and Camunda implementation is currently in progress.
 
 The F1 process covers how a food producer submits a product to the BRFN marketplace and how the listing is checked before it can be published.
 
@@ -22,11 +22,11 @@ The diagram separates the responsibilities of Product Listing Management and Com
 
 ### Camunda implementation
 
-I've started configuring the F1 process in Camunda Web Modeler.
+Configuration to the F1 diagram, is currently in process, in the Camunda Web Modeler.
 
-So far, I've created a Certification Compliance Review form and linked it to the **Review Failed Certification** user task. The form captures the certification issue, whether it can be resolved, and the reviewer's notes.
+So far, a Certification Compliance Review form has been created and linked to the **Review Failed Certification** user task. The form captures the certification issue, whether it can be resolved, and also the reviewer's notes.
 
-I've also configured the YES and NO conditions for the **Can Certification Issue Be Resolved?** gateway using the `certificationIssueResolvable` variable.
+The YES and NO conditions have also been added on for the **Can Certification Issue Be Resolved?** gateway using the `certificationIssueResolvable` variable.
 
 The other gateway conditions, service-task configurations and message handling are still being worked on. The model has not yet been demonstrated as a complete executable process.
 
@@ -37,9 +37,9 @@ The other gateway conditions, service-task configurations and message handling a
 
 ### Next steps
 
-The next stage is to finish configuring the remaining gateways and process variables, connect the necessary service tasks, and test the main workflow paths in Camunda.
+The next steps now, are to finish configuring the remaining gateways and process variables, connect the necessary service tasks, and test the main workflow paths in Camunda.
 
-I'll update the BPMN file and this documentation as the implementation progresses.
+The BPMN file will be consistenlty updated, as well as documentation being done, as the implementation progresses.
 
 ## F2 – Inventory and Seasonal Availability Management
 
