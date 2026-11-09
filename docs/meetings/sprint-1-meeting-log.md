@@ -1,7 +1,4 @@
 # Sprint 1 Group Meeting Log
-
-**Project:** Bristol Regional Food Network (BRFN)
-**Module:** Distributed and Enterprise Software Development
 **Group:** 14
 **Meeting Coordinator:** Noyo Acogo Emami
 
