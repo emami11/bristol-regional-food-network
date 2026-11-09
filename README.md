@@ -4,9 +4,9 @@
 
 ## Project Overview
 
-This repository contains our group project for the Distributed and Enterprise Software Development.
+This repository contains the group project for the Distributed and Enterprise Software Development.
 
-The Bristol Regional Food Network (BRFN) is a fictional digital marketplace designed to connect local food producers with customers.
+The Bristol Regional Food Network (BRFN) is a digital marketplace designed to connect local food producers with customers.
 
 Our aim is to analyse the organisation's business processes and develop a system that supports product management and communication between producers and the marketplace.
 
