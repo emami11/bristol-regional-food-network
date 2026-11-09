@@ -11,7 +11,7 @@
 |---|---|---|---|---|
 | 1 | Wednesday 14 October 2026 | 5:00–6:00 p.m. | University Library (in person) | Project planning and task allocation |
 | 2 | Monday 19 October 2026 | 5:00–6:00 p.m. | University Library (in person) | Strategic BPMN and GitHub development |
-| 3 | Monday 26 October 2026 | 7:00–9:00 p.m. | Group meeting | Final Sprint 1 stand-up and presentation preparation |
+| 3 | Monday 26 October 2026 | 7:00–9:00 p.m. | Online(Discord)| Final Sprint 1 stand-up and presentation preparation |
 
 ## Meeting 1 — Initial Planning and Task Allocation
 
