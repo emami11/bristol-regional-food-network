@@ -15,25 +15,22 @@
 
 **Date:** Tuesday 3 November 2026  
 **Time:** 2:30–3:30 p.m.  
-**Location:** University Library  
-**Format:** In person
+**Location:** University Library 
 
 ### Discussion
 
-We held our first Sprint 2 stand-up after the lecture to discuss the tasks allocated to each group member and make sure everyone understood what they were expected to work on.
+We had our first stand-up after the lecture on Tuesday the 3rd, to discuss the tasks allocated to each group member and make sure everyone understood what they were expected to work on.
 
-We began working on the two operational BPMN models in Camunda:
+We started working on the two operational BPMN models in Camunda:
 
 - F1 — Product Listing and Validation
 - F2 — Inventory and Seasonal Availability Management
 
-We discussed how these operational diagrams would expand on the functionalities identified in our Sprint 1 strategic BPMN.
-
-Members began working on their assigned tasks, familiarising themselves with Camunda and updating the project board to reflect the work planned for Sprint 2.
+Each member had started working on their assigned tasks, and getting more familiar with Camunda and updating the project board, to reflect the work planned for Sprint 2.
 
 ### Outcome
 
-The group confirmed its understanding of the allocated Sprint 2 tasks and began work on the operational BPMN diagrams.
+Each member was able to have a good understandng of what was expected of them, as well as what they were expected to get done on Camunda.
 
 We also reviewed the project board so that the tasks and their progress could be tracked as development continued.
 
@@ -42,21 +39,20 @@ We also reviewed the project board so that the tasks and their progress could be
 **Date:** Monday 9 November 2026  
 **Time:** 8:30–10:30 p.m.  
 **Location:** Online (Discord)  
-**Format:** Online meeting
 
 ### Discussion
 
-We held our second Sprint 2 group meeting on Discord to review the progress everyone had made since the previous meeting.
+We had our second Sprint 2 group meeting on Discord, to review the progress everyone has made since the previous meeting.
 
-Each member discussed their experience working with Camunda and shared what they had learned while developing their diagrams.
+Each member spoke on how they feel about working with Camunda (what they have been able to understand and get used to) and shared what they had learned while developing their diagrams.
 
 We went over BPMN notation, including the different tasks, events, gateways and sequence flows, and discussed how these elements should be used to represent the processes correctly.
 
 We also reviewed the development of our two functionalities, Product Listing and Validation and Inventory and Seasonal Availability Management, and how the operational diagrams relate to the strategic BPMN from Sprint 1.
 
-The group discussed the i* Strategic Dependency (SD) and Strategic Rationale (SR) models, including the work required to develop both diagrams.
+The group discussed the i* Strategic Dependency (SD) and Strategic Rationale (SR) models, and the tools to be used to develop these two diagrams.
 
-We also reviewed the Sprint 2 backlog and updated the GitHub project board to reflect the current progress of our assigned tasks.
+We also updated the Sprint 2 backlog and updated the GitHub project board to reflect the current progress of our assigned tasks.
 
 ### Meeting Outcome
 
@@ -64,7 +60,7 @@ The meeting gave everyone an opportunity to share their progress and improve the
 
 We reviewed the operational diagram work completed so far and discussed the next stages of the F1 and F2 models.
 
-The group also reviewed the tasks relating to the i* SD and SR diagrams and updated the sprint backlog and project board.
+The group also reviewed the tasks relating to the i* SD and SR diagrams seeing as we gained a better understanding of them in the previous lecture, and updated the sprint backlog and project board.
 
 We agreed to continue working on our assigned tasks and to keep GitHub updated as the sprint progresses.
 
@@ -83,10 +79,7 @@ During Sprint 2, the group is working on the following areas:
 
 ## Relationship to Sprint 2 Deliverables
 
-These meetings supported the group's transition from the strategic modelling completed in Sprint 1 to the more detailed operational modelling required for Sprint 2.
+These meetings, have been able to help us easily transition from the tasks from the first sprint to that of the second one. They have been able to allow ys to share our ideas as a team and also gain a joint understanding of what we are expected of for our work.
 
-The first meeting focused on understanding the new tasks and beginning the operational BPMN diagrams. The second meeting focused on reviewing individual progress, improving the group's understanding of BPMN notation and discussing the i* models.
+Both meetings have helped us in trackung our process and also effectively updating both our backlog and project board.
 
-Both meetings also helped the group track its progress through the sprint backlog and GitHub project board.
-
-The operational BPMN and i* models are still being developed and will continue to be reviewed as Sprint 2 progresses.
