@@ -1,5 +1,7 @@
 # Sprint 1 Group Meeting Log
+
 **Group:** 14
+
 **Meeting Coordinator:** Noyo Acogo Emami
 
 ## Meeting Overview
