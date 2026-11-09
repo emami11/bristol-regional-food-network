@@ -21,8 +21,8 @@ In this chat, you requested a rebuilt SR and confirmed that your own BPMN should
 
 | Deliverable | Start here |
 |---|---|
-| Revised five-actor SR, aligned with the updated actor analysis | [Core SR](../../models/istar/ayo/core/BRFN-Ayo-SR.drawio) |
-| Expanded eight-actor view retaining buyer segments and payment context | [Expanded SR](../../models/istar/ayo/expanded/BRFN-Ayo-SR.drawio) |
+| Revised five-actor SR, aligned with the updated actor analysis | [Core SR in piStar](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.txt) |
+| Expanded eight-actor view retaining buyer segments and payment context | [Expanded SR in piStar](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Expanded.txt) |
 | Your own whole-enterprise strategic BPMN | [Personal BPMN](../../bpmn/personal/ayo/BRFN-Ayo-Strategic-BPMN.bpmn) |
 | Model explanations and assumptions | [SR notes](../../models/istar/ayo/README.md); [BPMN notes](../../bpmn/personal/ayo/README.md) |
 
@@ -52,4 +52,4 @@ The new `model-traceability.md` incorrectly mapped F2 to Manage Product Listings
 
 The personal BPMN includes a high-level **Payment accepted?** XOR gateway with a named Yes condition and a default No/unresolved outcome, supporting #14's request to consider appropriate gateways. The detailed decline/retry handling remains inside the later operational process.
 
-The model drafts were prepared on `codex/ayo-sr-strategic-bpmn`. This contribution includes editable `.drawio` and `.bpmn` source files and SVG/PNG exports. #17 still needs joint SD consistency checking and group review; publishing the artefacts does not by itself close the issue.
+The model drafts were prepared on `codex/ayo-sr-strategic-bpmn`. The SR was converted to piStar on 9 November 2026 after Ayo clarified the required tool. This contribution includes native piStar `.txt` models, an editable `.bpmn` source and SVG/PNG exports; the earlier `.drawio` files remain reference drawings. See [piStar instructions and validation](../../models/istar/ayo/pistar/README.md). #17 still needs joint SD consistency checking and group review; publishing the artefacts does not by itself close the issue.

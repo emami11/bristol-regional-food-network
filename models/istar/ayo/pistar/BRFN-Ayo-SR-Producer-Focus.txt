@@ -1,0 +1,440 @@
+{
+  "actors": [
+    {
+      "id": "P",
+      "text": "Registered Producer",
+      "type": "istar.Actor",
+      "x": 100,
+      "y": 100,
+      "nodes": [
+        {
+          "id": "P-G1",
+          "text": "P-G1\nValid product information maintained",
+          "type": "istar.Goal",
+          "x": 155,
+          "y": 245,
+          "customProperties": {
+            "ElementID": "P-G1",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-G2",
+          "text": "P-G2\nInventory and seasonal records current",
+          "type": "istar.Goal",
+          "x": 405,
+          "y": 245,
+          "customProperties": {
+            "ElementID": "P-G2",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-T1",
+          "text": "P-T1\nSubmit complete product information",
+          "type": "istar.Task",
+          "x": 155,
+          "y": 380,
+          "customProperties": {
+            "ElementID": "P-T1",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-T2",
+          "text": "P-T2\nReview feedback and correct issues",
+          "type": "istar.Task",
+          "x": 405,
+          "y": 380,
+          "customProperties": {
+            "ElementID": "P-T2",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-T3",
+          "text": "P-T3\nUpdate product quantities",
+          "type": "istar.Task",
+          "x": 655,
+          "y": 380,
+          "customProperties": {
+            "ElementID": "P-T3",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-T4",
+          "text": "P-T4\nUpdate seasonal availability",
+          "type": "istar.Task",
+          "x": 905,
+          "y": 380,
+          "customProperties": {
+            "ElementID": "P-T4",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-R1",
+          "text": "P-R1\nProduct details and applicable evidence",
+          "type": "istar.Resource",
+          "x": 155,
+          "y": 515,
+          "customProperties": {
+            "ElementID": "P-R1",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-R2",
+          "text": "P-R2\nValidation and correction feedback",
+          "type": "istar.Resource",
+          "x": 405,
+          "y": 515,
+          "customProperties": {
+            "ElementID": "P-R2",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-R3",
+          "text": "P-R3\nCurrent quantity and season records",
+          "type": "istar.Resource",
+          "x": 655,
+          "y": 515,
+          "customProperties": {
+            "ElementID": "P-R3",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-R4",
+          "text": "P-R4\nListing standards and guidance",
+          "type": "istar.Resource",
+          "x": 905,
+          "y": 515,
+          "customProperties": {
+            "ElementID": "P-R4",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-Q1",
+          "text": "P-Q1\nSimple and efficient listing",
+          "type": "istar.Quality",
+          "x": 155,
+          "y": 650,
+          "customProperties": {
+            "ElementID": "P-Q1",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-Q2",
+          "text": "P-Q2\nMinimal administrative effort",
+          "type": "istar.Quality",
+          "x": 405,
+          "y": 650,
+          "customProperties": {
+            "ElementID": "P-Q2",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-Q3",
+          "text": "P-Q3\nUnderstandable validation feedback",
+          "type": "istar.Quality",
+          "x": 655,
+          "y": 650,
+          "customProperties": {
+            "ElementID": "P-Q3",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        },
+        {
+          "id": "P-G3",
+          "text": "P-G3\nValid products published",
+          "type": "istar.Goal",
+          "x": 155,
+          "y": 785,
+          "customProperties": {
+            "ElementID": "P-G3",
+            "Basis": "ACTOR-ANALYSIS"
+          }
+        }
+      ],
+      "customProperties": {
+        "Scope": "Use Case 1: listing and inventory"
+      }
+    }
+  ],
+  "orphans": [],
+  "dependencies": [],
+  "links": [
+    {
+      "id": "L001",
+      "type": "istar.AndRefinementLink",
+      "source": "P-T1",
+      "target": "P-G1"
+    },
+    {
+      "id": "L002",
+      "type": "istar.AndRefinementLink",
+      "source": "P-T2",
+      "target": "P-G1"
+    },
+    {
+      "id": "L003",
+      "type": "istar.AndRefinementLink",
+      "source": "P-T3",
+      "target": "P-G2"
+    },
+    {
+      "id": "L004",
+      "type": "istar.AndRefinementLink",
+      "source": "P-T4",
+      "target": "P-G2"
+    },
+    {
+      "id": "L005",
+      "type": "istar.NeededByLink",
+      "source": "P-R1",
+      "target": "P-T1"
+    },
+    {
+      "id": "L006",
+      "type": "istar.NeededByLink",
+      "source": "P-R2",
+      "target": "P-T2"
+    },
+    {
+      "id": "L007",
+      "type": "istar.NeededByLink",
+      "source": "P-R3",
+      "target": "P-T3"
+    },
+    {
+      "id": "L008",
+      "type": "istar.NeededByLink",
+      "source": "P-R3",
+      "target": "P-T4"
+    },
+    {
+      "id": "L009",
+      "type": "istar.NeededByLink",
+      "source": "P-R4",
+      "target": "P-T1"
+    },
+    {
+      "id": "L010",
+      "type": "istar.ContributionLink",
+      "source": "P-T2",
+      "target": "P-Q1",
+      "label": "hurt"
+    },
+    {
+      "id": "L011",
+      "type": "istar.ContributionLink",
+      "source": "P-T1",
+      "target": "P-Q2",
+      "label": "hurt"
+    },
+    {
+      "id": "L012",
+      "type": "istar.ContributionLink",
+      "source": "P-T2",
+      "target": "P-Q2",
+      "label": "hurt"
+    },
+    {
+      "id": "L013",
+      "type": "istar.QualificationLink",
+      "source": "P-Q3",
+      "target": "P-R2"
+    }
+  ],
+  "display": {
+    "P": {
+      "backgroundColor": "#f7fafc"
+    },
+    "P-G1": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#e5f2e5"
+    },
+    "P-G2": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#e5f2e5"
+    },
+    "P-T1": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#e7effb"
+    },
+    "P-T2": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#e7effb"
+    },
+    "P-T3": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#e7effb"
+    },
+    "P-T4": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#e7effb"
+    },
+    "P-R1": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#fff3d8"
+    },
+    "P-R2": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#fff3d8"
+    },
+    "P-R3": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#fff3d8"
+    },
+    "P-R4": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#fff3d8"
+    },
+    "P-Q1": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#eee8fa"
+    },
+    "P-Q2": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#eee8fa"
+    },
+    "P-Q3": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#eee8fa"
+    },
+    "P-G3": {
+      "width": 215,
+      "height": 78,
+      "backgroundColor": "#e5f2e5"
+    },
+    "L001": {
+      "vertices": [
+        {
+          "x": 262,
+          "y": 355
+        },
+        {
+          "x": 262,
+          "y": 355
+        }
+      ]
+    },
+    "L002": {
+      "vertices": [
+        {
+          "x": 512,
+          "y": 355
+        },
+        {
+          "x": 262,
+          "y": 355
+        }
+      ]
+    },
+    "L003": {
+      "vertices": [
+        {
+          "x": 762,
+          "y": 355
+        },
+        {
+          "x": 512,
+          "y": 355
+        }
+      ]
+    },
+    "L004": {
+      "vertices": [
+        {
+          "x": 1012,
+          "y": 355
+        },
+        {
+          "x": 512,
+          "y": 355
+        }
+      ]
+    },
+    "L010": {
+      "vertices": [
+        {
+          "x": 630,
+          "y": 470
+        },
+        {
+          "x": 630,
+          "y": 616
+        },
+        {
+          "x": 262,
+          "y": 616
+        }
+      ]
+    },
+    "L011": {
+      "vertices": [
+        {
+          "x": 380,
+          "y": 470
+        },
+        {
+          "x": 380,
+          "y": 602
+        },
+        {
+          "x": 512,
+          "y": 602
+        }
+      ]
+    },
+    "L013": {
+      "vertices": [
+        {
+          "x": 880,
+          "y": 740
+        },
+        {
+          "x": 880,
+          "y": 616
+        },
+        {
+          "x": 512,
+          "y": 616
+        }
+      ]
+    }
+  },
+  "tool": "pistar.2.1.0",
+  "istar": "2.0",
+  "saveDate": "Mon, 09 Nov 2026 12:00:00 GMT",
+  "diagram": {
+    "width": 1250,
+    "height": 1150,
+    "name": "BRFN SR - Registered Producer focus",
+    "customProperties": {
+      "Scope": "Use Case 1",
+      "Baseline": "9aeeddc355d42e18477f753973677f85c8dadbbe",
+      "Author": "Ayobamidele Esho",
+      "Review": "Align dependencies with the group SD before final submission."
+    }
+  }
+}

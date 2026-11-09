@@ -1,15 +1,15 @@
 # Ayo's revised Strategic Rationale models
 
-Updated on 3 November 2026 from repository main **9aeeddc** and Ayo's assigned [SR issue #17](https://github.com/emami11/bristol-regional-food-network/issues/17). Start with the core model when discussing the selected Use Case 1.
+The SR content was updated on 3 November 2026 from repository main **9aeeddc** and Ayo's assigned [SR issue #17](https://github.com/emami11/bristol-regional-food-network/issues/17). On 9 November, the models were converted to the required **piStar** tool. Start with the [native five-actor piStar model](pistar/BRFN-Ayo-SR-Core.txt) for Use Case 1; see the [piStar loading instructions and native exports](pistar/README.md).
 
 | File | Purpose |
 |---|---|
-| [Core SR](core/BRFN-Ayo-SR.drawio) | Five actors matching the latest actor analysis: Registered Producer, Customer, Marketplace Admin, Marketplace Platform and Certification Verification Service. |
-| [Expanded SR](expanded/BRFN-Ayo-SR.drawio) | Eight actors: replaces Customer with the three buyer groups and includes the Payment Service as wider context, as requested in our earlier discussion. |
+| [Core SR in piStar](pistar/BRFN-Ayo-SR-Core.txt) | Five actors matching the actor analysis: Registered Producer, Customer, Marketplace Admin, Marketplace Platform and Certification Verification Service. |
+| [Expanded SR in piStar](pistar/BRFN-Ayo-SR-Expanded.txt) | Eight actors: replaces Customer with the three buyer groups and includes the Payment Service as wider context, as requested in our earlier discussion. |
 | [Core register](core/SR-REGISTER.md) | Exact goals, tasks, resources, qualities, internal links and dependency endpoints. |
 | [Expanded register](expanded/SR-REGISTER.md) | The corresponding register for the broader view. |
 
-Open the `.drawio` files in diagrams.net. Each has actor rationale pages followed by readable dependency views. The `exports` folders contain vector previews. Stable IDs refer to the same element across pages. These files are diagrams.net sources, not piStar import files.
+Load the native `.txt` files through **File → Load Model** in piStar. The `core` and `expanded` folders retain the earlier `.drawio` sources and page exports as reference views; those files are opened in diagrams.net and cannot be loaded directly into piStar. Stable element IDs connect the references to the native model.
 
 ## Diagram pictures and source code
 
@@ -17,7 +17,7 @@ Open the `.drawio` files in diagrams.net. Each has actor rationale pages followe
 
 This is the producer page of the five-actor core model. The [core exports](core/exports/) contain a PNG picture and SVG for every actor and dependency page; the [expanded exports](expanded/exports/) include the buyer groups and payment context.
 
-The `.drawio` files are the editable diagram sources. The JSON model files in each variant also record the actors, intentions and relationships.
+The native piStar `.txt` files are the required editable sources. The JSON model files in each variant record the source actors, intentions and relationships; these analysis JSON files are not directly importable in piStar. The `.drawio` files preserve the earlier drawing layout.
 
 ## What changed from the October draft
 
@@ -55,4 +55,4 @@ The new [traceability document](../../../docs/requirements/model-traceability.md
 
 Your [personal strategic BPMN](../../../bpmn/personal/ayo/BRFN-Ayo-Strategic-BPMN.bpmn) covers the whole enterprise. It intentionally has wider scope than the five-actor core SR. Actor counts and BPMN pool counts need not be identical: customers are grouped in one pool and administrators work inside BRFN.
 
-Edit the `.drawio` files in diagrams.net and refresh the PNG/SVG exports after making changes.
+Edit the native model in piStar, then use **File → Save Model** and **File → Save Image** to refresh the editable source and pictures.
