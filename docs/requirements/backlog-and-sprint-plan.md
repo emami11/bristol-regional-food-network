@@ -107,13 +107,13 @@ Objective of Sprint 2 is to create the stakeholder model and operational process
 
 | Task                      | Status      | Next Action                             |
 |---------------------------|-------------|-----------------------------------------|
-| Development of i* SR Model | To Do       | Verify progress and open modelling tasks|
+| Development of i* SR Model | in progress       | Confirm current progress with Ayo|
 | Traceability Across i*, Strategic and Operational BPMN | To Do     | Identify connections and traceability   |
-| Development of Executable Camunda Processes, User Tasks and Forms | To Do | Verify progress and develop tasks |
-| Implementation of Variables, Gateways, Service Tasks and Business Rules | To Do | Monitor implementation |
-| Update Backlog, Task Progress and Group Contribution              | To Do | Update task status, task progress and contribution |
+| Development of Executable Camunda Processes, User Tasks and Forms | In Progress – F1 BPMN draft created | Verify progress with tutur and develop tasks |
+| Implementation of Variables, Gateways, Service Tasks and Business Rules | To do,awaiting progress confirmation | Monitor implementation |
+| Update Backlog, Task Progress and Group Contribution              | in progress | Update task status, task progress and contribution |
 
-The task statuses and next actions should be updated after group meetings.
+This is the current information available and will be verified by the respective group members at the stand-up.
 
 ## 7. Sprint 2 Task Ownership and Acceptance Criteria
 
