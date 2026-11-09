@@ -21,9 +21,7 @@
 
 ### Discussion
 
-We discussed the initial approach to the BRFN project, shared ideas about how to organise the work and agreed to distribute responsibilities among members.
-
-Tasks were allocated across business analysis, stakeholder analysis, actor analysis, requirements, sprint planning and BPMN modelling.
+We discussed the initial approach to the project, shared ideas about how to organise the work and agreed to distribute responsibilities among members.
 
 ### Outcome
 
@@ -38,9 +36,9 @@ We established an initial project plan and allocated responsibilities for Sprint
 
 ### Discussion
 
-We discussed the development of the Strategic BPMN and began working on the model.
+We discussed the development of the Strategic BPMN diagram and began working on the model.
 
-Members also worked on setting up and organising the GitHub repository, including committing and pushing project files.
+We also worked on setting up and organising the GitHub repository, including committing and pushing project files.
 
 ### Outcome
 
@@ -68,9 +66,7 @@ We collectively reviewed its Sprint 1 work and discussed:
 
 We collectively reviewed the Sprint 1 documents available on GitHub and checked how each document relates to the Strategic BPMN.
 
-We discussed and refined sections containing unnecessary or unclear information to improve consistency with the model. The group reviewed the two proposed functionalities, their relationship to the Product and Inventory Management lane, and how the wider business processes are represented.
-
-We also revised their understanding of BPMN notation, the three lanes, seven subprocesses, external participants and process interactions.
+We discussed and made changes to sections that conatianed unnecessary information, to improve consistency with the model. We also eviewed the two proposed functionalities, their relationship to the Product and Inventory Management lane, and how the wider business processes are represented.
 
 We agreed that each member should understand their own assigned section, the overall Strategic BPMN and how the other members' contributions connect to it.
 
@@ -88,7 +84,7 @@ We agreed that each member should understand their own assigned section, the ove
 
 ## Relationship to Sprint 1 Deliverables
 
-The meetings supported the development and coordination of the group's business analysis, stakeholder analysis, actor analysis, requirements, strategic BPMN, GitHub repository and sprint planning.
+The meetings supported the development and coordination of our group's business analysis, stakeholder analysis, actor analysis, requirements, strategic BPMN, GitHub repository and sprint planning.
 
-The final meeting supports preparation for the Sprint 1 review and the planned transition to detailed BPMN and i* modelling in Sprint 2.
+The final meeting supported our preparation for the Sprint 1 review and the planned transition to detailed BPMN and i* modelling in Sprint 2.
 
