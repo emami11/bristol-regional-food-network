@@ -10,7 +10,7 @@ Use **File → Save Model** to save edits and **File → Save Image** to export 
 
 ![Simplified SR](BRFN-Ayo-SR-Core.png)
 
-[Full-size PNG](BRFN-Ayo-SR-Core.png) · [SVG preview](BRFN-Ayo-SR-Core.svg)
+[Full-size PNG](BRFN-Ayo-SR-Core.png) · [SVG exported from piStar](BRFN-Ayo-SR-Core.svg)
 
 ## Supporting models
 
@@ -21,7 +21,9 @@ Use **File → Save Model** to save edits and **File → Save Image** to export 
 
 ## Checks
 
-The simplified file passes the official piStar 2.1.0 relationship constraint functions, checked offline, along with endpoint and AND-refinement checks. Its PNG/SVG preview is generated from the same model data; it is not a new export from piStar. Live import could not be rechecked because the browser connection was unavailable.
+The simplified model was verified in the official piStar 2.1.0 web tool on **10 November 2026**. It loaded without a model warning, and the file downloaded through **File → Save Model** preserved all five actors, 27 internal elements, six dependencies and 33 links. Actor names, node labels and types, dependency endpoints and relationship labels were compared before and after saving.
+
+Link routing was adjusted to avoid large loops in piStar's curved links; the intentions and relationships are unchanged. The committed `.txt` is the model saved by piStar. Its SVG was exported directly through **File → Save Image**, and the PNG was converted from that SVG without changing the diagram layout. The earlier offline relationship and endpoint checks also passed.
 
 The archived detailed file was previously imported and saved in the official piStar tool, preserving all actors, elements, dependencies and links. The expanded and producer-focus files have structural checks.
 
