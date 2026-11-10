@@ -9,9 +9,8 @@ It focuses on valid product listings and current stock information, with 27 inte
 - [Main piStar model](pistar/BRFN-Ayo-SR-Core.txt)
 - [View the simplified diagram](pistar/BRFN-Ayo-SR-Core.png)
 - [Loading instructions and supporting models](pistar/README.md)
-- [Earlier draw.io version](core/BRFN-Ayo-SR.drawio)
 - [Detailed modelling notes](DETAILED-NOTES.md)
 
-Download the main `.txt` file and open it in piStar using **File → Load Model**. The earlier `.drawio` file opens in diagrams.net as a reference drawing.
+Download the main `.txt` file and open it in piStar using **File → Load Model**.
 
 The detailed models retain exception handling and payment context. Dependencies still need alignment with the group's SD model and group review.

@@ -17,7 +17,7 @@ Use **File → Save Model** to save edits and **File → Save Image** to export 
 - [Detailed five-actor SR](BRFN-Ayo-SR-Detailed.txt): the previous 72-element, 14-dependency version, including verification exceptions. [Original piStar picture](BRFN-Ayo-SR-Detailed.png).
 - [Expanded eight-actor SR](BRFN-Ayo-SR-Expanded.txt): buyer segments, payment and settlement context.
 - [Producer-only learning view](BRFN-Ayo-SR-Producer-Focus.txt): an earlier focused view, without cross-actor dependencies.
-- [Earlier draw.io sources and detailed notes](../DETAILED-NOTES.md).
+- [Detailed modelling notes and reference registers](../DETAILED-NOTES.md).
 
 ## Checks
 

@@ -9,15 +9,15 @@ These notes describe the detailed model, retained behind the [simplified main SR
 | [Core register](core/SR-REGISTER.md) | Exact goals, tasks, resources, qualities, internal links and dependency endpoints. |
 | [Expanded register](expanded/SR-REGISTER.md) | The corresponding register for the broader view. |
 
-Load the native `.txt` files through **File → Load Model** in piStar. The `core` and `expanded` folders retain the earlier `.drawio` sources and page exports as reference views; those files are opened in diagrams.net and cannot be loaded directly into piStar. Stable element IDs connect the references to the native model.
+Load the native `.txt` files through **File → Load Model** in piStar. The `core` and `expanded` folders contain the detailed element registers and analysis data. Stable element IDs connect those references to the native detailed models.
 
 ## Diagram pictures and source code
 
-![Core SR: Registered Producer goals, tasks, resources and qualities](core/exports/01-registered-producer.png)
+![Detailed five-actor SR in piStar](pistar/BRFN-Ayo-SR-Detailed.png)
 
-This is the producer page of the five-actor core model. The [core exports](core/exports/) contain a PNG picture and SVG for every actor and dependency page; the [expanded exports](expanded/exports/) include the buyer groups and payment context.
+This is the retained detailed five-actor model. The [main simplified picture](pistar/BRFN-Ayo-SR-Core.png) is the recommended overview; the [expanded piStar model](pistar/BRFN-Ayo-SR-Expanded.txt) includes the buyer groups and payment context.
 
-The native piStar `.txt` files are the required editable sources. The JSON model files in each variant record the source actors, intentions and relationships; these analysis JSON files are not directly importable in piStar. The `.drawio` files preserve the earlier drawing layout.
+The native piStar `.txt` files are the required editable sources. The JSON model files in each variant record the source actors, intentions and relationships; these analysis JSON files are not directly importable in piStar.
 
 ## What changed from the October draft
 
