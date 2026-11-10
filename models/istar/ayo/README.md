@@ -8,9 +8,8 @@ It focuses on valid product listings and current stock information, with 27 inte
 
 - [Main piStar model](pistar/BRFN-Ayo-SR-Core.txt)
 - [View the simplified diagram](pistar/BRFN-Ayo-SR-Core.png)
-- [Loading instructions and supporting models](pistar/README.md)
-- [Detailed modelling notes](DETAILED-NOTES.md)
+- [Loading instructions and verification](pistar/README.md)
 
 Download the main `.txt` file and open it in piStar using **File → Load Model**.
 
-The detailed models retain exception handling and payment context. Dependencies still need alignment with the group's SD model and group review.
+The three buyer groups are represented by one Customer actor. Payments belong to the wider marketplace context. Dependencies still need alignment with the group's SD model and group review.

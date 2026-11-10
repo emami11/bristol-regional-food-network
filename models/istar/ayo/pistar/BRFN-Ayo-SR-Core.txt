@@ -2211,7 +2211,7 @@
     "customProperties": {
       "Scope": "UC1: valid product listings and current stock",
       "Author": "Ayobamidele Esho",
-      "Detail": "Supporting retries, review policy and payment context are in the detailed models."
+      "Detail": "Detailed exception handling belongs in the operational BPMN; payments are wider marketplace context."
     }
   }
 }
