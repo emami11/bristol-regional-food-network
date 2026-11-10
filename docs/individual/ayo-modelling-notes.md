@@ -21,14 +21,17 @@ In this chat, you requested a rebuilt SR and confirmed that your own BPMN should
 
 | Deliverable | Start here |
 |---|---|
-| Revised five-actor SR, aligned with the updated actor analysis | [Core SR in piStar](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.txt) |
+| Simplified five-actor SR for explanation and presentation | [Core SR in piStar](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.txt) |
+| Detailed five-actor SR with the original internal references | [Detailed SR in piStar](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Detailed.txt) |
 | Expanded eight-actor view retaining buyer segments and payment context | [Expanded SR in piStar](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Expanded.txt) |
 | Your own whole-enterprise strategic BPMN | [Personal BPMN](../../bpmn/personal/ayo/BRFN-Ayo-Strategic-BPMN.bpmn) |
 | Model explanations and assumptions | [SR notes](../../models/istar/ayo/README.md); [BPMN notes](../../bpmn/personal/ayo/README.md) |
 
 ## How the models connect
 
-| Requirement / responsibility | Core SR elements | Personal BPMN |
+The IDs below refer to the retained detailed SR register. The main piStar diagram now uses a smaller selection of intentions and six dependencies for a clearer overview.
+
+| Requirement / responsibility | Detailed SR reference IDs | Personal BPMN |
 |---|---|---|
 | Product submission and corrections | P-G1, P-T1/P-T2, M-G1, M-G5; D02/D03/D11 | Ayo_SP_Listings |
 | Applicable certification checking | V-G1, M-T2; D05/D06 | Listing subprocess and certification request/result messages |
