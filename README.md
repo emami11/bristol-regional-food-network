@@ -58,6 +58,7 @@ We are following an Agile approach, with work organised into three sprints.
 | `bpmn/practice/` | Initial BPMN modelling practice |
 | [`bpmn/personal/ayo/`](bpmn/personal/ayo/README.md) | Ayo's whole-enterprise strategic BPMN, editable source and diagram pictures |
 | [`models/istar/ayo/`](models/istar/ayo/README.md) | Ayo's verified SR model in piStar, editable source and diagram pictures |
+| [`bpmn/operational/ayo/`](bpmn/operational/ayo/README.md) | Runnable F1/F2 BPMN, shared DMN, forms and token simulation instructions |
 | `docs/business-analysis/` | Main business activities and responsibilities |
 | `docs/requirements/` | Selected functionalities and requirements |
 | `docs/stakeholder-analysis/` | Stakeholders and their needs |

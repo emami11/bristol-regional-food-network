@@ -45,7 +45,7 @@ Scope is as agreed in [PROPOSED-FUNCTIONALITIES.md](PROPOSED-FUNCTIONALITIES.md)
 | `validationErrors` | list | `validate-product` worker | `[{ field, message }]`, every problem at once |
 | `validationSummary` | text | `validate-product` worker | One line per error, for showing in the correction form |
 | `certValid` | boolean | `verify-certificate` worker or admin | `true` only for a valid, unexpired certificate |
-| `certStatus` | text | `verify-certificate` worker | `VALID`, `EXPIRED`, `REVOKED`, `NOT_FOUND`, `SERVICE_DOWN`, `NOT_CLAIMED` |
+| `certStatus` | text | certificate worker / admin review | `VALID`, `EXPIRED`, `REVOKED`, `NOT_FOUND`, `SERVICE_DOWN`, `NOT_CLAIMED`, `ADMIN_APPROVED`, `ADMIN_REJECTED` |
 | `certCheckedAt` | date-time | `verify-certificate` worker | When the check ran |
 | `certVerifiedBy` | text | worker or admin step | `SERVICE` or `ADMIN` |
 | `availabilityStatus` | text | `product-availability` decision | See rule A1–A4 |
@@ -143,8 +143,8 @@ Names the BPMN, forms and code must agree on.
 |---|---|---|---|---|
 | `validate-product` | F1 | product form variables | `dataValid`, `validationErrors`, `validationSummary` | Implemented, `services/` |
 | `verify-certificate` | F1 | `organicClaimed`, `certNumber` | `certValid`, `certStatus`, `certCheckedAt`, `certVerifiedBy` | Implemented, `services/` |
-| `apply-stock-change` | F2 | `quantity`, `quantityChange` / `newQuantity`, `orderId` | `quantity`, `previousStatus` | Planned, Sprint 3 |
-| `notify-producer` | F1, F2 | status variables | (none) | Planned, Sprint 3 (logs only) |
+| `apply-stock-change` | F2 | `productId`, `quantityChange` / `newQuantity`, `orderId`, `updateKind`, seasonal dates | `quantity`, `previousStatus`, validation / duplicate / overselling flags | Implemented in Ayo's local executable contribution |
+| `notify-producer` | F1, F2 | status variables | `notificationRecorded` | Implemented as a persistent local outbox; no email |
 
 ### BPMN errors
 
@@ -157,13 +157,16 @@ Names the BPMN, forms and code must agree on.
 | Message name | Correlation key | Used by |
 |---|---|---|
 | `stock-changed` | `= productId` | F2: stock change from the ordering process (Use Case 2 / Task 2 link) |
+| `brfn-inventory-start` | `productId` passed by publisher | Message start for F2 when F1 publishes a product |
+| `inventory-update-requested` | `= productId` | F2: opens the producer stock form |
+| `stop-inventory` | `= productId` | F2: ends inventory monitoring |
 
 ### Timers
 
 | Purpose | Value | While testing |
 |---|---|---|
 | Archive an uncorrected listing | `P7D` | `PT1M` |
-| Daily season check (F2) | `R/P1D` or a cron expression | `R/PT5M` |
+| Daily season check (F2 executable contribution) | Catch timer `=nextSeasonCheckAt`, next midnight UTC; renewed after firing | `seasonCheckDelayMs: 1200` in integration tests |
 
 ### Conditions for the process's decisions (FEEL)
 
@@ -175,6 +178,23 @@ Names the BPMN, forms and code must agree on.
 | Certificate accepted (admin) | `= adminDecision = "APPROVE"` |
 | Status changed (F2) | `= availabilityStatus != previousStatus` |
 | Product orderable | `= availabilityStatus = "AVAILABLE"` |
+
+### Additional variables in the executable contribution
+
+The models in [bpmn/operational/ayo](../../bpmn/operational/ayo/README.md) preserve the rules above and add runtime state:
+
+| Variable | Meaning |
+|---|---|
+| `listingState` | `DRAFT`, `PUBLISHED`, `WITHDRAWN` or `ARCHIVED` |
+| `correctionAction`, `correctionTimeout` | `RESUBMIT` / `WITHDRAW`; default `P7D` boundary timer |
+| `adminReviewValid`, `adminValidationMessage` | Enforce C7's decision and rejection reason |
+| `updateKind`, `stockUpdateValid` | Local task input `ORDER` / `PRODUCER`, and update-validation outcome |
+| `oversold`, `duplicateOrder` | S3/S4 outcomes; repeated order IDs are ignored per product, including after restart |
+| `inventoryVersion` | Detects stock changes during availability evaluation |
+| `nextSeasonCheckAt` | Fixed next midnight UTC deadline; other updates do not postpone it |
+| `orderable` | Only true after an `AVAILABLE` decision; immediately closed for zero stock / an unavailable season |
+
+Supporting job types are `brfn-initialise-listing`, `brfn-record-admin`, `brfn-publish-listing`, `brfn-reject-listing`, `brfn-archive-listing`, `brfn-load-inventory`, `brfn-save-availability` and `brfn-stop-inventory`. They initialise, persist and connect the two processes. Details and run instructions are in the linked README.
 
 ## 8. Use of generative AI
 

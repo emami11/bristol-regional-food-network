@@ -1,0 +1,45 @@
+{
+  "id": "BRFN_Stock_Form",
+  "type": "default",
+  "components": [
+    {
+      "type": "textarea",
+      "key": "validationSummary",
+      "label": "Update feedback",
+      "id": "field_validationSummary",
+      "disabled": true
+    },
+    {
+      "type": "number",
+      "key": "newQuantity",
+      "label": "New quantity",
+      "id": "field_newQuantity",
+      "decimalDigits": 0,
+      "validate": {
+        "required": true,
+        "min": 0
+      }
+    },
+    {
+      "type": "textfield",
+      "key": "availableFrom",
+      "label": "Season start YYYY-MM-DD",
+      "id": "field_availableFrom",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "type": "textfield",
+      "key": "availableTo",
+      "label": "Season end YYYY-MM-DD",
+      "id": "field_availableTo",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "schemaVersion": 16,
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0"
+}

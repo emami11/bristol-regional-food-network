@@ -1,0 +1,441 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="BRFN_F2_Executable_defs" targetNamespace="https://brfn.example/operational" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <bpmn:process id="BRFN_F2_Executable" name="F2 - Inventory and seasonal availability" isExecutable="true">
+    <bpmn:startEvent id="F2_Start" name="Published product">
+      <bpmn:outgoing>F2_Start_to_F2_Load_0</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="InventoryStartMessage" />
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="F2_Load" name="Load current inventory">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="brfn-load-inventory" retries="3" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F2_Start_to_F2_Load_0</bpmn:incoming>
+      <bpmn:outgoing>F2_Load_to_F2_Availability_1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:businessRuleTask id="F2_Availability" name="Determine product availability">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="product-availability" resultVariable="availabilityStatus" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F2_Load_to_F2_Availability_1</bpmn:incoming>
+      <bpmn:incoming>F2_OrderValid_to_F2_Availability_13</bpmn:incoming>
+      <bpmn:incoming>F2_UpdateValid_to_F2_Availability_19</bpmn:incoming>
+      <bpmn:incoming>F2_Refresh_to_F2_Availability_22</bpmn:incoming>
+      <bpmn:outgoing>F2_Availability_to_F2_Save_2</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:serviceTask id="F2_Save" name="Save availability">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="brfn-save-availability" retries="3" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F2_Availability_to_F2_Save_2</bpmn:incoming>
+      <bpmn:outgoing>F2_Save_to_F2_StatusChanged_3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="F2_StatusChanged" name="Changed or stock issue?" default="F2_StatusChanged_to_F2_Wait_5">
+      <bpmn:incoming>F2_Save_to_F2_StatusChanged_3</bpmn:incoming>
+      <bpmn:outgoing>F2_StatusChanged_to_F2_Notify_4</bpmn:outgoing>
+      <bpmn:outgoing>F2_StatusChanged_to_F2_Wait_5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="F2_Notify" name="Notify producer">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="notify-producer" retries="3" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F2_StatusChanged_to_F2_Notify_4</bpmn:incoming>
+      <bpmn:outgoing>F2_Notify_to_F2_Wait_6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:eventBasedGateway id="F2_Wait" name="Wait for next update">
+      <bpmn:incoming>F2_StatusChanged_to_F2_Wait_5</bpmn:incoming>
+      <bpmn:incoming>F2_Notify_to_F2_Wait_6</bpmn:incoming>
+      <bpmn:incoming>F2_OrderIssue_to_F2_Wait_15</bpmn:incoming>
+      <bpmn:outgoing>F2_Wait_to_F2_Order_7</bpmn:outgoing>
+      <bpmn:outgoing>F2_Wait_to_F2_Request_8</bpmn:outgoing>
+      <bpmn:outgoing>F2_Wait_to_F2_Daily_9</bpmn:outgoing>
+      <bpmn:outgoing>F2_Wait_to_F2_Stop_10</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+    <bpmn:intermediateCatchEvent id="F2_Order" name="Order stock-change message">
+      <bpmn:incoming>F2_Wait_to_F2_Order_7</bpmn:incoming>
+      <bpmn:outgoing>F2_Order_to_F2_ApplyOrder_11</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="StockChangedMessage" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="F2_ApplyOrder" name="Apply order change once">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="apply-stock-change" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="= &quot;ORDER&quot;" target="updateKind" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F2_Order_to_F2_ApplyOrder_11</bpmn:incoming>
+      <bpmn:outgoing>F2_ApplyOrder_to_F2_OrderValid_12</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="F2_OrderValid" name="Order update valid?" default="F2_OrderValid_to_F2_OrderIssue_14">
+      <bpmn:incoming>F2_ApplyOrder_to_F2_OrderValid_12</bpmn:incoming>
+      <bpmn:outgoing>F2_OrderValid_to_F2_Availability_13</bpmn:outgoing>
+      <bpmn:outgoing>F2_OrderValid_to_F2_OrderIssue_14</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="F2_OrderIssue" name="Record invalid order update">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="notify-producer" retries="3" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F2_OrderValid_to_F2_OrderIssue_14</bpmn:incoming>
+      <bpmn:outgoing>F2_OrderIssue_to_F2_Wait_15</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:intermediateCatchEvent id="F2_Request" name="Producer requests update">
+      <bpmn:incoming>F2_Wait_to_F2_Request_8</bpmn:incoming>
+      <bpmn:outgoing>F2_Request_to_F2_StockForm_16</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="ProducerUpdateMessage" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:userTask id="F2_StockForm" name="Update quantity and seasons">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="BRFN_Stock_Form" />
+        <zeebe:userTask />
+        <zeebe:ioMapping>
+          <zeebe:input source="=quantity" target="newQuantity" />
+          <zeebe:output source="=newQuantity" target="newQuantity" />
+          <zeebe:output source="=availableFrom" target="availableFrom" />
+          <zeebe:output source="=availableTo" target="availableTo" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F2_Request_to_F2_StockForm_16</bpmn:incoming>
+      <bpmn:incoming>F2_UpdateValid_to_F2_StockForm_20</bpmn:incoming>
+      <bpmn:outgoing>F2_StockForm_to_F2_ApplyProducer_17</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="F2_ApplyProducer" name="Validate and apply update">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="apply-stock-change" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="= &quot;PRODUCER&quot;" target="updateKind" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F2_StockForm_to_F2_ApplyProducer_17</bpmn:incoming>
+      <bpmn:outgoing>F2_ApplyProducer_to_F2_UpdateValid_18</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="F2_UpdateValid" name="Stock and season valid?" default="F2_UpdateValid_to_F2_StockForm_20">
+      <bpmn:incoming>F2_ApplyProducer_to_F2_UpdateValid_18</bpmn:incoming>
+      <bpmn:outgoing>F2_UpdateValid_to_F2_Availability_19</bpmn:outgoing>
+      <bpmn:outgoing>F2_UpdateValid_to_F2_StockForm_20</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:intermediateCatchEvent id="F2_Daily" name="Daily season check">
+      <bpmn:incoming>F2_Wait_to_F2_Daily_9</bpmn:incoming>
+      <bpmn:outgoing>F2_Daily_to_F2_Refresh_21</bpmn:outgoing>
+      <bpmn:timerEventDefinition>
+        <bpmn:timeDate>=nextSeasonCheckAt</bpmn:timeDate>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="F2_Refresh" name="Refresh date and inventory">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="brfn-load-inventory" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="= true" target="dailyCheck" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F2_Daily_to_F2_Refresh_21</bpmn:incoming>
+      <bpmn:outgoing>F2_Refresh_to_F2_Availability_22</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:intermediateCatchEvent id="F2_Stop" name="Stop inventory monitoring">
+      <bpmn:incoming>F2_Wait_to_F2_Stop_10</bpmn:incoming>
+      <bpmn:outgoing>F2_Stop_to_F2_Close_23</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="InventoryStopMessage" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="F2_Close" name="Record monitoring stopped">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="brfn-stop-inventory" retries="3" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F2_Stop_to_F2_Close_23</bpmn:incoming>
+      <bpmn:outgoing>F2_Close_to_F2_End_24</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="F2_End" name="Monitoring stopped">
+      <bpmn:incoming>F2_Close_to_F2_End_24</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F2_Start_to_F2_Load_0" sourceRef="F2_Start" targetRef="F2_Load" />
+    <bpmn:sequenceFlow id="F2_Load_to_F2_Availability_1" sourceRef="F2_Load" targetRef="F2_Availability" />
+    <bpmn:sequenceFlow id="F2_Availability_to_F2_Save_2" sourceRef="F2_Availability" targetRef="F2_Save" />
+    <bpmn:sequenceFlow id="F2_Save_to_F2_StatusChanged_3" sourceRef="F2_Save" targetRef="F2_StatusChanged" />
+    <bpmn:sequenceFlow id="F2_StatusChanged_to_F2_Notify_4" sourceRef="F2_StatusChanged" targetRef="F2_Notify" name="Yes">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= statusChanged = true or oversold = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F2_StatusChanged_to_F2_Wait_5" sourceRef="F2_StatusChanged" targetRef="F2_Wait" name="No" />
+    <bpmn:sequenceFlow id="F2_Notify_to_F2_Wait_6" sourceRef="F2_Notify" targetRef="F2_Wait" />
+    <bpmn:sequenceFlow id="F2_Wait_to_F2_Order_7" sourceRef="F2_Wait" targetRef="F2_Order" />
+    <bpmn:sequenceFlow id="F2_Wait_to_F2_Request_8" sourceRef="F2_Wait" targetRef="F2_Request" />
+    <bpmn:sequenceFlow id="F2_Wait_to_F2_Daily_9" sourceRef="F2_Wait" targetRef="F2_Daily" />
+    <bpmn:sequenceFlow id="F2_Wait_to_F2_Stop_10" sourceRef="F2_Wait" targetRef="F2_Stop" />
+    <bpmn:sequenceFlow id="F2_Order_to_F2_ApplyOrder_11" sourceRef="F2_Order" targetRef="F2_ApplyOrder" />
+    <bpmn:sequenceFlow id="F2_ApplyOrder_to_F2_OrderValid_12" sourceRef="F2_ApplyOrder" targetRef="F2_OrderValid" />
+    <bpmn:sequenceFlow id="F2_OrderValid_to_F2_Availability_13" sourceRef="F2_OrderValid" targetRef="F2_Availability" name="Yes">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= stockUpdateValid = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F2_OrderValid_to_F2_OrderIssue_14" sourceRef="F2_OrderValid" targetRef="F2_OrderIssue" name="No" />
+    <bpmn:sequenceFlow id="F2_OrderIssue_to_F2_Wait_15" sourceRef="F2_OrderIssue" targetRef="F2_Wait" />
+    <bpmn:sequenceFlow id="F2_Request_to_F2_StockForm_16" sourceRef="F2_Request" targetRef="F2_StockForm" />
+    <bpmn:sequenceFlow id="F2_StockForm_to_F2_ApplyProducer_17" sourceRef="F2_StockForm" targetRef="F2_ApplyProducer" />
+    <bpmn:sequenceFlow id="F2_ApplyProducer_to_F2_UpdateValid_18" sourceRef="F2_ApplyProducer" targetRef="F2_UpdateValid" />
+    <bpmn:sequenceFlow id="F2_UpdateValid_to_F2_Availability_19" sourceRef="F2_UpdateValid" targetRef="F2_Availability" name="Yes">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= stockUpdateValid = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F2_UpdateValid_to_F2_StockForm_20" sourceRef="F2_UpdateValid" targetRef="F2_StockForm" name="No" />
+    <bpmn:sequenceFlow id="F2_Daily_to_F2_Refresh_21" sourceRef="F2_Daily" targetRef="F2_Refresh" />
+    <bpmn:sequenceFlow id="F2_Refresh_to_F2_Availability_22" sourceRef="F2_Refresh" targetRef="F2_Availability" />
+    <bpmn:sequenceFlow id="F2_Stop_to_F2_Close_23" sourceRef="F2_Stop" targetRef="F2_Close" />
+    <bpmn:sequenceFlow id="F2_Close_to_F2_End_24" sourceRef="F2_Close" targetRef="F2_End" />
+  </bpmn:process>
+  <bpmn:message id="InventoryStartMessage" name="brfn-inventory-start" />
+  <bpmn:message id="StockChangedMessage" name="stock-changed">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="= productId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="ProducerUpdateMessage" name="inventory-update-requested">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="= productId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="InventoryStopMessage" name="stop-inventory">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="= productId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmndi:BPMNDiagram id="BRFN_F2_Executable_diagram">
+    <bpmndi:BPMNPlane id="BRFN_F2_Executable_plane" bpmnElement="BRFN_F2_Executable">
+      <bpmndi:BPMNShape id="F2_Start_shape" bpmnElement="F2_Start">
+        <dc:Bounds x="50" y="300" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="8" y="344" width="120" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Load_shape" bpmnElement="F2_Load">
+        <dc:Bounds x="150" y="275" width="145" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Availability_shape" bpmnElement="F2_Availability">
+        <dc:Bounds x="365" y="275" width="145" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Save_shape" bpmnElement="F2_Save">
+        <dc:Bounds x="580" y="275" width="145" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_StatusChanged_shape" bpmnElement="F2_StatusChanged" isMarkerVisible="true">
+        <dc:Bounds x="790" y="290" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="748" y="348" width="134" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Notify_shape" bpmnElement="F2_Notify">
+        <dc:Bounds x="925" y="130" width="145" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Wait_shape" bpmnElement="F2_Wait">
+        <dc:Bounds x="1150" y="290" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1108" y="348" width="134" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Order_shape" bpmnElement="F2_Order">
+        <dc:Bounds x="1340" y="100" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1298" y="144" width="120" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_ApplyOrder_shape" bpmnElement="F2_ApplyOrder">
+        <dc:Bounds x="1480" y="75" width="145" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_OrderValid_shape" bpmnElement="F2_OrderValid" isMarkerVisible="true">
+        <dc:Bounds x="1690" y="90" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1648" y="148" width="134" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_OrderIssue_shape" bpmnElement="F2_OrderIssue">
+        <dc:Bounds x="1850" y="75" width="145" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Request_shape" bpmnElement="F2_Request">
+        <dc:Bounds x="1340" y="300" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1298" y="344" width="120" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_StockForm_shape" bpmnElement="F2_StockForm">
+        <dc:Bounds x="1480" y="275" width="145" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_ApplyProducer_shape" bpmnElement="F2_ApplyProducer">
+        <dc:Bounds x="1690" y="275" width="145" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_UpdateValid_shape" bpmnElement="F2_UpdateValid" isMarkerVisible="true">
+        <dc:Bounds x="1900" y="290" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1858" y="348" width="134" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Daily_shape" bpmnElement="F2_Daily">
+        <dc:Bounds x="1340" y="500" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1298" y="544" width="120" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Refresh_shape" bpmnElement="F2_Refresh">
+        <dc:Bounds x="1480" y="475" width="145" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Stop_shape" bpmnElement="F2_Stop">
+        <dc:Bounds x="1340" y="700" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1298" y="744" width="120" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_Close_shape" bpmnElement="F2_Close">
+        <dc:Bounds x="1480" y="675" width="145" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_End_shape" bpmnElement="F2_End">
+        <dc:Bounds x="1690" y="700" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1648" y="744" width="120" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F2_Start_to_F2_Load_0_edge" bpmnElement="F2_Start_to_F2_Load_0">
+        <di:waypoint x="86" y="318.0" />
+        <di:waypoint x="150" y="316.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Load_to_F2_Availability_1_edge" bpmnElement="F2_Load_to_F2_Availability_1">
+        <di:waypoint x="295" y="316.0" />
+        <di:waypoint x="365" y="316.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Availability_to_F2_Save_2_edge" bpmnElement="F2_Availability_to_F2_Save_2">
+        <di:waypoint x="510" y="316.0" />
+        <di:waypoint x="580" y="316.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Save_to_F2_StatusChanged_3_edge" bpmnElement="F2_Save_to_F2_StatusChanged_3">
+        <di:waypoint x="725" y="316.0" />
+        <di:waypoint x="790" y="315.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_StatusChanged_to_F2_Notify_4_edge" bpmnElement="F2_StatusChanged_to_F2_Notify_4">
+        <di:waypoint x="840" y="315.0" />
+        <di:waypoint x="875" y="315" />
+        <di:waypoint x="875" y="171" />
+        <di:waypoint x="925" y="171.0" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="840" y="141" width="100" height="25" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_StatusChanged_to_F2_Wait_5_edge" bpmnElement="F2_StatusChanged_to_F2_Wait_5">
+        <di:waypoint x="840" y="315.0" />
+        <di:waypoint x="1150" y="315.0" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1115" y="285.0" width="100" height="25" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Notify_to_F2_Wait_6_edge" bpmnElement="F2_Notify_to_F2_Wait_6">
+        <di:waypoint x="1070" y="171.0" />
+        <di:waypoint x="1125" y="171" />
+        <di:waypoint x="1125" y="315" />
+        <di:waypoint x="1150" y="315.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Wait_to_F2_Order_7_edge" bpmnElement="F2_Wait_to_F2_Order_7">
+        <di:waypoint x="1200" y="315.0" />
+        <di:waypoint x="1260" y="315" />
+        <di:waypoint x="1260" y="118.0" />
+        <di:waypoint x="1340" y="118.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Wait_to_F2_Request_8_edge" bpmnElement="F2_Wait_to_F2_Request_8">
+        <di:waypoint x="1200" y="315.0" />
+        <di:waypoint x="1260" y="315" />
+        <di:waypoint x="1260" y="318.0" />
+        <di:waypoint x="1340" y="318.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Wait_to_F2_Daily_9_edge" bpmnElement="F2_Wait_to_F2_Daily_9">
+        <di:waypoint x="1200" y="315.0" />
+        <di:waypoint x="1260" y="315" />
+        <di:waypoint x="1260" y="518.0" />
+        <di:waypoint x="1340" y="518.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Wait_to_F2_Stop_10_edge" bpmnElement="F2_Wait_to_F2_Stop_10">
+        <di:waypoint x="1200" y="315.0" />
+        <di:waypoint x="1260" y="315" />
+        <di:waypoint x="1260" y="718.0" />
+        <di:waypoint x="1340" y="718.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Order_to_F2_ApplyOrder_11_edge" bpmnElement="F2_Order_to_F2_ApplyOrder_11">
+        <di:waypoint x="1376" y="118.0" />
+        <di:waypoint x="1480" y="116.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_ApplyOrder_to_F2_OrderValid_12_edge" bpmnElement="F2_ApplyOrder_to_F2_OrderValid_12">
+        <di:waypoint x="1625" y="116.0" />
+        <di:waypoint x="1690" y="115.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_OrderValid_to_F2_Availability_13_edge" bpmnElement="F2_OrderValid_to_F2_Availability_13">
+        <di:waypoint x="1740" y="115.0" />
+        <di:waypoint x="1760" y="115" />
+        <di:waypoint x="1760" y="20" />
+        <di:waypoint x="340" y="20" />
+        <di:waypoint x="340" y="316" />
+        <di:waypoint x="365" y="316.0" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="305" y="-10" width="100" height="25" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_OrderValid_to_F2_OrderIssue_14_edge" bpmnElement="F2_OrderValid_to_F2_OrderIssue_14">
+        <di:waypoint x="1740" y="115.0" />
+        <di:waypoint x="1850" y="116.0" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1815" y="86.0" width="100" height="25" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_OrderIssue_to_F2_Wait_15_edge" bpmnElement="F2_OrderIssue_to_F2_Wait_15">
+        <di:waypoint x="1995" y="116.0" />
+        <di:waypoint x="2040" y="115" />
+        <di:waypoint x="2080" y="115" />
+        <di:waypoint x="2080" y="850" />
+        <di:waypoint x="1110" y="850" />
+        <di:waypoint x="1110" y="315" />
+        <di:waypoint x="1150" y="315.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Request_to_F2_StockForm_16_edge" bpmnElement="F2_Request_to_F2_StockForm_16">
+        <di:waypoint x="1376" y="318.0" />
+        <di:waypoint x="1480" y="316.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_StockForm_to_F2_ApplyProducer_17_edge" bpmnElement="F2_StockForm_to_F2_ApplyProducer_17">
+        <di:waypoint x="1625" y="316.0" />
+        <di:waypoint x="1690" y="316.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_ApplyProducer_to_F2_UpdateValid_18_edge" bpmnElement="F2_ApplyProducer_to_F2_UpdateValid_18">
+        <di:waypoint x="1835" y="316.0" />
+        <di:waypoint x="1900" y="315.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_UpdateValid_to_F2_Availability_19_edge" bpmnElement="F2_UpdateValid_to_F2_Availability_19">
+        <di:waypoint x="1950" y="315.0" />
+        <di:waypoint x="1990" y="315" />
+        <di:waypoint x="2150" y="315" />
+        <di:waypoint x="2150" y="920" />
+        <di:waypoint x="340" y="920" />
+        <di:waypoint x="340" y="316" />
+        <di:waypoint x="365" y="316.0" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2115" y="890" width="100" height="25" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_UpdateValid_to_F2_StockForm_20_edge" bpmnElement="F2_UpdateValid_to_F2_StockForm_20">
+        <di:waypoint x="1950" y="315.0" />
+        <di:waypoint x="1990" y="315" />
+        <di:waypoint x="1990" y="420" />
+        <di:waypoint x="1450" y="420" />
+        <di:waypoint x="1450" y="316" />
+        <di:waypoint x="1480" y="316.0" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1415" y="390" width="100" height="25" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Daily_to_F2_Refresh_21_edge" bpmnElement="F2_Daily_to_F2_Refresh_21">
+        <di:waypoint x="1376" y="518.0" />
+        <di:waypoint x="1480" y="516.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Refresh_to_F2_Availability_22_edge" bpmnElement="F2_Refresh_to_F2_Availability_22">
+        <di:waypoint x="1625" y="516.0" />
+        <di:waypoint x="1650" y="516" />
+        <di:waypoint x="1650" y="590" />
+        <di:waypoint x="320" y="590" />
+        <di:waypoint x="320" y="316" />
+        <di:waypoint x="365" y="316.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Stop_to_F2_Close_23_edge" bpmnElement="F2_Stop_to_F2_Close_23">
+        <di:waypoint x="1376" y="718.0" />
+        <di:waypoint x="1480" y="716.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_Close_to_F2_End_24_edge" bpmnElement="F2_Close_to_F2_End_24">
+        <di:waypoint x="1625" y="716.0" />
+        <di:waypoint x="1690" y="718.0" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

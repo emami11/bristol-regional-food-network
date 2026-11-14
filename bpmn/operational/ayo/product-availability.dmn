@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" id="BRFN_Availability_Definitions" name="Product availability" namespace="https://brfn.example/decisions">
+  <dmn:decision id="product-availability" name="Product availability">
+    <dmn:decisionTable id="AvailabilityTable" hitPolicy="FIRST">
+      <dmn:input id="Input_before" label="Before season">
+        <dmn:inputExpression id="Expression_before" typeRef="boolean">
+          <dmn:text>date(today) &lt; date(availableFrom)</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="Input_after" label="After season">
+        <dmn:inputExpression id="Expression_after" typeRef="boolean">
+          <dmn:text>date(today) &gt; date(availableTo)</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="Input_stock" label="Stock quantity">
+        <dmn:inputExpression id="Expression_stock" typeRef="number">
+          <dmn:text>quantity</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="Output_status" name="availabilityStatus" label="Availability status" typeRef="string" />
+      <dmn:rule id="Rule_1">
+        <dmn:inputEntry id="Rule_1_in_0">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="Rule_1_in_1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="Rule_1_in_2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="Rule_1_out">
+          <dmn:text>"NOT_YET_IN_SEASON"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="Rule_2">
+        <dmn:inputEntry id="Rule_2_in_0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="Rule_2_in_1">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="Rule_2_in_2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="Rule_2_out">
+          <dmn:text>"OUT_OF_SEASON"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="Rule_3">
+        <dmn:inputEntry id="Rule_3_in_0">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="Rule_3_in_1">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="Rule_3_in_2">
+          <dmn:text>0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="Rule_3_out">
+          <dmn:text>"OUT_OF_STOCK"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="Rule_4">
+        <dmn:inputEntry id="Rule_4_in_0">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="Rule_4_in_1">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="Rule_4_in_2">
+          <dmn:text>&gt; 0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="Rule_4_out">
+          <dmn:text>"AVAILABLE"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+</dmn:definitions>

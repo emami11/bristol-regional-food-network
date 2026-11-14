@@ -2,6 +2,8 @@
 
 This folder contains the operational BPMN models developed for Sprint 2 of the project.
 
+**Runnable contribution:** [Ayo's F1/F2 implementation](ayo/README.md) includes executable models, a shared DMN, four forms, workers and a token viewer. [Execution results](../../docs/testing/ayo-executable-bpmn-results.md) record the local Camunda tests. The progress notes below describe the original group model files.
+
 The operational models expand on the processes/functionalities identified in the Sprint 1 strategic BPMN, showing how each activities, decisions and interactions work in more detail.
 
 ## F1 – Product Listing and Validation

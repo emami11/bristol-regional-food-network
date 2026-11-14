@@ -12,7 +12,8 @@ async function validateProductHandler(job, { today } = {}) {
   return job.complete({
     dataValid: result.dataValid,
     validationErrors: result.validationErrors,
-    validationSummary: summariseErrors(result.validationErrors)
+    validationSummary: summariseErrors(result.validationErrors),
+    ...(job.variables.organicClaimed === true ? { certValid: false } : { certValid: null, certStatus: 'NOT_CLAIMED' })
   });
 }
 
