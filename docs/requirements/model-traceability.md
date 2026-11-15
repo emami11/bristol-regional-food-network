@@ -48,14 +48,3 @@ This **does not establish a technical message correlation or executable sequence
 - [Operational F2 diagram (PNG)](../../bpmn/operational/F2-Inventory-Seasonal-Availability.png)
 - [Operational model progress notes](../../bpmn/operational/README.md)
 
-## 6. Review and remaining decisions
-
-| Check | Current status | Action needed |
-|---|---|---|
-| Strategic F1 and F2 subprocess labels match agreed scope | Recorded in the refined strategic diagram | Confirm in group review |
-| F1 operational model and strategic F1 correspond | Initial mapping recorded | Check exception/service-unavailable and abandonment requirements against the actual F1 operational model |
-| F2 operational model and strategic F2 correspond | **Provisional**; PNG evidence exists | Add the editable BPMN export, inspect the exact activities/gateways, then confirm mapping |
-| SD/SR goals and dependencies match the stated F1/F2 mappings | **Provisional** | Confirm actor names, dependency directions and rationale with model owners |
-| Stock-change message and seasonal availability rules | Requirements documented | Verify F2 process/DMN and record what is deferred to Sprint 3 |
-| Camunda execution evidence | Not established by model files alone | Record initial runnable paths, forms, and test outcomes or state limitations |
-
