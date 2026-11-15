@@ -59,8 +59,3 @@ This **does not establish a technical message correlation or executable sequence
 | Stock-change message and seasonal availability rules | Requirements documented | Verify F2 process/DMN and record what is deferred to Sprint 3 |
 | Camunda execution evidence | Not established by model files alone | Record initial runnable paths, forms, and test outcomes or state limitations |
 
-## 7. Status
-
-**Updated 15 November 2026:** File references and the high-level F1/F2 mappings are now recorded against the current repository. The F2 diagram image is present, but its editable BPMN export is pending. Cross-model verification and group approval are still outstanding.
-
-**Related issue:** [#18 – Establish Traceability Across i*, Strategic and Operational BPMN](https://github.com/emami11/bristol-regional-food-network/issues/18).
