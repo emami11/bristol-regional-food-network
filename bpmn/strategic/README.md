@@ -37,9 +37,11 @@ Each subprocess also contains a basic internal workflow showing its starting eve
 
 The model provides an overview of the enterprise rather than a fully executable system.
 
-## BPMN File
+## BPMN Files and Sprint 2 Changes
 
-BRFN-Strategic-BPMN-Sprint1.bpmn
+- [Sprint 1 strategic BPMN](BRFN-Strategic-BPMN-Sprint1.bpmn) — original model, retained for comparison.
+- [Sprint 2 refined strategic BPMN](BRFN-Strategic-BPMN-Sprint2.bpmn) — updated F1 and F2 subprocesses and independent inventory update trigger.
+- [Sprint 2 refinement notes](SPRINT-2-REFINEMENT-NOTES.md) — detailed explanation of changes, rationale, modelling checks and remaining review items.
 
-This file can be opened in Camunda to view or continue editing the model.
+These BPMN files can be opened in Camunda Web Modeler. The strategic model documents the business process relationships; the operational BPMN models and implementation details are maintained separately.
 
