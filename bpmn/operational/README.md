@@ -54,14 +54,6 @@ The refined Sprint 2 strategic model contains **Manage Inventory and Seasonal Av
 
 The agreed F2 scope calls for producer quantity updates, order-related `stock-changed` messages, zero-stock handling, seasonal limits and restocking rules. These are defined in [Proposed Functionalities](../../docs/requirements/PROPOSED-FUNCTIONALITIES.md) and [Business Rules and Process Variables](../../docs/requirements/business-rules-and-variables.md).
 
-The PNG upload does not by itself establish which Camunda configuration, messages or DMN tables are implemented. Those items need checking against the editable F2 BPMN and any separately exported forms/DMN files.
-
-### Next steps
-
-1. Export and upload the matching F2 BPMN XML from Camunda.
-2. Compare its actual tasks, events and gateways against the F2 requirements and the strategic model.
-3. Document any producer update forms, decision tables, job-worker integration and test evidence that exist; distinguish these from Sprint 3 work.
-4. Update [model traceability](../../docs/requirements/model-traceability.md) after the editable export has been reviewed.
 
 ## Sprint 2 strategic reference
 
