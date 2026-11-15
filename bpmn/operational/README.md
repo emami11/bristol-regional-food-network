@@ -43,7 +43,27 @@ The BPMN file will be consistenlty updated, as well as documentation being done,
 
 ## F2 – Inventory and Seasonal Availability Management
 
-F2 is also part of the Sprint 2 operational modelling work. Its model and implementation progress will be documented here as development continues.
+**Current status (15 November 2026):** An F2 operational diagram image has been uploaded to GitHub, but the editable BPMN 2.0 XML export is not yet in this folder.
 
+- [F2-Inventory-Seasonal-Availability.png](F2-Inventory-Seasonal-Availability.png) – Current available visual evidence of the F2 diagram.
+- **Pending:** Upload the matching `.bpmn` export from Camunda Web Modeler so the detailed workflow, gateway configuration and model structure can be inspected and revised.
 
+### Relationship to the strategic BPMN and requirements
 
+The refined Sprint 2 strategic model contains **Manage Inventory and Seasonal Availability**, with stock updates, seasonal and quantity checks, and an available/unavailable decision. It also shows a separate producer inventory-update request so existing product stock can change independently of a new listing.
+
+The agreed F2 scope calls for producer quantity updates, order-related `stock-changed` messages, zero-stock handling, seasonal limits and restocking rules. These are defined in [Proposed Functionalities](../../docs/requirements/PROPOSED-FUNCTIONALITIES.md) and [Business Rules and Process Variables](../../docs/requirements/business-rules-and-variables.md).
+
+The PNG upload does not by itself establish which Camunda configuration, messages or DMN tables are implemented. Those items need checking against the editable F2 BPMN and any separately exported forms/DMN files.
+
+### Next steps
+
+1. Export and upload the matching F2 BPMN XML from Camunda.
+2. Compare its actual tasks, events and gateways against the F2 requirements and the strategic model.
+3. Document any producer update forms, decision tables, job-worker integration and test evidence that exist; distinguish these from Sprint 3 work.
+4. Update [model traceability](../../docs/requirements/model-traceability.md) after the editable export has been reviewed.
+
+## Sprint 2 strategic reference
+
+- [Refined Strategic BPMN – Sprint 2](../strategic/BRFN-Strategic-BPMN-Sprint2.bpmn)
+- [Summary of strategic BPMN changes](../strategic/README.md)
