@@ -6,6 +6,8 @@ Checked on **14 November 2026**, using local **Camunda 8 Run 8.10.9**, the Node.
 - `npm run test:engine`: **17 real-engine scenarios passed**.
 - `npm run test:tokens`: **4 token-engine checks passed**, using the same simulation library as the viewer: F1 publication, withdrawal and archive, plus F2's order, producer, timer and stop subscriptions. These exercise token routing without a browser; they do not evaluate FEEL rules or verify visual rendering.
 - Both process definitions deployed successfully; no active incidents were found at the end of the scenario run.
+- Modelling review on **15 November 2026**: added explicit exclusive merges in F1/F2, separating joins from decision gateways. `bpmnlint 12.1.1` with `bpmnlint:recommended` reports **0 errors and 0 warnings** for both saved models. The five F1 messages shown in Camunda and three corresponding F2 findings are resolved in these files.
+- After the merge changes, both models deployed successfully again; all **17 real-engine scenarios** and **4 token-engine checks** passed again on 15 November.
 - `npm run build:simulation`: token-viewer bundle built successfully. Visual browser verification was blocked by browser attachment/desktop-access timeouts; animated display and Tasklist form layout still need a visual check.
 
 | Area | Executed checks |
@@ -24,5 +26,11 @@ These results cover the local execution paths listed above. They do not establis
 ## Repeat
 
 Start the local engine and `npm run demo`, then run `npm test`, `npm run test:tokens` and `npm run test:engine` from `services`. Detailed engine results are saved to ignored `services/data/engine-test-results.json`.
+
+To repeat the modelling check from the repository root:
+
+```powershell
+npx --yes bpmnlint@12.1.1 --config bpmn/operational/ayo/.bpmnlintrc --max-warnings=0 "bpmn/operational/ayo/*.bpmn"
+```
 
 See [opening and demonstration steps](../../bpmn/operational/ayo/README.md).

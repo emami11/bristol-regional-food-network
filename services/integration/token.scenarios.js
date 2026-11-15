@@ -30,7 +30,16 @@ async function setup(name) {
   const sim = injector.get('simulator');
   const history = [];
   sim.on('trace', e => { if (e.action === 'enter' || e.action === 'exit') history.push(e.element.id); });
-  const branch = (from, to) => sim.setConfig(map.get(from), {activeOutgoing:map.get(from).outgoing.find(f=>f.target.id===to)});
+  const branch = (from, to) => {
+    const selected = map.get(from).outgoing.find(flow => {
+      let target = flow.target;
+      // Joining gateways preserve the destination of a selected alternative.
+      while (target.id !== to && target.type === 'bpmn:ExclusiveGateway' && target.outgoing.length === 1) target = target.outgoing[0].target;
+      return target.id === to;
+    });
+    assert.ok(selected, `Branch from ${from} to ${to}`);
+    sim.setConfig(map.get(from), {activeOutgoing:selected});
+  };
   for (const node of root.children.filter(n=>n.type==='bpmn:ExclusiveGateway')) sim.setConfig(node,{activeOutgoing:node.outgoing[0]});
   const trigger = id => {
     const subscription = sim.findSubscription(s=>s.element.id===id);

@@ -24,6 +24,8 @@ These operational models implement the group's product-listing and inventory rul
 
 F1 starts one F2 monitor when a product is published. Certification outages route to admin review. Uncorrected listings archive after seven days; integration tests shorten this timer. Daily season checks use the next midnight UTC, preserving that deadline when other updates arrive.
 
+Alternative paths rejoin through exclusive merge gateways before shared tasks. Each merge passes through the arriving token; it does not wait for the other alternative. Merges and decisions use separate gateways.
+
 ## What is connected
 
 Camunda executes the gateways, forms, DMN, messages, timers and Node.js workers. Product records and duplicate-order IDs persist in `services/data/catalogue.json`. Certification uses the group's mock service; producer notifications are recorded locally rather than emailed.
