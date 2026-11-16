@@ -105,20 +105,30 @@ Objective of Sprint 2 is to create the stakeholder model and operational process
 
 ### Sprint 2 Task Tracker
 
-**Repository evidence check: 16 November 2026.** These statuses reflect the selected model files, shared service code and existing issue records. Configuration, execution and group acceptance of the selected operational diagrams still need confirmation by the task owners.
+**Evidence check from the Sprint 2 repository: 16 November 2026.**
 
-| Task | Current evidence / status | Next action |
+In the Sprint 2 repository there is evidence of the refined strategic BPMN, operational F1 and F2 diagrams images, i* Strategic Dependency and i* Strategic Rationale models, traceability information, business rules and the service worker shared code.
+
+The selected F1 and F2 operational diagrams are located in `bpmn/operational/`. The corresponding editable BPMN XML files should be exported and uploaded.
+
+The shared service development was implemented with the product validation and organic certification verification simulation, including unit-test evidence. Execution of the selected F1/F2 diagrams needs to be verified.
+
+The separate executable prototype for the F1/F2 diagram and the forms, DMN and the execution evidence have been deleted on 16 November. They are not considered the selected operational deliverables of the group.
+
+### Sprint 2 Issues Progress Summary
+
+| Issue | Current progress | Next action |
 |---|---|---|
-| Strategic BPMN refinement (#14) | **Refined; review pending.** Sprint 2 BPMN and updated strategic README are committed. | Confirm final diagram readability and consistency with the team/tutor. |
-| Operational F1 and F2 BPMN (#15) | **Selected designs available as images; editable exports pending.** Moses's F1/F2 PNG images are committed in `bpmn/operational/`. | Obtain the selected BPMN XML exports and confirm issue completion against acceptance criteria. |
-| i* SD model (#16) | **Model files present; issue closed.** Editable source and image are committed. | Verify shared interpretation of dependencies against F1/F2 and traceability. |
-| i* SR model (#17) | **Model files present; issue closed.** Editable source and exports are committed. | Confirm the SR/SD relationship and group review. |
-| Traceability (#18) | **Draft updated; verification in progress.** Cross-model references identify Moses's selected F1/F2 images in `docs/requirements/model-traceability.md`. | Verify goal/dependency mappings against the selected editable models once exported. |
-| Initial Camunda execution, tasks and forms (#19) | **Selected-model execution evidence pending.** The selected diagrams are currently images; their forms and deployment configuration need verification in Camunda. | Export the selected models and forms, configure the workers and record execution evidence. |
-| Variables, gateways, services and business rules (#20) | **Partly implemented.** Agreed rules and shared validation/certification workers remain in `services/`, with isolated automated tests. | Complete the selected models' configuration, F2 stock handling and ordering integration; record results against the agreed rules. |
-| Backlog, group reviews and contributions (#21) | **In progress.** Meeting log, backlog and issue records are present. | Confirm owners/statuses, link evidence, and record group contribution matrix/review decisions. |
+| #14 Strategic BPMN | Refined; review pending | Confirmation of consistency with selected F1/F2 models |
+| #15 Operational BPMN | Selected F1/F2 diagrams; issue closed | Exporting and uploading the matching editable BPMN files |
+| #16 i* Strategic Dependency | Model available; issue closed | Traceability verification |
+| #17 i* Strategic Rationale | Model available; issue closed | Verification of consistency with SD |
+| #18 Model Traceability | Updated; verification pending | Checking the mappings for the selected F1/F2 models |
+| #19 Camunda Processes and Forms | Execution evidence for the selected models pending | Configuring and testing the selected processes |
+| #20 Variables, Service Tasks and Rules | Partial implementation | Integration completion and tests recording |
+| #21 Backlog and Progress Tracking | In progress | Updating of the progress evidence, the board statuses and the contribution evidence |
 
-**Outstanding dependencies:** Upload the selected F1/F2 editable exports, review the SD/SR mappings, and confirm forms, shared deployment and ordering-process integration. Ayo's separate executable prototype has been removed at his request; his stakeholder analysis, SR and personal strategic BPMN remain.
+**Outstanding dependencies:** Editable F1/F2 BPMN exports, models consistency check, Camunda forms configuration and deployment, F2 stock management and order integration.
 
 ## 7. Sprint 2 Task Ownership and Acceptance Criteria
 
