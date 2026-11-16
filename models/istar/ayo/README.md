@@ -2,9 +2,9 @@
 
 **Responsible Member:** Ayobamidele Esho (Ayo)
 
-This simplified SR shows the five actors involved in product listing and inventory management: Registered Producer, Customer, Marketplace Admin, Marketplace Platform and Certification Verification Service.
+The Strategic Rationale (SR) model explains the goals and dependencies behind BRFN's product listing and inventory management. Registered Producers submit product details and update stock and seasonal availability. The Marketplace Platform checks this information and publishes valid listings, supported by the Certification Verification Service when organic certification needs checking. Customers rely on accurate product information to make informed purchasing decisions, while the Marketplace Admin uses listing records to review compliance.
 
-It focuses on valid product listings and current stock information, with 27 internal elements and six dependencies. Validation helps trustworthy listings but can delay publication.
+The model connects these goals to the tasks, information and qualities needed to achieve them. It highlights a trade-off: validation helps make listings trustworthy, but checks can delay publication. These needs inform the F1 BPMN for product listing and validation and the F2 BPMN for stock and seasonal availability.
 
 - [Main piStar model](pistar/BRFN-Ayo-SR-Core.txt)
 - [View the simplified diagram](pistar/BRFN-Ayo-SR-Core.png)
