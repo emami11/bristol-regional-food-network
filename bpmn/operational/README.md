@@ -2,13 +2,11 @@
 
 This folder contains the operational BPMN models developed for Sprint 2 of the project.
 
-**Runnable contribution:** [Ayo's F1/F2 implementation](ayo/README.md) includes executable models, a shared DMN, four forms, workers and a token viewer. [Execution results](../../docs/testing/ayo-executable-bpmn-results.md) record the local Camunda tests. The progress notes below describe the original group model files.
-
 The operational models expand on the processes/functionalities identified in the Sprint 1 strategic BPMN, showing how each activities, decisions and interactions work in more detail.
 
 ## F1 – Product Listing and Validation
 
-**Current status:** The group has selected Moses's F1 design, currently available as a PNG. The corresponding editable BPMN XML remains on Moses's Camunda workspace and still needs exporting to this repository. Ayo's separately tested executable contribution is retained for now as a technical prototype; it is not the selected F1 design.
+**Current status:** The group has selected Moses's F1 design, currently available as a PNG. The corresponding editable BPMN XML remains on Moses's Camunda workspace and still needs exporting to this repository.
 
 The F1 process covers how a food producer submits a product to the BRFN marketplace and how the listing is checked before it can be published.
 
@@ -46,10 +44,10 @@ The BPMN file will be consistenlty updated, as well as documentation being done,
 
 ## F2 – Inventory and Seasonal Availability Management
 
-**Current status (16 November 2026):** The [executable F2 BPMN](ayo/BRFN-F2-Executable.bpmn) is available with the [shared DMN, forms and run instructions](ayo/README.md). It has been tested in local Camunda alongside F1; see the [execution evidence](../../docs/testing/ayo-executable-bpmn-results.md).
+**Current status (16 November 2026):** The group has selected Moses's F2 design, currently available as a PNG. Its matching editable BPMN XML export still needs to be uploaded from Camunda before configuration and execution can be verified.
 
 - [F2-Inventory-Seasonal-Availability.png](F2-Inventory-Seasonal-Availability.png) – Current available visual evidence of the F2 diagram.
-- The image above is a separate modelling artefact. Its matching Web Modeler XML export and alignment with the executable contribution still need group review.
+- **Pending:** Matching editable F2 BPMN XML export and review against the agreed requirements.
 
 ### Relationship to the strategic BPMN and requirements
 

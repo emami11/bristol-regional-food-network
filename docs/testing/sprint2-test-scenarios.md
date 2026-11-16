@@ -12,6 +12,7 @@ Run from `services/` with `npm test`. These test the validation rules and the ce
 | Date | Result | Notes |
 |---|---|---|
 | 3 Nov 2026 | 18 passed, 0 failed | Rules V1–V12, certificate outcomes C3–C6, outage switch |
+| 16 Nov 2026 | 18 passed, 0 failed | Shared validation/certification services rechecked after removing Ayo's separate F1/F2 prototype; this is not execution evidence for the selected BPMNs |
 | <date> | | Re-run after any rule change |
 
 ## 2. Process scenarios (in Camunda)

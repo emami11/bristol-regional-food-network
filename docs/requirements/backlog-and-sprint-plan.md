@@ -105,20 +105,20 @@ Objective of Sprint 2 is to create the stakeholder model and operational process
 
 ### Sprint 2 Task Tracker
 
-**Repository evidence check: 16 November 2026.** These statuses reflect repository files, recorded local execution checks and existing issue records. Group acceptance and university-cluster deployment still need confirmation by the task owners.
+**Repository evidence check: 16 November 2026.** These statuses reflect the selected model files, shared service code and existing issue records. Configuration, execution and group acceptance of the selected operational diagrams still need confirmation by the task owners.
 
 | Task | Current evidence / status | Next action |
 |---|---|---|
 | Strategic BPMN refinement (#14) | **Refined; review pending.** Sprint 2 BPMN and updated strategic README are committed. | Confirm final diagram readability and consistency with the team/tutor. |
-| Operational F1 and F2 BPMN (#15) | **Executable contribution available; group review pending.** Ayo's separate editable executable prototypes are in [`bpmn/operational/ayo/`](../../bpmn/operational/ayo/README.md), alongside Moses's selected F1/F2 PNG images (editable XML exports pending)/images. | Review alignment with the earlier diagrams and confirm issue completion against acceptance criteria. |
+| Operational F1 and F2 BPMN (#15) | **Selected designs available as images; editable exports pending.** Moses's F1/F2 PNG images are committed in `bpmn/operational/`. | Obtain the selected BPMN XML exports and confirm issue completion against acceptance criteria. |
 | i* SD model (#16) | **Model files present; issue closed.** Editable source and image are committed. | Verify shared interpretation of dependencies against F1/F2 and traceability. |
 | i* SR model (#17) | **Model files present; issue closed.** Editable source and exports are committed. | Confirm the SR/SD relationship and group review. |
-| Traceability (#18) | **Draft updated; verification in progress.** Cross-model references now include the executable F1/F2 contribution in `docs/requirements/model-traceability.md`. | Verify goal/dependency mappings and alignment of the operational variants with their owners. |
-| Initial Camunda execution, tasks and forms (#19) | **Local execution evidenced; group review pending.** Two executable BPMNs, four forms, the shared availability DMN and workers are committed; [17 local real-engine scenarios passed](../testing/ayo-executable-bpmn-results.md). | Review the demonstration and confirm university-cluster configuration and acceptance criteria. |
-| Variables, gateways, services and business rules (#20) | **Implemented in the local contribution; review pending.** Rules, gateways and workers have evidence from 26 unit tests, 4 token-routing checks and 17 real-engine scenarios; the executable BPMNs pass lint with no findings. | Confirm integration with the group's ordering implementation and review the evidence against the agreed rules. |
+| Traceability (#18) | **Draft updated; verification in progress.** Cross-model references identify Moses's selected F1/F2 images in `docs/requirements/model-traceability.md`. | Verify goal/dependency mappings against the selected editable models once exported. |
+| Initial Camunda execution, tasks and forms (#19) | **Selected-model execution evidence pending.** The selected diagrams are currently images; their forms and deployment configuration need verification in Camunda. | Export the selected models and forms, configure the workers and record execution evidence. |
+| Variables, gateways, services and business rules (#20) | **Partly implemented.** Agreed rules and shared validation/certification workers remain in `services/`, with isolated automated tests. | Complete the selected models' configuration, F2 stock handling and ordering integration; record results against the agreed rules. |
 | Backlog, group reviews and contributions (#21) | **In progress.** Meeting log, backlog and issue records are present. | Confirm owners/statuses, link evidence, and record group contribution matrix/review decisions. |
 
-**Outstanding dependencies:** Reconcile the earlier F2 image with the executable F2 model, review the SD/SR mappings, and confirm shared deployment and ordering-process integration. Local execution evidence does not by itself establish group acceptance or a university-cluster deployment.
+**Outstanding dependencies:** Upload the selected F1/F2 editable exports, review the SD/SR mappings, and confirm forms, shared deployment and ordering-process integration. Ayo's separate executable prototype has been removed at his request; his stakeholder analysis, SR and personal strategic BPMN remain.
 
 ## 7. Sprint 2 Task Ownership and Acceptance Criteria
 
@@ -140,9 +140,9 @@ Actions and status changes should be reflected in the tracker after the meeting.
 
 ### Sprint 2 Progress Evidence
 
-The repository is currently housing the latest versions of strategic/operational BPMN models, i* SD/SR models, traceability documents, executable F1/F2 processes, Camunda forms, service workers, and business rules.
+The repository contains strategic BPMN models, the selected operational diagram images, i* SD/SR models, traceability documents, shared validation/certification workers and business rules. Ayo's separate executable F1/F2 models and their dedicated forms, DMN, runtime and test harness have been removed.
 
-Tested locally, there were 26 passed unit test cases, 17 passed real-engine test cases, and 4 passed token routing test cases.
+The remaining service tests check the shared validation rules and simulated certification service. End-to-end execution evidence must be recorded for Moses's selected models after their editable exports and configuration are available.
 Open dependencies are the following: final consistency check of the model, group checking, deployment confirmation, integration checks, and contributions checklists.
 
 The backlog will continue to be updated in accordance with the completion of remaining tasks.

@@ -58,7 +58,6 @@ We are following an Agile approach, with work organised into three sprints.
 | `bpmn/practice/` | Initial BPMN modelling practice |
 | [`bpmn/personal/ayo/`](bpmn/personal/ayo/README.md) | Ayo's whole-enterprise strategic BPMN, editable source and diagram pictures |
 | [`models/istar/ayo/`](models/istar/ayo/README.md) | Ayo's verified SR model in piStar, editable source and diagram pictures |
-| [`bpmn/operational/ayo/`](bpmn/operational/ayo/README.md) | Runnable F1/F2 BPMN, shared DMN, forms and token simulation instructions |
 | `docs/business-analysis/` | Main business activities and responsibilities |
 | `docs/requirements/` | Selected functionalities and requirements |
 | `docs/stakeholder-analysis/` | Stakeholders and their needs |
@@ -68,22 +67,21 @@ The interactive visualisation uses sample data to explain the proposed business 
 
 ## BPMN File Guide (Sprint 2)
 
-The group has selected Moses's F1 and F2 designs as the submission models. Other BPMN files are retained where they serve a different purpose, such as a tested technical prototype or a learning exercise. **Do not treat every diagram as the same approved model.** The table identifies what each file is for; final model selection and cross-model review remain group decisions.
+The group has selected Moses's F1 and F2 designs as the submission models. Other BPMN files are retained where they serve a different purpose, such as a personal strategic contribution or a learning exercise. **Do not treat every diagram as the same approved model.** The table identifies what each file is for; final model selection and cross-model review remain group decisions.
 
 | File | Role |
 |---|---|
 | [Sprint 2 strategic BPMN](bpmn/strategic/BRFN-Strategic-BPMN-Sprint2.bpmn) | Current group strategic refinement: enterprise overview, with expanded F1 and F2 subprocesses |
 | [Sprint 1 strategic BPMN](bpmn/strategic/BRFN-Strategic-BPMN-Sprint1.bpmn) | Earlier baseline retained for comparison |
 | [Moses's F1 model image](bpmn/operational/F1-Product-Listing-Validation.png) | Selected group F1 design; editable BPMN XML export is still to be uploaded from Moses's Camunda |
-| [F2 diagram image](bpmn/operational/F2-Inventory-Seasonal-Availability.png) | Operational F2 design image; not confirmed to be an export of Ayo's executable F2 model |
-| [Ayo's executable F1/F2 models](bpmn/operational/ayo/README.md) | Separate implementation contribution with BPMN, DMN, forms, service integration and local test evidence |
+| [F2 diagram image](bpmn/operational/F2-Inventory-Seasonal-Availability.png) | Selected group F2 design; editable BPMN XML export is still to be uploaded from Moses's Camunda |
 | [Operational model notes](bpmn/operational/README.md) | Moses's selected F1/F2 images and pending editable exports; superseded F1 exports removed |
 | [Ayo's personal strategic model](bpmn/personal/ayo/README.md) | Additional enterprise-level modelling contribution, not an automatic replacement for the group strategic model |
 | [Practice BPMN](bpmn/practice/README.md) | Learning exercise, not a Sprint 2 deliverable |
 
-**Open alignment checks:** Upload Moses's editable F1/F2 BPMN XML exports; confirm whether Ayo's separate executable prototype should remain as supporting evidence; reconcile F2 external producer representation with the strategic model; ensure rejected F1 listings do not proceed to new-product availability; and review the [model traceability table](docs/requirements/model-traceability.md).
+**Open alignment checks:** Upload Moses's editable F1/F2 BPMN XML exports; reconcile F2 external producer representation with the strategic model; ensure rejected F1 listings do not proceed to new-product availability; and review the [model traceability table](docs/requirements/model-traceability.md).
 
-**Documentation:** [Strategic changes](bpmn/strategic/SPRINT-2-REFINEMENT-NOTES.md) · [Operational model notes](bpmn/operational/README.md) · [Local executable test results](docs/testing/ayo-executable-bpmn-results.md).
+**Documentation:** [Strategic changes](bpmn/strategic/SPRINT-2-REFINEMENT-NOTES.md) · [Operational model notes](bpmn/operational/README.md) · [Service test scenarios](docs/testing/sprint2-test-scenarios.md).
 
 ## Tools
 
