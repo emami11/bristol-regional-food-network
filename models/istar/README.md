@@ -18,11 +18,11 @@ The model focuses on product listing and validation, inventory and seasonality m
 
 The SD model contains five main actors:
 
-- **Food Producer** Submits product information, provides organic certification details where applicable, and updates stock quantities and seasonal availability.
-- **Marketplace Platform** Validates product information, manages product listings, supports organic certification checks, and maintains product availability.
-- **Customer** Views product information and availability and expects reliable information about products.
-- **Marketplace Admin** Supports compliance by carrying out manual verification reviews when required.
-- **Organic Certification Verification Service** Checks organic certification information and returns verification results.
+- **Food Producer** 
+- **Marketplace Platform** 
+- **Customer** 
+- **Marketplace Admin** 
+- **Organic Certification Verification Service** 
 
 ## 3. Strategic Dependencies
 
