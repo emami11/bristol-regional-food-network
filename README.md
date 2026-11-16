@@ -68,20 +68,20 @@ The interactive visualisation uses sample data to explain the proposed business 
 
 ## BPMN File Guide (Sprint 2)
 
-Several BPMN files are retained because they record different stages of work and individual contributions. **Do not treat every diagram as the same approved model.** The table identifies what each file is for; final model selection and cross-model review remain group decisions.
+The group has selected Moses's F1 and F2 designs as the submission models. Other BPMN files are retained where they serve a different purpose, such as a tested technical prototype or a learning exercise. **Do not treat every diagram as the same approved model.** The table identifies what each file is for; final model selection and cross-model review remain group decisions.
 
 | File | Role |
 |---|---|
 | [Sprint 2 strategic BPMN](bpmn/strategic/BRFN-Strategic-BPMN-Sprint2.bpmn) | Current group strategic refinement: enterprise overview, with expanded F1 and F2 subprocesses |
 | [Sprint 1 strategic BPMN](bpmn/strategic/BRFN-Strategic-BPMN-Sprint1.bpmn) | Earlier baseline retained for comparison |
-| [F1 product listing and validation](bpmn/operational/BRFN-F1-Product-Listing-and-Validation.bpmn) | Noyo's working operational F1 diagram; Camunda configuration is still being completed separately |
+| [Moses's F1 model image](bpmn/operational/F1-Product-Listing-Validation.png) | Selected group F1 design; editable BPMN XML export is still to be uploaded from Moses's Camunda |
 | [F2 diagram image](bpmn/operational/F2-Inventory-Seasonal-Availability.png) | Operational F2 design image; not confirmed to be an export of Ayo's executable F2 model |
 | [Ayo's executable F1/F2 models](bpmn/operational/ayo/README.md) | Separate implementation contribution with BPMN, DMN, forms, service integration and local test evidence |
-| [Alternative F1 files](bpmn/operational/README.md) | Other group drafts/exports in the operational folder; provenance and final status need confirming |
+| [Operational model notes](bpmn/operational/README.md) | Moses's selected F1/F2 images and pending editable exports; superseded F1 exports removed |
 | [Ayo's personal strategic model](bpmn/personal/ayo/README.md) | Additional enterprise-level modelling contribution, not an automatic replacement for the group strategic model |
 | [Practice BPMN](bpmn/practice/README.md) | Learning exercise, not a Sprint 2 deliverable |
 
-**Open alignment checks:** Confirm which operational F1/F2 versions are the final agreed deliverables; reconcile F2 external producer representation with the strategic model; ensure rejected F1 listings do not proceed to new-product availability; and review the [model traceability table](docs/requirements/model-traceability.md).
+**Open alignment checks:** Upload Moses's editable F1/F2 BPMN XML exports; confirm whether Ayo's separate executable prototype should remain as supporting evidence; reconcile F2 external producer representation with the strategic model; ensure rejected F1 listings do not proceed to new-product availability; and review the [model traceability table](docs/requirements/model-traceability.md).
 
 **Documentation:** [Strategic changes](bpmn/strategic/SPRINT-2-REFINEMENT-NOTES.md) · [Operational model notes](bpmn/operational/README.md) · [Local executable test results](docs/testing/ayo-executable-bpmn-results.md).
 
