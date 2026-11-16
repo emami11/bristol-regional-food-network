@@ -35,3 +35,16 @@ The main activities include:
 - Handling stock changes caused by orders.
 
 **File:** [F2 Operational BPMN Diagram](F2-Inventory-Seasonal-Availability.png)
+
+## Camunda Files
+
+The editable BPMN files for both functionalities have been added to GitHub, along with their supporting subprocesses.
+
+- [F1 – Product Listing and Validation](F1-Product-Listing-Validation.bpmn)
+- [F1a – Verify Organic Certification](F1a-Verify-Organic-Certification.bpmn)
+- [F2 – Inventory and Seasonal Availability](F2-Inventory-Seasonal-Availability.bpmn)
+- [F2a – Evaluate Product Availability](F2a-Evaluate-Product-Availability.bpmn)
+
+The Camunda Forms are stored in the [`camunda/forms`](../../camunda/forms/) folder, and the availability decision table is stored in [`camunda/dmn`](../../camunda/dmn/).
+
+The process files and supporting resources are available in GitHub. Deployment and end-to-end testing still need to be verified.
