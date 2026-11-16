@@ -110,7 +110,7 @@ Objective of Sprint 2 is to create the stakeholder model and operational process
 | Task | Current evidence / status | Next action |
 |---|---|---|
 | Strategic BPMN refinement (#14) | **Refined; review pending.** Sprint 2 BPMN and updated strategic README are committed. | Confirm final diagram readability and consistency with the team/tutor. |
-| Operational F1 and F2 BPMN (#15) | **Executable contribution available; group review pending.** Both editable executable models are in [`bpmn/operational/ayo/`](../../bpmn/operational/ayo/README.md), alongside the earlier group models/images. | Review alignment with the earlier diagrams and confirm issue completion against acceptance criteria. |
+| Operational F1 and F2 BPMN (#15) | **Executable contribution available; group review pending.** Ayo's separate editable executable prototypes are in [`bpmn/operational/ayo/`](../../bpmn/operational/ayo/README.md), alongside Moses's selected F1/F2 PNG images (editable XML exports pending)/images. | Review alignment with the earlier diagrams and confirm issue completion against acceptance criteria. |
 | i* SD model (#16) | **Model files present; issue closed.** Editable source and image are committed. | Verify shared interpretation of dependencies against F1/F2 and traceability. |
 | i* SR model (#17) | **Model files present; issue closed.** Editable source and exports are committed. | Confirm the SR/SD relationship and group review. |
 | Traceability (#18) | **Draft updated; verification in progress.** Cross-model references now include the executable F1/F2 contribution in `docs/requirements/model-traceability.md`. | Verify goal/dependency mappings and alignment of the operational variants with their owners. |
