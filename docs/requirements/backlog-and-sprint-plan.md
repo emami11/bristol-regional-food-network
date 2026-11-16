@@ -140,18 +140,12 @@ Actions and status changes should be reflected in the tracker after the meeting.
 
 ### Sprint 2 Progress Evidence
 
-Evidences of progress need to be collected throughout Sprint 2, proving the efforts of the team and its members.
+The repository is currently housing the latest versions of strategic/operational BPMN models, i* SD/SR models, traceability documents, executable F1/F2 processes, Camunda forms, service workers, and business rules.
 
-Such evidences can be:
+Tested locally, there were 26 passed unit test cases, 17 passed real-engine test cases, and 4 passed token routing test cases.
+Open dependencies are the following: final consistency check of the model, group checking, deployment confirmation, integration checks, and contributions checklists.
 
-- Commits on GitHub for document/model modifications.
-- BPMN/i* models, updated.
-- Implementation of process in Camunda and screenshots.
-- Minutes of meetings (decisions/activities made).
-- Feedback and modifications decided on.
-- Task status/efforts updates.
-
-If possible, it is desirable that the evidence includes the task performed, name of the person who did it, date and file/activity involved.
+The backlog will continue to be updated in accordance with the completion of remaining tasks.
 
 ## 9. Current Priorities
 
