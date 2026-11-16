@@ -67,7 +67,7 @@ function validateProduct(p, today = todayISO()) {
   const price = toNumber(p.price);
   if (isBlank(p.price)) add('price', 'Price is required.');
   else if (!Number.isFinite(price) || price <= 0) add('price', 'Price must be more than £0.00.');
-  else if (Math.round(price * 100) !== price * 100) add('price', 'Price can have at most 2 decimal places.');
+  else if (Math.abs(Math.round(price * 100) - price * 100) > 1e-8) add('price', 'Price can have at most 2 decimal places.');
 
   // Quantity: a whole number, zero or more
   const qty = toNumber(p.quantity);
@@ -99,6 +99,9 @@ function validateProduct(p, today = todayISO()) {
     const unknown = p.allergens.filter(a => !ALLERGENS.includes(a));
     if (unknown.length) add('allergens', `Unknown allergen(s): ${unknown.join(', ')}.`);
   }
+
+  // A text value such as "false" must not bypass certification checks.
+  if (typeof p.organicClaimed !== 'boolean') add('organicClaimed', 'Organic claim must be true or false.');
 
   // Organic certificate details, only when organic is claimed
   if (p.organicClaimed === true) {

@@ -1,0 +1,239 @@
+{
+  "id": "BRFN_Correction_Form",
+  "type": "default",
+  "components": [
+    {
+      "type": "textarea",
+      "key": "validationSummary",
+      "label": "Validation feedback",
+      "id": "field_validationSummary",
+      "disabled": true
+    },
+    {
+      "type": "textfield",
+      "key": "certStatus",
+      "label": "Certification status",
+      "id": "field_certStatus",
+      "disabled": true
+    },
+    {
+      "type": "textarea",
+      "key": "adminReason",
+      "label": "Administrator feedback",
+      "id": "field_adminReason",
+      "disabled": true
+    },
+    {
+      "type": "textfield",
+      "key": "name",
+      "label": "Product name",
+      "id": "field_name"
+    },
+    {
+      "type": "textarea",
+      "key": "description",
+      "label": "Description",
+      "id": "field_description"
+    },
+    {
+      "type": "select",
+      "key": "category",
+      "label": "Category",
+      "id": "field_category",
+      "values": [
+        {
+          "label": "Vegetables",
+          "value": "Vegetables"
+        },
+        {
+          "label": "Fruit",
+          "value": "Fruit"
+        },
+        {
+          "label": "Dairy",
+          "value": "Dairy"
+        },
+        {
+          "label": "Eggs",
+          "value": "Eggs"
+        },
+        {
+          "label": "Meat",
+          "value": "Meat"
+        },
+        {
+          "label": "Fish",
+          "value": "Fish"
+        },
+        {
+          "label": "Bakery",
+          "value": "Bakery"
+        },
+        {
+          "label": "Preserves",
+          "value": "Preserves"
+        },
+        {
+          "label": "Drinks",
+          "value": "Drinks"
+        },
+        {
+          "label": "Other",
+          "value": "Other"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "key": "price",
+      "label": "Price (£)",
+      "id": "field_price",
+      "decimalDigits": 2
+    },
+    {
+      "type": "number",
+      "key": "quantity",
+      "label": "Quantity",
+      "id": "field_quantity",
+      "decimalDigits": 0
+    },
+    {
+      "type": "textfield",
+      "key": "farmOrigin",
+      "label": "Farm origin",
+      "id": "field_farmOrigin"
+    },
+    {
+      "type": "textfield",
+      "key": "harvestDate",
+      "label": "Harvest date (YYYY-MM-DD)",
+      "id": "field_harvestDate"
+    },
+    {
+      "type": "textfield",
+      "key": "bestBeforeDate",
+      "label": "Best-before date (YYYY-MM-DD)",
+      "id": "field_bestBeforeDate"
+    },
+    {
+      "type": "textfield",
+      "key": "availableFrom",
+      "label": "Season start (YYYY-MM-DD)",
+      "id": "field_availableFrom"
+    },
+    {
+      "type": "textfield",
+      "key": "availableTo",
+      "label": "Season end (YYYY-MM-DD)",
+      "id": "field_availableTo"
+    },
+    {
+      "type": "taglist",
+      "key": "allergens",
+      "label": "Allergens (leave empty for none)",
+      "id": "field_allergens",
+      "values": [
+        {
+          "label": "celery",
+          "value": "celery"
+        },
+        {
+          "label": "cereals containing gluten",
+          "value": "cereals containing gluten"
+        },
+        {
+          "label": "crustaceans",
+          "value": "crustaceans"
+        },
+        {
+          "label": "eggs",
+          "value": "eggs"
+        },
+        {
+          "label": "fish",
+          "value": "fish"
+        },
+        {
+          "label": "lupin",
+          "value": "lupin"
+        },
+        {
+          "label": "milk",
+          "value": "milk"
+        },
+        {
+          "label": "molluscs",
+          "value": "molluscs"
+        },
+        {
+          "label": "mustard",
+          "value": "mustard"
+        },
+        {
+          "label": "tree nuts",
+          "value": "tree nuts"
+        },
+        {
+          "label": "peanuts",
+          "value": "peanuts"
+        },
+        {
+          "label": "sesame",
+          "value": "sesame"
+        },
+        {
+          "label": "soya",
+          "value": "soya"
+        },
+        {
+          "label": "sulphites",
+          "value": "sulphites"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "key": "organicClaimed",
+      "label": "Organic claim",
+      "id": "field_organicClaimed"
+    },
+    {
+      "type": "textfield",
+      "key": "certNumber",
+      "label": "Certificate number (if organic)",
+      "id": "field_certNumber"
+    },
+    {
+      "type": "textfield",
+      "key": "certBody",
+      "label": "Certifying body (if organic)",
+      "id": "field_certBody"
+    },
+    {
+      "type": "textfield",
+      "key": "certExpiry",
+      "label": "Certificate expiry YYYY-MM-DD (if organic)",
+      "id": "field_certExpiry"
+    },
+    {
+      "type": "select",
+      "key": "correctionAction",
+      "label": "Action",
+      "id": "field_correctionAction",
+      "defaultValue": "RESUBMIT",
+      "values": [
+        {
+          "label": "Resubmit corrected details",
+          "value": "RESUBMIT"
+        },
+        {
+          "label": "Withdraw listing",
+          "value": "WITHDRAW"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 16,
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0"
+}

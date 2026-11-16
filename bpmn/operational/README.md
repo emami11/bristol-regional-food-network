@@ -2,6 +2,8 @@
 
 This folder contains the operational BPMN models developed for Sprint 2 of the project.
 
+**Runnable contribution:** [Ayo's F1/F2 implementation](ayo/README.md) includes executable models, a shared DMN, four forms, workers and a token viewer. [Execution results](../../docs/testing/ayo-executable-bpmn-results.md) record the local Camunda tests. The progress notes below describe the original group model files.
+
 The operational models expand on the processes/functionalities identified in the Sprint 1 strategic BPMN, showing how each activities, decisions and interactions work in more detail.
 
 ## F1 – Product Listing and Validation
@@ -43,10 +45,10 @@ The BPMN file will be consistenlty updated, as well as documentation being done,
 
 ## F2 – Inventory and Seasonal Availability Management
 
-**Current status (15 November 2026):** An F2 operational diagram image has been uploaded to GitHub, but the editable BPMN 2.0 XML export is not yet in this folder.
+**Current status (16 November 2026):** The [executable F2 BPMN](ayo/BRFN-F2-Executable.bpmn) is available with the [shared DMN, forms and run instructions](ayo/README.md). It has been tested in local Camunda alongside F1; see the [execution evidence](../../docs/testing/ayo-executable-bpmn-results.md).
 
 - [F2-Inventory-Seasonal-Availability.png](F2-Inventory-Seasonal-Availability.png) – Current available visual evidence of the F2 diagram.
-- **Pending:** Upload the matching `.bpmn` export from Camunda Web Modeler so the detailed workflow, gateway configuration and model structure can be inspected and revised.
+- The image above is a separate modelling artefact. Its matching Web Modeler XML export and alignment with the executable contribution still need group review.
 
 ### Relationship to the strategic BPMN and requirements
 

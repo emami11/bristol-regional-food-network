@@ -1,0 +1,10 @@
+import { build } from 'esbuild';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const outfile = path.join(root, 'data/token-check.cjs');
+await build({ entryPoints: [path.join(root, 'integration/token.scenarios.js')], bundle: true, platform: 'node', outfile });
+const result = spawnSync(process.execPath, [outfile], { cwd: root, stdio: 'inherit' });
+if (result.error) throw result.error;
+process.exitCode = result.status ?? 1;

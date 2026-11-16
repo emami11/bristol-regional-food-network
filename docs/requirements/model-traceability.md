@@ -15,8 +15,8 @@ The **strategic BPMN** shows the enterprise context and high-level business resp
 
 | Functionality | Goal / dependency to confirm against i* | Strategic subprocess | Operational process / available evidence | Requirement reference |
 |---|---|---|---|---|
-| **F1 – Product Listing and Validation** | Food Producer relies on the marketplace to validate listing details, check an organic claim where relevant, and return a publication or correction/rejection outcome. | **Manage Product Listings**; expanded internal decisions cover validation, certification, corrections, publication and rejection. | [F1 editable operational BPMN](../../bpmn/operational/BRFN-F1-Product-Listing-and-Validation.bpmn): product validation, correction loops, certification checks/review and publication or rejection. | [Proposed Functionalities – F1](PROPOSED-FUNCTIONALITIES.md); [validation/certification rules V1–V12 and C1–C8](business-rules-and-variables.md) |
-| **F2 – Inventory and Seasonal Availability Management** | Food Producer relies on the marketplace to maintain accurate stock and seasonal status; customer ordering depends on up-to-date availability. | **Manage Inventory and Seasonal Availability**; expanded internal decisions cover stock updates and available/unavailable outcomes, with an independent producer inventory-update trigger. | [F2 operational diagram image](../../bpmn/operational/F2-Inventory-Seasonal-Availability.png) has been uploaded. **Editable F2 BPMN export is still pending** on `main`; specific operational elements need verification against it. | [Proposed Functionalities – F2](PROPOSED-FUNCTIONALITIES.md); [stock rules S1–S5 and availability rules A1–A4](business-rules-and-variables.md) |
+| **F1 – Product Listing and Validation** | Food Producer relies on the marketplace to validate listing details, check an organic claim where relevant, and return a publication or correction/rejection outcome. | **Manage Product Listings**; expanded internal decisions cover validation, certification, corrections, publication and rejection. | [Original F1 operational BPMN](../../bpmn/operational/BRFN-F1-Product-Listing-and-Validation.bpmn) and [executable F1](../../bpmn/operational/ayo/BRFN-F1-Executable.bpmn): validation, correction/withdrawal, certification checks and manual fallback, publication and an archive timer. | [Proposed Functionalities – F1](PROPOSED-FUNCTIONALITIES.md); [validation/certification rules V1–V12 and C1–C8](business-rules-and-variables.md) |
+| **F2 – Inventory and Seasonal Availability Management** | Food Producer relies on the marketplace to maintain accurate stock and seasonal status; customer ordering depends on up-to-date availability. | **Manage Inventory and Seasonal Availability**; expanded internal decisions cover stock updates and available/unavailable outcomes, with an independent producer inventory-update trigger. | [Executable F2 BPMN](../../bpmn/operational/ayo/BRFN-F2-Executable.bpmn), stock form and shared DMN are available on `main`, with [local execution results](../testing/ayo-executable-bpmn-results.md). The [earlier F2 diagram image](../../bpmn/operational/F2-Inventory-Seasonal-Availability.png) is a separate artefact whose alignment still needs review. | [Proposed Functionalities – F2](PROPOSED-FUNCTIONALITIES.md); [stock rules S1–S5 and availability rules A1–A4](business-rules-and-variables.md) |
 
 These descriptions are working interpretations of the models and requirements. The precise dependency labels and links in the i* models must still be reviewed with the SD/SR model owners.
 
@@ -24,9 +24,9 @@ These descriptions are working interpretations of the models and requirements. T
 
 The strategic BPMN documentation for **Allocate Orders to Producers** and **Update Product Stock Information** identifies the business dependency: confirmed sales can reduce stock, and cancellations can restore it. The independent producer inventory-update trigger lets stock be updated without creating a new product listing.
 
-This **does not establish a technical message correlation or executable sequence flow** between the subprocesses. The agreed F2 technical contract specifies a `stock-changed` message correlated using `productId`, with `quantityChange` and `orderId`. The stock-change worker and message integration are planned for later work. See [Business Rules and Process Variables](business-rules-and-variables.md).
+The executable F2 contribution implements the agreed `stock-changed` message, correlated using `productId`, with `quantityChange` and `orderId`. Its worker applies stock changes and ignores duplicate order IDs; local tests send messages through the real Camunda engine. This provides a tested receiving process, while connection to the group's separate customer-ordering implementation still needs integration. See [Business Rules and Process Variables](business-rules-and-variables.md) and [execution results](../testing/ayo-executable-bpmn-results.md).
 
-## 5. Repository references (checked 15 November 2026)
+## 5. Repository references (checked 16 November 2026)
 
 ### Background and requirements
 - [Actor analysis](../actor-analysis.md)
@@ -46,5 +46,8 @@ This **does not establish a technical message correlation or executable sequence
 - [Strategic BPMN change documentation](../../bpmn/strategic/README.md)
 - [Operational BPMN – F1](../../bpmn/operational/BRFN-F1-Product-Listing-and-Validation.bpmn)
 - [Operational F2 diagram (PNG)](../../bpmn/operational/F2-Inventory-Seasonal-Availability.png)
+- [Executable F1/F2 BPMNs, four forms and shared DMN](../../bpmn/operational/ayo/README.md)
+- [Job workers, token viewer and local setup](../../services/README.md)
+- [Executable contribution test results](../testing/ayo-executable-bpmn-results.md)
 - [Operational model progress notes](../../bpmn/operational/README.md)
 

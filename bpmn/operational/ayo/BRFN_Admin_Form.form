@@ -1,0 +1,55 @@
+{
+  "id": "BRFN_Admin_Form",
+  "type": "default",
+  "components": [
+    {
+      "type": "text",
+      "key": "reviewInstructions",
+      "label": "Instructions",
+      "id": "field_reviewInstructions",
+      "text": "Review the certification evidence under the agreed manual-review policy. An outage is not evidence of a valid certificate."
+    },
+    {
+      "type": "textfield",
+      "key": "certNumber",
+      "label": "Certificate number",
+      "id": "field_certNumber",
+      "disabled": true
+    },
+    {
+      "type": "select",
+      "key": "adminDecision",
+      "label": "Decision",
+      "id": "field_adminDecision",
+      "validate": {
+        "required": true
+      },
+      "values": [
+        {
+          "label": "Approve evidence",
+          "value": "APPROVE"
+        },
+        {
+          "label": "Reject evidence",
+          "value": "REJECT"
+        }
+      ]
+    },
+    {
+      "type": "textarea",
+      "key": "adminReason",
+      "label": "Reason (required for rejection)",
+      "id": "field_adminReason"
+    },
+    {
+      "type": "textarea",
+      "key": "adminValidationMessage",
+      "label": "Review feedback",
+      "id": "field_adminValidationMessage",
+      "disabled": true
+    }
+  ],
+  "schemaVersion": 16,
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0"
+}
