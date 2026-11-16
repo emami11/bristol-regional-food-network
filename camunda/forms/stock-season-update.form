@@ -1,0 +1,50 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.10.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 19,
+  "id": "stock-season-update",
+  "type": "default",
+  "components": [
+    {
+      "type": "text",
+      "text": "=\"# Update stock and season\\n**\" + productName + \"**: currently \" + string(currentQuantity) + \" in stock, status \" + currentStatus",
+      "id": "Field_061"
+    },
+    {
+      "type": "number",
+      "key": "quantity",
+      "label": "New available quantity",
+      "id": "Field_062",
+      "validate": {
+        "required": true,
+        "min": 0
+      },
+      "decimalDigits": 0
+    },
+    {
+      "type": "datetime",
+      "subtype": "date",
+      "dateLabel": "Available from",
+      "key": "seasonStart",
+      "id": "Field_063",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "type": "datetime",
+      "subtype": "date",
+      "dateLabel": "Available until",
+      "key": "seasonEnd",
+      "id": "Field_064",
+      "validate": {
+        "required": true
+      },
+      "description": "Must be on or after the start date"
+    }
+  ]
+}

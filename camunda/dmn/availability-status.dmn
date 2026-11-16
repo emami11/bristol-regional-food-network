@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_availability" name="BRFN Availability" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.30.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="availability-status" name="Decide availability status">
+    <decisionTable id="DecisionTable_availability" hitPolicy="FIRST">
+      <input id="Input_quantity" label="Stock quantity">
+        <inputExpression id="InputExpression_quantity" typeRef="number"><text>quantity</text></inputExpression>
+      </input>
+      <input id="Input_phase" label="Season phase">
+        <inputExpression id="InputExpression_phase" typeRef="string"><text>if today() &lt; date(seasonStart) then "BEFORE_SEASON" else if today() &gt; date(seasonEnd) then "AFTER_SEASON" else "IN_SEASON"</text></inputExpression>
+      </input>
+      <output id="Output_status" label="Status" name="status" typeRef="string" />
+      <output id="Output_open" label="Open to new orders" name="ordersOpen" typeRef="boolean" />
+      <rule id="Rule_1">
+        <description>Stock can't be negative: send back for correction</description>
+        <inputEntry id="Rule_1_in1"><text>&lt; 0</text></inputEntry>
+        <inputEntry id="Rule_1_in2"><text>-</text></inputEntry>
+        <outputEntry id="Rule_1_out1"><text>"REJECTED"</text></outputEntry>
+        <outputEntry id="Rule_1_out2"><text>false</text></outputEntry>
+      </rule>
+      <rule id="Rule_2">
+        <description>Listed but closed until the season starts</description>
+        <inputEntry id="Rule_2_in1"><text>-</text></inputEntry>
+        <inputEntry id="Rule_2_in2"><text>"BEFORE_SEASON"</text></inputEntry>
+        <outputEntry id="Rule_2_out1"><text>"NOT_YET_IN_SEASON"</text></outputEntry>
+        <outputEntry id="Rule_2_out2"><text>false</text></outputEntry>
+      </rule>
+      <rule id="Rule_3">
+        <description>Closed; restocking doesn't help until new dates are set</description>
+        <inputEntry id="Rule_3_in1"><text>-</text></inputEntry>
+        <inputEntry id="Rule_3_in2"><text>"AFTER_SEASON"</text></inputEntry>
+        <outputEntry id="Rule_3_out1"><text>"OUT_OF_SEASON"</text></outputEntry>
+        <outputEntry id="Rule_3_out2"><text>false</text></outputEntry>
+      </rule>
+      <rule id="Rule_4">
+        <description>Sold out: closes automatically</description>
+        <inputEntry id="Rule_4_in1"><text>0</text></inputEntry>
+        <inputEntry id="Rule_4_in2"><text>"IN_SEASON"</text></inputEntry>
+        <outputEntry id="Rule_4_out1"><text>"OUT_OF_STOCK"</text></outputEntry>
+        <outputEntry id="Rule_4_out2"><text>false</text></outputEntry>
+      </rule>
+      <rule id="Rule_5">
+        <description>In season with stock: open to orders</description>
+        <inputEntry id="Rule_5_in1"><text>&gt; 0</text></inputEntry>
+        <inputEntry id="Rule_5_in2"><text>"IN_SEASON"</text></inputEntry>
+        <outputEntry id="Rule_5_out1"><text>"AVAILABLE"</text></outputEntry>
+        <outputEntry id="Rule_5_out2"><text>true</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_availability">
+      <dmndi:DMNShape id="DMNShape_availability" dmnElementRef="availability-status">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

@@ -1,0 +1,66 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.10.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 19,
+  "id": "stock-reconciliation",
+  "type": "default",
+  "components": [
+    {
+      "type": "text",
+      "text": "# Reconcile stock discrepancy\nAn order took this product's stock below zero. Confirm the real stock with the producer.",
+      "id": "Field_065"
+    },
+    {
+      "type": "textfield",
+      "key": "productName",
+      "label": "Product",
+      "id": "Field_066",
+      "readonly": true
+    },
+    {
+      "type": "textfield",
+      "key": "orderId",
+      "label": "Order",
+      "id": "Field_067",
+      "readonly": true
+    },
+    {
+      "type": "number",
+      "key": "currentQuantity",
+      "label": "Stock before the order",
+      "id": "Field_068",
+      "readonly": true
+    },
+    {
+      "type": "number",
+      "key": "quantitySold",
+      "label": "Quantity in the order",
+      "id": "Field_069",
+      "readonly": true
+    },
+    {
+      "type": "number",
+      "key": "quantity",
+      "label": "Corrected stock level",
+      "id": "Field_070",
+      "validate": {
+        "required": true,
+        "min": 0
+      },
+      "decimalDigits": 0
+    },
+    {
+      "type": "textarea",
+      "key": "reconcileNote",
+      "label": "What happened and what was agreed with the producer",
+      "id": "Field_071",
+      "validate": {
+        "required": true
+      }
+    }
+  ]
+}
