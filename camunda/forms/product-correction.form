@@ -1,0 +1,402 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.10.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 19,
+  "id": "product-correction",
+  "type": "default",
+  "components": [
+    {
+      "type": "text",
+      "text": "# Correct your product listing",
+      "id": "Field_026"
+    },
+    {
+      "type": "text",
+      "text": "=\"**Please fix the following:**\\n\\n- \" + string join(if validationErrors = null then [] else validationErrors, \"\\n- \")",
+      "id": "Field_027"
+    },
+    {
+      "type": "text",
+      "text": "=if certReason = null then \"\" else \"**Certificate check:** \" + certReason",
+      "id": "Field_028"
+    },
+    {
+      "type": "group",
+      "label": "Product",
+      "id": "Field_032",
+      "showOutline": true,
+      "components": [
+        {
+          "type": "textfield",
+          "key": "productName",
+          "label": "Product name",
+          "id": "Field_029",
+          "validate": {
+            "required": true,
+            "maxLength": 80
+          }
+        },
+        {
+          "type": "textarea",
+          "key": "description",
+          "label": "Description",
+          "id": "Field_030",
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "type": "select",
+          "key": "category",
+          "label": "Category",
+          "id": "Field_031",
+          "values": [
+            {
+              "label": "Vegetables",
+              "value": "vegetables"
+            },
+            {
+              "label": "Fruit",
+              "value": "fruit"
+            },
+            {
+              "label": "Dairy products",
+              "value": "dairy"
+            },
+            {
+              "label": "Bakery goods",
+              "value": "bakery"
+            },
+            {
+              "label": "Preserves",
+              "value": "preserves"
+            },
+            {
+              "label": "Meat and fish",
+              "value": "meat"
+            },
+            {
+              "label": "Seasonal specialities",
+              "value": "seasonal"
+            }
+          ],
+          "validate": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "Price and stock",
+      "id": "Field_036",
+      "showOutline": true,
+      "components": [
+        {
+          "type": "number",
+          "key": "price",
+          "label": "Price (\u00a3)",
+          "id": "Field_033",
+          "validate": {
+            "required": true,
+            "min": 0.01
+          },
+          "decimalDigits": 2,
+          "appearance": {
+            "prefixAdorner": "\u00a3"
+          }
+        },
+        {
+          "type": "select",
+          "key": "unit",
+          "label": "Sold per",
+          "id": "Field_034",
+          "values": [
+            {
+              "label": "Each",
+              "value": "each"
+            },
+            {
+              "label": "Kilogram",
+              "value": "kg"
+            },
+            {
+              "label": "500 g pack",
+              "value": "500g"
+            },
+            {
+              "label": "Bunch",
+              "value": "bunch"
+            },
+            {
+              "label": "Jar",
+              "value": "jar"
+            },
+            {
+              "label": "Loaf",
+              "value": "loaf"
+            },
+            {
+              "label": "Dozen",
+              "value": "dozen"
+            },
+            {
+              "label": "Litre",
+              "value": "litre"
+            }
+          ],
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "type": "number",
+          "key": "quantity",
+          "label": "Available quantity",
+          "id": "Field_035",
+          "validate": {
+            "required": true,
+            "min": 0
+          },
+          "decimalDigits": 0
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "Seasonal availability",
+      "id": "Field_039",
+      "showOutline": true,
+      "components": [
+        {
+          "type": "datetime",
+          "subtype": "date",
+          "dateLabel": "Available from",
+          "key": "seasonStart",
+          "id": "Field_037",
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "type": "datetime",
+          "subtype": "date",
+          "dateLabel": "Available until",
+          "key": "seasonEnd",
+          "id": "Field_038",
+          "validate": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "Origin and freshness",
+      "id": "Field_044",
+      "showOutline": true,
+      "components": [
+        {
+          "type": "textfield",
+          "key": "farmOrigin",
+          "label": "Farm name",
+          "id": "Field_040",
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "type": "textfield",
+          "key": "farmPostcode",
+          "label": "Farm postcode",
+          "id": "Field_041",
+          "validate": {
+            "required": true
+          },
+          "description": "Used for food-miles reporting"
+        },
+        {
+          "type": "datetime",
+          "subtype": "date",
+          "dateLabel": "Harvest date",
+          "key": "harvestDate",
+          "id": "Field_042"
+        },
+        {
+          "type": "datetime",
+          "subtype": "date",
+          "dateLabel": "Best-before date",
+          "key": "bestBefore",
+          "id": "Field_043"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "Allergens",
+      "id": "Field_047",
+      "showOutline": true,
+      "components": [
+        {
+          "type": "radio",
+          "key": "containsAllergens",
+          "label": "Does this product contain any of the 14 major allergens?",
+          "id": "Field_045",
+          "values": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ],
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "type": "checklist",
+          "key": "allergens",
+          "label": "Allergens present",
+          "id": "Field_046",
+          "values": [
+            {
+              "label": "Celery",
+              "value": "celery"
+            },
+            {
+              "label": "Cereals containing gluten",
+              "value": "gluten"
+            },
+            {
+              "label": "Crustaceans",
+              "value": "crustaceans"
+            },
+            {
+              "label": "Eggs",
+              "value": "eggs"
+            },
+            {
+              "label": "Fish",
+              "value": "fish"
+            },
+            {
+              "label": "Lupin",
+              "value": "lupin"
+            },
+            {
+              "label": "Milk",
+              "value": "milk"
+            },
+            {
+              "label": "Molluscs",
+              "value": "molluscs"
+            },
+            {
+              "label": "Mustard",
+              "value": "mustard"
+            },
+            {
+              "label": "Tree nuts",
+              "value": "nuts"
+            },
+            {
+              "label": "Peanuts",
+              "value": "peanuts"
+            },
+            {
+              "label": "Sesame",
+              "value": "sesame"
+            },
+            {
+              "label": "Soya",
+              "value": "soya"
+            },
+            {
+              "label": "Sulphur dioxide / sulphites",
+              "value": "sulphites"
+            }
+          ],
+          "conditional": {
+            "hide": "=containsAllergens != \"yes\""
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "Organic certification",
+      "id": "Field_052",
+      "showOutline": true,
+      "components": [
+        {
+          "type": "checkbox",
+          "key": "organicClaimed",
+          "label": "I am claiming this product is organic",
+          "id": "Field_048"
+        },
+        {
+          "type": "select",
+          "key": "certBody",
+          "label": "Certification body",
+          "id": "Field_049",
+          "values": [
+            {
+              "label": "Soil Association Certification",
+              "value": "soil-association"
+            },
+            {
+              "label": "Organic Farmers & Growers",
+              "value": "ofg"
+            },
+            {
+              "label": "Organic Food Federation",
+              "value": "off"
+            },
+            {
+              "label": "Other approved control body",
+              "value": "other"
+            }
+          ],
+          "validate": {
+            "required": true
+          },
+          "conditional": {
+            "hide": "=organicClaimed != true"
+          }
+        },
+        {
+          "type": "textfield",
+          "key": "certNumber",
+          "label": "Certificate number",
+          "id": "Field_050",
+          "validate": {
+            "required": true
+          },
+          "conditional": {
+            "hide": "=organicClaimed != true"
+          }
+        },
+        {
+          "type": "datetime",
+          "subtype": "date",
+          "dateLabel": "Certificate expiry date",
+          "key": "certExpiry",
+          "id": "Field_051",
+          "validate": {
+            "required": true
+          },
+          "conditional": {
+            "hide": "=organicClaimed != true"
+          }
+        }
+      ]
+    }
+  ]
+}

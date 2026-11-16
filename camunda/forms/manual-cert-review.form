@@ -1,0 +1,82 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.10.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 19,
+  "id": "manual-cert-review",
+  "type": "default",
+  "components": [
+    {
+      "type": "text",
+      "text": "# Manual certificate review\nThe automatic certification service did not respond. Check the certificate against the certification body's public register.",
+      "id": "Field_053"
+    },
+    {
+      "type": "textfield",
+      "key": "productName",
+      "label": "Product",
+      "id": "Field_054",
+      "readonly": true
+    },
+    {
+      "type": "textfield",
+      "key": "producerName",
+      "label": "Producer",
+      "id": "Field_055",
+      "readonly": true
+    },
+    {
+      "type": "textfield",
+      "key": "certBody",
+      "label": "Certification body",
+      "id": "Field_056",
+      "readonly": true
+    },
+    {
+      "type": "textfield",
+      "key": "certNumber",
+      "label": "Certificate number",
+      "id": "Field_057",
+      "readonly": true
+    },
+    {
+      "type": "datetime",
+      "subtype": "date",
+      "dateLabel": "Certificate expiry",
+      "key": "certExpiry",
+      "id": "Field_058",
+      "readonly": true
+    },
+    {
+      "type": "radio",
+      "key": "certDecision",
+      "label": "Your decision",
+      "id": "Field_059",
+      "values": [
+        {
+          "label": "Certificate is valid: approve",
+          "value": "APPROVED"
+        },
+        {
+          "label": "Certificate is not valid: reject",
+          "value": "REJECTED"
+        }
+      ],
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "key": "certNotes",
+      "label": "Reason (shown to the producer if rejected)",
+      "id": "Field_060",
+      "validate": {
+        "required": true
+      }
+    }
+  ]
+}
