@@ -8,7 +8,7 @@ The operational models expand on the processes/functionalities identified in the
 
 ## F1 – Product Listing and Validation
 
-**Current status:** The F1 BPMN model has been developed and Camunda implementation is currently in progress.
+**Current status:** The group has selected Moses's F1 design, currently available as a PNG. The corresponding editable BPMN XML remains on Moses's Camunda workspace and still needs exporting to this repository. Ayo's separately tested executable contribution is retained for now as a technical prototype; it is not the selected F1 design.
 
 The F1 process covers how a food producer submits a product to the BRFN marketplace and how the listing is checked before it can be published.
 
@@ -24,17 +24,18 @@ The diagram separates the responsibilities of Product Listing Management and Com
 
 ### Camunda implementation
 
-Configuration to the F1 diagram, is currently in process, in the Camunda Web Modeler.
+Earlier Camunda configuration work was carried out on Noyo's separate F1 version, which has now been removed from GitHub at the group's request. That configuration should not be assumed to exist in Moses's selected F1 model.
 
-So far, a Certification Compliance Review form has been created and linked to the **Review Failed Certification** user task. The form captures the certification issue, whether it can be resolved, and also the reviewer's notes.
+In Noyo's separate Camunda workspace, a Certification Compliance Review form has been created and linked to the **Review Failed Certification** user task. The form captures the certification issue, whether it can be resolved, and also the reviewer's notes.
 
-The YES and NO conditions have also been added on for the **Can Certification Issue Be Resolved?** gateway using the `certificationIssueResolvable` variable.
+In that same separate model, the YES and NO conditions were added for the **Can Certification Issue Be Resolved?** gateway using the `certificationIssueResolvable` variable.
 
-The other gateway conditions, service-task configurations and message handling are still being worked on. The model has not yet been demonstrated as a complete executable process.
+The selected Moses F1 XML has not yet been inspected, so implementation status cannot be verified from the PNG alone. The model has not yet been demonstrated as a complete executable process.
 
 ### Files
 
-- `BRFN-F1-Product-Listing-and-Validation.bpmn` – Current F1 BPMN model exported from Camunda Web Modeler.
+- [F1-Product-Listing-Validation.png](F1-Product-Listing-Validation.png) – Selected F1 model image, uploaded by Moses.
+- **Pending:** Matching editable F1 BPMN XML export from Moses's Camunda workspace.
 - `F1-Product-Listing-Validation.png` – Earlier F1 diagram image added during Sprint 2 development.
 
 ### Next steps
