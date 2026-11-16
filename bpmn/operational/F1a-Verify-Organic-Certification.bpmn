@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="1921008" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <bpmn:collaboration id="Collaboration_1ehxtiy">
+    <bpmn:participant id="Participant_1b53i80" name="BRFN Marketplace" processRef="Process_0m14bmy" />
+    <bpmn:participant id="Participant_04djeof" name="Certification Body Service (simulated)" />
+    <bpmn:messageFlow id="Flow_0s65nnq" name="certBody, certNumber" sourceRef="Activity_01mdby5" targetRef="Participant_04djeof" />
+    <bpmn:messageFlow id="Flow_02espn5" name="VALID / INVALID" sourceRef="Participant_04djeof" targetRef="Activity_01mdby5" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_0m14bmy" name="F1a Verify Organic Certification (called by F1)" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_0x24u5q">
+      <bpmn:lane id="Lane_1syhugd" name="Marketplace Admin">
+        <bpmn:flowNodeRef>Activity_09xhkux</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1uh642s" name="Marketplace platform(automated)">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1msfq8m</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0z1uj0f</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1c1822y</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_01mdby5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0x1atzi</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1" name="Cerificate check requested">
+      <bpmn:outgoing>Flow_0jyzpcd</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1msfq8m" name="verification complete">
+      <bpmn:incoming>Flow_12mq51g</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_0z1uj0f" name="Record verification outcome">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="record-verification-audit" retries="3" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0cmthjr</bpmn:incoming>
+      <bpmn:outgoing>Flow_12mq51g</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1c1822y">
+      <bpmn:incoming>Flow_1jvn7il</bpmn:incoming>
+      <bpmn:incoming>Flow_04211rw</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cmthjr</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_01mdby5" name="Request certificate verification">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="verify-certificate" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=&#34;AUTOMATIC&#34;" target="verificationMethod" />
+          <zeebe:output source="=certVerified" target="certVerified" />
+          <zeebe:output source="=certReason" target="certReason" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0jyzpcd</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jvn7il</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_09xhkux" name="Review certificate manually">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition formId="manual-cert-review" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=certDecision = &#34;APPROVED&#34;" target="certVerified" />
+          <zeebe:output source="=certNotes" target="certReason" />
+          <zeebe:output source="=&#34;MANUAL&#34;" target="verificationMethod" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_05unygm</bpmn:incoming>
+      <bpmn:outgoing>Flow_04211rw</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:boundaryEvent id="Event_0x1atzi" name="Service Unavailable" attachedToRef="Activity_01mdby5">
+      <bpmn:outgoing>Flow_05unygm</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0xvu829" errorRef="Error_15rtxhj" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0jyzpcd" sourceRef="StartEvent_1" targetRef="Activity_01mdby5" />
+    <bpmn:sequenceFlow id="Flow_12mq51g" sourceRef="Activity_0z1uj0f" targetRef="Event_1msfq8m" />
+    <bpmn:sequenceFlow id="Flow_0cmthjr" sourceRef="Gateway_1c1822y" targetRef="Activity_0z1uj0f" />
+    <bpmn:sequenceFlow id="Flow_1jvn7il" sourceRef="Activity_01mdby5" targetRef="Gateway_1c1822y" />
+    <bpmn:sequenceFlow id="Flow_04211rw" sourceRef="Activity_09xhkux" targetRef="Gateway_1c1822y" />
+    <bpmn:sequenceFlow id="Flow_05unygm" sourceRef="Event_0x1atzi" targetRef="Activity_09xhkux" />
+  </bpmn:process>
+  <bpmn:error id="Error_15rtxhj" name="Certification service unavailable" errorCode="CERT_SERVICE_UNAVAILABLE" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1ehxtiy">
+      <bpmndi:BPMNShape id="Participant_1b53i80_di" bpmnElement="Participant_1b53i80" isHorizontal="true">
+        <dc:Bounds x="150" y="210" width="970" height="410" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1syhugd_di" bpmnElement="Lane_1syhugd" isHorizontal="true">
+        <dc:Bounds x="180" y="440" width="940" height="180" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1uh642s_di" bpmnElement="Lane_1uh642s" isHorizontal="true">
+        <dc:Bounds x="180" y="210" width="940" height="230" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="262" y="320" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="241" y="363" width="79" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1msfq8m_di" bpmnElement="Event_1msfq8m">
+        <dc:Bounds x="892" y="320" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="867" y="363" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0z1uj0f_di" bpmnElement="Activity_0z1uj0f">
+        <dc:Bounds x="700" y="298" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1c1822y_di" bpmnElement="Gateway_1c1822y" isMarkerVisible="true">
+        <dc:Bounds x="555" y="313" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01mdby5_di" bpmnElement="Activity_01mdby5">
+        <dc:Bounds x="370" y="298" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09xhkux_di" bpmnElement="Activity_09xhkux">
+        <dc:Bounds x="370" y="490" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1nzyry8_di" bpmnElement="Event_0x1atzi">
+        <dc:Bounds x="402" y="360" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="431" y="386" width="58" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0jyzpcd_di" bpmnElement="Flow_0jyzpcd">
+        <di:waypoint x="298" y="338" />
+        <di:waypoint x="370" y="338" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12mq51g_di" bpmnElement="Flow_12mq51g">
+        <di:waypoint x="800" y="338" />
+        <di:waypoint x="892" y="338" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cmthjr_di" bpmnElement="Flow_0cmthjr">
+        <di:waypoint x="605" y="338" />
+        <di:waypoint x="700" y="338" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jvn7il_di" bpmnElement="Flow_1jvn7il">
+        <di:waypoint x="470" y="338" />
+        <di:waypoint x="555" y="338" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04211rw_di" bpmnElement="Flow_04211rw">
+        <di:waypoint x="470" y="530" />
+        <di:waypoint x="580" y="530" />
+        <di:waypoint x="580" y="363" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05unygm_di" bpmnElement="Flow_05unygm">
+        <di:waypoint x="420" y="396" />
+        <di:waypoint x="420" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_1ewd03l_di" bpmnElement="Participant_04djeof" isHorizontal="true">
+        <dc:Bounds x="230" y="80" width="440" height="60" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_02espn5_di" bpmnElement="Flow_02espn5">
+        <di:waypoint x="440" y="140" />
+        <di:waypoint x="440" y="298" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="448" y="223" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0s65nnq_di" bpmnElement="Flow_0s65nnq">
+        <di:waypoint x="400" y="298" />
+        <di:waypoint x="400" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="331" y="216" width="58" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
