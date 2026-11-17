@@ -120,20 +120,6 @@ Taken from Use Case 1 and our agreed scope in [PROPOSED-FUNCTIONALITIES.md](PROP
 | Customer: task *Review available products and details* | Customer browsing is outside Use Case 1 (Use Case 2 storefront) |
 | Marketplace Admin: resource *Published listing records* (SR dependum *Listing records*) | No listing store yet; product data lives in process variables |
 
-## 7. Gaps and inconsistencies to fix
-
-| # | Where | Issue | Fix |
-|---|---|---|---|
-| G1 | F1, F1a, F2a | The call activities call `verify-organic-certification` and `evaluate-product-availability`, but F1a's process ID is `Process_0m14bmy` and F2a's is `Process_0ez0v2i`, so neither can be found. F1's process is `Process_1sltvgi`, named "New BPMN diagram" | Set F1a's process ID to `verify-organic-certification` and F2a's to `evaluate-product-availability`; give F1 a proper process ID and name |
-| G2 | F1, F2 | Some FEEL expressions start with `==` (F1 *organic claimed* Yes; F2 both *what triggered update* branches, *update valid* Yes, *Any product update* Yes, the *Calculate new stock level* script and the multi-instance input collection). Web Modeler adds the first `=` itself, so these are invalid | Remove the extra `=` |
-| G3 | F2 | Both *what triggered update* branches test `trigger = "ORDER"`, and nothing sets `trigger` | Keep `= trigger = "ORDER"` on the order branch, make the producer branch the default, and set `trigger` on *T2 Stock reduced by an order* with an output mapping |
-| G4 | F1 | *certificate verified* Yes tests `organicClaimed = true`. *Verify organic certification* has *propagate all child variables* off and no output mappings, so F1a's result never reaches F1 | Condition `= certVerified = true`; add output mappings for `certVerified` and `certReason` on the call activity |
-| G5 | All operational models | The service tasks have job types but no job workers, so in Camunda the processes wait at the first service task | Build or simulate a worker for each job type; the validation and certificate workers must return the variables the gateways test (`isValid`, `certVerified`, `certReason`) |
-| G6 | F1, F2 timers | Reminder and archive timers use test values `PT1M` and `PT2M`. The daily cycle `R/P1D` has no start time, so it doesn't run at 00:05 | Use `P3D` and `P7D` for submission; daily cycle `R/2026-11-18T00:05:00Z/P1D` |
-| G7 | F1, F1a | Typos: job type `archieve-listing`, *Notify producer listing archieved*, *Cerificate check requested*, pool *BRF MARKETPLACE* | Correct the spelling |
-| G8 | All operational models | Element IDs are Camunda's generated IDs, not the codes used in this document | Set each element's ID to its code (section 8) |
-| G9 | i* | The order stock change (R10) and the daily season check (R13) have no SD dependency or SR element | Add a *Stock change from orders* dependency (Order process → Marketplace platform) and a platform task for the daily check |
-| G10 | All models | The producer is named *Food Producer* (SD), *Registered Producer* (SR), *Food Producers* (strategic) and *Producer* (F2 lane) | Agree one name, or state the mapping in each model's README |
 
 ## 8. Element index
 
