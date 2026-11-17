@@ -9,13 +9,11 @@
 | Meeting | Date | Time | Location | Purpose |
 |---|---|---|---|---|
 | 1 | Tuesday 3 November 2026 | 2:30–3:30 p.m. | University Library (in person) | Sprint 2 planning, task review and initial operational BPMN development |
-| 2 | Monday 9 November 2026 | 8:30–10:30 p.m. | Online (Discord) | Review of Camunda progress, BPMN understanding and i* modelling |
+| 2 | Monday 9 November 2026 | 8:30–10:30 a.m. | Online (Discord) | Review of Camunda progress, BPMN understanding and i* modelling |
+| 3 | Monday 16 November 2026 | 9:00-10:30 p.m. | Online (Discord) | Review of Camunda Progress and clean up of Github documents such as the README.md, BPMN documents, e.t.c
+| 4 | Tuesday 17 November 2026 | 11:30-12:40 p.m. | University Library (in person) | Preparation for the final sprint 2 review 
 
 ## Meeting 1 — Sprint 2 Planning and Task Review
-
-**Date:** Tuesday 3 November 2026  
-**Time:** 2:30–3:30 p.m.  
-**Location:** University Library 
 
 ### Discussion
 
@@ -28,17 +26,7 @@ We started working on the two operational BPMN models in Camunda:
 
 Each member had started working on their assigned tasks, and getting more familiar with Camunda and updating the project board, to reflect the work planned for Sprint 2.
 
-### Outcome
-
-Each member was able to have a good understandng of what was expected of them, as well as what they were expected to get done on Camunda.
-
-We also reviewed the project board so that the tasks and their progress could be tracked as development continued.
-
-## Meeting 2 — Camunda Progress Review and i* Modelling
-
-**Date:** Monday 9 November 2026  
-**Time:** 8:30–10:30 p.m.  
-**Location:** Online (Discord)  
+## Meeting 2 — Camunda Progress Review and i* Modelling  
 
 ### Discussion
 
@@ -54,15 +42,18 @@ The group discussed the i* Strategic Dependency (SD) and Strategic Rationale (SR
 
 We also updated the Sprint 2 backlog and updated the GitHub project board to reflect the current progress of our assigned tasks.
 
-### Meeting Outcome
+## Meeting 3 — Camunda Progress Review and Github Cleanup
 
-The meeting gave everyone an opportunity to share their progress and improve their understanding of Camunda and BPMN modelling.
+### Discussion
 
-We reviewed the operational diagram work completed so far and discussed the next stages of the F1 and F2 models.
+In this meetng, we looked at everyones individual operational diagrams made for the 2 chosen functionalities, and we made a decsion as to whose diagram we were going to use for our final Sprint 2 standup. As well as that, we also cleaned up the github and took out any file that was not being used as well as making sure all our work was being kept up to date with our progress
 
-The group also reviewed the tasks relating to the i* SD and SR diagrams seeing as we gained a better understanding of them in the previous lecture, and updated the sprint backlog and project board.
 
-We agreed to continue working on our assigned tasks and to keep GitHub updated as the sprint progresses.
+## Meeting 4 — Preparation for the final Sprint 2 stand up 
+
+### Discussion
+
+In this meeting, we prepared ahead of our final stand up for sprint 2, ensured everyone was satisfied with the work we had done so far and also uploaded onto the github, and also had final explanations done for the work we need to understand ahead of the meeting.
 
 ## Group Responsibilities
 
