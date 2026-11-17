@@ -10,84 +10,67 @@ My role would be to prioritise tasks in the product backlog for the project back
 
 It will ensure that the group works towards the requirements for the assessments systematically.
 
-## 2. Sprint 1 Goal
-
 The aim for Sprint 1 is to reach a common understanding regarding the business BRFN, find out its stakeholders and key business processes, outline the functional requirements and requirements, and create a high-level strategic BPMN diagram that would be an image of the entire enterprise.
 
 Also, the team should keep project documentation, make records about the participation and check the scope of work with the tutor.
 
-## 3. Product Backlog
+## 2. Product Backlog
 
 Product backlog contains a list of the major components of the task involved in the entire process. The priorities may vary depending on the importance of the items for the final assessment outcomes.
 
-| ID | Backlog item | Priority | Planned Sprint |
-|---|---|---|---|
-| PB1 | Review the case study and assessment brief | High | Sprint 1 |
-| PB2 | Identify business objectives and major enterprise processes | High | Sprint 1 |
-| PB3 | Identify stakeholders, roles and responsibilities | High | Sprint 1 |
-| PB4 | Document proposed major functionalities and scope | High | Sprint 1 |
-| PB5 | Develop the high-level strategic BPMN model | High | Sprint 1 |
-| PB6 | Document initial functional and non-functional requirements | High | Sprint 1 |
-| PB7 | Prepare backlog, sprint planning and task tracking | High | Sprint 1 |
-| PB8 | Review Sprint 1 deliverables and record decisions | High | Sprint 1 |
-| PB9 | Develop i* Strategic Dependency and Strategic Rationale models | High | Sprint 2 |
-| PB10 | Develop detailed operational BPMN models for the agreed functionalities | High | Sprint 2 |
-| PB11 | Establish traceability across i*, strategic BPMN and operational BPMN | High | Sprint 2 |
-| PB12 | Begin Camunda process automation, including initial executable processes, user tasks and forms | High | Sprint 2 |
-| PB13 | Implement process variables, gateways, service tasks and business rules | High | Sprint 2 |
-| PB14 | Complete executable process implementation and integration | High | Sprint 3 |
-| PB15 | Test normal and exceptional process paths and refine the implementation | High | Sprint 3 |
-| PB16 | Review the final solution, documentation and evidence of contributions | High | Sprint 3 |
+2. Product Backlog
+ID	Task	Priority	Sprint
+PB1	Analyse the BRFN case study and assessment brief	High	Sprint 1
+PB2	Determine the key business processes	High	Sprint 1
+PB3	Determine stakeholders and their roles	High	Sprint 1
+PB4	Identify two critical functionalities	High	Sprint 1
+PB5	Formulate the strategic BPMN model	High	Sprint 1
+PB6	Formulate the initial project requirements	High	Sprint 1
+PB7	Construct the product backlog and sprint plan	High	Sprint 1
+PB8	Analyse Sprint 1 deliverables	High	Sprint 1
+PB9	Generate the i* Strategic Dependency Model	High	Sprint 2
+PB10	Generate the i* Strategic Rationale Model	High	Sprint 2
+PB11	Improve the strategic BPMN	High	Sprint 2
+PB12	Construct the F1 Operational BPMN	High	Sprint 2
+PB13	Construct the F2 Operational BPMN	High	Sprint 2
+PB14	Construct traceability between the models	High	Sprint 2
+PB15	Construct Camunda Forms for F1 and F2	High	Sprint 2
+PB16	Construct process variables, gateways and business rules	High	Sprint 2
+PB17	Start service-task construction and process testing	High	Sprint 2
+PB18	Execute executable process construction	High	Sprint 3
+PB19	Test normal and abnormal process flows	High	Sprint 3
+PB20	Finish final analysis and contributions	High	Sprint 3
 
 
-## 4. Sprint 1 Plan
+## 3. Sprint 1
 
-### Planned activities
+### Sprint Goal
 
-1. Review the assessment brief and BRFN case study.
-2. Document the main business areas and enterprise processes.
-3. Identify the main stakeholders and their needs.
-4. Document the two proposed functionalities: Product Listing and Validation, and Inventory and Seasonal Availability Management.
-5. Record the initial requirements and relevant exceptions.
-6. Create and review the strategic BPMN model.
-7. Maintain the backlog, agree task owners and track progress.
-8. Record feedback, decisions and outstanding work.
+The objective of Sprint 1 was to have a basic understanding of BRFN’s business, find out their major processes and stakeholders, pick two major functionalities, and create a strategic BPMN model.
 
-### Expected outputs
+### Sprint 1 Task Tracker
 
-- Initial business analysis.
-- Initial stakeholder and actor analysis.
-- Proposed functionalities and requirements.
-- A high-level strategic BPMN model and its editable file.
-- An organised backlog and sprint task tracker.
-- Evidence of group reviews, decisions and individual contributions.
+| Task | Responsible Member | Status |
+|---|---|---|
+| Business analysis and enterprise processes | Xavier Ajike | Completed |
+| Stakeholder analysis | Ayobamidele Esho | Completed |
+| Proposed functionalities and use-case scope | Moses Bororio | Completed |
+| Strategic BPMN model | Noyo Acogo Emami | Completed |
+| Initial requirements | Moses Bororio/Group | Completed |
+| Backlog and sprint planning | Elvis Uchendi | Completed |
+| Group review and meeting minutes | Whole group | Completed |
 
-## 5. Sprint 1 Task Tracker
+### Sprint 1 Output
 
-This task tracker includes the results of Sprint 1. All primary documents and models required for Sprint 1 have been generated and added to GitHub. Sprint 1 has been completed successfully and serves as the base for Sprint 2.
+The team has performed their initial analysis and chosen two major functionalities:
 
-| Task | Responsible Member | Current Position | Next Action |
-|---|---|---|---|
-| Business analysis and major processes | Xavier Ajike | Completed and documented in GitHub | Use business analysis in Sprint 2 modelling |
-| Stakeholders analysis | Ayobamidele Esho (Ayo) | Completed and documented in GitHub | Use the analysis of stakeholders' dependencies for i* modelling |
-| Functionality proposed and use-case scope | Moses Bororio | Documented in GitHub | Use the agreement on F1 and F2 scope for operational BPMN and Camunda|
-| Strategic BPMN model | Noyo Acogo Emami | Strategic BPMN model created and stored in GitHub | Use the model as a base for traceability in Sprint 2 |
-| Practice BPMN model | Noyo Acogo Emami | Practice BPMN model prepared | Use as an educational example for operational BPMN |
-| Requirements initial | Moses Bororio / group discussion | Requirements initial have been made | Use the requirements while making operational models |
-| Backlog, sprint planning and task tracking | Elvis Uchendi | Sprint 1 backlog and planning have been done | Continue managing backlog and planning Sprint 2 progress |
-| Group discussion and decisions | The whole group | Sprint 1 has been completed; next decisions are recorded | Take forward all the feedback and decisions from Sprint 1 for Sprint 2 |
+- **F1** – Product Listing & Validation
+- **F2** – Inventory & Seasonal Availability Management
 
-**Status definitions**
+The Sprint 1 documentation and strategic BPMN model were uploaded to Github.
 
-- **To Do:** Work has not yet started.
-- **In Progress:** Work is actively being developed.
-- **Drafted:** An initial version exists but still needs review.
-- **Done:** The agreed deliverable has been completed and reviewed.
-- **Blocked:** Progress depends on a decision, feedback or another task.
-
-A file being present in GitHub does not by itself mean its contents have been reviewed or accepted.
-
-## 6. Sprint 2 Plan
+These documents have served as a base for Sprint 2 work.
+## 4. Sprint 2 Plan
 
 ### Sprint 2 Goal
 
@@ -105,30 +88,88 @@ Objective of Sprint 2 is to create the stakeholder model and operational process
 
 ### Sprint 2 Task Tracker
 
-**Evidence check from the Sprint 2 repository: 16 November 2026.**
+| Task | Member assigned | Status | Next action to take |
+|---|---|---|---|
+| i* Strategic Dependency model | Group / i* members | Model is uploaded | Conduct final group review |
+| i* Strategic Rationale model | Ayo | Model is uploaded | Conduct consistency check against SD |
+| Strategic BPMN improvement | Noyo | BPMN updated on Camunda | Export current version and conduct review |
+| F1 operational BPMN | Moses, Elvis | BPMN uploaded and imported | Conduct implementation review and test process |
+| F1a organic certification subprocess | Moses | BPMN uploaded and imported | Conduct review of call activity and process configuration |
+| F2 operational BPMN | Moses | BPMN uploaded and imported | Conduct implementation review and test process |
+| F2a product availability subprocess | Moses | BPMN uploaded and imported | Conduct review of subprocess configuration |
+| Camunda forms | Operational modelling members | All 5 forms imported | Conduct validation and field check |
+| Availability DMN | Operational modelling members | BPMN uploaded and imported | Conduct test of decision rules |
+| Business rules and process variables | Moses / implementation members | Partially done | Conduct review for consistency against BPMN, Forms and DMN |
+| Service workers and simulated certification service | Implementation members | Code on GitHub | Conduct review of integration with selected models |
+| Model traceability | Group | Draft completed | Conduct update on links and models |
+| Camunda process testing | Group | Conducted | Conduct resolution of execution access and evidence collection |
+| Backlog and progress monitoring | Elvis | Conducted | Conduct update after group review |
 
-In the Sprint 2 repository there is evidence of the refined strategic BPMN, operational F1 and F2 diagrams images, i* Strategic Dependency and i* Strategic Rationale models, traceability information, business rules and the service worker shared code.
+Status notes: "Uploaded/imported" means that the document is uploaded. This does not mean that the process was implemented/executed successfully.
+## 4.1 Strategic BPMN Progress
+The strategic BPMN from Sprint 1 has been improved to add more details to the two chosen functionalities.
+For F1, the BPMN includes product validation, correction requests, organic certification verification, publication and rejection options.
+For F2, the BPMN includes inventory update, stock and seasonal availability check.
 
-The selected F1 and F2 operational diagrams are located in `bpmn/operational/`. The corresponding editable BPMN XML files should be exported and uploaded.
+Additionally, an inventory update path has been created so that the already existing products can be updated without submitting a new listing.
+The connection between F1 and F2 has also been checked. In the revised Camunda version, the difference between published and rejected listings is determined before moving to inventory management.
+The strategic BPMN is non-executable as it describes the overview of the business process, not the executable implementation of it.
+Current Position: Latest changes were made in Camunda and no modelling issues were found in the Design tab. Latest version has to be exported to GitHub and reviewed by the group.
 
-The shared service development was implemented with the product validation and organic certification verification simulation, including unit-test evidence. Execution of the selected F1/F2 diagrams needs to be verified.
+## 4.2 Operational BPMN Progress
+The group chose Moses' F1 and F2 operational BPMNs.
+The following editable BPMN files are stored in GitHub:
+File and Purpose
+F1-Product-Listing-Validation.bpmn	Product submission, validation and publication
+F1a-Verify-Organic-Certification.bpmn	Organic certification verification
+F2-Inventory-Seasonal-Availability.bpmn	Stock and seasonal availability update
+F2a-Evaluate-Product-Availability.bpmn	Product availability evaluation
+PNG images are also available.
+All four BPMN files have been imported to the UWE Camunda Web Modeler project on 17 November 2026.
+No design issues were found in the F1 diagram. Four information notices about the usage of the external resources were shown in its implementation review.
+F2 process has three major triggers:
+* T1: Producer updates stock/seasonal availability information.
+* T2: Customer order decreases stock quantity.
+* T3: Daily check of seasonal availability takes place at 00:05.
+In addition, F2 has stock discrepancy management and administrator review path.
+Current Position: Both operational models are ready to be reviewed and configured. The end-to-end process execution has not been successful yet.
 
-The separate executable prototype for the F1/F2 diagram and the forms, DMN and the execution evidence have been deleted on 16 November. They are not considered the selected operational deliverables of the group.
+## 5. Sprint 2 Testing
 
-### Sprint 2 Issues Progress Summary
+Testing has commenced for the Camunda project along with its related documents.
 
-| Issue | Current progress | Next action |
+So far:
+
+| Check | Result |
+|---|---|
+| F1 BPMN design validation | No problem detected |
+| F1 implementation validation | Four informational notices |
+| Validation of product submission Form | No problem detected |
+| F2 implementation validation | Five problems detected during the review |
+| Importing operational files into UWE Camunda | Completed |
+| Execution of End-to-end F1 | Has not been verified |
+| Execution of End-to-end F2 | Has not been verified |
+
+The deployment environment for UWE workspace has not been confirmed yet. Process execution permissions also need to be sorted out.
+
+The testing evidence should be provided once the processes become executable.
+
+## 6. Sprint 2 Outstanding Tasks
+
+The following tasks should take priority until Sprint 2 is completed.
+
+| Priority | Task | Expected outcome |
 |---|---|---|
-| #14 Strategic BPMN | Refined; review pending | Confirmation of consistency with selected F1/F2 models |
-| #15 Operational BPMN | Selected F1/F2 diagrams; issue closed | Exporting and uploading the matching editable BPMN files |
-| #16 i* Strategic Dependency | Model available; issue closed | Traceability verification |
-| #17 i* Strategic Rationale | Model available; issue closed | Verification of consistency with SD |
-| #18 Model Traceability | Updated; verification pending | Checking the mappings for the selected F1/F2 models |
-| #19 Camunda Processes and Forms | Execution evidence for the selected models pending | Configuring and testing the selected processes |
-| #20 Variables, Service Tasks and Rules | Partial implementation | Integration completion and tests recording |
-| #21 Backlog and Progress Tracking | In progress | Updating of the progress evidence, the board statuses and the contribution evidence |
+| High | Export latest strategic BPMN to GitHub | Latest updated model is in the repository |
+| High | F1 and F2 reviews completion | Detection and resolving of the remaining issues related to the modeling or configuration |
+| High | Validation of all Camunda Forms | All forms utilize correct variables and referenced by processes |
+| High | Availability test of DMN | Decision rules give expected outcomes |
+| High | Access resolution to Camunda environment | Detection of the way to execute the processes |
+| High | Testing of initial process scenarios | Recording evidence of process scenario execution |
+| High | Model traceability update | Traceability between all models consistent |
+| High | Contributions and responsibilities review | Recording of the individual contribution accurately |
 
-**Outstanding dependencies:** Editable F1/F2 BPMN exports, models consistency check, Camunda forms configuration and deployment, F2 stock management and order integration.
+Any tasks which cannot be done in Sprint 2 should be identified as the outstanding ones for Sprint 3.
 
 ## 7. Sprint 2 Task Ownership and Acceptance Criteria
 
