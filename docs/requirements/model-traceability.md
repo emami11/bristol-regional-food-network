@@ -1,7 +1,5 @@
 # Model Traceability – BRFN Digital Marketplace (Sprint 2)
 
-**Responsible Group Member:** Moses Bororio. Model owners are listed in section 2.
-
 ## 1. Purpose and how to read this
 
 This document traces every Use Case 1 requirement through each model level, so a reader can follow it from **why** (i*) to **what** (strategic BPMN) to **how** (operational BPMN) to **build** (Camunda configuration):
@@ -24,17 +22,17 @@ Operational element names are quoted exactly as they appear in the model files. 
 
 ## 2. Models traced
 
-| Level | File | Owner |
-|---|---|---|
-| i* Strategic Dependency (SD) | [brfn-strategic-dependency.txt](../../models/istar/brfn-strategic-dependency.txt) / [.png](../../models/istar/brfn-strategic-dependency.png) | Xavier Ajike |
-| i* Strategic Rationale (SR) | [BRFN-Ayo-SR-Core.txt](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.txt) / [.png](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.png) | Ayobamidele Esho |
-| Strategic BPMN, Sprint 2 | [BRFN-Strategic-BPMN-Sprint2.bpmn](../../bpmn/strategic/BRFN-Strategic-BPMN-Sprint2.bpmn) | Noyo Acogo Emami |
-| Operational BPMN, F1 | [F1-Product-Listing-Validation.bpmn](../../bpmn/operational/F1-Product-Listing-Validation.bpmn) / [.png](../../bpmn/operational/F1-Product-Listing-Validation.png) | Moses Bororio |
-| Operational BPMN, F1a (called by F1) | [F1a-Verify-Organic-Certification.bpmn](../../bpmn/operational/F1a-Verify-Organic-Certification.bpmn) / [.png](../../bpmn/operational/F1a-Verify-Organic-Certification.png) | Moses Bororio |
-| Operational BPMN, F2 | [F2-Inventory-Seasonal-Availability.bpmn](../../bpmn/operational/F2-Inventory-Seasonal-Availability.bpmn) / [.png](../../bpmn/operational/F2-Inventory-Seasonal-Availability.png) | Moses Bororio |
-| Operational BPMN, F2a (called by F2) | [F2a-Evaluate-Product-Availability.bpmn](../../bpmn/operational/F2a-Evaluate-Product-Availability.bpmn) / [.png](../../bpmn/operational/F2a-Evaluate-Product-Availability.png) | Moses Bororio |
-| DMN decision | [availability-status.dmn](../../camunda/dmn/availability-status.dmn) | Moses Bororio |
-| Forms | [camunda/forms](../../camunda/forms) | Moses Bororio |
+| Level | File |
+|---|---|
+| i* Strategic Dependency (SD) | [brfn-strategic-dependency.txt](../../models/istar/brfn-strategic-dependency.txt) / [.png](../../models/istar/brfn-strategic-dependency.png) |
+| i* Strategic Rationale (SR) | [SR-Core.txt](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.txt) / [.png](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.png) |
+| Strategic BPMN, Sprint 2 | [BRFN-Strategic-BPMN-Sprint2-2.bpmn](../../bpmn/strategic/BRFN-Strategic-BPMN-Sprint2-2.bpmn) |
+| Operational BPMN, F1 | [F1-Product-Listing-Validation.bpmn](../../bpmn/operational/F1-Product-Listing-Validation.bpmn) / [.png](../../bpmn/operational/F1-Product-Listing-Validation.png) |
+| Operational BPMN, F1a (called by F1) | [F1a-Verify-Organic-Certification.bpmn](../../bpmn/operational/F1a-Verify-Organic-Certification.bpmn) / [.png](../../bpmn/operational/F1a-Verify-Organic-Certification.png) |
+| Operational BPMN, F2 | [F2-Inventory-Seasonal-Availability.bpmn](../../bpmn/operational/F2-Inventory-Seasonal-Availability.bpmn) / [.png](../../bpmn/operational/F2-Inventory-Seasonal-Availability.png) |
+| Operational BPMN, F2a (called by F2) | [F2a-Evaluate-Product-Availability.bpmn](../../bpmn/operational/F2a-Evaluate-Product-Availability.bpmn) / [.png](../../bpmn/operational/F2a-Evaluate-Product-Availability.png) |
+| DMN decision | [availability-status.dmn](../../camunda/dmn/availability-status.dmn) |
+| Forms | [camunda/forms](../../camunda/forms) |
 
 ## 3. Requirements
 
@@ -124,18 +122,18 @@ Taken from Use Case 1 and our agreed scope in [PROPOSED-FUNCTIONALITIES.md](PROP
 
 ## 7. Gaps and inconsistencies to fix
 
-| # | Where | Issue | Fix | Owner |
-|---|---|---|---|---|
-| G1 | F1, F1a, F2a | The call activities call `verify-organic-certification` and `evaluate-product-availability`, but F1a's process ID is `Process_0m14bmy` and F2a's is `Process_0ez0v2i`, so neither can be found. F1's process is `Process_1sltvgi`, named "New BPMN diagram" | Set F1a's process ID to `verify-organic-certification` and F2a's to `evaluate-product-availability`; give F1 a proper process ID and name | Moses |
-| G2 | F1, F2 | Some FEEL expressions start with `==` (F1 *organic claimed* Yes; F2 both *what triggered update* branches, *update valid* Yes, *Any product update* Yes, the *Calculate new stock level* script and the multi-instance input collection). Web Modeler adds the first `=` itself, so these are invalid | Remove the extra `=` | Moses |
-| G3 | F2 | Both *what triggered update* branches test `trigger = "ORDER"`, and nothing sets `trigger` | Keep `= trigger = "ORDER"` on the order branch, make the producer branch the default, and set `trigger` on *T2 Stock reduced by an order* with an output mapping | Moses |
-| G4 | F1 | *certificate verified* Yes tests `organicClaimed = true`. *Verify organic certification* has *propagate all child variables* off and no output mappings, so F1a's result never reaches F1 | Condition `= certVerified = true`; add output mappings for `certVerified` and `certReason` on the call activity | Moses |
-| G5 | All operational models | The service tasks have job types but no job workers, so in Camunda the processes wait at the first service task | Build or simulate a worker for each job type; the validation and certificate workers must return the variables the gateways test (`isValid`, `certVerified`, `certReason`) | Moses |
-| G6 | F1, F2 timers | Reminder and archive timers use test values `PT1M` and `PT2M`. The daily cycle `R/P1D` has no start time, so it doesn't run at 00:05 | Use `P3D` and `P7D` for submission; daily cycle `R/2026-11-18T00:05:00Z/P1D` | Moses |
-| G7 | F1, F1a | Typos: job type `archieve-listing`, *Notify producer listing archieved*, *Cerificate check requested*, pool *BRF MARKETPLACE* | Correct the spelling | Moses |
-| G8 | All operational models | Element IDs are Camunda's generated IDs, not the codes used in this document | Set each element's ID to its code (section 8) | Moses |
-| G9 | i* | The order stock change (R10) and the daily season check (R13) have no SD dependency or SR element | Add a *Stock change from orders* dependency (Order process → Marketplace platform) and a platform task for the daily check | Xavier, Ayo |
-| G10 | All models | The producer is named *Food Producer* (SD), *Registered Producer* (SR), *Food Producers* (strategic) and *Producer* (F2 lane) | Agree one name, or state the mapping in each model's README | Group |
+| # | Where | Issue | Fix |
+|---|---|---|---|
+| G1 | F1, F1a, F2a | The call activities call `verify-organic-certification` and `evaluate-product-availability`, but F1a's process ID is `Process_0m14bmy` and F2a's is `Process_0ez0v2i`, so neither can be found. F1's process is `Process_1sltvgi`, named "New BPMN diagram" | Set F1a's process ID to `verify-organic-certification` and F2a's to `evaluate-product-availability`; give F1 a proper process ID and name |
+| G2 | F1, F2 | Some FEEL expressions start with `==` (F1 *organic claimed* Yes; F2 both *what triggered update* branches, *update valid* Yes, *Any product update* Yes, the *Calculate new stock level* script and the multi-instance input collection). Web Modeler adds the first `=` itself, so these are invalid | Remove the extra `=` |
+| G3 | F2 | Both *what triggered update* branches test `trigger = "ORDER"`, and nothing sets `trigger` | Keep `= trigger = "ORDER"` on the order branch, make the producer branch the default, and set `trigger` on *T2 Stock reduced by an order* with an output mapping |
+| G4 | F1 | *certificate verified* Yes tests `organicClaimed = true`. *Verify organic certification* has *propagate all child variables* off and no output mappings, so F1a's result never reaches F1 | Condition `= certVerified = true`; add output mappings for `certVerified` and `certReason` on the call activity |
+| G5 | All operational models | The service tasks have job types but no job workers, so in Camunda the processes wait at the first service task | Build or simulate a worker for each job type; the validation and certificate workers must return the variables the gateways test (`isValid`, `certVerified`, `certReason`) |
+| G6 | F1, F2 timers | Reminder and archive timers use test values `PT1M` and `PT2M`. The daily cycle `R/P1D` has no start time, so it doesn't run at 00:05 | Use `P3D` and `P7D` for submission; daily cycle `R/2026-11-18T00:05:00Z/P1D` |
+| G7 | F1, F1a | Typos: job type `archieve-listing`, *Notify producer listing archieved*, *Cerificate check requested*, pool *BRF MARKETPLACE* | Correct the spelling |
+| G8 | All operational models | Element IDs are Camunda's generated IDs, not the codes used in this document | Set each element's ID to its code (section 8) |
+| G9 | i* | The order stock change (R10) and the daily season check (R13) have no SD dependency or SR element | Add a *Stock change from orders* dependency (Order process → Marketplace platform) and a platform task for the daily check |
+| G10 | All models | The producer is named *Food Producer* (SD), *Registered Producer* (SR), *Food Producers* (strategic) and *Producer* (F2 lane) | Agree one name, or state the mapping in each model's README |
 
 ## 8. Element index
 
@@ -190,7 +188,7 @@ In F2 this is the message start event *T2 Stock reduced by an order*, fed by the
 
 ### BPMN, DMN and forms
 - [Strategic BPMN – original Sprint 1](../../bpmn/strategic/BRFN-Strategic-BPMN-Sprint1.bpmn)
-- [Strategic BPMN – refined Sprint 2](../../bpmn/strategic/BRFN-Strategic-BPMN-Sprint2.bpmn)
+- [Strategic BPMN – refined Sprint 2](../../bpmn/strategic/BRFN-Strategic-BPMN-Sprint2-2.bpmn)
 - [Strategic BPMN change documentation](../../bpmn/strategic/README.md)
 - [Operational models F1, F1a, F2, F2a](../../bpmn/operational/README.md)
 - [Availability decision (DMN)](../../camunda/dmn/availability-status.dmn)
@@ -198,4 +196,4 @@ In F2 this is the message start event *T2 Stock reduced by an order*, fed by the
 
 ## 11. Use of generative AI
 
-This document was drafted with AI assistance (Claude) by reading the group's model files, then reviewed by the group. The models it traces were built by their owners.
+This document was drafted with AI assistance (Claude) by reading the group's model files, then reviewed by the group. The models it traces were built by the group.
