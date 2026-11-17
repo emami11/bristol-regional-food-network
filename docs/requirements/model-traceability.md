@@ -1,32 +1,189 @@
-# Model Traceability – BRFN Digital Marketplace
+# Model Traceability – BRFN Digital Marketplace (Sprint 2)
 
-## 1. Purpose
+**Responsible Group Member:** Moses Bororio. Model owners are listed in section 2.
 
-This document tracks how the stakeholder goals represented in the i* models connect to the BRFN strategic BPMN, the operational work on F1 and F2, and the agreed functionality requirements. It is a working cross-check for Sprint 2, not a claim that every Camunda process is executable.
+## 1. Purpose and how to read this
 
-## 2. Scope and model levels
+This document traces every Use Case 1 requirement through each model level, so a reader can follow it from **why** (i*) to **what** (strategic BPMN) to **how** (operational BPMN) to **build** (Camunda configuration and services) to **proof** (tests):
 
-- **F1 – Product Listing and Validation:** a food producer supplies product information; BRFN checks the details, handles any organic certification requirement, and decides whether to publish or reject the listing.
-- **F2 – Inventory and Seasonal Availability Management:** BRFN handles updates to product stock, checks seasonal and stock availability, and updates whether a product can be purchased.
+```
+Use Case 1 requirement
+  → i* SD dependency     who depends on whom, and for what
+  → i* SR element        the goal, task, resource or quality inside an actor
+  → Strategic BPMN       the enterprise sub-process that owns it
+  → Operational BPMN     the element(s) that carry it out in F1, F1a, F2 or F2a
+  → Implementation       rules, variables, job types, forms, DMN
+  → Test                 scenario in docs/testing/sprint2-test-scenarios.md
+```
 
-The **strategic BPMN** shows the enterprise context and high-level business responsibilities. The **operational BPMN** describes the detailed workflow and exceptions. The **i* SD/SR models** explain why actors depend on these processes and what goals or qualities matter.
+- **F1 – Product Listing and Validation:** a producer submits a product; BRFN validates it, checks organic certification where claimed (F1a), decides its initial availability and publishes it, or asks for corrections and archives it if abandoned.
+- **F2 – Inventory and Seasonal Availability Management:** stock and season changes from the producer, from orders, and from a daily check are applied, and the product's availability is re-decided (F2a).
 
-## 3. Traceability table (working mappings)
+Operational element names are quoted exactly as they appear in the model files. Each operational element also has a short code (for example `UT_Submit`). Section 8 maps every code to its element and current ID in the `.bpmn` file.
 
-| Functionality | Goal / dependency to confirm against i* | Strategic subprocess | Operational process / available evidence | Requirement reference |
+**Status key:** **Traced** = linked at every level · **Config** = modelled, but a configuration or naming fix is listed in section 7 · **Gap** = missing from a model
+
+## 2. Models traced
+
+| Level | File | Owner |
+|---|---|---|
+| i* Strategic Dependency (SD) | [brfn-strategic-dependency.txt](../../models/istar/brfn-strategic-dependency.txt) / [.png](../../models/istar/brfn-strategic-dependency.png) | Xavier Ajike |
+| i* Strategic Rationale (SR) | [BRFN-Ayo-SR-Core.txt](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.txt) / [.png](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.png) | Ayobamidele Esho |
+| Strategic BPMN, Sprint 2 | [BRFN-Strategic-BPMN-Sprint2.bpmn](../../bpmn/strategic/BRFN-Strategic-BPMN-Sprint2.bpmn) | Noyo Acogo Emami |
+| Operational BPMN, F1 | [F1-Product-Listing-Validation.bpmn](../../bpmn/operational/F1-Product-Listing-Validation.bpmn) / [.png](../../bpmn/operational/F1-Product-Listing-Validation.png) | Moses Bororio |
+| Operational BPMN, F1a (called by F1) | [F1a-Verify-Organic-Certification.bpmn](../../bpmn/operational/F1a-Verify-Organic-Certification.bpmn) / [.png](../../bpmn/operational/F1a-Verify-Organic-Certification.png) | Moses Bororio |
+| Operational BPMN, F2 | [F2-Inventory-Seasonal-Availability.bpmn](../../bpmn/operational/F2-Inventory-Seasonal-Availability.bpmn) / [.png](../../bpmn/operational/F2-Inventory-Seasonal-Availability.png) | Moses Bororio |
+| Operational BPMN, F2a (called by F2) | [F2a-Evaluate-Product-Availability.bpmn](../../bpmn/operational/F2a-Evaluate-Product-Availability.bpmn) / [.png](../../bpmn/operational/F2a-Evaluate-Product-Availability.png) | Moses Bororio |
+| DMN decision | [availability-status.dmn](../../camunda/dmn/availability-status.dmn) | Moses Bororio |
+| Forms | [camunda/forms](../../camunda/forms) | Moses Bororio |
+| Rules and variables | [business-rules-and-variables.md](business-rules-and-variables.md) | Moses Bororio |
+| Service tasks | [services/](../../services/README.md) | Moses Bororio |
+| Tests | [sprint2-test-scenarios.md](../testing/sprint2-test-scenarios.md) | Moses Bororio |
+
+## 3. Requirements
+
+Taken from Use Case 1 and our agreed scope in [PROPOSED-FUNCTIONALITIES.md](PROPOSED-FUNCTIONALITIES.md) and [README.md](README.md).
+
+| ID | Requirement | Source |
+|---|---|---|
+| R1 | Producer submits a product with all required details | Use Case 1 |
+| R2 | System validates the submitted information | Use Case 1 |
+| R3 | If information is missing or invalid, the producer is asked to correct it | Use Case 1 |
+| R4 | Organic certification is checked with an external or simulated service | Use Case 1 |
+| R5 | The process copes when the verification service is unavailable | Use Case 1 |
+| R6 | Listings that are never corrected are archived | Agreed scope |
+| R7 | Validated products are published and become available to customers | Use Case 1 |
+| R8 | Producer receives feedback on the outcome of a submission | Requirements README |
+| R9 | Producer updates product quantity and seasonal availability | Use Case 1 |
+| R10 | Stock changes are received from the ordering process | Agreed scope (Task 2 link) |
+| R11 | Stock at zero makes the product unavailable for new orders | Use Case 1 |
+| R12 | Restocked products become available again only while in season | Use Case 1 |
+| R13 | Seasonal availability is checked automatically (daily) | Requirements README, agreed scope |
+| R14 | Availability is decided by a DMN decision table | Requirements README |
+| R15 | Invalid stock input and stock discrepancies are handled | Agreed scope |
+| N1 | Easy for producers to use | Requirements README |
+| N2 | Product and organic information is accurate and trustworthy | Requirements README |
+| N3 | External service problems are handled appropriately | Requirements README |
+
+## 4. F1 – Product Listing and Validation (with F1a)
+
+| Req | i* SD dependency | i* SR element | Strategic BPMN (Sprint 2) | Operational BPMN | Implementation | Test | Status |
+|---|---|---|---|---|---|---|---|
+| **R1** Submit product | Food Producer → Marketplace platform: *Valid product listing* (goal). Marketplace platform → Food Producer: *Complete product information* (resource). Food Producer → Marketplace platform: *simple listing process* (quality) | Registered Producer: task *Submit and correct product details*. Marketplace Platform: resource *Producer product and stock details* | **Manage Product Listings** (`Activity_1cldul4`): start *Product Details Received*; message *Product Listing Submission* from Food Producers | F1: start *Producer wants to list a new product*; user task *Submit product details* `UT_Submit` (form `product-submission`); service task *Save draft listing* `ST_SaveDraft` | Product variables (rules doc §2); job type `save-draft-listing` | T1 | Traced |
+| **R2** Validate | Food Producer → Marketplace platform: *Valid product listing* (goal) | Marketplace Platform: task *Validate details and applicable certification* | *Validate Product Information* (`Activity_1qkax36`); *Product Information Valid?* (`Gateway_0nkjwdp`) | F1: service task *Validate product details* `ST_Validate`; gateway *Details valid* `GW_Valid` (No is the default flow) | Rules V1–V12; job type `validate-product` (worker in `services/`) | T1, T3 | Config (G5) |
+| **R3** Correct | Food Producer → Marketplace platform: *Validation feedback* (resource) | Registered Producer: task *Submit and correct product details* | *Request Product Information Correction* (`Activity_1y56vr7`); *Receive Corrected Product Information* (`Activity_15okjg2`); message *Listing Confirmation / Validation Feedback* | F1: user task *Correct product details* `UT_Correct` (form `product-correction`), which loops back to *Save draft listing*; non-interrupting timer *3 days without correction* `BE_Remind` → send task *Send correction reminder* → end *Reminder set* | `validationErrors`, `validationSummary` shown in the correction form | T3 | Config (G9) |
+| **R4** Organic check | Marketplace platform → Organic certification verification service: *Organic certification checked* (goal), *Certification verification result* (resource). Marketplace platform → Food Producer: *Organic certification details* (resource). Customer → Marketplace platform: *Trustworthy organic claims* (quality) | Marketplace Platform: resource *Certification result*. Certification Verification Service: task *Check evidence and return result*, goal *Certification outcome supplied*, quality *Accurate verification*. SR dependums *Certification request*, *Certification outcome* | *Check Organic Certification Requirements* (`Activity_0asvpvn`); *Organic Certification Required?* (`Gateway_0nzbtf7`); *Request Organic Certification Verification* (`Activity_1uwe5sa`); *Certification Valid?* (`Gateway_073o5sz`); black-box pool *Organic Certification Verification Service* | F1: gateway *organic claimed* `GW_Organic`; call activity *Verify organic certification* `CA_Verify` → F1a: start *Cerificate check requested*; service task *Request certificate verification* `ST_Request`, message flows to black-box pool *Certification Body Service (simulated)*; *Record verification outcome*; end *verification complete*. Back in F1: gateway *certificate verified* `GW_Cert` (No → *Correct product details*) | Rules C1–C4, C8; job types `verify-certificate` (worker and simulated service in `services/`), `record-verification-audit` | T2, T5, T6, T7 | Config (G1, G2, G4, G5) |
+| **R5** Service unavailable | Marketplace platform → Marketplace Admin: *Manual verification review* (task). Marketplace platform → Organic certification verification service: *Timely verification response* (quality) | Marketplace Admin: task *Review listing compliance*, quality *Manageable review effort* | Not shown at strategic level (*Review Failed Certification* covers a failed result, not an outage) | F1a: error boundary event *Service Unavailable* `BE_CertDown` on *Request certificate verification* → user task *Review certificate manually* `UT_Manual` (Marketplace Admin lane, form `manual-cert-review`) → *Record verification outcome* | Rules C5–C7; worker retries 3 times, then throws a BPMN error | T8, T9 | Config (G5, G6) |
+| **R6** Archive abandoned listing | Marketplace Admin → Marketplace platform: *Compliant products published* (goal) | Marketplace Admin: goal *Listing standards maintained* | *Reject Product Listing* (`Activity_1cuumwx`); end *Listing Rejected* | F1: interrupting timer *7 days without correction* `BE_Archive` on *Correct product details* → *Archive draft listing* → *Notify producer listing archieved* → end *Listing Archived* | Archive rule (rules doc §3); job type `archieve-listing` | T4 | Config (G9, G10) |
+| **R7** Publish | Customer → Marketplace platform: *Accurate product information displayed*, *Accurate product availability* (goals). Marketplace Admin → Marketplace platform: *Compliant products published* (goal) | Marketplace Platform: task *Publish valid listings*, goal *Valid product listings published*. Registered Producer: goal *Valid products published* | *Publish Product Listing* (`Activity_1laooec`); end *Product Listing Published*; then **Manage Inventory and Seasonal Availability** | F1: business rule task *Determine initial availability* `BR_Availability` (DMN `availability-status`); service task *Publish product listing* `ST_Publish`; send task *Notify producer product live* `SND_Live`; end *Product Published* | DMN (section 5, R14); job types `publish-product`, `notify-producer` | T1, T10 | Traced |
+| **R8** Feedback | Food Producer → Marketplace platform: *Validation feedback* (resource) | Registered Producer: goal *Valid products published* | Message *Listing Confirmation / Validation Feedback* | F1: send tasks *Notify producer product live*, *Send correction reminder* and *Notify producer listing archieved*, with message flows to black-box pool *Notification service (Simulated email)*; correction form shows `validationSummary` | Job type `notify-producer` (worker planned, Sprint 3) | T1, T3, T4 | Traced |
+
+## 5. F2 – Inventory and Seasonal Availability (with F2a)
+
+| Req | i* SD dependency | i* SR element | Strategic BPMN (Sprint 2) | Operational BPMN | Implementation | Test | Status |
+|---|---|---|---|---|---|---|---|
+| **R9** Producer update | Marketplace platform → Food Producer: *Updated stock and seasonal information* (resource). Food Producer → Marketplace platform: *Accurate stock and availability* (goal) | Registered Producer: task *Update quantity and seasons*, quality *Easy stock updates*. Marketplace Platform: task *Apply stock and seasonal updates* | **Manage Inventory and Seasonal Availability** (`Activity_1wg7dn8`): message *Inventory Update Request* (`Flow_1o4hku8`); start *Inventory Update Requested*; *Update Product Stock Information* (`Activity_1eyqht7`) | F2: start *T1 Producer wants to update stock or season* `Start_T1`; *Load product listing*; gateway *what triggered update*; user task *Update stock and season* `UT_Update` (Producer lane, form `stock-season-update`); gateway *update valid* `GW_UpdateValid` (No loops back to the form) | Rules S1, S5; job type `load-product` | To add (F2 scenarios) | Config (G2, G3) |
+| **R10** Order stock change | No dependency yet | Marketplace Platform: task *Apply stock and seasonal updates* | **Coordinate Multi-Vendor Orders**: *Allocate Orders to Producers* (`Activity_16wt9bj`). The relationship to inventory is described in section 9 | F2: message start *T2 Stock reduced by an order* `Start_T2` (message `stock-reduced`) from black-box pool *Order and checkout process*; gateway *what triggered update*; script task *Calculate new stock level* `SCR_Calc` | Rules S2–S4 | To add | Config (G2, G3, G7); Gap in i* (G13) |
+| **R11** Zero stock closes | Customer → Marketplace platform: *Accurate product availability* (goal) | Marketplace Platform: task *Evaluate and set availability*, goal *Product availability current* | *Check Seasonal Availability and Stock Level* (`Activity_02qoa9e`); *Product Available for Purchase?* (`Gateway_0tsmgt0`); *Mark Product as Unavailable* (`Activity_0gjocu6`) | F2: call activity *Evaluate product availability* → F2a: business rule task *Decide availability status* (DMN rule 4, `OUT_OF_STOCK`); *Stock Value Valid?*; *Save stock and season dates*; gateway *Status changed?* `GW_Changed`; service task *Open or close to new orders* `ST_Toggle`; send task *Notify producer of new status* `SND_Status`; end *Availability updated* | DMN rule 4; job types `save-stock-season`, `set-order-availability`, `notify-producer` | D2 | Config (G1) |
+| **R12** Restock in season | Food Producer → Marketplace platform: *Accurate stock and availability* (goal) | Marketplace Platform: goal *Product availability current* | *Mark Product as Available* (`Activity_1x02f8v`) | F2a: DMN rule 5 (`AVAILABLE`), with rule 3 (`OUT_OF_SEASON`) checked first so a restock after the season stays closed; *Status changed?* `GW_Changed`; *Open or close to new orders* `ST_Toggle`; *Notify producer of new status* `SND_Status` | DMN rules 3 and 5 | D1, D3, D5 | Config (G1) |
+| **R13** Daily season check | No dependency yet | Marketplace Platform: task *Evaluate and set availability* | Not shown | F2: timer start *T3 everyday at 00:05* `Start_T3`; *Find season changes due today*; gateway *Any product update* (No is the default, to *Nothing to update*); multi-instance sub-process *Re-evaluate each product*, calling *Evaluate product availability* for each product; end *Daily check complete* | DMN rules 2 and 3; job type `find-season-changes` | D4, D6 | Config (G2, G9); Gap in i* (G13) |
+| **R14** DMN decision | Customer → Marketplace platform: *Accurate product availability* (goal) | Marketplace Platform: task *Evaluate and set availability* | Gateway *Product Available for Purchase?* | Decision `availability-status` (hit policy FIRST, 5 rules), used by F1 *Determine initial availability* `BR_Availability` and F2a *Decide availability status* | Result variable `availability` (`status`, `ordersOpen`) | D1–D6 | Config (G8) |
+| **R15** Invalid input and discrepancies | No dependency yet | Marketplace Admin: task *Review listing compliance* | Not shown | F2: *update valid* No loop. F2a: *Stock Value Valid?* (rule 1 `REJECTED`) → error end *Invalid stock value* (`INVALID_STOCK`). F2: error boundary *Stock below zero* → user task *Reconcile stock discrepancy* (Marketplace Admin lane, form `stock-reconciliation`), then re-evaluated; in the daily check, error boundary *Bad stock record* → *Flag product for admin review* → end *Product flagged* | Rules S1, S3; DMN rule 1; job type `flag-product-review` | To add | Traced |
+
+## 6. Non-functional requirements and i* qualities
+
+| Req | i* quality | Where it's realised | Status |
+|---|---|---|---|
+| N1 Easy for producers | SD: *simple listing process* (Food Producer → Marketplace platform). SR: *Easy stock updates* qualifies *Update quantity and seasons* | All validation errors returned at once (`validationErrors`); the correction form loops back without restarting; a reminder after 3 days; a short stock form for F2 | Traced |
+| N2 Accurate and trustworthy | SD: *Trustworthy organic claims*, *Accurate product information displayed*, *Accurate product availability*. SR: *Trustworthy listings*, *Accurate verification* | Rules V1–V12; certificate check in F1a; outcome recorded by *Record verification outcome*; availability re-decided on every stock or season change | Traced |
+| N3 Service problems handled | SD: *Timely verification response* | Worker retries 3 times, then F1a's *Service Unavailable* boundary sends the check to *Review certificate manually* | Config (G6) |
+| Trade-off | SR: *Validate details and applicable certification* **helps** *Trustworthy listings* but **hurts** *Prompt publication* | Accepted on purpose: checks are kept, and delay is reduced by returning all errors together and by the manual review fallback, so an outage doesn't block publication | Traced |
+
+### Every SD dependency lands somewhere
+
+| SD dependency (type) | Realised by |
+|---|---|
+| Complete product information (resource) | R1 |
+| Valid product listing (goal) | R1, R2 |
+| simple listing process (quality) | R1, N1 |
+| Validation feedback (resource) | R3, R8 |
+| Organic certification details (resource) | R4 |
+| Organic certification checked (goal) | R4 |
+| Certification verification result (resource) | R4 |
+| Trustworthy organic claims (quality) | R4, N2 |
+| Timely verification response (quality) | R5, N3 |
+| Manual verification review (task) | R5: *Review certificate manually* in F1a |
+| Compliant products published (goal) | R6, R7 |
+| Accurate product information displayed (goal) | R7, N2 |
+| Accurate product availability (goal) | R11, R12, R14 |
+| Updated stock and seasonal information (resource) | R9 |
+| Accurate stock and availability (goal) | R9, R12 |
+
+### SR elements not yet realised
+
+| SR element | Reason |
+|---|---|
+| Customer: task *Review available products and details* | Customer browsing is outside Use Case 1 (Use Case 2 storefront) |
+| Marketplace Admin: resource *Published listing records* (SR dependum *Listing records*) | No listing store yet; product data lives in process variables (see the test document's limitations) |
+
+## 7. Gaps and inconsistencies to fix
+
+| # | Where | Issue | Fix | Owner |
 |---|---|---|---|---|
-| **F1 – Product Listing and Validation** | Food Producer relies on the marketplace to validate listing details, check an organic claim where relevant, and return a publication or correction/rejection outcome. | **Manage Product Listings**; expanded internal decisions cover validation, certification, corrections, publication and rejection. | [Moses's selected F1 diagram image](../../bpmn/operational/F1-Product-Listing-Validation.png). Its matching editable BPMN XML export is pending; configuration and execution need verification against that export. | [Proposed Functionalities – F1](PROPOSED-FUNCTIONALITIES.md); [validation/certification rules V1–V12 and C1–C8](business-rules-and-variables.md) |
-| **F2 – Inventory and Seasonal Availability Management** | Food Producer relies on the marketplace to maintain accurate stock and seasonal status; customer ordering depends on up-to-date availability. | **Manage Inventory and Seasonal Availability**; expanded internal decisions cover stock updates and available/unavailable outcomes, with an independent producer inventory-update trigger. | [Moses's selected F2 diagram image](../../bpmn/operational/F2-Inventory-Seasonal-Availability.png). Its matching editable BPMN XML export is pending; stock messages, seasonal decisions and exception handling need verification against it. | [Proposed Functionalities – F2](PROPOSED-FUNCTIONALITIES.md); [stock rules S1–S5 and availability rules A1–A4](business-rules-and-variables.md) |
+| G1 | F1, F1a, F2a | The call activities call `verify-organic-certification` and `evaluate-product-availability`, but F1a's process ID is `Process_0m14bmy` and F2a's is `Process_0ez0v2i`, so neither can be found. F1's process is `Process_1sltvgi`, named "New BPMN diagram" | Set F1a's process ID to `verify-organic-certification` and F2a's to `evaluate-product-availability`; give F1 a proper process ID and name | Moses |
+| G2 | F1, F2 | Some FEEL expressions start with `==` (F1 *organic claimed* Yes; F2 both *what triggered update* branches, *update valid* Yes, *Any product update* Yes, the *Calculate new stock level* script and the multi-instance input collection). Web Modeler adds the first `=` itself, so these are invalid | Remove the extra `=` | Moses |
+| G3 | F2 | Both *what triggered update* branches test `trigger = "ORDER"`, and nothing sets `trigger` | Keep `= trigger = "ORDER"` on the order branch, make the producer branch the default, and set `trigger` on *T2 Stock reduced by an order* with an output mapping | Moses |
+| G4 | F1 | *certificate verified* Yes tests `organicClaimed = true`. *Verify organic certification* has *propagate all child variables* off and no output mappings, so F1a's result never reaches F1 | Condition `= certVerified = true`; add output mappings for `certVerified` and `certReason` on the call activity | Moses |
+| G5 | Models ↔ services ↔ rules doc | Variable names differ: `isValid` (F1) vs `dataValid` (worker and rules doc); `certVerified`, `certReason` (F1a) vs `certValid`, `certStatus` (worker); `certDecision = "APPROVED"` (manual review form) vs `adminDecision = "APPROVE"` (rules doc) | Pick one name for each and update the other side | Moses |
+| G6 | F1a ↔ services | The boundary event catches `CERT_SERVICE_UNAVAILABLE`; the worker throws `CERT_SERVICE_DOWN` | Use one error code in both | Moses |
+| G7 | F2 ↔ rules doc | Message name `stock-reduced` in F2; `stock-changed` in the rules doc and test document | Use one name in both | Moses |
+| G8 | DMN ↔ rules doc and tests | The DMN is `availability-status` with 5 rules (including `REJECTED` for negative stock) and result `availability.status`; the rules doc (§6) and test document use `product-availability`, `availabilityStatus` and rules A1–A4 | Update the rules doc and test document to match the DMN | Moses |
+| G9 | F1, F2 timers | Reminder and archive timers use test values `PT1M` and `PT2M`. The daily cycle `R/P1D` has no start time, so it doesn't run at 00:05 | Use `P3D` and `P7D` for submission; daily cycle `R/2026-11-18T00:05:00Z/P1D` | Moses |
+| G10 | F1, F1a | Typos: job type `archieve-listing`, *Notify producer listing archieved*, *Cerificate check requested*, pool *BRF MARKETPLACE* | Correct the spelling | Moses |
+| G11 | Services | Workers exist only for `validate-product` and `verify-certificate`. `save-draft-listing`, `publish-product`, `notify-producer`, `archieve-listing`, `record-verification-audit`, `load-product`, `find-season-changes`, `flag-product-review`, `save-stock-season` and `set-order-availability` have none yet | Implement or simulate them in Sprint 3 | Moses |
+| G12 | All operational models | Element IDs are Camunda's generated IDs, not the codes used in this document | Set each element's ID to its code (section 8) | Moses |
+| G13 | i* | The order stock change (R10) and the daily season check (R13) have no SD dependency or SR element | Add a *Stock change from orders* dependency (Order process → Marketplace platform) and a platform task for the daily check | Xavier, Ayo |
+| G14 | All models | The producer is named *Food Producer* (SD), *Registered Producer* (SR), *Food Producers* (strategic) and *Producer* (F2 lane) | Agree one name, or state the mapping in each model's README | Group |
 
-These descriptions are working interpretations of the models and requirements. The precise dependency labels and links in the i* models must still be reviewed with the SD/SR model owners.
+## 8. Element index
 
-## 4. Cross-process relationship: customer orders and stock
+Codes used in this document, the element they refer to, and its current ID in the `.bpmn` file. Once G12 is done, the code and the ID will be the same.
+
+| Code | Model | Element | Type | Current ID |
+|---|---|---|---|---|
+| `UT_Submit` | F1 | Submit product details | User task | `Activity_1xdcg91` |
+| `ST_SaveDraft` | F1 | Save draft listing | Service task | `Activity_1l6ky9a` |
+| `ST_Validate` | F1 | Validate product details | Service task | `Activity_0yhdxwm` |
+| `GW_Valid` | F1 | Details valid | Exclusive gateway | `Gateway_1cl6vtd` |
+| `UT_Correct` | F1 | Correct product details | User task | `Activity_11kps77` |
+| `BE_Remind` | F1 | 3 days without correction | Timer boundary (non-interrupting) | `Event_19rhqoz` |
+| `BE_Archive` | F1 | 7 days without correction | Timer boundary (interrupting) | `Event_1x5wg90` |
+| `GW_Organic` | F1 | organic claimed | Exclusive gateway | `Gateway_0l4m87i` |
+| `CA_Verify` | F1 | Verify organic certification | Call activity | `Activity_18qrftv` |
+| `GW_Cert` | F1 | certificate verified | Exclusive gateway | `Gateway_0cfjbfd` |
+| `BR_Availability` | F1 | Determine initial availability | Business rule task | `Activity_0g7rtsa` |
+| `ST_Publish` | F1 | Publish product listing | Service task | `Activity_176vrjt` |
+| `SND_Live` | F1 | Notify producer product live | Send task | `Activity_1esilwy` |
+| `ST_Request` | F1a | Request certificate verification | Service task | `Activity_01mdby5` |
+| `BE_CertDown` | F1a | Service Unavailable | Error boundary | `Event_0x1atzi` |
+| `UT_Manual` | F1a | Review certificate manually | User task | `Activity_09xhkux` |
+| `Start_T1` | F2 | T1 Producer wants to update stock or season | Start event | `StartEvent_1` |
+| `UT_Update` | F2 | Update stock and season | User task | `Activity_0geaw7l` |
+| `GW_UpdateValid` | F2 | update valid | Exclusive gateway | `Gateway_19qq81g` |
+| `Start_T2` | F2 | T2 Stock reduced by an order | Message start event | `Event_1gehfkw` |
+| `SCR_Calc` | F2 | Calculate new stock level | Script task | `Activity_1vc5kvd` |
+| `Start_T3` | F2 | T3 everyday at 00:05 | Timer start event | `Event_1n74rpe` |
+| `GW_Changed` | F2a | Status changed? | Exclusive gateway | `Gateway_14esawy` |
+| `ST_Toggle` | F2a | Open or close to new orders | Service task | `Activity_18pl0nc` |
+| `SND_Status` | F2a | Notify producer of new status | Send task | `Activity_1rdd8bg` |
+
+## 9. Cross-process relationship: customer orders and stock
 
 The strategic BPMN documentation for **Allocate Orders to Producers** and **Update Product Stock Information** identifies the business dependency: confirmed sales can reduce stock, and cancellations can restore it. The independent producer inventory-update trigger lets stock be updated without creating a new product listing.
 
-The agreed F2 technical contract specifies a `stock-changed` message correlated using `productId`, with `quantityChange` and `orderId`. Its implementation and connection to the group's customer-ordering process still need verification in the selected operational model. The strategic relationship alone does not demonstrate executable integration. See [Business Rules and Process Variables](business-rules-and-variables.md) and [process test scenarios](../testing/sprint2-test-scenarios.md).
+In F2 this is the message start event *T2 Stock reduced by an order*, fed by the black-box pool *Order and checkout process*. The ordering process is outside Use Case 1, so the message is tested with a sample message rather than a real order (rules S2–S4). See [Business Rules and Process Variables](business-rules-and-variables.md) and [process test scenarios](../testing/sprint2-test-scenarios.md).
 
-## 5. Repository references (checked 16 November 2026)
+## 10. Repository references (checked 17 November 2026)
 
 ### Background and requirements
 - [Actor analysis](../actor-analysis.md)
@@ -40,15 +197,18 @@ The agreed F2 technical contract specifies a `stock-changed` message correlated 
 - [Strategic Rationale (SR), editable piStar model](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.txt)
 - [Strategic Rationale image](../../models/istar/ayo/pistar/BRFN-Ayo-SR-Core.png)
 
-### BPMN models
+### BPMN, DMN and forms
 - [Strategic BPMN – original Sprint 1](../../bpmn/strategic/BRFN-Strategic-BPMN-Sprint1.bpmn)
 - [Strategic BPMN – refined Sprint 2](../../bpmn/strategic/BRFN-Strategic-BPMN-Sprint2.bpmn)
 - [Strategic BPMN change documentation](../../bpmn/strategic/README.md)
-- [Selected F1 model image (Moses)](../../bpmn/operational/F1-Product-Listing-Validation.png) — editable BPMN pending
-- [Operational F2 diagram (PNG)](../../bpmn/operational/F2-Inventory-Seasonal-Availability.png)
+- [Operational models F1, F1a, F2, F2a](../../bpmn/operational/README.md)
+- [Availability decision (DMN)](../../camunda/dmn/availability-status.dmn)
+- [Camunda forms](../../camunda/forms)
+
+### Implementation and tests
 - [Validation and certification job workers](../../services/README.md)
 - [Service and process test scenarios](../testing/sprint2-test-scenarios.md)
-- [Operational model progress notes](../../bpmn/operational/README.md)
 
+## 11. Use of generative AI
 
-**Selection note (16 November 2026):** The group has selected Moses's F1 and F2 designs. The editable selected F1 and F2 BPMN XML files still need to be exported from Moses's Camunda workspace and committed here. Ayo's separate executable F1/F2 prototype has been removed at his request. His SR model and personal strategic BPMN remain available. The selected operational diagrams still need their own configuration and execution checks.
+This document was drafted with AI assistance (Claude) by reading the group's model files, then reviewed by the group. The models it traces were built by their owners.
