@@ -6,6 +6,7 @@
 require('dotenv').config();
 const { Camunda8 } = require('@camunda8/sdk');
 const { validateProductHandler, makeVerifyCertificateHandler } = require('./workers/handlers');
+const { loadProductHandler } = require('./workers/loadProduct');
 
 if (!process.env.ZEEBE_GRPC_ADDRESS && !process.env.ZEEBE_ADDRESS) {
   console.error('No Camunda connection settings found. Copy .env.example to .env and fill it in (see README).');
@@ -33,4 +34,14 @@ zeebe.createWorker({
   }
 });
 
-console.log('Workers running: validate-product, verify-certificate. Ctrl+C to stop.');
+console.log('Workers running: validate-product, verify-certificate, load-product. Ctrl+C to stop.');
+
+zeebe.createWorker({
+  taskType: 'load-product',
+  taskHandler: (job) => {
+    console.log(`[load-product] job ${job.key}`);
+    return loadProductHandler(job);
+  }
+});
+
+console.log('F2 load-product worker registered.');
