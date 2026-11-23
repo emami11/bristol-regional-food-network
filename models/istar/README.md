@@ -43,8 +43,12 @@ The model displays the following dependencies between the actors.
 | Marketplace Platform | Organic Certification Verification Service | Organic certification checked | Goal |
 | Marketplace Platform | Organic Certification Verification Service | Certification verification result | Resource |
 | Marketplace Platform | Organic Certification Verification Service | Timely verification response | Softgoal |
-| Marketplace Admin | Marketplace Platform | Compliant products published | Goal |
-| Marketplace Platform | Marketplace Admin | Manual verification review | Task |
+| Marketplace Platform | Marketplace Admin | Manual Organic Certification Decision | Task |
+| Marketplace Platform | Marketplace Admin | Stock Discrepancy Reconciliation | Task |
+| Marketplace Platform | Marketplace Admin | Approved or Rejected Review Outcome | Resource |
+| Marketplace Admin | Marketplace Platform | Flagged Listings and Supporting Evidence | Resource |
+| Marketplace Admin | Marketplace Platform | Listings Restricted Pending Review | Goal |
+| Marketplace Admin | Marketplace Platform | Traceable Product and Certification Records | Resource |
 
 ## 4. Types of Dependencies
 
