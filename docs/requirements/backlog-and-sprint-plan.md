@@ -2,7 +2,7 @@
 
 **Responsible Group Member:** Elvis Uchendi  
 **Project:** Bristol Regional Food Network (BRFN) Digital Marketplace  
-**Current Sprint:** Sprint 2
+**Current Sprint:** Sprint 3
 
 ## 1. Purpose
 
@@ -37,9 +37,9 @@ PB14	Construct traceability between the models	High	Sprint 2
 PB15	Construct Camunda Forms for F1 and F2	High	Sprint 2
 PB16	Construct process variables, gateways and business rules	High	Sprint 2
 PB17	Start service-task construction and process testing	High	Sprint 2
-PB18	Execute executable process construction	High	Sprint 3
-PB19	Test normal and abnormal process flows	High	Sprint 3
-PB20	Finish final analysis and contributions	High	Sprint 3
+PB18	Finish Camunda processes implementation	In progress but not confirmed	Sprint 3
+PB19	Perform tests of process workflows	Testing began but is not finished	Sprint 3
+PB20	Make final analysis and provide evidence	in progress	Sprint 3
 
 
 ## 3. Sprint 1
@@ -106,6 +106,7 @@ Objective of Sprint 2 is to create the stakeholder model and operational process
 | Backlog and progress monitoring | Elvis | Conducted | Conduct update after group review |
 
 Status notes: "Uploaded/imported" means that the document is uploaded. This does not mean that the process was implemented/executed successfully.
+
 ## 4.1 Strategic BPMN Progress
 The strategic BPMN from Sprint 1 has been improved to add more details to the two chosen functionalities.
 For F1, the BPMN includes product validation, correction requests, organic certification verification, publication and rejection options.
@@ -200,17 +201,17 @@ The backlog will continue to be updated in accordance with the completion of rem
 
 ## 9. Current Priorities
 
-Current priorities consist of coordinating and monitoring the Sprint 2 efforts.
+Current priorities revolve around implementing and assessing the performance of Sprint 3.
 
-- Tracking progress of the i* Strategic Dependency and Strategic Rationale models.
-- Monitoring the creation of operational BPMN models in detail for both functionalities.
-- Ensuring traceability from the i* models to strategic BPMN and operational BPMN.
-- Tracking the initial process implementation in Camunda, such as user tasks, forms, variables, gateways, service tasks, and business rules.
-- Maintaining correct ownership and status of tasks.
-- Documenting group discussions, decisions, blockers, and individual contribution evidence.
-- Reviewing the done work with the group before marking them as Done.
+- Observe the completion and execution of the chosen F1, F1a, F2 and F2a processes.
+- Observe the service-task workers, Camunda forms, process variables and DMN implementation.
+- Document the outcome of the process tests that are normal and exceptional.
+- Observe the issues that are outstanding in implementation and dependency between the group members.
+- Update the traceability of the requirements using the evidence of implementation and testing.
+- Document the progress and contributions of individuals.
+- Facilitate the taking of screenshots, process evidence and demonstration.
 
-The backlog and task tracker will need to be updated periodically to reflect the actual progress and activities.
+Tasks will be marked as complete only after reviewing the evidence of implementation or testing.
 
 ## 10. Connection to Future Sprints
 
@@ -231,7 +232,48 @@ This sprint will concentrate on the completion and improvement of the BRFN Digit
 
 Sprint 3 will utilise the results from Sprint 2 to complete, test and evaluate the solution.
 
-## 11. Conclusion
+## 10.1 Sprint 3 Task Tracker
+
+| Component | Evidence | Verification outstanding |
+|---|---|---|
+| F1 Product listing | BPMN and forms are operational | Submission, validation, corrections, publication, notification |
+| F1a Organic certification | Subprocess and manual review form | Automation, service failure, admin decision |
+| F2 Inventory management | BPMN is operational | Producer updates, order-driven updates, daily checks |
+| F2a Availability | Subprocess and DMN | Decision output and integration with F1/F2 |
+| Service-task workers | Reference to worker code in documentation of sprint 2 | Verify deployment, type and returned variables of jobs |
+| Requirements traceability | Traced requirements R1-R15 in document | Add actual test results and references |
+
+### Sprint 3 Current Blockers and Dependencies
+
+- There is no confirmation of end-to-end F1 and F2 processes execution.
+- The `validate-product` task needs confirmation of an active worker.
+- There is no execution evidence of integrations of certification, availability and notifications.
+- Tests results should be recorded before tasks completed.
+
+### 11 Acceptance criteria for Sprint 3 tasks
+
+The completion of all tasks in Sprint 3 will be conditioned upon the existence of proof.
+
+Proof might consist of:
+
+- Executable BPMN/DMN files.
+- Camunda forms in working state.
+- Completed process instances.
+- Successful execution of both normal and exception paths.
+- Screenshots from process execution.
+- Related GitHub commits and documentation.
+
+### 12 Next actions
+
+- Confirm the implementation and deployment of service-workers.
+- Test submission, validation, correction and publishing of F1.
+- Test the certification service and manual review of F1a.
+- Test the integration of F1 availability with the DMN.
+- Coordinate F2 and F2a testing with group members responsible for their implementation.
+- Update traceability document and backlog based on real results.
+- Collect proofs and make preparations for the final group presentation.
+
+## 13. Conclusion
 
 My role is to make the group's work manageable and traceable. By maintaining the backlog, tracking task ownership, recording progress and highlighting blockers, I help the team see what has been achieved, what remains outstanding and what needs attention before the next assessment milestone.
 
