@@ -19,7 +19,7 @@ Five main actors have been identified for Use Case 1.
 |---|---|---|
 | **Registered Producer** | Agent | A registered farmer or food business representative responsible for submitting products and maintaining inventory information. |
 | **Customer** | Role | Represents customers who rely on accurate product information and availability when purchasing food. |
-| **Marketplace Admin** | Position | Represents marketplace staff responsible for overseeing product compliance and handling exceptional cases where required. |
+| **Marketplace Admin** | Position | Represents marketplace staff responsible for compliance oversight and exceptional cases requiring human judgement. |
 | **Marketplace Platform** | Agent | The software system responsible for validating product information, publishing products and managing inventory availability. |
 | **Certification Verification Service** | Agent | An external or simulated service responsible for verifying organic certification claims. |
 
@@ -61,16 +61,15 @@ Although customers do not directly manage product listings, they depend on accur
 
 ### 3.3 Marketplace Admin
 
-The Marketplace Admin represents marketplace staff responsible for overseeing product listing compliance and supporting marketplace operations.
+The Marketplace Admin represents staff responsible for compliance oversight and exceptional cases.
 
 | Responsibilities | Goals | Softgoals |
 |---|---|---|
-| Monitor product listing compliance. | Ensure products meet marketplace requirements. | Effective compliance management. |
-| Support producers experiencing listing difficulties. | Resolve exceptional cases. | Reduced administrative workload. |
-| Review unresolved verification issues where manual intervention is implemented. | Maintain reliable marketplace operations. | Customer and producer confidence. |
-| Help maintain marketplace listing standards. | | |
-
-**Note:** Manual administrator review is a proposed exception-handling feature and is not an explicit requirement of Use Case 1.
+| Review flagged listings and the evidence supplied by the Platform. | Ensure products meet marketplace requirements. | Effective compliance management. |
+| Manually review organic certification when the automated verification path cannot provide a reliable result, if this exception path is adopted and enabled. | Make informed and explainable review decisions. | Reliable decision-making. |
+| Investigate and reconcile stock discrepancies flagged by the Platform, where this process is in scope. | Resolve exceptional inventory cases. | Accurate inventory records. |
+| Return an approved or rejected review outcome to the Platform. | Ensure unresolved cases are handled appropriately. | Clear review outcomes. |
+| Use product and certification records to investigate previous decisions. | Support traceability and accountability. | Manageable review effort. |
 
 ### 3.4 Marketplace Platform
 
@@ -80,13 +79,14 @@ The Marketplace Platform is the software system responsible for managing product
 |---|---|---|
 | Receive product listing submissions. | Publish valid product listings. | Reliable automated processing. |
 | Validate mandatory product information. | Maintain accurate inventory and product availability. | Efficient product management. |
-| Request corrections when information is missing or invalid. | Prevent unavailable products from being offered for new orders. | Minimal processing delays. |
+| Request corrections when information is missing or invalid. | Prevent listings with unresolved required checks from being published. | Clear feedback and minimal processing delays. |
 | Request organic certification verification when applicable. | Handle validation and verification failures appropriately. | |
 | Publish successfully validated products. | | |
 | Process stock quantity and seasonal availability updates. | | |
-| Automatically make products unavailable when stock reaches zero. | | |
-| Restore product availability after replenishment when appropriate. | | |
-| Handle verification failures and service unavailability. | | |
+| Make products unavailable when stock or seasonal rules require it, and restore availability when appropriate. | | |
+| Flag certification or stock exceptions for review where those paths are implemented. | | |
+| Receive and apply administrator review outcomes. | | |
+| Maintain traceable product, validation, and certification records as required by the design. | | |
 
 ### 3.5 Certification Verification Service
 
