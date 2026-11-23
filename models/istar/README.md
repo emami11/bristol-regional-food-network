@@ -1,116 +1,66 @@
-\# Bristol Regional Food Network (BRFN)
+# Bristol Regional Food Network (BRFN)
 
-\## i\* Strategic Dependency (SD) Model
+## i* Strategic Dependency (SD) Model
 
-\### Use Case 1: Producer Product Listing and Inventory Management
+**Use Case 1: Producer Product Listing and Inventory Management**
 
+## Strategic Dependency Diagram
 
+![BRFN i* Strategic Dependency Model](brfn-strategic-dependency.png)
 
-\### 1. Introduction
+## 1. Introduction
 
+The Strategic Dependency (SD) model explains how the different actors within the Bristol Regional Food Network (BRFN) depend on one another to achieve their objectives.
 
+The model focuses on product listing and validation, inventory and seasonality management, and organic certification verification. It identifies the goals, tasks, resources, and qualities that actors depend on other actors to provide.
 
-The Strategic Dependency (SD) model explains the dependency of the various actors within the Bristol Regional Food Network (BRFN) on each other in order to accomplish their objectives.
-
-
-
-The model primarily centers on two aspects: listing and validation and inventory and seasonality management. The SD model reveals the information, tasks, goals, and qualities that an actor depends on from another actor.
-
-
-
-\### 2. Actors Identified
-
-
+## 2. Actors Identified
 
 The SD model contains five main actors:
 
+- **Food Producer** 
+- **Marketplace Platform** 
+- **Customer** 
+- **Marketplace Admin** 
+- **Organic Certification Verification Service** 
 
-
-\- \*\*Food Producer:\*\* Submits product information, provides organic certification details where applicable, and updates stock quantities and seasonal availability.
-
-\- \*\*Marketplace Platform:\*\* The software system responsible for validating product information, managing product listings, checking organic certification and maintaining product availability.
-
-\- \*\*Customer:\*\* Uses the marketplace to view product information and availability and expects reliable information about products.
-
-\- \*\*Marketplace Admin:\*\* Supports compliance by carrying out manual verification reviews when required.
-
-\- \*\*Organic Certification Verification Service:\*\* An external service that checks organic certification information and returns verification results.
-
-
-
-\### 3. Strategic Dependencies
-
-
+## 3. Strategic Dependencies
 
 The model displays the following dependencies between the actors.
 
+| Depender | Dependee | Dependency | Type |
+|---|---|---|---|
+| Food Producer | Marketplace Platform | Valid product listing | Goal |
+| Food Producer | Marketplace Platform | Accurate stock and availability | Goal |
+| Food Producer | Marketplace Platform | Simple listing process | Softgoal |
+| Food Producer | Marketplace Platform | Validation feedback | Resource |
+| Marketplace Platform | Food Producer | Complete product information | Resource |
+| Marketplace Platform | Food Producer | Organic certification details | Resource |
+| Marketplace Platform | Food Producer | Updated stock and seasonal information | Resource |
+| Customer | Marketplace Platform | Accurate product information displayed | Goal |
+| Customer | Marketplace Platform | Accurate product availability | Goal |
+| Customer | Marketplace Platform | Trustworthy organic claims | Softgoal |
+| Marketplace Platform | Organic Certification Verification Service | Organic certification checked | Goal |
+| Marketplace Platform | Organic Certification Verification Service | Certification verification result | Resource |
+| Marketplace Platform | Organic Certification Verification Service | Timely verification response | Softgoal |
+| Marketplace Platform | Marketplace Admin | Manual Organic Certification Decision | Task |
+| Marketplace Platform | Marketplace Admin | Stock Discrepancy Reconciliation | Task |
+| Marketplace Platform | Marketplace Admin | Approved or Rejected Review Outcome | Resource |
+| Marketplace Admin | Marketplace Platform | Flagged Listings and Supporting Evidence | Resource |
+| Marketplace Admin | Marketplace Platform | Listings Restricted Pending Review | Goal |
+| Marketplace Admin | Marketplace Platform | Traceable Product and Certification Records | Resource |
 
+## 4. Types of Dependencies
 
-| Depender | Dependee | Dependency |
+- **Goal:** An outcome that the depender wants the dependee to achieve.
+- **Task:** An activity that the depender relies on the dependee to perform.
+- **Resource:** Information or data that the dependee is expected to provide.
+- **Softgoal:** A desired quality or condition, such as a simple listing process or a timely verification response.
 
-|---|---|---|
+## 5. Conclusion
 
-| Food Producer | Marketplace Platform | Valid product listing (Goal) |
+The SD model illustrates the relationships between the Food Producer, Marketplace Platform, Customer, Marketplace Admin, and Organic Certification Verification Service.
 
-| Food Producer | Marketplace Platform | Accurate stock and availability (Goal) |
+Successful product listing and inventory management depend on accurate information from producers, reliable validation and availability management by the platform, appropriate certification verification, and administrative support where necessary.
 
-| Food Producer | Marketplace Platform | Simple listing process (Quality) |
-
-| Food Producer | Marketplace Platform | Validation feedback (Resource) |
-
-| Marketplace Platform | Food Producer | Complete product information (Resource) |
-
-| Marketplace Platform | Food Producer | Organic certification details (Resource) |
-
-| Marketplace Platform | Food Producer | Updated stock and seasonal information (Resource) |
-
-| Customer | Marketplace Platform | Accurate product information displayed (Goal) |
-
-| Customer | Marketplace Platform | Accurate product availability (Goal) |
-
-| Customer | Marketplace Platform | Trustworthy organic claims (Quality) |
-
-| Marketplace Platform | Organic Certification Verification Service | Organic certification checked (Goal) |
-
-| Marketplace Platform | Organic Certification Verification Service | Certification verification result (Resource) |
-
-| Marketplace Platform | Organic Certification Verification Service | Timely verification response (Quality) |
-
-| Marketplace Admin | Marketplace Platform | Compliant products published (Goal) |
-
-| Marketplace Platform | Marketplace Admin | Manual verification review (Task) |
-
-
-
-\### 4. Types of Dependencies
-
-
-
-The model uses four types of dependencies:
-
-
-
-\- \*\*Goal:\*\* Desired outcome which needs to be reached by other actor
-
-\- \*\*Task:\*\* Action which should be performed by other actor
-
-\- \*\*Resource:\*\* Data or information that need to be provided by another actor
-
-\- \*\*Quality (Softgoal):\*\* A desired quality or condition, such as a simple listing process or a timely verification response.
-
-
-
-\### 5. Conclusion
-
-
-
-Using the SD model, you are able to see how the Food Producer, Marketplace Platform, Customer, Marketplace Admin, and Organic Certification Verification Service interact strategically.
-
-
-
-It becomes clear that successful product listing and inventory management need correct information provided by producers, validation and availability management of the platform, verification and proper administration.
-
-
-
-The SD model is the basis for creating the i\* Strategic Rationale (SR) model and the BPMN diagrams.
-
+The SD model provides a foundation for developing the i* Strategic Rationale (SR) model and demonstrating traceability to the strategic and operational BPMN models.
