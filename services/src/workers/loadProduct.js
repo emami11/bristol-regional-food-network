@@ -1,21 +1,25 @@
-// Simulated product lookup for BRFN Sprint 3.
-// Replace with a database or API adapter when integration is available.
 
-const products = {
-  'BRFN-DEMO-001': {
-    productId: 'BRFN-DEMO-001',
-    productName: 'Locally Grown Carrots',
-    currentQuantity: 25,
-    currentStatus: 'AVAILABLE',
-    seasonStart: '2026-01-01',
-    seasonEnd: '2026-12-31'
-  }
-};
+// BRFN Sprint 3 - Load Product Worker
+//
+// Loads product information from the shared demonstration store.
+// The store is held in memory and will be replaced with persistent
+// storage when the system is developed further in Task 2.
 
+const { getProduct } = require('./productStore');
+
+/**
+ * Loads a product into the Camunda process variables.
+ *
+ * The product ID is provided by the process.
+ * A demonstration product is used when no ID is supplied.
+ */
 async function loadProductHandler(job) {
-  const productId = job.variables?.productId || 'BRFN-DEMO-001';
-  const product = products[productId];
+  const productId =
+    job.variables?.productId || 'BRFN-DEMO-001';
 
+  const product = getProduct(productId);
+
+  // Stop the process if the requested product does not exist.
   if (!product) {
     return job.fail({
       errorMessage: `Product not found: ${productId}`,
@@ -23,6 +27,7 @@ async function loadProductHandler(job) {
     });
   }
 
+  // Return product details for the remaining BPMN activities.
   return job.complete({
     ...product,
     quantity: product.currentQuantity,
@@ -30,4 +35,6 @@ async function loadProductHandler(job) {
   });
 }
 
-module.exports = { loadProductHandler };
+module.exports = {
+  loadProductHandler
+};
