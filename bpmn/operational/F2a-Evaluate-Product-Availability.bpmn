@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="1921008" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="4c2418b" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
   <bpmn:collaboration id="Collaboration_15r8ei5">
-    <bpmn:participant id="Participant_11n4m5d" name="BRFN Marketplace" processRef="Process_0ez0v2i" />
+    <bpmn:participant id="Participant_11n4m5d" name="BRFN Marketplace" processRef="evaluate-product-availability" />
     <bpmn:participant id="Participant_0ccb02z" name="Notification Service (simulated email)" />
     <bpmn:messageFlow id="Flow_01m7xio" name="Status email" sourceRef="Activity_1rdd8bg" targetRef="Participant_0ccb02z" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_0ez0v2i" name="F2a Evaluate Product Availability (called by F2)" isExecutable="true">
+  <bpmn:process id="evaluate-product-availability" name="F2a Evaluate Product Availability (called by F2)" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Availability check requested">
       <bpmn:outgoing>Flow_16i26bm</bpmn:outgoing>
     </bpmn:startEvent>
