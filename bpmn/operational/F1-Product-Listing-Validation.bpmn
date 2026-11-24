@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="1921008" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="4c2418b" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
   <bpmn:collaboration id="Collaboration_158plq9">
-    <bpmn:participant id="Participant_1jkmfz3" name="BRF MARKETPLACE" processRef="Process_1sltvgi" />
+    <bpmn:participant id="Participant_1jkmfz3" name="BRFN MARKETPLACE" processRef="product-listing-validation" />
     <bpmn:participant id="Participant_0b8kx68" name="Notification service (Simulated email)" />
     <bpmn:participant id="Participant_13osq3z" name="Certification Body Service (Simulated)" />
     <bpmn:messageFlow id="Flow_0ol99dq" name="product live email" sourceRef="Activity_1esilwy" targetRef="Participant_0b8kx68" />
@@ -10,7 +10,7 @@
     <bpmn:messageFlow id="Flow_0axe7lt" name="certificate check" sourceRef="Activity_18qrftv" targetRef="Participant_13osq3z" />
     <bpmn:messageFlow id="Flow_1mb7w3q" name="result" sourceRef="Participant_13osq3z" targetRef="Activity_18qrftv" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_1sltvgi" name="New BPMN diagram" isExecutable="true">
+  <bpmn:process id="product-listing-validation" name="F1 Product Listing and Validation" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Producer wants to list a new product">
       <bpmn:outgoing>Flow_0asjfc2</bpmn:outgoing>
     </bpmn:startEvent>
@@ -54,7 +54,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:callActivity id="Activity_18qrftv" name="Verify organic certification">
       <bpmn:extensionElements>
-        <zeebe:calledElement processId="verify-organic-certification" propagateAllChildVariables="false" />
+        <zeebe:calledElement processId="verify-organic-certification" propagateAllChildVariables="true" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0ygcob7</bpmn:incoming>
       <bpmn:outgoing>Flow_0y9g6b2</bpmn:outgoing>
@@ -147,12 +147,12 @@
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1hqhrsn" name="No" sourceRef="Gateway_1cl6vtd" targetRef="Gateway_0wrf2n8" />
     <bpmn:sequenceFlow id="Flow_0ygcob7" name="yes" sourceRef="Gateway_0l4m87i" targetRef="Activity_18qrftv">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">==organicClaimed = true</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=organicClaimed = true</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1bg8h0c" name="No" sourceRef="Gateway_0l4m87i" targetRef="Gateway_1m8sl8u" />
     <bpmn:sequenceFlow id="Flow_0y9g6b2" sourceRef="Activity_18qrftv" targetRef="Gateway_0cfjbfd" />
     <bpmn:sequenceFlow id="Flow_00kzpav" name="Yes" sourceRef="Gateway_0cfjbfd" targetRef="Gateway_1m8sl8u">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=organicClaimed=true</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=certVerified = true</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_18r6fqv" name="No" sourceRef="Gateway_0cfjbfd" targetRef="Gateway_0wrf2n8" />
     <bpmn:sequenceFlow id="Flow_11i0v7r" sourceRef="Gateway_1m8sl8u" targetRef="Activity_0g7rtsa" />
@@ -167,13 +167,13 @@
     <bpmn:boundaryEvent id="Event_19rhqoz" name="3 days without correction" cancelActivity="false" attachedToRef="Activity_11kps77">
       <bpmn:outgoing>Flow_1vqphrk</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_05gv7sd">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1M</bpmn:timeDuration>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2M</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:boundaryEvent>
     <bpmn:boundaryEvent id="Event_1x5wg90" name="7 days without correction" attachedToRef="Activity_11kps77">
       <bpmn:outgoing>Flow_1brgpwm</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_1lu6ukz">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2M</bpmn:timeDuration>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT5M</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_1vqphrk" sourceRef="Event_19rhqoz" targetRef="Activity_198g1oa" />
