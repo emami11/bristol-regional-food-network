@@ -8,7 +8,8 @@ Job workers and a simulated organic certification service for F1 (Product Listin
 | Check workers | `src/workers/handlers.js` | `validate-product` and `verify-certificate` |
 | Listing workers | `src/workers/listingWorkers.js` | `save-draft-listing`, `publish-product`, `archieve-listing` |
 | Listing store | `src/store/listings.js` | Simulated in-memory store of listings (DRAFT, PUBLISHED, ARCHIVED); replaced by a database in Task 2 |
-| F2 worker | `src/workers/loadProduct.js` | `load-product` |
+| F2/F2a workers | `src/workers/loadProduct.js`, `findSeasonChanges.js`, `saveStockSeason.js`, `setOrderAvailability.js`, `productStore.js` | F2 and F2a job types, with a simulated product store |
+| Shared workers | `src/workers/notifyProducer.js`, `recordVerificationAudit.js` | Simulated notifications (F1, F2a) and the certification audit (F1a) |
 | Worker runner | `src/index.js` | Connects to Camunda 8 and starts the workers |
 | Simulated service | `src/cert-mock/server.js` | Small web service with five made-up certificates and an outage switch |
 | Tests | `test/` | `npm test` runs them all |
@@ -50,10 +51,15 @@ Never commit `.env`; it holds your client secret. It's in `.gitignore`.
 | `publish-product` | F1 *Publish product listing* | `listingId`, `availability` (from the DMN) | `listingStatus` = `PUBLISHED`, `productId`, `availabilityStatus`, `ordersOpen`, `publishedAt` |
 | `archieve-listing` | F1 *Archive draft listing* | `listingId` | `listingStatus` = `ARCHIVED`, `archivedAt` |
 | `load-product` | F2 *Load product listing* | `productId` | product fields, `quantity` |
+| `find-season-changes` | F2 *Find season changes due today* | the product store | `productsToCheck`, `seasonalCheckCount` |
+| `save-stock-season` | F2a *Save stock and season dates* | `productId`, `quantity`, `seasonStart`, `seasonEnd` | the saved `quantity` and season dates |
+| `set-order-availability` | F2a *Open or close to new orders* | `productId`, `availability` | `ordersOpen`, `updatedStatus` |
+| `notify-producer` | F1 *Notify producer product live*, *Send correction reminder*, *Notify producer listing archieved*; F2a *Notify producer of new status* | task header `template`, `listingId` (F1) or `productId` + `availability` (F2a) | `notificationTemplate`, `notificationMessage` (simulated, no email sent) |
+| `record-verification-audit` | F1a *Record verification outcome* | `certVerified`, `certReason`, `verificationMethod` | `auditRecorded`, `certStatus` |
 
 `archive-listing` is also registered, so correcting the spelling in the model doesn't break anything.
 
-`notify-producer` (F1 send tasks, F2a) and `record-verification-audit` (F1a) are not in this folder yet.
+`notify-producer` templates: `PRODUCT_LIVE`, `CORRECTION_REMINDER`, `LISTING_ARCHIVED` (F1) and `STATUS_CHANGED` (F2a). Without a `template` header, F1 messages are chosen from `listingStatus`.
 
 ### Errors
 
