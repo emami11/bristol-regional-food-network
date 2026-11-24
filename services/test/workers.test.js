@@ -20,25 +20,27 @@ async function withMock(options, fn) {
   try { await fn(baseUrl); } finally { server.close(); }
 }
 
-const TODAY = '2026-11-03';
+const TODAY = '2026-11-24';
 const quick = (baseUrl) => makeVerifyCertificateHandler({ baseUrl, attempts: 2, timeoutMs: 500, retryDelayMs: 10, today: TODAY });
 
-test('validate-product completes with dataValid and a readable summary', async () => {
-  const job = fakeJob({ name: 'X', organicClaimed: false });
+test('validate-product completes with isValid and a list of messages for the correction form', async () => {
+  const job = fakeJob({ productName: 'X', organicClaimed: false });
   await validateProductHandler(job, { today: TODAY });
   assert.equal(job.outcome.type, 'complete');
-  assert.equal(job.outcome.vars.dataValid, false);
-  assert.ok(job.outcome.vars.validationSummary.includes('Product name must be 3 to 100 characters.'));
+  assert.equal(job.outcome.vars.isValid, false);
+  assert.ok(job.outcome.vars.validationErrors.includes('Product name must be 3 to 80 characters.'));
+  assert.ok(job.outcome.vars.validationErrors.every(m => typeof m === 'string'));
+  assert.ok(job.outcome.vars.validationFields.includes('productName'));
 });
 
 test('verify-certificate: valid certificate', async () => {
   await withMock({}, async (baseUrl) => {
-    const job = fakeJob({ organicClaimed: true, certNumber: 'BOS-1001' });
+    const job = fakeJob({ organicClaimed: true, certNumber: 'BOS-1001', certBody: 'soil-association' });
     await quick(baseUrl)(job);
     assert.equal(job.outcome.type, 'complete');
-    assert.equal(job.outcome.vars.certValid, true);
+    assert.equal(job.outcome.vars.certVerified, true);
     assert.equal(job.outcome.vars.certStatus, 'VALID');
-    assert.equal(job.outcome.vars.certVerifiedBy, 'SERVICE');
+    assert.match(job.outcome.vars.certReason, /is valid until/);
   });
 });
 
@@ -48,18 +50,19 @@ test('verify-certificate: expired, revoked and unknown certificates are not vali
       const job = fakeJob({ organicClaimed: true, certNumber: cert });
       await quick(baseUrl)(job);
       assert.equal(job.outcome.type, 'complete');
-      assert.equal(job.outcome.vars.certValid, false);
+      assert.equal(job.outcome.vars.certVerified, false);
+      assert.ok(job.outcome.vars.certReason.length > 0);
       assert.equal(job.outcome.vars.certStatus, status);
     }
   });
 });
 
-test('verify-certificate: outage throws the BPMN error CERT_SERVICE_DOWN after retrying', async () => {
+test('verify-certificate: outage throws the BPMN error CERT_SERVICE_UNAVAILABLE after retrying', async () => {
   await withMock({ down: true }, async (baseUrl) => {
     const job = fakeJob({ organicClaimed: true, certNumber: 'BOS-1001' });
     await quick(baseUrl)(job);
     assert.equal(job.outcome.type, 'error');
-    assert.equal(job.outcome.errorCode, 'CERT_SERVICE_DOWN');
+    assert.equal(job.outcome.errorCode, 'CERT_SERVICE_UNAVAILABLE');
     assert.match(job.outcome.errorMessage, /after 2 attempts/);
   });
 });
@@ -67,14 +70,14 @@ test('verify-certificate: outage throws the BPMN error CERT_SERVICE_DOWN after r
 test('verify-certificate: no service running at all also counts as down', async () => {
   const job = fakeJob({ organicClaimed: true, certNumber: 'BOS-1001' });
   await quick('http://localhost:1')(job);
-  assert.equal(job.outcome.errorCode, 'CERT_SERVICE_DOWN');
+  assert.equal(job.outcome.errorCode, 'CERT_SERVICE_UNAVAILABLE');
 });
 
 test('verify-certificate: a slow service times out and counts as down', async () => {
   await withMock({ delayMs: 1500 }, async (baseUrl) => {
     const job = fakeJob({ organicClaimed: true, certNumber: 'BOS-1001' });
     await quick(baseUrl)(job);
-    assert.equal(job.outcome.errorCode, 'CERT_SERVICE_DOWN');
+    assert.equal(job.outcome.errorCode, 'CERT_SERVICE_UNAVAILABLE');
     assert.match(job.outcome.errorMessage, /no reply within 500 ms/);
   });
 });
